@@ -1,0 +1,39 @@
+//Construction/scaffolding sprites
+spriteset (sprites_construction_4animframe_back, "../graphics/detailed/64/pygen/construction_short_singleview_8bpp.png") { template_construction4view_short(0, 65, 1) }
+alternative_sprites(sprites_construction_4animframe_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/construction_short_singleview_8bpp.png") { template_construction4view_short(0, 65, 4) }
+spriteset (sprites_construction_4animframe_front, "../graphics/detailed/64/pygen/construction_short_singleview_8bpp.png") { template_constructionoverlay4view_short(0, 0, 1) }
+alternative_sprites(sprites_construction_4animframe_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/construction_short_singleview_8bpp.png") { template_constructionoverlay4view_short(0, 0, 4) }
+
+spriteset (sprites_construction_8animframe_back, "../graphics/detailed/64/pygen/construction_short_singleview_8bpp.png") { template_construction8view_short(0, 65, 1) }
+alternative_sprites(sprites_construction_8animframe_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/construction_short_singleview_8bpp.png") { template_construction8view_short(0, 65, 4) }
+spriteset (sprites_construction_8animframe_front, "../graphics/detailed/64/pygen/construction_short_singleview_8bpp.png") { template_constructionoverlay8view_short(0, 0, 1) }
+alternative_sprites(sprites_construction_8animframe_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/construction_short_singleview_8bpp.png") { template_constructionoverlay8view_short(0, 0, 4) }
+
+spriteset (sprites_construction_12animframe_back, "../graphics/detailed/64/pygen/construction_short_singleview_8bpp.png") { template_construction12view_short(0, 65, 1) }
+alternative_sprites(sprites_construction_12animframe_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/construction_short_singleview_8bpp.png") { template_construction12view_short(0, 65, 4) }
+spriteset (sprites_construction_12animframe_front, "../graphics/detailed/64/pygen/construction_short_singleview_8bpp.png") { template_constructionoverlay12view_short(0, 0, 1) }
+alternative_sprites(sprites_construction_12animframe_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/construction_short_singleview_8bpp.png") { template_constructionoverlay12view_short(0, 0, 4) }
+
+spriteset (sprites_constructionmidtarp_4animframe_back, "../graphics/detailed/64/pygen/construction_midtarp_singleview_8bpp.png") { template_construction4view_short(0, 65, 1) }
+alternative_sprites(sprites_constructionmidtarp_4animframe_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/construction_midtarp_singleview_8bpp.png") { template_construction4view_short(0, 65, 4) }
+spriteset (sprites_constructionmidtarp_4animframe_backoverlay, "../graphics/detailed/64/pygen/construction_midtarp_singleview_8bpp.png") { template_constructionoverlay4view_short(0, 65, 1) }
+alternative_sprites(sprites_constructionmidtarp_4animframe_backoverlay, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/construction_midtarp_singleview_8bpp.png") { template_constructionoverlay4view_short(0, 65, 4) }
+spriteset (sprites_constructionmidtarp_4animframe_front, "../graphics/detailed/64/pygen/construction_midtarp_singleview_8bpp.png") { template_constructionoverlay4view_short(0, 0, 1) }
+alternative_sprites(sprites_constructionmidtarp_4animframe_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/construction_midtarp_singleview_8bpp.png") { template_constructionoverlay4view_short(0, 0, 4) }
+
+spriteset (sprites_constructionmidtarp_8animframe_back, "../graphics/detailed/64/pygen/construction_midtarp_singleview_8bpp.png") { template_construction8view_short(0, 65, 1) }
+alternative_sprites(sprites_constructionmidtarp_8animframe_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/construction_midtarp_singleview_8bpp.png") { template_construction8view_short(0, 65, 4) }
+spriteset (sprites_constructionmidtarp_8animframe_backoverlay, "../graphics/detailed/64/pygen/construction_midtarp_singleview_8bpp.png") { template_constructionoverlay8view_short(0, 65, 1) }
+alternative_sprites(sprites_constructionmidtarp_8animframe_backoverlay, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/construction_midtarp_singleview_8bpp.png") { template_constructionoverlay8view_short(0, 65, 4) }
+spriteset (sprites_constructionmidtarp_8animframe_front, "../graphics/detailed/64/pygen/construction_midtarp_singleview_8bpp.png") { template_constructionoverlay8view_short(0, 0, 1) }
+alternative_sprites(sprites_constructionmidtarp_8animframe_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/construction_midtarp_singleview_8bpp.png") { template_constructionoverlay8view_short(0, 0, 4) }
+
+spriteset (sprites_constructionmidtarp_12animframe_back, "../graphics/detailed/64/pygen/construction_midtarp_singleview_8bpp.png") { template_construction12view_short(0, 65, 1) }
+alternative_sprites(sprites_constructionmidtarp_12animframe_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/construction_midtarp_singleview_8bpp.png") { template_construction12view_short(0, 65, 4) }
+spriteset (sprites_constructionmidtarp_12animframe_backoverlay, "../graphics/detailed/64/pygen/construction_midtarp_singleview_8bpp.png") { template_constructionoverlay12view_short(0, 65, 1) }
+alternative_sprites(sprites_constructionmidtarp_12animframe_backoverlay, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/construction_midtarp_singleview_8bpp.png") { template_constructionoverlay12view_short(0, 65, 4) }
+spriteset (sprites_constructionmidtarp_12animframe_front, "../graphics/detailed/64/pygen/construction_midtarp_singleview_8bpp.png") { template_constructionoverlay12view_short(0, 0, 1) }
+alternative_sprites(sprites_constructionmidtarp_12animframe_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/construction_midtarp_singleview_8bpp.png") { template_constructionoverlay12view_short(0, 0, 4) }
+
+spriteset (sprites_constructioncrane_4animframe, "../graphics/detailed/64/pygen/construction_crane_singleview_8bpp.png") { template_constructionoverlay4view_short(0, 0, 1) }
+alternative_sprites(sprites_constructioncrane_4animframe, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/construction_crane_singleview_8bpp.png") { template_constructionoverlay4view_short(0, 0, 4) }

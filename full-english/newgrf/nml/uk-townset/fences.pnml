@@ -1,0 +1,290 @@
+//Templates
+template template_fences_4view_back(z) {
+    template_house_single(195, 0, z, 65)
+    template_house_single(195, 0, z, 65)
+    template_house_single(130, 0, z, 65)
+    template_house_single( 65, 0, z, 65)
+}
+template template_fences_4view_backover(z) {
+    template_houseoverlay_single(195, 0, z, 65)
+    template_houseoverlay_single(195, 0, z, 65)
+    template_houseoverlay_single(130, 0, z, 65)
+    template_houseoverlay_single( 65, 0, z, 65)
+}
+template template_fences_4view_front(z) {
+    template_houseoverlay_single(130, 65, z, 65)
+    template_houseoverlay_single( 65, 65, z, 65)
+    template_houseoverlay_single(195, 65, z, 65)
+    template_houseoverlay_single(195, 65, z, 65)
+}
+
+template template_fences_8view_back(z) {
+    template_fences_4view_back(z)
+    template_house_single(195, 0, z, 65)
+    template_house_single(130, 0, z, 65)
+    template_house_single(  0, 0, z, 65)
+    template_house_single( 65, 0, z, 65)
+}
+template template_fences_8view_backover(z) {
+    template_fences_4view_backover(z)
+    template_houseoverlay_single(195, 0, z, 65)
+    template_houseoverlay_single(130, 0, z, 65)
+    template_houseoverlay_single(  0, 0, z, 65)
+    template_houseoverlay_single( 65, 0, z, 65)
+}
+template template_fences_8view_front(z) {
+    template_fences_4view_front(z)
+    template_houseoverlay_single(  0, 65, z, 65)
+    template_houseoverlay_single( 65, 65, z, 65)
+    template_houseoverlay_single(195, 65, z, 65)
+    template_houseoverlay_single(130, 65, z, 65)
+}
+
+template template_fences_12view_back(z) {
+    template_fences_8view_back(z)
+    template_house_single(195, 0, z, 65)
+    template_house_single(130, 0, z, 65)
+    template_house_single(  0, 0, z, 65)
+    template_house_single( 65, 0, z, 65)
+}
+template template_fences_12view_backover(z) {
+    template_fences_8view_backover(z)
+    template_houseoverlay_single(195, 0, z, 65)
+    template_houseoverlay_single(130, 0, z, 65)
+    template_houseoverlay_single(  0, 0, z, 65)
+    template_houseoverlay_single( 65, 0, z, 65)
+}
+template template_fences_12view_front(z) {
+    template_fences_8view_front(z)
+    template_houseoverlay_single(  0, 65, z, 65)
+    template_houseoverlay_single( 65, 65, z, 65)
+    template_houseoverlay_single(195, 65, z, 65)
+    template_houseoverlay_single(130, 65, z, 65)
+}
+
+template template_fences_16view_back(z) {
+    template_house_single(195, 0, z, 65)
+    template_fences_8view_back(z)
+    template_house_single(130, 0, z, 65)
+    template_house_single( 65, 0, z, 65)
+    template_house_single(130, 0, z, 65)
+    template_house_single(  0, 0, z, 65)
+    template_house_single(  0, 0, z, 65)
+    template_house_single( 65, 0, z, 65)
+    template_house_single(  0, 0, z, 65)
+}
+template template_fences_16view_backover(z) {
+    template_houseoverlay_single(195, 0, z, 65)
+    template_fences_8view_backover(z)
+    template_houseoverlay_single(130, 0, z, 65)
+    template_houseoverlay_single( 65, 0, z, 65)
+    template_houseoverlay_single(130, 0, z, 65)
+    template_houseoverlay_single(  0, 0, z, 65)
+    template_houseoverlay_single(  0, 0, z, 65)
+    template_houseoverlay_single( 65, 0, z, 65)
+    template_houseoverlay_single(  0, 0, z, 65)
+}
+template template_fences_16view_front(z) {
+    template_houseoverlay_single(195, 65, z, 65)
+    template_fences_8view_front(z)
+    template_houseoverlay_single(130, 65, z, 65)
+    template_houseoverlay_single( 65, 65, z, 65)
+    template_houseoverlay_single(  0, 65, z, 65)
+    template_houseoverlay_single( 65, 65, z, 65)
+    template_houseoverlay_single(130, 65, z, 65)
+    template_houseoverlay_single(  0, 65, z, 65)
+    template_houseoverlay_single(  0, 65, z, 65)
+}
+
+//Border wall/fence sprites
+//Blank sprites (rear wall standin for alighnment purposes)
+spriteset (sprites_blankshort_4animframe, "../graphics/detailed/64/blank_short_8bpp.png") { template_house_short(0, 0, 1) }
+spriteset (sprites_blankmid_4animframe, "../graphics/detailed/64/blank_mid_8bpp.png") { template_house_mid(0, 0, 1) }
+spriteset (sprites_blankmid_16animframe, "../graphics/detailed/64/blank_mid_8bpp.png") { template_house_mid(0, 0, 1) template_house_mid(0, 0, 1) template_house_mid(0, 0, 1) template_house_mid(0, 0, 1) }
+
+//Standard brick walls (recolourable)
+spriteset (sprites_walls_4animframe_back, "../graphics/detailed/64/pygen/wallbitmask_standard_8bpp.png") { template_fences_4view_back(1) }
+alternative_sprites(sprites_walls_4animframe_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_standard_8bpp.png") { template_fences_4view_back(4) }
+spriteset (sprites_walls_4animframe_front, "../graphics/detailed/64/pygen/wallbitmask_standard_8bpp.png") { template_fences_4view_front(1) }
+alternative_sprites(sprites_walls_4animframe_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_standard_8bpp.png") { template_fences_4view_front(4) }
+spriteset (sprites_wallsgaps_4animframe_back, "../graphics/detailed/64/pygen/wallbitmask_standardgaps_8bpp.png") { template_fences_4view_backover(1) }
+alternative_sprites(sprites_wallsgaps_4animframe_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_standardgaps_8bpp.png") { template_fences_4view_backover(4) }
+spriteset (sprites_wallsgaps_4animframe_front, "../graphics/detailed/64/pygen/wallbitmask_standardgaps_8bpp.png") { template_fences_4view_front(1) }
+alternative_sprites(sprites_wallsgaps_4animframe_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_standardgaps_8bpp.png") { template_fences_4view_front(4) }
+
+spriteset (sprites_walls_8animframe_back, "../graphics/detailed/64/pygen/wallbitmask_standard_8bpp.png") { template_fences_8view_back(1) }
+alternative_sprites(sprites_walls_8animframe_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_standard_8bpp.png") { template_fences_8view_back(4) }
+spriteset (sprites_walls_8animframe_front, "../graphics/detailed/64/pygen/wallbitmask_standard_8bpp.png") { template_fences_8view_front(1) }
+alternative_sprites(sprites_walls_8animframe_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_standard_8bpp.png") { template_fences_8view_front(4) }
+
+spriteset (sprites_walls_12animframe_back, "../graphics/detailed/64/pygen/wallbitmask_standard_8bpp.png") { template_fences_12view_back(1) }
+alternative_sprites(sprites_walls_12animframe_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_standard_8bpp.png") { template_fences_12view_back(4) }
+spriteset (sprites_walls_12animframe_front, "../graphics/detailed/64/pygen/wallbitmask_standard_8bpp.png") { template_fences_12view_front(1) }
+alternative_sprites(sprites_walls_12animframe_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_standard_8bpp.png") { template_fences_12view_front(4) }
+
+spriteset (sprites_walls_16_back, "../graphics/detailed/64/pygen/wallbitmask_standard_8bpp.png") { template_fences_16view_back(1) }
+alternative_sprites(sprites_walls_16_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_standard_8bpp.png") { template_fences_16view_back(4) }
+spriteset (sprites_walls_16_backover, "../graphics/detailed/64/pygen/wallbitmask_standard_8bpp.png") { template_fences_16view_backover(1) }
+alternative_sprites(sprites_walls_16_backover, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_standard_8bpp.png") { template_fences_16view_backover(4) }
+spriteset (sprites_walls_16_front, "../graphics/detailed/64/pygen/wallbitmask_standard_8bpp.png") { template_fences_16view_front(1) }
+alternative_sprites(sprites_walls_16_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_standard_8bpp.png") { template_fences_16view_front(4) }
+
+spriteset (sprites_walls_bitmask_back, "../graphics/detailed/64/pygen/wallbitmask_standard_8bpp.png") { template_house_short(0, 0, 1) }
+alternative_sprites(sprites_walls_bitmask_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_standard_8bpp.png") { template_house_short(0, 0, 4) }
+spriteset (sprites_walls_bitmask_front, "../graphics/detailed/64/pygen/wallbitmask_standard_8bpp.png") { template_houseoverlay_short(0, 65, 1) }
+alternative_sprites(sprites_walls_bitmask_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_standard_8bpp.png") { template_houseoverlay_short(0, 65, 4) }
+spriteset (sprites_wallsgaps_bitmask_back, "../graphics/detailed/64/pygen/wallbitmask_standardgaps_8bpp.png") { template_houseoverlay_short(0, 0, 1) }
+alternative_sprites(sprites_wallsgaps_bitmask_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_standardgaps_8bpp.png") { template_houseoverlay_short(0, 0, 4) }
+spriteset (sprites_wallsgaps_bitmask_front, "../graphics/detailed/64/pygen/wallbitmask_standardgaps_8bpp.png") { template_houseoverlay_short(0, 65, 1) }
+alternative_sprites(sprites_wallsgaps_bitmask_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_standardgaps_8bpp.png") { template_houseoverlay_short(0, 65, 4) }
+
+//Hedges
+spriteset (sprites_hedges_4animframe_back, "../graphics/detailed/64/pygen/wallbitmask_hedges_8bpp.png") { template_fences_4view_back(1) }
+alternative_sprites(sprites_hedges_4animframe_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedges_8bpp.png") { template_fences_4view_back(4) }
+spriteset (sprites_hedges_4animframe_front, "../graphics/detailed/64/pygen/wallbitmask_hedges_8bpp.png") { template_fences_4view_front(1) }
+alternative_sprites(sprites_hedges_4animframe_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedges_8bpp.png") { template_fences_4view_front(4) }
+spriteset (sprites_hedgesgaps_4animframe_back, "../graphics/detailed/64/pygen/wallbitmask_hedgesgaps_8bpp.png") { template_fences_4view_backover(1) }
+alternative_sprites(sprites_hedgesgaps_4animframe_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedgesgaps_8bpp.png") { template_fences_4view_backover(4) }
+spriteset (sprites_hedgesgaps_4animframe_front, "../graphics/detailed/64/pygen/wallbitmask_hedgesgaps_8bpp.png") { template_fences_4view_front(1) }
+alternative_sprites(sprites_hedgesgaps_4animframe_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedgesgaps_8bpp.png") { template_fences_4view_front(4) }
+
+spriteset (sprites_hedges_16_back, "../graphics/detailed/64/pygen/wallbitmask_hedges_8bpp.png") { template_fences_16view_back(1) }
+alternative_sprites(sprites_hedges_16_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedges_8bpp.png") { template_fences_16view_back(4) }
+spriteset (sprites_hedges_16_front, "../graphics/detailed/64/pygen/wallbitmask_hedges_8bpp.png") { template_fences_16view_front(1) }
+alternative_sprites(sprites_hedges_16_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedges_8bpp.png") { template_fences_16view_front(4) }
+
+spriteset (sprites_hedges_bitmask_back, "../graphics/detailed/64/pygen/wallbitmask_hedges_8bpp.png") { template_house_short(0, 0, 1) }
+alternative_sprites(sprites_hedges_bitmask_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedges_8bpp.png") { template_house_short(0, 0, 4) }
+spriteset (sprites_hedges_bitmask_front, "../graphics/detailed/64/pygen/wallbitmask_hedges_8bpp.png") { template_houseoverlay_short(0, 65, 1) }
+alternative_sprites(sprites_hedges_bitmask_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedges_8bpp.png") { template_houseoverlay_short(0, 65, 4) }
+spriteset (sprites_hedgesgaps_bitmask_back, "../graphics/detailed/64/pygen/wallbitmask_hedgesgaps_8bpp.png") { template_houseoverlay_short(0, 0, 1) }
+alternative_sprites(sprites_hedgesgaps_bitmask_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedgesgaps_8bpp.png") { template_houseoverlay_short(0, 0, 4) }
+spriteset (sprites_hedgesgaps_bitmask_front, "../graphics/detailed/64/pygen/wallbitmask_hedgesgaps_8bpp.png") { template_houseoverlay_short(0, 65, 1) }
+alternative_sprites(sprites_hedgesgaps_bitmask_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedgesgaps_8bpp.png") { template_houseoverlay_short(0, 65, 4) }
+spriteset (sprites_hedges_bitmask_back_16, "../graphics/detailed/64/pygen/wallbitmask_hedges_8bpp.png") { template_house_short(0, 0, 1) template_empty_12view() }
+alternative_sprites(sprites_hedges_bitmask_back_16, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedges_8bpp.png") { template_house_short(0, 0, 4) template_empty_12view() }
+spriteset (sprites_hedges_bitmask_front_16, "../graphics/detailed/64/pygen/wallbitmask_hedges_8bpp.png") { template_houseoverlay_short(0, 65, 1) template_empty_12view() }
+alternative_sprites(sprites_hedges_bitmask_front_16, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedges_8bpp.png") { template_houseoverlay_short(0, 65, 4) template_empty_12view() }
+spriteset (sprites_hedgesgaps_bitmask_back_16, "../graphics/detailed/64/pygen/wallbitmask_hedgesgaps_8bpp.png") { template_houseoverlay_short(0, 0, 1) template_empty_12view() }
+alternative_sprites(sprites_hedgesgaps_bitmask_back_16, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedgesgaps_8bpp.png") { template_houseoverlay_short(0, 0, 4) template_empty_12view() }
+spriteset (sprites_hedgesgaps_bitmask_front_16, "../graphics/detailed/64/pygen/wallbitmask_hedgesgaps_8bpp.png") { template_houseoverlay_short(0, 65, 1) template_empty_12view() }
+alternative_sprites(sprites_hedgesgaps_bitmask_front_16, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedgesgaps_8bpp.png") { template_houseoverlay_short(0, 65, 4) template_empty_12view() }
+
+spriteset (sprites_hedges_4animframe_back_snow, "../graphics/detailed/64/pygen/wallbitmask_hedges_snow_8bpp.png") { template_fences_4view_backover(1) }
+alternative_sprites(sprites_hedges_4animframe_back_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedges_snow_8bpp.png") { template_fences_4view_backover(4) }
+spriteset (sprites_hedges_4animframe_front_snow, "../graphics/detailed/64/pygen/wallbitmask_hedges_snow_8bpp.png") { template_fences_4view_front(1) }
+alternative_sprites(sprites_hedges_4animframe_front_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedges_snow_8bpp.png") { template_fences_4view_front(4) }
+spriteset (sprites_hedgesgaps_4animframe_back_snow, "../graphics/detailed/64/pygen/wallbitmask_hedgesgaps_snow_8bpp.png") { template_fences_4view_backover(1) }
+alternative_sprites(sprites_hedgesgaps_4animframe_back_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedgesgaps_snow_8bpp.png") { template_fences_4view_backover(4) }
+spriteset (sprites_hedgesgaps_4animframe_front_snow, "../graphics/detailed/64/pygen/wallbitmask_hedgesgaps_snow_8bpp.png") { template_fences_4view_front(1) }
+alternative_sprites(sprites_hedgesgaps_4animframe_front_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedgesgaps_snow_8bpp.png") { template_fences_4view_front(4) }
+
+spriteset (sprites_hedges_16_back_snow, "../graphics/detailed/64/pygen/wallbitmask_hedges_snow_8bpp.png") { template_fences_16view_backover(1) }
+alternative_sprites(sprites_hedges_16_back_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedges_snow_8bpp.png") { template_fences_16view_backover(4) }
+spriteset (sprites_hedges_16_front_snow, "../graphics/detailed/64/pygen/wallbitmask_hedges_snow_8bpp.png") { template_fences_16view_front(1) }
+alternative_sprites(sprites_hedges_16_front_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedges_snow_8bpp.png") { template_fences_16view_front(4) }
+
+spriteset (sprites_hedges_bitmask_back_snow, "../graphics/detailed/64/pygen/wallbitmask_hedges_snow_8bpp.png") { template_houseoverlay_short(0, 0, 1) }
+alternative_sprites(sprites_hedges_bitmask_back_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedges_snow_8bpp.png") { template_houseoverlay_short(0, 0, 4) }
+spriteset (sprites_hedges_bitmask_front_snow, "../graphics/detailed/64/pygen/wallbitmask_hedges_snow_8bpp.png") { template_houseoverlay_short(0, 65, 1) }
+alternative_sprites(sprites_hedges_bitmask_front_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedges_snow_8bpp.png") { template_houseoverlay_short(0, 65, 4) }
+spriteset (sprites_hedgesgaps_bitmask_back_snow, "../graphics/detailed/64/pygen/wallbitmask_hedgesgaps_snow_8bpp.png") { template_houseoverlay_short(0, 0, 1) }
+alternative_sprites(sprites_hedgesgaps_bitmask_back_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedgesgaps_snow_8bpp.png") { template_houseoverlay_short(0, 0, 4) }
+spriteset (sprites_hedgesgaps_bitmask_front_snow, "../graphics/detailed/64/pygen/wallbitmask_hedgesgaps_snow_8bpp.png") { template_houseoverlay_short(0, 65, 1) }
+alternative_sprites(sprites_hedgesgaps_bitmask_front_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedgesgaps_snow_8bpp.png") { template_houseoverlay_short(0, 65, 4) }
+spriteset (sprites_hedges_bitmask_back_16_snow, "../graphics/detailed/64/pygen/wallbitmask_hedges_snow_8bpp.png") { template_houseoverlay_short(0, 0, 1) template_empty_12view() }
+alternative_sprites(sprites_hedges_bitmask_back_16_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedges_snow_8bpp.png") { template_houseoverlay_short(0, 0, 4) template_empty_12view() }
+spriteset (sprites_hedges_bitmask_front_16_snow, "../graphics/detailed/64/pygen/wallbitmask_hedges_snow_8bpp.png") { template_houseoverlay_short(0, 65, 1) template_empty_12view() }
+alternative_sprites(sprites_hedges_bitmask_front_16_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedges_snow_8bpp.png") { template_houseoverlay_short(0, 65, 4) template_empty_12view() }
+spriteset (sprites_hedgesgaps_bitmask_back_16_snow, "../graphics/detailed/64/pygen/wallbitmask_hedgesgaps_snow_8bpp.png") { template_houseoverlay_short(0, 0, 1) template_empty_12view() }
+alternative_sprites(sprites_hedgesgaps_bitmask_back_16_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedgesgaps_snow_8bpp.png") { template_houseoverlay_short(0, 0, 4) template_empty_12view() }
+spriteset (sprites_hedgesgaps_bitmask_front_16_snow, "../graphics/detailed/64/pygen/wallbitmask_hedgesgaps_snow_8bpp.png") { template_houseoverlay_short(0, 65, 1) template_empty_12view() }
+alternative_sprites(sprites_hedgesgaps_bitmask_front_16_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_hedgesgaps_snow_8bpp.png") { template_houseoverlay_short(0, 65, 4) template_empty_12view() }
+
+//Wooden fence (solid)
+spriteset (sprites_woodfences_4animframe_back, "../graphics/detailed/64/pygen/wallbitmask_woodfence_8bpp.png") { template_fences_4view_back(1) }
+alternative_sprites(sprites_woodfences_4animframe_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_woodfence_8bpp.png") { template_fences_4view_back(4) }
+spriteset (sprites_woodfences_4animframe_front, "../graphics/detailed/64/pygen/wallbitmask_woodfence_8bpp.png") { template_fences_4view_front(1) }
+alternative_sprites(sprites_woodfences_4animframe_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_woodfence_8bpp.png") { template_fences_4view_front(4) }
+spriteset (sprites_woodfencesgaps_4animframe_back, "../graphics/detailed/64/pygen/wallbitmask_woodfencegaps_8bpp.png") { template_fences_4view_backover(1) }
+alternative_sprites(sprites_woodfencesgaps_4animframe_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_woodfencegaps_8bpp.png") { template_fences_4view_backover(4) }
+spriteset (sprites_woodfencesgaps_4animframe_front, "../graphics/detailed/64/pygen/wallbitmask_woodfencegaps_8bpp.png") { template_fences_4view_front(1) }
+alternative_sprites(sprites_woodfencesgaps_4animframe_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_woodfencegaps_8bpp.png") { template_fences_4view_front(4) }
+
+spriteset (sprites_woodfences_8animframe_back, "../graphics/detailed/64/pygen/wallbitmask_woodfence_8bpp.png") { template_fences_8view_back(1) }
+alternative_sprites(sprites_woodfences_8animframe_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_woodfence_8bpp.png") { template_fences_8view_back(4) }
+spriteset (sprites_woodfences_8animframe_front, "../graphics/detailed/64/pygen/wallbitmask_woodfence_8bpp.png") { template_fences_8view_front(1) }
+alternative_sprites(sprites_woodfences_8animframe_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_woodfence_8bpp.png") { template_fences_8view_front(4) }
+
+spriteset (sprites_woodfences_bitmask_back, "../graphics/detailed/64/pygen/wallbitmask_woodfence_8bpp.png") { template_house_short(0, 0, 1) }
+alternative_sprites(sprites_woodfences_bitmask_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_woodfence_8bpp.png") { template_house_short(0, 0, 4) }
+spriteset (sprites_woodfences_bitmask_front, "../graphics/detailed/64/pygen/wallbitmask_woodfence_8bpp.png") { template_houseoverlay_short(0, 65, 1) }
+alternative_sprites(sprites_woodfences_bitmask_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_woodfence_8bpp.png") { template_houseoverlay_short(0, 65, 4) }
+spriteset (sprites_woodfencesgaps_bitmask_back, "../graphics/detailed/64/pygen/wallbitmask_woodfencegaps_8bpp.png") { template_houseoverlay_short(0, 0, 1) }
+alternative_sprites(sprites_woodfencesgaps_bitmask_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_woodfencegaps_8bpp.png") { template_houseoverlay_short(0, 0, 4) }
+spriteset (sprites_woodfencesgaps_bitmask_front, "../graphics/detailed/64/pygen/wallbitmask_woodfencegaps_8bpp.png") { template_houseoverlay_short(0, 65, 1) }
+alternative_sprites(sprites_woodfencesgaps_bitmask_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_woodfencegaps_8bpp.png") { template_houseoverlay_short(0, 65, 4) }
+
+//Chainlink fence
+spriteset (sprites_chainfences_4animframe_back, "../graphics/detailed/64/pygen/wallbitmask_chainfence_8bpp.png") { template_fences_4view_back(1) }
+alternative_sprites(sprites_chainfences_4animframe_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_chainfence_8bpp.png") { template_fences_4view_back(4) }
+spriteset (sprites_chainfences_4animframe_front, "../graphics/detailed/64/pygen/wallbitmask_chainfence_8bpp.png") { template_fences_4view_front(1) }
+alternative_sprites(sprites_chainfences_4animframe_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_chainfence_8bpp.png") { template_fences_4view_front(4) }
+spriteset (sprites_chainfencesgaps_4animframe_back, "../graphics/detailed/64/pygen/wallbitmask_chainfencegaps_8bpp.png") { template_fences_4view_backover(1) }
+alternative_sprites(sprites_chainfencesgaps_4animframe_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_chainfencegaps_8bpp.png") { template_fences_4view_backover(4) }
+spriteset (sprites_chainfencesgaps_4animframe_front, "../graphics/detailed/64/pygen/wallbitmask_chainfencegaps_8bpp.png") { template_fences_4view_front(1) }
+alternative_sprites(sprites_chainfencesgaps_4animframe_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_chainfencegaps_8bpp.png") { template_fences_4view_front(4) }
+
+spriteset (sprites_chainfences_16_back, "../graphics/detailed/64/pygen/wallbitmask_chainfence_8bpp.png") { template_fences_16view_back(1) }
+alternative_sprites(sprites_chainfences_16_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_chainfence_8bpp.png") { template_fences_16view_back(4) }
+spriteset (sprites_chainfences_16_backover, "../graphics/detailed/64/pygen/wallbitmask_chainfence_8bpp.png") { template_fences_16view_backover(1) }
+alternative_sprites(sprites_chainfences_16_backover, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_chainfence_8bpp.png") { template_fences_16view_backover(4) }
+spriteset (sprites_chainfences_16_front, "../graphics/detailed/64/pygen/wallbitmask_chainfence_8bpp.png") { template_fences_16view_front(1) }
+alternative_sprites(sprites_chainfences_16_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_chainfence_8bpp.png") { template_fences_16view_front(4) }
+
+spriteset (sprites_chainfences_bitmask_back, "../graphics/detailed/64/pygen/wallbitmask_chainfence_8bpp.png") { template_house_short(0, 0, 1) }
+alternative_sprites(sprites_chainfences_bitmask_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_chainfence_8bpp.png") { template_house_short(0, 0, 4) }
+spriteset (sprites_chainfences_bitmask_front, "../graphics/detailed/64/pygen/wallbitmask_chainfence_8bpp.png") { template_houseoverlay_short(0, 65, 1) }
+alternative_sprites(sprites_chainfences_bitmask_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_chainfence_8bpp.png") { template_houseoverlay_short(0, 65, 4) }
+spriteset (sprites_chainfencesgaps_bitmask_back, "../graphics/detailed/64/pygen/wallbitmask_chainfencegaps_8bpp.png") { template_houseoverlay_short(0, 0, 1) }
+alternative_sprites(sprites_chainfencesgaps_bitmask_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_chainfencegaps_8bpp.png") { template_houseoverlay_short(0, 0, 4) }
+spriteset (sprites_chainfencesgaps_bitmask_front, "../graphics/detailed/64/pygen/wallbitmask_chainfencegaps_8bpp.png") { template_houseoverlay_short(0, 65, 1) }
+alternative_sprites(sprites_chainfencesgaps_bitmask_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_chainfencegaps_8bpp.png") { template_houseoverlay_short(0, 65, 4) }
+spriteset (sprites_chainfences_bitmask_back_16, "../graphics/detailed/64/pygen/wallbitmask_chainfence_8bpp.png") { template_house_short(0, 0, 1) template_empty_12view() }
+alternative_sprites(sprites_chainfences_bitmask_back_16, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_chainfence_8bpp.png") { template_house_short(0, 0, 4) template_empty_12view() }
+spriteset (sprites_chainfences_bitmask_backover_16, "../graphics/detailed/64/pygen/wallbitmask_chainfence_8bpp.png") { template_houseoverlay_short(0, 0, 1) template_empty_12view() }
+alternative_sprites(sprites_chainfences_bitmask_backover_16, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_chainfence_8bpp.png") { template_houseoverlay_short(0, 0, 4) template_empty_12view() }
+spriteset (sprites_chainfences_bitmask_front_16, "../graphics/detailed/64/pygen/wallbitmask_chainfence_8bpp.png") { template_houseoverlay_short(0, 65, 1) template_empty_12view() }
+alternative_sprites(sprites_chainfences_bitmask_front_16, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_chainfence_8bpp.png") { template_houseoverlay_short(0, 65, 4) template_empty_12view() }
+spriteset (sprites_chainfencesgaps_bitmask_back_16, "../graphics/detailed/64/pygen/wallbitmask_chainfencegaps_8bpp.png") { template_houseoverlay_short(0, 0, 1) template_empty_12view() }
+alternative_sprites(sprites_chainfencesgaps_bitmask_back_16, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_chainfencegaps_8bpp.png") { template_houseoverlay_short(0, 0, 4) template_empty_12view() }
+spriteset (sprites_chainfencesgaps_bitmask_front_16, "../graphics/detailed/64/pygen/wallbitmask_chainfencegaps_8bpp.png") { template_houseoverlay_short(0, 65, 1) template_empty_12view() }
+alternative_sprites(sprites_chainfencesgaps_bitmask_front_16, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_chainfencegaps_8bpp.png") { template_houseoverlay_short(0, 65, 4) template_empty_12view() }
+
+//Railings
+spriteset (sprites_railings_bitmask_back, "../graphics/detailed/64/pygen/wallbitmask_railings_8bpp.png") { template_house_short(0, 0, 1) }
+alternative_sprites(sprites_railings_bitmask_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_railings_8bpp.png") { template_house_short(0, 0, 4) }
+spriteset (sprites_railings_bitmask_front, "../graphics/detailed/64/pygen/wallbitmask_railings_8bpp.png") { template_houseoverlay_short(0, 65, 1) }
+alternative_sprites(sprites_railings_bitmask_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_railings_8bpp.png") { template_houseoverlay_short(0, 65, 4) }
+spriteset (sprites_railingsgaps_bitmask_back, "../graphics/detailed/64/pygen/wallbitmask_railingsgaps_8bpp.png") { template_houseoverlay_short(0, 0, 1) }
+alternative_sprites(sprites_railingsgaps_bitmask_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_railingsgaps_8bpp.png") { template_houseoverlay_short(0, 0, 4) }
+spriteset (sprites_railingsgaps_bitmask_front, "../graphics/detailed/64/pygen/wallbitmask_railingsgaps_8bpp.png") { template_houseoverlay_short(0, 65, 1) }
+alternative_sprites(sprites_railingsgaps_bitmask_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_railingsgaps_8bpp.png") { template_houseoverlay_short(0, 65, 4) }
+spriteset (sprites_railings_bitmask_back_16, "../graphics/detailed/64/pygen/wallbitmask_railings_8bpp.png") { template_house_short(0, 0, 1) template_empty_12view() }
+alternative_sprites(sprites_railings_bitmask_back_16, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_railings_8bpp.png") { template_house_short(0, 0, 4) template_empty_12view() }
+spriteset (sprites_railings_bitmask_front_16, "../graphics/detailed/64/pygen/wallbitmask_railings_8bpp.png") { template_houseoverlay_short(0, 65, 1) template_empty_12view() }
+alternative_sprites(sprites_railings_bitmask_front_16, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_railings_8bpp.png") { template_houseoverlay_short(0, 65, 4) template_empty_12view() }
+spriteset (sprites_railingsgaps_bitmask_back_16, "../graphics/detailed/64/pygen/wallbitmask_railingsgaps_8bpp.png") { template_houseoverlay_short(0, 0, 1) template_empty_12view() }
+alternative_sprites(sprites_railingsgaps_bitmask_back_16, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_railingsgaps_8bpp.png") { template_houseoverlay_short(0, 0, 4) template_empty_12view() }
+spriteset (sprites_railingsgaps_bitmask_front_16, "../graphics/detailed/64/pygen/wallbitmask_railingsgaps_8bpp.png") { template_houseoverlay_short(0, 65, 1) template_empty_12view() }
+alternative_sprites(sprites_railingsgaps_bitmask_front_16, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_railingsgaps_8bpp.png") { template_houseoverlay_short(0, 65, 4) template_empty_12view() }
+
+//Bollards
+spriteset (sprites_bollardsgaps_bitmask_back, "../graphics/detailed/64/pygen/wallbitmask_bollardsgaps_8bpp.png") { template_houseoverlay_short(0, 0, 1) }
+alternative_sprites(sprites_bollardsgaps_bitmask_back, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_bollardsgaps_8bpp.png") { template_houseoverlay_short(0, 0, 4) }
+spriteset (sprites_bollardsgaps_bitmask_front, "../graphics/detailed/64/pygen/wallbitmask_bollardsgaps_8bpp.png") { template_houseoverlay_short(0, 65, 1) }
+alternative_sprites(sprites_bollardsgaps_bitmask_front, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_bollardsgaps_8bpp.png") { template_houseoverlay_short(0, 65, 4) }
+spriteset (sprites_bollardsgaps_bitmask_back_16, "../graphics/detailed/64/pygen/wallbitmask_bollardsgaps_8bpp.png") { template_houseoverlay_short(0, 0, 1) template_empty_12view() }
+alternative_sprites(sprites_bollardsgaps_bitmask_back_16, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_bollardsgaps_8bpp.png") { template_houseoverlay_short(0, 0, 4) template_empty_12view() }
+spriteset (sprites_bollardsgaps_bitmask_front_16, "../graphics/detailed/64/pygen/wallbitmask_bollardsgaps_8bpp.png") { template_houseoverlay_short(0, 65, 1) template_empty_12view() }
+alternative_sprites(sprites_bollardsgaps_bitmask_front_16, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/wallbitmask_bollardsgaps_8bpp.png") { template_houseoverlay_short(0, 65, 4) template_empty_12view() }

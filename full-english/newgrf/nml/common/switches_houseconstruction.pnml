@@ -1,0 +1,222 @@
+//Clustering switches
+//Reduce random construction rate by 16x
+switch (FEAT_HOUSES, SELF, switch_houses_16thrandom, [
+	random_bits % 16
+]) {
+	0: return 1;
+	return 0;
+}
+
+//Reduce probability if not close to another house of the same class
+switch (FEAT_HOUSES, SELF, switch_house_tightclustering, [
+	nearest_house_matching_criterion(2, SEARCH_HOUSE_BY_CLASS)
+]) {
+	1: return 1;
+	switch_houses_16thrandom;
+}
+
+//Only allow if close to another house of the same class
+switch (FEAT_HOUSES, SELF, switch_house_tightclustering_exclusive, [
+	nearest_house_matching_criterion(2, SEARCH_HOUSE_BY_CLASS)
+]) {
+	1: return 1;
+	0;
+}
+
+//Custom town zones from house to town centre distance
+//Compare square distance of house (15) from stored town centre (11, 12) vs threshold min (13) and max (14) square radius for zone
+//If outside, then return 1 (true)
+switch (FEAT_HOUSES, SELF, switch_town_centre_distcheck, [
+	(LOAD_TEMP(15) > LOAD_TEMP(13)) && (LOAD_TEMP(15) < LOAD_TEMP(14))
+]) {
+	//1: recolour_house_painted_colourful + 0;
+	//recolour_house_painted_colourful + 1;
+	1: 0; //Return 0 to allow building
+	1; //Return 1 to disallow building
+}
+
+//Get and store house to town centre distance squared
+switch (FEAT_HOUSES, SELF, switch_town_centre_recordradius, [
+	STORE_TEMP((x_coordinate-LOAD_TEMP(11))*(x_coordinate-LOAD_TEMP(11))+(y_coordinate-LOAD_TEMP(12))*(y_coordinate-LOAD_TEMP(12)), 15)
+]) {
+	switch_town_centre_distcheck;
+}
+
+//Get and store town centre xy
+switch(FEAT_HOUSES, PARENT, switch_town_centre_check, [
+	STORE_TEMP(var[0x80, 0, 0xFFFFFFFF] % map_x_edge, 11),
+	STORE_TEMP(var[0x80, 0, 0xFFFFFFFF] / map_x_edge, 12)
+]) {
+	switch_town_centre_recordradius;
+}
+
+//Get and store town zone threshold radius squared
+switch (FEAT_HOUSES, PARENT, switch_town_zone_lt5, [
+	STORE_TEMP(0, 13), //Min radius
+	STORE_TEMP(max(0, num_houses * 1/32 - 6), 14) //Max radius
+]) {
+	switch_town_centre_check;
+}
+
+switch (FEAT_HOUSES, PARENT, switch_town_zone_gt5, [
+	STORE_TEMP(max(0, num_houses * 1/32 - 6), 13), //Min radius
+	STORE_TEMP(4095, 14) //Max radius
+]) {
+	switch_town_centre_check;
+}
+
+switch (FEAT_HOUSES, PARENT, switch_town_zone_lt4, [
+	STORE_TEMP(0, 13), //Min radius
+	STORE_TEMP(max(0, num_houses * 1/16 - 6), 14) //Max radius
+]) {
+	switch_town_centre_check;
+}
+
+switch (FEAT_HOUSES, PARENT, switch_town_zone_gt4, [
+	STORE_TEMP(max(0, num_houses * 1/16 - 6), 13), //Min radius
+	STORE_TEMP(4095, 14) //Max radius
+]) {
+	switch_town_centre_check;
+}
+
+switch (FEAT_HOUSES, PARENT, switch_town_zone_gt3, [
+	STORE_TEMP(max(0, num_houses * 2/8 - 6), 13), //Min radius
+	STORE_TEMP(4095, 14) //Max radius
+]) {
+	switch_town_centre_check;
+}
+
+switch (FEAT_HOUSES, PARENT, switch_town_zone_gt2, [
+	STORE_TEMP(max(0, num_houses * 4/8 + 0), 13), //Min radius
+	STORE_TEMP(4095, 14) //Max radius
+]) {
+	switch_town_centre_check;
+}
+
+switch (FEAT_HOUSES, PARENT, switch_town_zone_gt1, [
+	STORE_TEMP(max(0, num_houses * 8/8 + 15), 13), //Min radius
+	STORE_TEMP(4095, 14) //Max radius
+]) {
+	switch_town_centre_check;
+}
+
+//Limit house number to 1 per N houses, for rare buildings
+//Compare number of buildings with that ID to the threshold value
+//If equal or greater than threshold then return 1
+switch (FEAT_HOUSES, SELF, switch_town_countcheck, [
+    LOAD_TEMP(16) >= same_house_count_town
+]) {
+	1: 1; //Return 1 to disallow building
+	0; //Return 0 to allow building
+}
+
+//Get and store threshold number of buildings
+switch (FEAT_HOUSES, PARENT, switch_town_oneper200, [
+	STORE_TEMP(num_houses/200, 16)
+]) {
+	switch_town_countcheck;
+}
+switch (FEAT_HOUSES, PARENT, switch_town_oneper100, [
+	STORE_TEMP(num_houses/100, 16)
+]) {
+	switch_town_countcheck;
+}
+switch (FEAT_HOUSES, PARENT, switch_town_oneper50, [
+	STORE_TEMP(num_houses/50, 16)
+]) {
+	switch_town_countcheck;
+}
+switch (FEAT_HOUSES, PARENT, switch_town_oneper25, [
+	STORE_TEMP(num_houses/25, 16)
+]) {
+	switch_town_countcheck;
+}
+switch (FEAT_HOUSES, PARENT, switch_town_oneper10, [
+	STORE_TEMP(num_houses/10, 16)
+]) {
+	switch_town_countcheck;
+}
+
+//Limit house number to 1 per N houses of the same class, for rare buildings
+//Compare number of buildings with that class to the threshold value
+//If equal or greater than threshold then return 1
+switch (FEAT_HOUSES, SELF, switch_town_classcountcheck, [
+    LOAD_TEMP(16) >= same_class_count_town
+]) {
+	1: 1; //Return 1 to disallow building
+	0; //Return 0 to allow building
+}
+
+//Get and store threshold number of buildings
+switch (FEAT_HOUSES, PARENT, switch_town_classoneper200, [
+	STORE_TEMP(num_houses/200, 16)
+]) {
+	switch_town_classcountcheck;
+}
+switch (FEAT_HOUSES, PARENT, switch_town_classoneper100, [
+	STORE_TEMP(num_houses/100, 16)
+]) {
+	switch_town_classcountcheck;
+}
+switch (FEAT_HOUSES, PARENT, switch_town_classoneper50, [
+	STORE_TEMP(num_houses/50, 16)
+]) {
+	switch_town_classcountcheck;
+}
+switch (FEAT_HOUSES, PARENT, switch_town_classoneper25, [
+	STORE_TEMP(num_houses/25, 16)
+]) {
+	switch_town_classcountcheck;
+}
+switch (FEAT_HOUSES, PARENT, switch_town_classoneper10, [
+	STORE_TEMP(num_houses/10, 16)
+]) {
+	switch_town_classcountcheck;
+}
+
+
+//switch_town_neighbouridminus1
+//only build if a neighbour is the same id or id minus 1, same house type or 'parent' industry core building
+switch (FEAT_HOUSES, SELF, switch_town_neighbouridminus1, [
+	nearby_tile_house_id(1, 0)==house_type_id+255 || nearby_tile_house_id(1, 0)==house_type_id+1+255 || 
+	nearby_tile_house_id(-1, 0)==house_type_id+255 || nearby_tile_house_id(-1, 0)==house_type_id+1+255 || 
+	nearby_tile_house_id(0, 1)==house_type_id+255 || nearby_tile_house_id(0, 1)==house_type_id+1+255 || 
+	nearby_tile_house_id(0, -1)==house_type_id+255 || nearby_tile_house_id(0, -1)==house_type_id+1+255
+]) {
+	1: 1;
+	0;
+}
+
+//switch_town_neighbourspecificXids
+//only build if a neighbour has an id matches tmp20, tmp20+1 or self
+switch (FEAT_HOUSES, SELF, switch_town_neighbourspecificid, [
+	(nearby_tile_house_id(1, 0)==LOAD_TEMP(20)+255 || nearby_tile_house_id(1, 0)==LOAD_TEMP(20)+1+255 || nearby_tile_house_id(1, 0)==house_type_id+255) || 
+	(nearby_tile_house_id(-1, 0)==LOAD_TEMP(20)+255 || nearby_tile_house_id(-1, 0)==LOAD_TEMP(20)+1+255 || nearby_tile_house_id(-1, 0)==house_type_id+255) || 
+	(nearby_tile_house_id(0, 1)==LOAD_TEMP(20)+255 || nearby_tile_house_id(0, 1)==LOAD_TEMP(20)+1+255 || nearby_tile_house_id(0, 1)==house_type_id+255) || 
+	(nearby_tile_house_id(0, -1)==LOAD_TEMP(20)+255 || nearby_tile_house_id(0, -1)==LOAD_TEMP(20)+2+255 || nearby_tile_house_id(0, -1)==house_type_id+255)
+]) {
+	1: 1;
+	0;
+}
+
+//only build if a neighbour has an id matches tmp21, tmp21+1, tmp20, tmp20+1 or self
+switch (FEAT_HOUSES, SELF, switch_town_neighbourspecific2ids, [
+	(nearby_tile_house_id(1, 0)==LOAD_TEMP(21)+255 || nearby_tile_house_id(1, 0)==LOAD_TEMP(21)+1+255) || 
+	(nearby_tile_house_id(-1, 0)==LOAD_TEMP(21)+255 || nearby_tile_house_id(-1, 0)==LOAD_TEMP(21)+1+255) || 
+	(nearby_tile_house_id(0, 1)==LOAD_TEMP(21)+255 || nearby_tile_house_id(0, 1)==LOAD_TEMP(21)+1+255) || 
+	(nearby_tile_house_id(0, -1)==LOAD_TEMP(21)+255 || nearby_tile_house_id(0, -1)==LOAD_TEMP(21)+2+255)
+]) {
+	1: 1;
+	switch_town_neighbourspecificid;
+}
+
+//only build if a neighbour has an id matches tmp22, tmp22+1, tmp21, tmp21+1, tmp20, tmp20+1 or self
+switch (FEAT_HOUSES, SELF, switch_town_neighbourspecific3ids, [
+	(nearby_tile_house_id(1, 0)==LOAD_TEMP(22)+255 || nearby_tile_house_id(1, 0)==LOAD_TEMP(22)+1+255) || 
+	(nearby_tile_house_id(-1, 0)==LOAD_TEMP(22)+255 || nearby_tile_house_id(-1, 0)==LOAD_TEMP(22)+1+255) || 
+	(nearby_tile_house_id(0, 1)==LOAD_TEMP(22)+255 || nearby_tile_house_id(0, 1)==LOAD_TEMP(22)+1+255) || 
+	(nearby_tile_house_id(0, -1)==LOAD_TEMP(22)+255 || nearby_tile_house_id(0, -1)==LOAD_TEMP(22)+2+255)
+]) {
+	1: 1;
+	switch_town_neighbourspecific2ids;
+}

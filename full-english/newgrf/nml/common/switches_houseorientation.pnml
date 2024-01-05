@@ -1,0 +1,436 @@
+//House orientation relative to nearby roads
+//Primary switch function, orthogonal adjacency. Returns a bitmask with the presence of roads relative to the house as indicated
+//N . 8 . E
+//  4 X 1
+//W . 2 . S
+//Secondary switch function, diagonal adjacency. Returns a bitmask with the presence of roads relative to the house as indicated
+//N 4 . 8 E
+//  . X .
+//W 2 . 1 S
+//... then selects appropriate animation frame
+
+//4 orientation check
+//facing road to: 1 SE, 2 SW, 3 NW, 4 SE
+
+//primary switch function, simple house facing road
+switch (FEAT_HOUSES, SELF, switch_house_orientation_4road, [
+	1*(nearby_tile_class(0, 1) == TILE_CLASS_ROAD) +
+	2*(nearby_tile_class(1, 0) == TILE_CLASS_ROAD) +
+	4*(nearby_tile_class(0, -1) == TILE_CLASS_ROAD) +
+	8*(nearby_tile_class(-1, 0) == TILE_CLASS_ROAD)
+]) {
+	//One neighbouring road
+	1: return 1;
+	2: return 2;
+	4: return 3;
+	8: return 4;
+	//Two neighbouring roads
+	//... adjacent
+	3: return 1;
+	6: return 3;
+	12: return 3;
+	9: return 1;
+	//... opposite
+	5: return 1;
+	10: return 2;
+	//Three neighbouring roads
+	7: return 2;
+	14: return 3;
+	13: return 4;
+	11: return 1;
+	//Four neighbouring roads
+	15: return 1;
+	//Default
+	return 1;
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_aminframe_4road, [
+	animation_frame
+]) {
+	//If zero (i.e. new building) then orientation needs to be checked
+	0: switch_house_orientation_4road;
+	//Otherwise stop animation
+	return CB_RESULT_STOP_ANIMATION;
+}
+
+//8 orientation check
+//facing road to: 1 SE, 2 SW, 3, NW, 4 SE, 5 S, 6 W, 7 N, 8 E
+
+//secondary switch function, for house on 'inner corners' diagonally next to road
+switch (FEAT_HOUSES, SELF, switch_house_orientation_roadinnercorner, [
+	1*(nearby_tile_class(1, 1) == TILE_CLASS_ROAD) +
+	2*(nearby_tile_class(1, -1) == TILE_CLASS_ROAD) +
+	4*(nearby_tile_class(-1, -1) == TILE_CLASS_ROAD) +
+	8*(nearby_tile_class(-1, 1) == TILE_CLASS_ROAD)
+]) {
+	//One neighbouring road
+	1: return 5;
+	2: return 6;
+	4: return 7;
+	8: return 8;
+	//Default
+	return 1;
+}
+
+//primary switch function, for house next to road
+switch (FEAT_HOUSES, SELF, switch_house_orientation_8road, [
+	1*(nearby_tile_class(0, 1) == TILE_CLASS_ROAD) +
+	2*(nearby_tile_class(1, 0) == TILE_CLASS_ROAD) +
+	4*(nearby_tile_class(0, -1) == TILE_CLASS_ROAD) +
+	8*(nearby_tile_class(-1, 0) == TILE_CLASS_ROAD)
+]) {
+	//One neighbouring road
+	1: return 1;
+	2: return 2;
+	4: return 3;
+	8: return 4;
+	//Two neighbouring roads
+	//... adjacent
+	3: return 1;
+	6: return 2;
+	12: return 3;
+	9: return 4;
+	//... opposite
+	5: return 1;
+	10: return 2;
+	//Three neighbouring roads
+	7: return 2;
+	14: return 3;
+	13: return 4;
+	11: return 1;
+	//Four neighbouring roads
+	15: return 1;
+	//No orthogonal adjacent road, so check diagonal adjacency
+	switch_house_orientation_roadinnercorner;
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_aminframe_8road, [
+	animation_frame
+]) {
+	//If zero (i.e. new building) then orientation needs to be checked
+	0: switch_house_orientation_8road;
+	//Otherwise stop animation
+	return CB_RESULT_STOP_ANIMATION;
+}
+
+//12 orientation check
+//facing road to: 1 SE, 2 SW, 3 NW, 4 NE, [inner corner] 5 S, 6 W, 7 N, 8 E, [outer corner] 9 S, 10 W, 11 N, 12 E
+//primary switch function, for house next to road
+switch (FEAT_HOUSES, SELF, switch_house_orientation_12road, [
+	1*(nearby_tile_class(0, 1) == TILE_CLASS_ROAD) +
+	2*(nearby_tile_class(1, 0) == TILE_CLASS_ROAD) +
+	4*(nearby_tile_class(0, -1) == TILE_CLASS_ROAD) +
+	8*(nearby_tile_class(-1, 0) == TILE_CLASS_ROAD)
+]) {
+	//One neighbouring road
+	1: return 1;
+	2: return 2;
+	4: return 3;
+	8: return 4;
+	//Two neighbouring roads
+	//... adjacent
+	3: return 9;
+	6: return 10;
+	12: return 11;
+	9: return 12;
+	//... opposite
+	5: return 1;
+	10: return 2;
+	//Three neighbouring roads
+	7: return 10;
+	14: return 11;
+	13: return 12;
+	11: return 9;
+	//Four neighbouring roads
+	15: return 0;
+	//No orthogonal adjacent road, so check diagonal adjacency
+	switch_house_orientation_roadinnercorner;
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_aminframe_12road, [
+	animation_frame
+]) {
+	//If zero (i.e. new building) then orientation needs to be checked
+	0: switch_house_orientation_12road;
+	//Otherwise stop animation
+	return CB_RESULT_STOP_ANIMATION;
+}
+
+//Fence bitmask check relative to nearby roads
+
+//Full 16 option bitmask check (combinatorial orthogonally adjacent road positions)
+//primary switch function, orthogonally adjacent road
+switch (FEAT_HOUSES, SELF, switch_fences_orientation_road, [
+	1*(nearby_tile_class(0, 1) == TILE_CLASS_ROAD) +
+	2*(nearby_tile_class(1, 0) == TILE_CLASS_ROAD) +
+	4*(nearby_tile_class(0, -1) == TILE_CLASS_ROAD) +
+	8*(nearby_tile_class(-1, 0) == TILE_CLASS_ROAD)
+]) {
+	//No neighbouring road
+	0: return 1; //Fences on all four sides
+	//One neighbouring road
+	1: return 2; //Missing SE fence
+	2: return 3; //Missing SW
+	4: return 4; //Missing NW
+	8: return 5; //Missing NE
+	//Two neighbouring roads
+	//... adjacent
+	3: return 6; //Missing S fence
+	6: return 7; //Missing W
+	12: return 8; //Missing N
+	9: return 9; //Missing E
+	//... opposite
+	5: return 10; //Missing SE, NW fence
+	10: return 11; //Missing SW, NE
+	//Three neighbouring roads
+	7: return 12; //All fences except NE
+	14: return 13; //except SE
+	13: return 14; //except SW
+	11: return 15; //except NW
+	//Four neighbouring roads
+	15: return 16; //No fences
+	//Default, should never be used
+	0;
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_aminframe_16road, [
+	animation_frame
+]) {
+	//If zero (i.e. new building) then orientation needs to be checked
+	0: switch_fences_orientation_road;
+	//Otherwise stop animation
+	return CB_RESULT_STOP_ANIMATION;
+}
+
+//Full 16 option bitmask check (full combinatorial road positions) for 2x2 building tiles
+//primary switch function, checking orthogonally adjacent road taking into account exposed 2x2 building edges
+switch (FEAT_HOUSES, SELF, switch_fences_orientation_16road2x2, [
+	1*((nearby_tile_class(0, 1) == TILE_CLASS_ROAD || (house_tile == HOUSE_TILE_WEST || house_tile == HOUSE_TILE_NORTH))) +
+	2*((nearby_tile_class(1, 0) == TILE_CLASS_ROAD || (house_tile == HOUSE_TILE_NORTH || house_tile == HOUSE_TILE_EAST))) +
+	4*((nearby_tile_class(0, -1) == TILE_CLASS_ROAD || (house_tile == HOUSE_TILE_EAST || house_tile == HOUSE_TILE_SOUTH))) +
+	8*((nearby_tile_class(-1, 0) == TILE_CLASS_ROAD || (house_tile == HOUSE_TILE_SOUTH || house_tile == HOUSE_TILE_WEST)))
+]) {
+	//No neighbouring road
+	0: return 1; //Fences on all four sides
+	//One neighbouring road
+	1: return 2; //Missing SE fence
+	2: return 3; //Missing SW
+	4: return 4; //Missing NW
+	8: return 5; //Missing NE
+	//Two neighbouring roads
+	//... adjacent
+	3: return 6; //Missing S fence
+	6: return 7; //Missing W
+	12: return 8; //Missing N
+	9: return 9; //Missing E
+	//... opposite
+	5: return 10; //Missing SE, NW fence
+	10: return 11; //Missing SW, NE
+	//Three neighbouring roads
+	7: return 12; //All fences except NE
+	14: return 13; //except SE
+	13: return 14; //except SW
+	11: return 15; //except NW
+	//Four neighbouring roads
+	15: return 16; //No fences
+	//Default, should never be used
+	0;
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_aminframe_16road2x2, [
+	animation_frame
+]) {
+	//If zero (i.e. new building) then orientation needs to be checked
+	0: switch_fences_orientation_16road2x2;
+	//Otherwise stop animation
+	return CB_RESULT_STOP_ANIMATION;
+}
+
+//Full 16 option bitmask check for roads and same class neighbours
+//primary switch function, orthogonally adjacent road or another house of the same class
+switch (FEAT_HOUSES, SELF, switch_fences_orientation_roadneighbourclass, [
+	1*(nearby_tile_class(0, 1) == TILE_CLASS_ROAD || nearby_tile_house_class(0, 1) == nearby_tile_house_class(0, 0)) +
+	2*(nearby_tile_class(1, 0) == TILE_CLASS_ROAD || nearby_tile_house_class(1, 0) == nearby_tile_house_class(0, 0)) +
+	4*(nearby_tile_class(0, -1) == TILE_CLASS_ROAD || nearby_tile_house_class(0, -1) == nearby_tile_house_class(0, 0)) +
+	8*(nearby_tile_class(-1, 0) == TILE_CLASS_ROAD || nearby_tile_house_class(-1, 0) == nearby_tile_house_class(0, 0))
+]) {
+	//No neighbouring road
+	0: return 1; //Fences on all four sides
+	//One neighbouring road
+	1: return 2; //Missing SE fence
+	2: return 3; //Missing SW
+	4: return 4; //Missing NW
+	8: return 5; //Missing NE
+	//Two neighbouring roads
+	//... adjacent
+	3: return 6; //Missing S fence
+	6: return 7; //Missing W
+	12: return 8; //Missing N
+	9: return 9; //Missing E
+	//... opposite
+	5: return 10; //Missing SE, NW fence
+	10: return 11; //Missing SW, NE
+	//Three neighbouring roads
+	7: return 12; //All fences except NE
+	14: return 13; //except SE
+	13: return 14; //except SW
+	11: return 15; //except NW
+	//Four neighbouring roads
+	15: return 16; //No fences
+	//Default, should never be used
+	0;
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_aminframe_16roadneighbourclass, [
+	animation_frame
+]) {
+	switch_fences_orientation_roadneighbourclass; //Continue recalling to update as neighbours change
+}
+
+
+//Full 16 option bitmask check for roads and two house IDs (tmp20, tmp21)
+//primary switch function, orthogonally adjacent road or another house of the same class
+switch (FEAT_HOUSES, SELF, switch_fences_orientation_roadneighbour2ids, [
+	1*(nearby_tile_class(0, 1) == TILE_CLASS_ROAD || nearby_tile_house_id(0, 1) == LOAD_TEMP(20)+255 || nearby_tile_house_id(0, 1) == LOAD_TEMP(21)+255) +
+	2*(nearby_tile_class(1, 0) == TILE_CLASS_ROAD || nearby_tile_house_id(1, 0) == LOAD_TEMP(20)+255 || nearby_tile_house_id(1, 0) == LOAD_TEMP(21)+255) +
+	4*(nearby_tile_class(0, -1) == TILE_CLASS_ROAD || nearby_tile_house_id(0, -1) == LOAD_TEMP(20)+255 || nearby_tile_house_id(0, -1) == LOAD_TEMP(21)+255) +
+	8*(nearby_tile_class(-1, 0) == TILE_CLASS_ROAD || nearby_tile_house_id(-1, 0) == LOAD_TEMP(20)+255 || nearby_tile_house_id(-1, 1) == LOAD_TEMP(21)+255)
+]) {
+	//No neighbouring road
+	0: return 1; //Fences on all four sides
+	//One neighbouring road
+	1: return 2; //Missing SE fence
+	2: return 3; //Missing SW
+	4: return 4; //Missing NW
+	8: return 5; //Missing NE
+	//Two neighbouring roads
+	//... adjacent
+	3: return 6; //Missing S fence
+	6: return 7; //Missing W
+	12: return 8; //Missing N
+	9: return 9; //Missing E
+	//... opposite
+	5: return 10; //Missing SE, NW fence
+	10: return 11; //Missing SW, NE
+	//Three neighbouring roads
+	7: return 12; //All fences except NE
+	14: return 13; //except SE
+	13: return 14; //except SW
+	11: return 15; //except NW
+	//Four neighbouring roads
+	15: return 16; //No fences
+	//Default, should never be used
+	0;
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_aminframe_16roadneighbour2ids, [
+	animation_frame
+]) {
+	switch_fences_orientation_roadneighbourclass; //Continue recalling to update as neighbours change
+}
+
+//====================//
+//Bitmask orientations//
+//====================//
+
+//Road check
+//Record road absence in animation_frame as 1 SE, 2  SW, 4 NE, 8 NW bitmask
+switch (FEAT_HOUSES, SELF, switch_house_animframe_fencemask_road_bitmask, [
+	1*(nearby_tile_class(0, 1) != TILE_CLASS_ROAD) +
+	2*(nearby_tile_class(1, 0) != TILE_CLASS_ROAD) +
+	4*(nearby_tile_class(0, -1) != TILE_CLASS_ROAD) +
+	8*(nearby_tile_class(-1, 0) != TILE_CLASS_ROAD)
+]) {
+	return; //Return computed bitmask
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_animframe_fencemask_road, [
+	animation_frame
+]) {
+	//Always check
+	switch_house_animframe_fencemask_road_bitmask;
+}
+
+//Road or same grf check
+//Record road absence and not same grf in animation_frame as 1 SE, 2 SW, 4 NW, 8 NE
+switch (FEAT_HOUSES, SELF, switch_house_animframe_fencemask_roadgrfid_bitmask, [
+	1*(nearby_tile_class(0, 1) != TILE_CLASS_ROAD && nearby_tile_house_grfid(0, 1) != nearby_tile_house_grfid(0, 0)) +
+	2*(nearby_tile_class(1, 0) != TILE_CLASS_ROAD && nearby_tile_house_grfid(1, 0) != nearby_tile_house_grfid(0, 0)) +
+	4*(nearby_tile_class(0, -1) != TILE_CLASS_ROAD && nearby_tile_house_grfid(0, -1) != nearby_tile_house_grfid(0, 0)) +
+	8*(nearby_tile_class(-1, 0) != TILE_CLASS_ROAD && nearby_tile_house_grfid(-1, 0) != nearby_tile_house_grfid(0, 0))
+]) {
+	return; //Return computed bitmask
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_animframe_fencemask_roadgrfid, [
+	animation_frame
+]) {
+	//Always check
+	switch_house_animframe_fencemask_roadgrfid_bitmask;
+}
+
+//Road and multi-tile house check
+//Record road absence and not neghbouring house tile in animation_frame as 1 SE, 2 SW, 4 NE, 8 NW and neighbouring road absence as 16 SE, 32 SW, 64 NE, 128 NW bitmask
+switch (FEAT_HOUSES, SELF, switch_house_animframe_fencemask_road2x2_bitmask, [
+	1*(nearby_tile_class(0, 1) != TILE_CLASS_ROAD && house_tile != HOUSE_TILE_WEST && house_tile != HOUSE_TILE_NORTH) +
+	2*(nearby_tile_class(1, 0) != TILE_CLASS_ROAD && house_tile != HOUSE_TILE_NORTH && house_tile != HOUSE_TILE_EAST) +
+	4*(nearby_tile_class(0, -1) != TILE_CLASS_ROAD && house_tile != HOUSE_TILE_EAST && house_tile != HOUSE_TILE_SOUTH) +
+	8*(nearby_tile_class(-1, 0) != TILE_CLASS_ROAD && house_tile != HOUSE_TILE_SOUTH && house_tile != HOUSE_TILE_WEST) +
+	16*(nearby_tile_class(0, 1) != TILE_CLASS_ROAD) +
+	32*(nearby_tile_class(1, 0) != TILE_CLASS_ROAD) +
+	64*(nearby_tile_class(0, -1) != TILE_CLASS_ROAD) +
+	128*(nearby_tile_class(-1, 0) != TILE_CLASS_ROAD)
+]) {
+	return; //Return computed bitmask
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_animframe_fencemask_road2x2, [
+	animation_frame
+]) {
+	//Always check
+	switch_house_animframe_fencemask_road2x2_bitmask;
+}
+
+//Road and house class check
+//Record road absence and not neghbouring class in animation_frame as 1 SE, 2 SW, 4 NE, 8 NW and neighbouring road absence as 16 SE, 32 SW, 64 NE, 128 NW bitmask
+switch (FEAT_HOUSES, SELF, switch_house_animframe_fencemask_roadclass_bitmask, [
+	1*(nearby_tile_class(0, 1) != TILE_CLASS_ROAD && nearby_tile_house_class(0, 1) != nearby_tile_house_class(0, 0)) +
+	2*(nearby_tile_class(1, 0) != TILE_CLASS_ROAD && nearby_tile_house_class(1, 0) != nearby_tile_house_class(0, 0)) +
+	4*(nearby_tile_class(0, -1) != TILE_CLASS_ROAD && nearby_tile_house_class(0, -1) != nearby_tile_house_class(0, 0)) +
+	8*(nearby_tile_class(-1, 0) != TILE_CLASS_ROAD && nearby_tile_house_class(-1, 0) != nearby_tile_house_class(0, 0)) +
+	16*(nearby_tile_class(0, 1) != TILE_CLASS_ROAD) +
+	32*(nearby_tile_class(1, 0) != TILE_CLASS_ROAD) +
+	64*(nearby_tile_class(0, -1) != TILE_CLASS_ROAD) +
+	128*(nearby_tile_class(-1, 0) != TILE_CLASS_ROAD)
+]) {
+	return; //Return computed bitmask
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_animframe_fencemask_roadclass, [
+	animation_frame
+]) {
+	//Always check
+	switch_house_animframe_fencemask_roadclass_bitmask;
+}
+
+//Road and specific ID (tmp20) check
+//Record road absence and not neghbouring ID or ID-1 in animation_frame as 1 SE, 4 SW, 4 NE, 8 NW and neighbouring road absence as 16 SE, 32 SW, 64 NE, 128 NW bitmask
+switch (FEAT_HOUSES, SELF, switch_house_animframe_fencemask_roadid_bitmask, [
+	1*(nearby_tile_class(0, 1) != TILE_CLASS_ROAD && nearby_tile_house_id(0, 1) != LOAD_TEMP(20)+255 && nearby_tile_house_id(0, 1)-1 != LOAD_TEMP(20)+255) +
+	2*(nearby_tile_class(1, 0) != TILE_CLASS_ROAD && nearby_tile_house_id(1, 0) != LOAD_TEMP(20)+255 && nearby_tile_house_id(1, 0)-1 != LOAD_TEMP(20)+255) +
+	4*(nearby_tile_class(0, -1) != TILE_CLASS_ROAD && nearby_tile_house_id(0, -1) != LOAD_TEMP(20)+255 && nearby_tile_house_id(0, -1)-1 != LOAD_TEMP(20)+255) +
+	8*(nearby_tile_class(-1, 0) != TILE_CLASS_ROAD && nearby_tile_house_id(-1, 0) != LOAD_TEMP(20)+255 && nearby_tile_house_id(-1, 0)-1 != LOAD_TEMP(20)+255) +
+	16*(nearby_tile_class(0, 1) != TILE_CLASS_ROAD) +
+	32*(nearby_tile_class(1, 0) != TILE_CLASS_ROAD) +
+	64*(nearby_tile_class(0, -1) != TILE_CLASS_ROAD) +
+	128*(nearby_tile_class(-1, 0) != TILE_CLASS_ROAD)
+]) {
+	return; //Return computed bitmask
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_animframe_fencemask_roadid, [
+	animation_frame
+]) {
+	//Always check
+	switch_house_animframe_fencemask_roadid_bitmask;
+}

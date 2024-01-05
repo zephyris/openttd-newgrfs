@@ -1,0 +1,512 @@
+//
+//Standard recolour switches
+//
+//Reserve sprites for recolours
+//Identity/no change
+recolour_identity = reserve_sprites(1);
+//Optimised for brick/stone-type buildings (ie. houses)
+recolour_house_brick = reserve_sprites(3);
+recolour_house_stone = reserve_sprites(3);
+recolour_house_painted = reserve_sprites(3);
+recolour_house_painted_colourful = reserve_sprites(6);
+//Optimised for office blocks and skyscrapers
+recolour_skyscraper_colourful = reserve_sprites(6);
+recolour_skyscraper_muted = reserve_sprites(6);
+//Optimised for superstores
+recolour_superstore_brands = reserve_sprites(5);
+
+//Define recolour sprites
+//Expects primary wall colour 0x70..0x79, secondary wall colour 0x46..0x4F
+//Also remaps primary company colour 0xC6..0xCD (often for woodwork), secondary company colour 0x50..0x57
+//For skyscrapers, also remaps window colour 0x80..0x87
+replace(recolour_identity) {
+	// identity
+	recolour_sprite {
+		0x00..0xFF: 0x00..0xFF;
+	}
+}
+
+replace(recolour_house_brick) {
+	// red brick
+	// +0 red brick
+	recolour_sprite {
+		0x70..0x79: 0x70..0x79; //1o wall unchanged
+		0x46..0x4F: 0x46..0x4F; //2o wall unchanged
+		//0xC6..0xCD: 0x08..0x0F; //1oCC -> white
+		0xC6..0xCD: 0x05..0x0C; //1oCC -> gray
+		0x50..0x57: 0x50..0x57; //2oCC unchanged
+	}
+	// +1 red brick alternate 1
+	recolour_sprite {
+		0x70..0x79: 0x46..0x4F; //1o wall -> red-brown
+		0x46..0x4F: 0x70..0x79; //2o wall -> brick-brown
+		0xC6..0xC7: 0x46..0x47;
+		0xC8..0xCD: 0x20..0x25; //1oCC -> beige-brown
+		0x50..0x57: 0x9A..0xA1; //2oCC -> turquoise
+	}
+	// +2 red brick alternate 2
+	recolour_sprite {
+		0x70..0x79: 0x46..0x4F; //1o wall unchanged
+		0x46..0x47: 0x46..0x47;
+		0x48..0x4F: 0x20..0x27; //2o wall -> beige-brown
+		0xC6..0xCD: 0x01..0x08; //1oCC -> dark gray
+		0x50..0x54: 0x3F..0x43;
+		0x55: 0x33;
+		0x56..0x57: 0x44..0x45; //2oCC -> yellow
+	}
+}
+
+replace(recolour_house_stone) {
+	// stone
+	// +0 blue-gray stone
+	recolour_sprite {
+		0x70..0x71: 0x01..0x02;
+		0x72..0x79: 0x10..0x17; //1o wall -> blue-gray
+		0x46..0x4F: 0x70..0x79; //2oCC brick-brown
+		//0xC6..0xCD: 0x08..0x0F; //1oCC -> white
+		0xC6..0xCD: 0x05..0x0C; //1oCC -> gray
+		0x50..0x57: 0xB2..0xB9; //2oCC -> red
+	}
+	// +1 dark gray stone
+	recolour_sprite {
+		0x70..0x79: 0x01..0x0A; //1o wall -> dark gray
+		0x46..0x4F: 0x46..0x4F; //2oCC unchanged
+		0xC6..0xC7: 0x46..0x47;
+		0xC8..0xCD: 0x20..0x25; //1oCC -> beige-brown
+		0x50..0x57: 0xA2..0xA9; //2oCC -> desaturated red
+	}
+	// +2 beige stone
+	recolour_sprite {
+		0x70..0x71: 0x46..0x47;
+		0x72..0x79: 0x20..0x27; //1o wall -> beige-brown
+		0x46..0x4F: 0x46..0x4F; //2oCC unchanged
+		//0xC6..0xCD: 0x08..0x0F; //1oCC -> white
+		0xC6..0xCD: 0x05..0x0C; //1oCC -> gray
+		0x50..0x57: 0x88..0x8F; //2oCC -> purple
+	}
+}
+
+replace(recolour_house_painted) {
+	// neutral painted
+	// +0 white
+	recolour_sprite {
+		0x70..0x79: 0x06..0x0F; //1o wall -> white
+		0x46..0x4F: 0x46..0x4F; //2o wall unchanged
+		0xC6..0xCD: 0x01..0x08; //1oCC -> dark gray
+		0x50..0x57: 0x92..0x99; //2oCC -> light blue
+	}
+	// +1 beige
+	recolour_sprite {
+		0x70..0x77: 0x72..0x79;
+		0x78: 0x27;
+		0x79: 0xFF; //1o wall -> beige
+		0x46..0x4F: 0x70..0x79; //2o wall -> brick-brown
+		0xC6..0xCD: 0x01..0x08; //1oCC -> dark gray
+		0x50..0x57: 0x60..0x67; //2oCC -> desaturated green
+	}
+	// +2 beige
+	recolour_sprite {
+		0x70..0x71: 0x46..0x47;
+		0x72..0x79: 0x20..0x27; //1o wall -> beige-brown
+		0x46..0x4F: 0x46..0x4F; //2oCC unchanged
+		0xC6..0xCD: 0x01..0x08; //1oCC -> dark gray
+		0x50..0x57: 0x92..0x99; //2oCC -> light blue
+	}
+}
+
+replace(recolour_house_painted_colourful) {
+	// colourful painted
+	// +0 red
+	recolour_sprite {
+		0x70: 0xB5;
+		0x71..0x78: 0xA2..0xA9;
+		0x79: 0xFF; //1o wall -> red
+		0x46..0x4F: 0x46..0x4F; //2o wall unchanged
+		//0xC6..0xCD: 0x08..0x0F; //1oCC -> white
+		0xC6..0xCD: 0x05..0x0C; //1oCC -> gray
+		0x50..0x57: 0x01..0x08; //2oCC -> dark gray
+	}
+	// +1 desaturated (window) blue
+	recolour_sprite {
+		0x70..0x77: 0x80..0x87;
+		0x78..0x79: 0x0E..0x0F; //1o wall -> desaturated (window) blue
+		0x46..0x4F: 0x70..0x79; //2o wall -> brick-brown
+		0xC6..0xCD: 0x01..0x08; //1oCC -> dark gray
+		0x50..0x57: 0x60..0x67; //2oCC -> desaturated green
+	}
+	// +2 green
+	recolour_sprite {
+		0x70: 0x02;
+		0x71..0x78: 0x60..0x67;
+		0x79: 0xFF; //1o wall -> green
+		0x46..0x47: 0x46..0x47;
+		0x48..0x4F: 0x20..0x27; //2o wall -> beige-brown
+		//0xC6..0xCD: 0x08..0x0F; //1oCC -> white
+		0xC6..0xCD: 0x05..0x0C; //1oCC -> gray
+		0x50..0x57: 0x92..0x99; //2oCC -> light blue
+	}
+	// +3 turquoise
+	recolour_sprite {
+		0x70: 0x02;
+		0x71..0x78: 0x9A..0xA1;
+		0x79: 0xFF; //1o wall -> turquoise
+		0x46..0x4F: 0x46..0x4F; //2o wall unchanged
+		0xC6..0xCD: 0x01..0x08; //1oCC -> dark gray
+		0x50..0x57: 0xC6..0xCD; //2oCC -> blue
+	}
+	// +4 yellow
+	recolour_sprite {
+		0x70..0x75: 0x3E..0x43;
+		0x76: 0x33;
+		0x77..0x78: 0x44..0x45;
+		0x79: 0xFF; //1o wall -> yellow
+		0x46..0x4F: 0x70..0x79; //2o wall -> brick-brown
+		//0xC6..0xCD: 0x08..0x0F; //1oCC -> white
+		0xC6..0xCD: 0x05..0x0C; //1oCC -> gray
+		0x50..0x57: 0x88..0x8F; //2oCC -> purple
+	}
+	// +5 pink
+	recolour_sprite {
+		0x70..0x76: 0x2B..0x31;
+		0x77..0x78: 0xA8..0xA9; //1o wall -> purple pink
+		0x46..0x47: 0x46..0x47; 
+		0x48..0x4F: 0x20..0x27; //2o wall -> beige-brown
+		0xC6..0xCD: 0x01..0x08; //1oCC -> dark gray
+		0x50..0x57: 0xB2..0xB9; //2oCC -> red
+	}
+}
+
+replace(recolour_skyscraper_colourful) {
+	// colourful walls, bland windowframes, unchanged window colour
+	// +0 red
+	recolour_sprite {
+		0x70: 0xB5;
+		0x71..0x78: 0xA2..0xA9;
+		0x79: 0xFF; //1o wall -> red
+		0x46..0x4F: 0x06..0x0F; //2o wall -> white
+		0xC6..0xCD: 0x01..0x08; //1oCC -> dark gray
+		0x50..0x57: 0xC6..0xCD; //2oCC -> blue
+	}
+	// +1 blue
+	recolour_sprite {
+		0x70..0x78: 0x91..0x99;
+		0x79: 0xFF; //1o wall -> blue
+		0x46..0x4F: 0x06..0x0F; //2o wall -> white
+		0xC6..0xCD: 0x01..0x08; //1oCC -> dark gray
+		0x50..0x57: 0x60..0x67; //2oCC -> desaturated green
+	}
+	// +2 green
+	recolour_sprite {
+		0x70: 0x02;
+		0x71..0x78: 0x60..0x67;
+		0x79: 0xFF; //1o wall -> green
+		0x46..0x47: 0x46..0x47;
+		0x48..0x4F: 0x20..0x27; //2o wall -> beige-brown
+		0xC6..0xCD: 0x08..0x0F; //1oCC -> white
+		0x50..0x57: 0x92..0x99; //2oCC -> light blue
+	}
+	// +3 turquoise
+	recolour_sprite {
+		0x70: 0x02;
+		0x71..0x78: 0x9A..0xA1;
+		0x79: 0xFF; //1o wall -> turquoise
+		0x46..0x4F: 0x01..0x0A; //2o wall -> dark gray
+		0xC6..0xCD: 0x01..0x08; //1oCC -> dark gray
+		0x50..0x57: 0xC6..0xCD; //2oCC -> blue
+	}
+	// +4 yellow
+	recolour_sprite {
+		0x70..0x75: 0x3E..0x43;
+		0x76: 0x33;
+		0x77..0x78: 0x44..0x45;
+		0x79: 0xFF; //1o wall -> yellow
+		0x46..0x4F: 0x01..0x0A; //2o wall -> dark gray
+		0xC6..0xCD: 0x08..0x0F; //1oCC -> white
+		0x50..0x54: 0x3F..0x43;
+		0x55: 0x33;
+		0x56..0x57: 0x44..0x45; //2oCC -> yellow
+	}
+	// +5 pink
+	recolour_sprite {
+		0x70..0x76: 0x2B..0x31;
+		0x77..0x78: 0xA8..0xA9;
+		0x46..0x47: 0x46..0x47;
+		0x48..0x4F: 0x20..0x27; //2o wall -> beige-brown
+		0xC6..0xCD: 0x01..0x08; //1oCC -> dark gray
+		0x50..0x57: 0xB2..0xB9; //2oCC -> red
+	}
+}
+
+replace(recolour_skyscraper_muted) {
+	// muted walls, muted windowframes, altered window colour
+	// +0 black, unchanged windows
+	recolour_sprite {
+		0x70: 0x01;
+		0x71: 0x01;
+		0x72..0x79: 0x01..0x08; //1o wall -> black
+		0x46..0x4F: 0x06..0x0F; //2o wall -> white
+		0xC6..0xCD: 0x10..0x17; //1oCC -> blue gray
+		0x50..0x57: 0xC6..0xCD; //2oCC -> blue
+		0x80..0x87: 0x80..0x87; //windows unchanged
+	}
+	// +1 gray, black windows
+	recolour_sprite {
+		0x70..0x79: 0x01..0x0A; //1o wall -> dark gray
+		0x46..0x4F: 0x06..0x0F; //2o wall -> white
+		0xC6..0xCD: 0x10..0x17; //1oCC -> blue gray
+		0x50..0x57: 0xB2..0xB9; //2oCC -> red
+		0x80..0x87: 0x01..0x08; //windows -> black
+	}
+	// +2 white, turquoise windows
+	recolour_sprite {
+		0x70..0x79: 0x06..0x0F; //1o wall -> white
+		0x46..0x4F: 0x01..0x0A; //2o wall -> dark gray
+		0xC6..0xCD: 0x08..0x0F; //1oCC -> white
+		0x50..0x57: 0x60..0x67; //2oCC -> desaturated green
+		0x80..0x87: 0x9A..0xA1; //windows -> turquoise
+	}
+	// +3 black, blue windows
+	recolour_sprite {
+		0x70: 0x01;
+		0x71: 0x01;
+		0x72..0x79: 0x01..0x08; //1o wall -> black
+		0x46..0x4F: 0x06..0x0F; //2o wall -> white
+		0xC6..0xCD: 0x01..0x08; //1oCC -> black
+		0x50..0x57: 0x88..0x8F; //2oCC -> purple
+		0x80..0x87: 0xC6..0xCD; //windows -> dark blue
+	}
+	// +4 white, unchanged windows
+	recolour_sprite {
+		0x70..0x79: 0x06..0x0F; //1o wall -> white
+		0x46..0x4F: 0x01..0x0A; //2o wall -> dark gray
+		0xC6..0xCD: 0x08..0x0F; //1oCC -> white
+		0x50..0x57: 0xA2..0xA9; //2oCC -> desaturated red
+		0x80..0x87: 0x80..0x87; //windows unchanged
+	}
+	// +5 white, black windows
+	recolour_sprite {
+		0x70..0x79: 0x06..0x0F; //1o wall -> white
+		0x46..0x4F: 0x01..0x0A; //2o wall -> dark gray
+		0xC6..0xCD: 0x10..0x17; //1oCC -> blue gray
+		0x50..0x57: 0xB2..0xB9; //2oCC -> red
+		0x80..0x87: 0x01..0x08; //windows -> black
+	}
+}
+
+replace(recolour_superstore_brands) {
+	//Colours imitating UK brands
+	// +0 tesco-like
+	recolour_sprite {
+		0x70..0x78: 0x91..0x99;
+		0x79: 0xFF; //1o wall -> blue
+		0x46..0x4F: 0x06..0x0F; //2o wall -> white
+		0xC6..0xCD: 0xB2..0xB9; //1oCC -> red
+		0x50..0x57: 0x01..0x08; //2oCC -> black
+	}
+	// +1 ikea-like
+	recolour_sprite {
+		0x70..0x78: 0x91..0x99;
+		0x79: 0xFF; //1o wall -> blue
+		0x46..0x4B: 0x3E..0x43;
+		0x4C: 0x33;
+		0x4D..0x4E: 0x44..0x45;
+		0x4F: 0xFF; //2o wall -> yellow
+		0xC6..0xCD: 0x01..0x08; //1oCC -> black
+		0x50..0x57: 0x08..0x0F; //2oCC -> white
+	}
+	// +2 argos-like
+	recolour_sprite {
+		0x70..0x79: 0x03..0x0C; //1o wall -> gray
+		0x46..0x4C: 0xB2..0xB8;
+		0x4D..0x4F: 0xA3..0xA5; //2o wall -> red
+		0xC6..0xCD: 0x08..0x0F; //1oCC -> white
+		0x50..0x57: 0x01..0x08; //2oCC -> black
+	}
+	// +3 sainsburys-like
+	recolour_sprite {
+		0x70..0x72: 0x3D..0x3F;
+		0x73..0x75: 0xB9..0xBB;
+		0x76..0x79: 0xC2..0xC5; //1o wall -> orange
+		0x46..0x4F: 0x06..0x0F; //2o wall -> white
+		0xC6..0xCD: 0x01..0x08; //1oCC -> black
+		0x50..0x57: 0x08..0x0F; //2oCC -> white
+	}
+	// +4 asda-like
+	recolour_sprite {
+		0x70..0x79: 0x06..0x0F; //1o wall -> white
+		0x46..0x4D: 0x50..0x57;
+		0x4E..0x4F: 0xD0..0xD1; //2o wall -> green
+		0xC6..0xCD: 0x01..0x08; //1oCC -> black
+		0x50..0x57: 0x08..0x0F; //2oCC -> white
+	}
+}
+
+//Recolour switches
+//All colours
+switch (FEAT_HOUSES, SELF, switch_house_recolour_random_all, [
+	(random_bits>>4)%15
+]) {
+	0: recolour_house_brick + 0;
+	1: recolour_house_brick + 1;
+	2: recolour_house_brick + 2;
+	3: recolour_house_stone + 0;
+	4: recolour_house_stone + 1;
+	5: recolour_house_stone + 2;
+	6: recolour_house_painted + 0;
+	7: recolour_house_painted + 1;
+	8: recolour_house_painted + 2;
+	9: recolour_house_painted_colourful + 0;
+	10: recolour_house_painted_colourful + 1;
+	11: recolour_house_painted_colourful + 2;
+	12: recolour_house_painted_colourful + 3;
+	13: recolour_house_painted_colourful + 4;
+	14: recolour_house_painted_colourful + 5;
+	recolour_identity;
+}
+
+//Normal houses, brick, stone & neutral paint
+switch (FEAT_HOUSES, SELF, switch_house_recolour_random_house, [
+	(random_bits>>4)%9
+]) {
+	0: recolour_house_brick + 0;
+	1: recolour_house_brick + 1;
+	2: recolour_house_brick + 2;
+	3: recolour_house_stone + 0;
+	4: recolour_house_stone + 1;
+	5: recolour_house_stone + 2;
+	6: recolour_house_painted + 0;
+	7: recolour_house_painted + 1;
+	8: recolour_house_painted + 2;
+	recolour_identity;
+}
+
+//Normal houses, brick
+switch (FEAT_HOUSES, SELF, switch_house_recolour_random_brickhouse, [
+	(random_bits>>4)%6
+]) {
+	0: recolour_house_brick + 0;
+	1: recolour_house_brick + 1;
+	2: recolour_house_brick + 2;
+	3: recolour_house_painted + 0;
+	4: recolour_house_painted + 1;
+	5: recolour_house_painted + 2;
+	recolour_identity;
+}
+
+//Normal houses, stone
+switch (FEAT_HOUSES, SELF, switch_house_recolour_random_stonehouse, [
+	(random_bits>>4)%3
+]) {
+	0: recolour_house_stone + 0;
+	1: recolour_house_stone + 1;
+	2: recolour_house_stone + 2;
+	recolour_identity;
+}
+
+//Normal houses, neutral paint
+switch (FEAT_HOUSES, SELF, switch_house_recolour_random_paintedhouse, [
+	(random_bits>>4)%3
+]) {
+	0: recolour_house_painted + 0;
+	1: recolour_house_painted + 1;
+	2: recolour_house_painted + 2;
+	recolour_identity;
+}
+
+//Normal houses, colourful paint
+switch (FEAT_HOUSES, SELF, switch_house_recolour_random_colourfulpaintedhouse, [
+	(random_bits>>4)%9
+]) {
+	0: recolour_house_painted + 0;
+	1: recolour_house_painted + 1;
+	2: recolour_house_painted + 3;
+	3: recolour_house_painted_colourful + 0;
+	4: recolour_house_painted_colourful + 1;
+	5: recolour_house_painted_colourful + 2;
+	6: recolour_house_painted_colourful + 3;
+	7: recolour_house_painted_colourful + 4;
+	8: recolour_house_painted_colourful + 5;
+	recolour_identity;
+}
+
+//Skyscrapers, colourful
+switch (FEAT_HOUSES, SELF, switch_house_recolour_random_colourfulskyscraper, [
+	(random_bits>>4)%6
+]) {
+	0: recolour_skyscraper_colourful + 0;
+	1: recolour_skyscraper_colourful + 1;
+	2: recolour_skyscraper_colourful + 2;
+	3: recolour_skyscraper_colourful + 3;
+	4: recolour_skyscraper_colourful + 4;
+	5: recolour_skyscraper_colourful + 5;
+	recolour_identity;
+}
+
+//Skyscrapers, muted
+switch (FEAT_HOUSES, SELF, switch_house_recolour_random_mutedskyscraper, [
+	(random_bits>>4)%6
+]) {
+	0: recolour_skyscraper_muted + 0;
+	1: recolour_skyscraper_muted + 1;
+	2: recolour_skyscraper_muted + 2;
+	3: recolour_skyscraper_muted + 3;
+	4: recolour_skyscraper_muted + 4;
+	5: recolour_skyscraper_muted + 5;
+	recolour_identity;
+}
+
+//Superstores, brands
+switch (FEAT_HOUSES, SELF, switch_house_recolour_random_superstorebrands, [
+	(random_bits>>4)%5
+]) {
+	0: recolour_superstore_brands + 0;
+	1: recolour_superstore_brands + 1;
+	2: recolour_superstore_brands + 2;
+	3: recolour_superstore_brands + 3;
+	4: recolour_superstore_brands + 4;
+	recolour_identity;
+}
+
+//"Smart" switches for thematic behaviours
+//Thematic town houses
+switch (FEAT_HOUSES, PARENT, switch_house_recolour_percity_house, [
+	town_index%12 //Treat town index like a pseudo-random number
+]) {
+	0..3: switch_house_recolour_random_house; //Brick, stone and neutral painted
+	4..5: switch_house_recolour_random_stonehouse; //Stone only
+	5..8: switch_house_recolour_random_brickhouse; //Brick only
+	9..10: switch_house_recolour_random_paintedhouse; //Neutral painted only
+	11: switch_house_recolour_random_colourfulpaintedhouse; //Colourful painted only
+	//Defauly, should never be called
+	recolour_identity;
+}
+
+//Thematic tower block/skyscraper
+switch (FEAT_HOUSES, PARENT, switch_house_recolour_perclimate_skyscraper, [
+
+]) {
+	switch_house_recolour_random_mutedskyscraper;
+}
+
+//Industry company colour switch, user friendly behaviour like base industries - randomised per city
+switch (FEAT_HOUSES, PARENT, switch_industry_recolour, [
+]) {
+	PALETTE_CC_FIRST + town_index%16;
+}
+
+switch (FEAT_HOUSES, PARENT, switch_industry_recolour_bright, [
+	town_index%10
+]) {
+	0: PALETTE_CC_DARK_BLUE;
+	1: PALETTE_CC_PALE_GREEN;
+	2: PALETTE_CC_PINK;
+	3: PALETTE_CC_YELLOW;
+	4: PALETTE_CC_RED;
+	5: PALETTE_CC_LIGHT_BLUE;
+	6: PALETTE_CC_GREEN;
+	7: PALETTE_CC_DARK_GREEN;
+	8: PALETTE_CC_BLUE;
+	9: PALETTE_CC_PURPLE;
+	10: PALETTE_CC_ORANGE;
+	recolour_identity;
+}

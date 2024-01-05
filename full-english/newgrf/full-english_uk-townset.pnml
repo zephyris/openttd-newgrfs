@@ -1,0 +1,2242 @@
+#include "nml/uk-townset/header.pnml"
+#include "nml/common/template_zoomsensitive.pnml"
+#include "nml/common/switches_houseorientation.pnml"
+#include "nml/common/switches_houserecolour.pnml"
+#include "nml/common/switches_houseconstruction.pnml"
+#include "nml/uk-townset/fences.pnml"
+#include "nml/uk-townset/construction.pnml"
+
+//Sprite indices for base set trees
+//Randomisation for tree selection:
+//Tree start sprite index, plus growth stage/size offset, plus snowline offset if above snow line, plus random modulo number of treesets times number of trees per set
+if (climate == CLIMATE_TEMPERATE) {
+	tree_start=1576;
+	tree_setcount=19;
+}
+if (climate == CLIMATE_ARCTIC) {
+	tree_start=1709;
+	tree_setcount=8;
+}
+if (climate == CLIMATE_TROPICAL) {
+	tree_start=1821;
+	tree_setcount=19;
+}
+if (climate == CLIMATE_TOYLAND) {
+	tree_start=1947;
+	tree_setcount=9;
+}
+tree_snowlineoffs=56;
+tree_numperset=7;
+tree_sizeoffs=2;
+
+//Houses
+//Standardised graphics specification (default graphics), often used:
+//  Animation frame: Orientation relative to road or neighbour bitmask
+//  LOAD_TEMP(1): Random building variant
+//  LOAD_TEMP(2): Above/below snow line
+//  LOAD_TEMP(3): Random fence variant
+//  LOAD_TEMP(4): Tile, for multi tile buildings
+//  LOAD_TEMP(5): Random tree variant
+
+//Thatched cottages 
+spriteset (sprites_ground_detached, "../graphics/detailed/64/pygen/ground_detached_base_8bpp.png") { template_house_short(0, 0, 1) }
+alternative_sprites(sprites_ground_detached, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/ground_detached_base_8bpp.png") { template_house_short(0, 0, 4) }
+spriteset (sprites_house_thatched, "../graphics/detailed/64/pygen/house_thatched_8bpp.png") { template_houseoverlay_short(0, 0, 1) }
+alternative_sprites(sprites_house_thatched, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_thatched_8bpp.png") { template_houseoverlay_short(0, 0, 4) }
+spriteset (sprites_house_thatched_snow, "../graphics/detailed/64/pygen/house_thatched_snow_8bpp.png") { template_houseoverlay_short(0, 0, 1) }
+alternative_sprites(sprites_house_thatched_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_thatched_snow_8bpp.png") { template_houseoverlay_short(0, 0, 4) }
+
+spritelayout layout_house_thatched_fence1 {
+	ground {
+		sprite: GROUNDSPRITE_NORMAL+(1-LOAD_TEMP(2))*569;
+	}
+	childsprite {
+		sprite: sprites_ground_detached(LOAD_TEMP(1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_hedges_4animframe_back(max(0, animation_frame-1));
+	}
+	childsprite {
+		sprite: sprites_hedges_4animframe_back_snow(max(0, animation_frame-1));
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_hedgesgaps_4animframe_back(max(0, animation_frame-1));
+	}
+	childsprite {
+		sprite: sprites_hedgesgaps_4animframe_back_snow(max(0, animation_frame-1));
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: tree_start+tree_sizeoffs+(1-LOAD_TEMP(2))*tree_snowlineoffs+LOAD_TEMP(5)*tree_numperset;
+		xoffset: 40;
+		yoffset: 40;
+	}
+	childsprite {
+		sprite: sprites_house_thatched(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_thatched_snow(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_hedges_4animframe_front(max(0, animation_frame-1));
+	}
+	childsprite {
+		sprite: sprites_hedges_4animframe_front_snow(max(0, animation_frame-1));
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_hedgesgaps_4animframe_front(max(0, animation_frame-1));
+	}
+	childsprite {
+		sprite: sprites_hedgesgaps_4animframe_front_snow(max(0, animation_frame-1));
+		hide_sprite: LOAD_TEMP(2);
+	}
+}
+
+spritelayout layout_house_thatched_fence2 {
+	ground {
+		sprite: GROUNDSPRITE_NORMAL+(1-LOAD_TEMP(2))*569;
+	}
+	childsprite {
+		sprite: sprites_ground_detached(LOAD_TEMP(1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_walls_4animframe_back(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_wallsgaps_4animframe_back(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_thatched(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_thatched_snow(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: tree_start+tree_sizeoffs+(1-LOAD_TEMP(2))*tree_snowlineoffs+LOAD_TEMP(5)*tree_numperset;
+		xoffset: 13;
+		yoffset: 48;
+	}
+	childsprite {
+		sprite: sprites_walls_4animframe_front(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_wallsgaps_4animframe_front(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_thatched_fences, [
+	LOAD_TEMP(3)
+]) {
+	1: layout_house_thatched_fence2;
+	layout_house_thatched_fence1;
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_thatched_constr, [
+	STORE_TEMP(random_bits%4, 1),
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2),
+	STORE_TEMP((random_bits>>4)%3, 3),
+	STORE_TEMP((random_bits>>5)%tree_setcount, 5),
+	construction_state
+]) {
+	switch_house_thatched_fences;
+}
+
+//Prevent construction in cities
+switch (FEAT_HOUSES, PARENT, switch_house_thatched_constrcheck, [
+	is_city + (1 - cities_enabled) //1 if city, 1 if cities not enabled, 0 if not city or cities not enabled
+]) {
+	1: return 0;
+	0: return 1;
+}
+
+item(FEAT_HOUSES, item_house_thatched, 0) {
+	property {
+		substitute: 25;
+		name: string(STR_HOUSE_THATCHED_NAME);
+		population: 10;
+		mail_multiplier: 2;
+		accepted_cargos: [[PASS, 2], [MAIL, 1], [FOOD, 1]];
+		local_authority_impact: 75;
+		removal_cost_multiplier: 75;
+		probability: 6;
+		years_available: [0, 1950];
+		minimum_lifetime: 10;
+		availability_mask: [bitmask(TOWNZONE_EDGE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
+		building_class: 10; //Detached class
+	}
+
+	graphics {
+		construction_check: switch_house_thatched_constrcheck;
+		colour: switch_house_recolour_random_paintedhouse;
+		anim_control: switch_house_aminframe_4road;
+		default: switch_house_thatched_constr;
+	}
+}
+
+//Detached houses 
+//Shares ground sprites with thatched cottages
+spriteset (sprites_house_detached, "../graphics/detailed/64/pygen/house_detached_8bpp.png") { template_houseoverlay_short(0, 0, 1) }
+alternative_sprites(sprites_house_detached, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_detached_8bpp.png") { template_houseoverlay_short(0, 0, 4) }
+spriteset (sprites_house_detached_snow, "../graphics/detailed/64/pygen/house_detached_snow_8bpp.png") { template_houseoverlay_short(0, 0, 1) }
+alternative_sprites(sprites_house_detached_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_detached_snow_8bpp.png") { template_houseoverlay_short(0, 0, 4) }
+
+spritelayout layout_house_detached_0 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+}
+
+spritelayout layout_house_detached_1 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	building {
+		sprite: sprites_construction_4animframe_back(0);
+	}
+	childsprite {
+		sprite: sprites_construction_4animframe_front(0);
+	}
+}
+spritelayout layout_house_detached_2 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	childsprite {
+		sprite: sprites_ground_detached(LOAD_TEMP(1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_construction_4animframe_back(0);
+	}
+	childsprite {
+		sprite: sprites_house_detached(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_construction_4animframe_front(0);
+	}
+}
+
+spritelayout layout_house_detached_fence1 {
+	ground {
+		sprite: GROUNDSPRITE_NORMAL+(1-LOAD_TEMP(2))*569;
+	}
+	childsprite {
+		sprite: sprites_ground_detached(LOAD_TEMP(1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_hedges_4animframe_back(max(0, animation_frame-1));
+	}
+	childsprite {
+		sprite: sprites_hedges_4animframe_back_snow(max(0, animation_frame-1));
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_hedgesgaps_4animframe_back(max(0, animation_frame-1));
+	}
+	childsprite {
+		sprite: sprites_hedgesgaps_4animframe_back_snow(max(0, animation_frame-1));
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: tree_start+tree_sizeoffs+(1-LOAD_TEMP(2))*tree_snowlineoffs+LOAD_TEMP(5)*tree_numperset;
+		xoffset: 36;
+		yoffset: 38;
+	}
+	childsprite {
+		sprite: sprites_house_detached(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_detached_snow(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_hedges_4animframe_front(max(0, animation_frame-1));
+	}
+	childsprite {
+		sprite: sprites_hedges_4animframe_front_snow(max(0, animation_frame-1));
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_hedgesgaps_4animframe_front(max(0, animation_frame-1));
+	}
+	childsprite {
+		sprite: sprites_hedgesgaps_4animframe_front_snow(max(0, animation_frame-1));
+		hide_sprite: LOAD_TEMP(2);
+	}
+}
+
+spritelayout layout_house_detached_fence2 {
+	ground {
+		sprite: GROUNDSPRITE_NORMAL+(1-LOAD_TEMP(2))*569;
+	}
+	childsprite {
+		sprite: sprites_ground_detached(LOAD_TEMP(1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_woodfences_4animframe_back(max(0, animation_frame-1));
+	}
+	childsprite {
+		sprite: sprites_woodfencesgaps_4animframe_back(max(0, animation_frame-1));
+	}
+	childsprite {
+		sprite: sprites_house_detached(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_detached_snow(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: tree_start+tree_sizeoffs+(1-LOAD_TEMP(2))*tree_snowlineoffs+LOAD_TEMP(5)*tree_numperset;
+		xoffset: 13;
+		yoffset: 48;
+	}
+	childsprite {
+		sprite: sprites_woodfences_4animframe_front(max(0, animation_frame-1));
+	}
+	childsprite {
+		sprite: sprites_woodfencesgaps_4animframe_front(max(0, animation_frame-1));
+	}
+}
+
+spritelayout layout_house_detached_fence3 {
+	ground {
+		sprite: GROUNDSPRITE_NORMAL+(1-LOAD_TEMP(2))*569;
+	}
+	childsprite {
+		sprite: sprites_ground_detached(LOAD_TEMP(1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_walls_4animframe_back(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_wallsgaps_4animframe_back(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: tree_start+tree_sizeoffs+(1-LOAD_TEMP(2))*tree_snowlineoffs+LOAD_TEMP(5)*tree_numperset;
+		xoffset: 50;
+		yoffset: 45;
+	}
+	childsprite {
+		sprite: sprites_house_detached(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_detached_snow(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_walls_4animframe_front(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_wallsgaps_4animframe_front(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_detached_fences, [
+	LOAD_TEMP(3)
+]) {
+	1: layout_house_detached_fence2;
+	2: layout_house_detached_fence3;
+	layout_house_detached_fence1;
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_detached_constr, [
+	STORE_TEMP(random_bits%4, 1),
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2),
+	STORE_TEMP((random_bits>>4)%4, 3),
+	STORE_TEMP((random_bits>>5)%tree_setcount, 5),
+	construction_state
+]) {
+	0: layout_house_detached_0;
+	1: layout_house_detached_1;
+	2: layout_house_detached_2;
+	switch_house_detached_fences;
+}
+
+item(FEAT_HOUSES, item_house_detached, 10) {
+	property {
+		substitute: 24;
+		name: string(STR_HOUSE_DETACHED_NAME);
+		population: 12;
+		mail_multiplier: 3;
+		accepted_cargos: [[PASS, 2], [MAIL, 1], [FOOD, 1]];
+		local_authority_impact: 70;
+		removal_cost_multiplier: 70;
+		probability: 6;
+		years_available: [0, 65535];
+		minimum_lifetime: 10;
+		availability_mask: [bitmask(TOWNZONE_EDGE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
+		building_class: 10; //Detached class
+	}
+
+	graphics {
+		colour: switch_house_recolour_percity_house; //switch_house_recolour_random_house;
+		anim_control: switch_house_aminframe_4road;
+		default: switch_house_detached_constr;
+	}
+}
+
+//Semidetached houses
+spriteset (sprites_ground_semidetached, "../graphics/detailed/64/pygen/ground_semidetached_base_8bpp.png") { template_house_short(0, 0, 1) }
+alternative_sprites(sprites_ground_semidetached, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/ground_semidetached_base_8bpp.png") { template_house_short(0, 0, 4) }
+spriteset (sprites_house_semidetached, "../graphics/detailed/64/pygen/house_semidetached_8bpp.png") { template_houseoverlay_short(0, 0, 1) }
+alternative_sprites(sprites_house_semidetached, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_semidetached_8bpp.png") { template_houseoverlay_short(0, 0, 4) }
+spriteset (sprites_house_semidetached_snow, "../graphics/detailed/64/pygen/house_semidetached_snow_8bpp.png") { template_houseoverlay_short(0, 0, 1) }
+alternative_sprites(sprites_house_semidetached_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_semidetached_snow_8bpp.png") { template_houseoverlay_short(0, 0, 4) }
+
+spritelayout layout_house_semidetached_0 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+}
+
+spritelayout layout_house_semidetached_1 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	building {
+		sprite: sprites_construction_4animframe_back(0);
+	}
+	childsprite {
+		sprite: sprites_construction_4animframe_front(0);
+	}
+}
+spritelayout layout_house_semidetached_2 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	childsprite {
+		sprite: sprites_ground_semidetached(max(0, animation_frame-1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_construction_4animframe_back(0);
+	}
+	childsprite {
+		sprite: sprites_house_semidetached(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_construction_4animframe_front(0);
+	}
+}
+
+spritelayout layout_house_semidetached_fences1 {
+	ground {
+		sprite: GROUNDSPRITE_NORMAL+(1-LOAD_TEMP(2))*569;
+	}
+	childsprite {
+		sprite: sprites_ground_semidetached(max(0, animation_frame-1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_woodfences_4animframe_back(max(0, animation_frame-1));
+	}
+	childsprite {
+		sprite: sprites_house_semidetached(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_semidetached_snow(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_woodfences_4animframe_front(max(0, animation_frame-1));
+	}
+}
+
+spritelayout layout_house_semidetached_fences2 {
+	ground {
+		sprite: GROUNDSPRITE_NORMAL+(1-LOAD_TEMP(2))*569;
+	}
+	childsprite {
+		sprite: sprites_ground_semidetached(max(0, animation_frame-1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_walls_4animframe_back(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_semidetached(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_semidetached_snow(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_walls_4animframe_front(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_semidetached_fences, [
+	LOAD_TEMP(3)
+]) {
+	1: layout_house_semidetached_fences2;
+	layout_house_semidetached_fences1;
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_semidetached_constr, [
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2),
+	STORE_TEMP(random_bits%3, 3),
+	construction_state
+]) {
+	0: layout_house_semidetached_0;
+	1: layout_house_semidetached_1;
+	2: layout_house_semidetached_2;
+	switch_house_semidetached_fences;
+}
+
+item(FEAT_HOUSES, item_house_semidetached, 20) {
+	property {
+		substitute: 26;
+		name: string(STR_HOUSE_SEMIDETACHED_NAME);
+		population: 20;
+		mail_multiplier: 8;
+		accepted_cargos: [[PASS, 3], [MAIL, 1], [FOOD, 1]];
+		local_authority_impact: 75;
+		removal_cost_multiplier: 75;
+		probability: 6;
+		years_available: [1930, 65535];
+		minimum_lifetime: 10;
+		availability_mask: [bitmask(TOWNZONE_OUTSKIRT), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
+		building_class: 20; //Semidetached class
+	}
+
+	graphics {
+		colour: switch_house_recolour_percity_house; //switch_house_recolour_random_house;
+		anim_control: switch_house_aminframe_4road;
+		default: switch_house_semidetached_constr;
+	}
+}
+
+//Terraced houses
+spriteset (sprites_ground_terrace, "../graphics/detailed/64/pygen/ground_terrace_base_8bpp.png") { template_house_short(0, 0, 1) template_house_short(260, 0, 1) }
+alternative_sprites(sprites_ground_terrace, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/ground_terrace_base_8bpp.png") { template_house_short(0, 0, 4) template_house_short(260, 0, 4) }
+spriteset (sprites_house_terrace, "../graphics/detailed/64/pygen/house_terrace_8bpp.png") { template_houseoverlay_short(0, 0, 1) template_houseoverlay_short(260, 0, 1) }
+alternative_sprites(sprites_house_terrace, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_terrace_8bpp.png") { template_houseoverlay_short(0, 0, 4) template_houseoverlay_short(260, 0, 4) }
+spriteset (sprites_house_terrace_snow, "../graphics/detailed/64/pygen/house_terrace_snow_8bpp.png") { template_houseoverlay_short(0, 0, 1) template_houseoverlay_short(260, 0, 1) }
+alternative_sprites(sprites_house_terrace_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_terrace_snow_8bpp.png") { template_houseoverlay_short(0, 0, 4) template_houseoverlay_short(260, 0, 4) }
+spriteset (sprites_house_terrace_shopover, "../graphics/detailed/64/pygen/house_terrace_shopover_8bpp.png") { template_houseoverlay_short(0, 0, 1) template_houseoverlay_short(260, 0, 1) }
+alternative_sprites(sprites_house_terrace_shopover, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_terrace_shopover_8bpp.png") { template_houseoverlay_short(0, 0, 4) template_houseoverlay_short(260, 0, 4) }
+spriteset (sprites_house_terrace_shopover_snow, "../graphics/detailed/64/pygen/house_terrace_shopover_snow_8bpp.png") { template_houseoverlay_short(0, 0, 1) template_houseoverlay_short(260, 0, 1) }
+alternative_sprites(sprites_house_terrace_shopover_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_terrace_shopover_snow_8bpp.png") { template_houseoverlay_short(0, 0, 4) template_houseoverlay_short(260, 0, 4) }
+
+spritelayout layout_house_terrace_0 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+}
+
+spritelayout layout_house_terrace_1 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	building {
+		sprite: sprites_construction_8animframe_back(0);
+	}
+	childsprite {
+		sprite: sprites_construction_8animframe_front(0);
+	}
+}
+spritelayout layout_house_terrace_2 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	childsprite {
+		sprite: sprites_ground_terrace(max(0, animation_frame-1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_construction_8animframe_back(0);
+	}
+	childsprite {
+		sprite: sprites_house_terrace(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_construction_8animframe_front(0);
+	}
+}
+
+spritelayout layout_house_terrace_fences1 {
+	ground {
+		sprite: GROUNDSPRITE_NORMAL+(1-LOAD_TEMP(2))*569;
+	}
+	childsprite {
+		sprite: sprites_ground_terrace(max(0, animation_frame-1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_walls_8animframe_back(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_terrace(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_terrace_snow(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_walls_8animframe_front(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+}
+
+spritelayout layout_house_terrace_fences2 {
+	ground {
+		sprite: GROUNDSPRITE_NORMAL+(1-LOAD_TEMP(2))*569;
+	}
+	childsprite {
+		sprite: sprites_ground_terrace(max(0, animation_frame-1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_woodfences_8animframe_back(max(0, animation_frame-1));
+	}
+	childsprite {
+		sprite: sprites_house_terrace(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_terrace_snow(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_woodfences_8animframe_front(max(0, animation_frame-1));
+	}
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_terrace_fences, [
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2),
+	construction_state
+]) {
+	1: layout_house_terrace_fences2;
+	layout_house_terrace_fences1;
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_terrace_constr, [
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2),
+	STORE_TEMP(random_bits%3, 3),
+	construction_state
+]) {
+	0: layout_house_terrace_0;
+	1: layout_house_terrace_1;
+	2: layout_house_terrace_2;
+	switch_house_terrace_fences;
+}
+
+item(FEAT_HOUSES, item_house_terrace, 30) {
+	property {
+		substitute: 06;
+		name: string(STR_HOUSE_TERRACE_NAME);
+		population: 30;
+		mail_multiplier: 12;
+		accepted_cargos: [[PASS, 4], [MAIL, 1], [FOOD, 2]];
+		local_authority_impact: 80;
+		removal_cost_multiplier: 80;
+		probability: 6;
+		years_available: [1880, 65535];
+		minimum_lifetime: 10;
+		availability_mask: [bitmask(TOWNZONE_OUTER_SUBURB, TOWNZONE_INNER_SUBURB, TOWNZONE_CENTRE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
+		building_class: 30; //Small terraces class
+	}
+
+	graphics {
+		colour: switch_house_recolour_percity_house; //switch_house_recolour_random_brickhouse;
+		anim_control: switch_house_aminframe_8road;
+		default: switch_house_terrace_constr;
+	}
+}
+
+spritelayout layout_house_terraceshops {
+	ground {
+		sprite: GROUNDSPRITE_NORMAL+(1-LOAD_TEMP(2))*569;
+	}
+	childsprite {
+		sprite: sprites_ground_terrace(max(0, animation_frame-1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_walls_8animframe_back(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_terrace(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_terrace_snow(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_walls_8animframe_front(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_terrace_shopover(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_terrace_shopover_snow(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_terraceshops_constr, [
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2),
+	construction_state
+]) {
+	0: layout_house_terrace_0;
+	1: layout_house_terrace_1;
+	2: layout_house_terrace_2;
+	layout_house_terraceshops;
+}
+
+item(FEAT_HOUSES, item_house_terraceshops, 31) {
+	property {
+		substitute: 01;
+		name: string(STR_HOUSE_TERRACESHOPS_NAME);
+		population: 25;
+		mail_multiplier: 12;
+		accepted_cargos: [[PASS, 6], [MAIL, 2], [GOOD, 2]];
+		local_authority_impact: 85;
+		removal_cost_multiplier: 85;
+		probability: 3;
+		years_available: [1880, 65535];
+		minimum_lifetime: 10;
+		availability_mask: [bitmask(TOWNZONE_OUTER_SUBURB, TOWNZONE_INNER_SUBURB, TOWNZONE_CENTRE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		random_colours: [COLOUR_PURPLE, COLOUR_RED, COLOUR_GREEN, COLOUR_ORANGE];
+		building_class: 30; //Small terraces class
+	}
+
+	graphics {
+		colour: switch_house_recolour_percity_house; //switch_house_recolour_random_brickhouse;
+		anim_control: switch_house_aminframe_8road;
+		default: switch_house_terraceshops_constr;
+	}
+}
+
+//Tall terrace
+spriteset (sprites_ground_tallterrace, "../graphics/detailed/64/pygen/ground_tallterrace_base_8bpp.png") { template_house_short(0, 0, 1) template_house_short(260, 0, 1) template_house_short(520, 0, 1) }
+alternative_sprites(sprites_ground_tallterrace, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/ground_tallterrace_base_8bpp.png") { template_house_short(0, 0, 4) template_house_short(260, 0, 4) template_house_short(520, 0, 4) }
+spriteset (sprites_house_tallterrace, "../graphics/detailed/64/pygen/house_tallterrace_8bpp.png") { template_houseoverlay_short(0, 0, 1) template_houseoverlay_short(260, 0, 1) template_houseoverlay_short(520, 0, 1) }
+alternative_sprites(sprites_house_tallterrace, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_tallterrace_8bpp.png") { template_houseoverlay_short(0, 0, 4) template_houseoverlay_short(260, 0, 4) template_houseoverlay_short(520, 0, 4) }
+spriteset (sprites_house_tallterrace_snow, "../graphics/detailed/64/pygen/house_tallterrace_snow_8bpp.png") { template_houseoverlay_short(0, 0, 1) template_houseoverlay_short(260, 0, 1) template_houseoverlay_short(520, 0, 1) }
+alternative_sprites(sprites_house_tallterrace_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_tallterrace_snow_8bpp.png") { template_houseoverlay_short(0, 0, 4) template_houseoverlay_short(260, 0, 4) template_houseoverlay_short(520, 0, 4) }
+spriteset (sprites_house_tallterrace_shopover, "../graphics/detailed/64/pygen/house_tallterrace_shopover_8bpp.png") { template_houseoverlay_short(0, 0, 1) template_houseoverlay_short(260, 0, 1) template_houseoverlay_short(520, 0, 1) }
+alternative_sprites(sprites_house_tallterrace_shopover, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_tallterrace_shopover_8bpp.png") { template_houseoverlay_short(0, 0, 4) template_houseoverlay_short(260, 0, 4) template_houseoverlay_short(520, 0, 4) }
+spriteset (sprites_house_tallterrace_shopover_snow, "../graphics/detailed/64/pygen/house_tallterrace_shopover_snow_8bpp.png") { template_houseoverlay_short(0, 0, 1) template_houseoverlay_short(260, 0, 1) template_houseoverlay_short(520, 0, 1) }
+alternative_sprites(sprites_house_tallterrace_shopover_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_tallterrace_shopover_snow_8bpp.png") { template_houseoverlay_short(0, 0, 4) template_houseoverlay_short(260, 0, 4) template_houseoverlay_short(520, 0, 4) }
+
+spritelayout layout_house_tallterrace_0 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+}
+
+spritelayout layout_house_tallterrace_1 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	building {
+		sprite: sprites_constructionmidtarp_12animframe_back(0);
+	}
+	childsprite {
+		sprite: sprites_constructionmidtarp_12animframe_front(0);
+	}
+}
+spritelayout layout_house_tallterrace_2 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	childsprite {
+		sprite: sprites_ground_tallterrace(max(0, animation_frame-1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_constructionmidtarp_12animframe_back(0);
+	}
+	childsprite {
+		sprite: sprites_house_tallterrace(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_constructionmidtarp_12animframe_front(0);
+	}
+}
+
+spritelayout layout_house_tallterrace {
+	ground {
+		sprite: GROUNDSPRITE_CONCRETE+(1-LOAD_TEMP(2))*3130;
+	}
+	childsprite {
+		sprite: sprites_ground_tallterrace(max(0, animation_frame-1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_walls_12animframe_back(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_tallterrace(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_tallterrace_snow(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_walls_12animframe_front(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_tallterrace_constr, [
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2),
+	construction_state
+]) {
+	0: layout_house_tallterrace_0;
+	1: layout_house_tallterrace_1;
+	2: layout_house_tallterrace_2;
+	layout_house_tallterrace;
+}
+
+item(FEAT_HOUSES, item_house_tallterrace, 40) {
+	property {
+		substitute: 14;
+		name: string(STR_HOUSE_TALLTERRACE_NAME);
+		population: 95;
+		mail_multiplier: 48;
+		accepted_cargos: [[PASS, 6], [MAIL, 2], [FOOD, 4]];
+		local_authority_impact: 100;
+		removal_cost_multiplier: 100;
+		probability: 3;
+		years_available: [1900, 65535];
+		minimum_lifetime: 15;
+		availability_mask: [bitmask(TOWNZONE_CENTRE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
+		building_class: 40; //Tall terraces class
+	}
+
+	graphics {
+		colour: switch_house_recolour_percity_house; //switch_house_recolour_random_brickhouse;
+		anim_control: switch_house_aminframe_12road;
+		default: switch_house_tallterrace_constr;
+	}
+}
+
+spritelayout layout_house_tallterraceshops {
+	ground {
+		sprite: GROUNDSPRITE_CONCRETE+(1-LOAD_TEMP(2))*3130;
+	}
+	childsprite {
+		sprite: sprites_ground_tallterrace(max(0, animation_frame-1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_walls_12animframe_back(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_tallterrace(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_tallterrace_snow(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_walls_12animframe_front(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_tallterrace_shopover(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_tallterrace_shopover_snow(max(0, animation_frame-1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_tallterraceshops_constr, [
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2),
+	construction_state
+]) {
+	0: layout_house_tallterrace_0;
+	1: layout_house_tallterrace_1;
+	2: layout_house_tallterrace_2;
+	layout_house_tallterraceshops;
+}
+
+item(FEAT_HOUSES, item_house_tallterraceshops, 41) {
+	property {
+		substitute: 15;
+		name: string(STR_HOUSE_TERRACESHOPS_NAME);
+		population: 95;
+		mail_multiplier: 48;
+		accepted_cargos: [[PASS, 6], [MAIL, 2], [GOOD, 4]];
+		local_authority_impact: 110;
+		removal_cost_multiplier: 110;
+		probability: 3;
+		years_available: [1900, 65535];
+		minimum_lifetime: 15;
+		availability_mask: [bitmask(TOWNZONE_CENTRE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
+		building_class: 40; //Tall terraces class
+	}
+
+	graphics {
+		colour: switch_house_recolour_percity_house; //switch_house_recolour_random_brickhouse;
+		anim_control: switch_house_aminframe_12road;
+		default: switch_house_tallterraceshops_constr;
+	}
+}
+
+//Office blocks 
+spriteset (sprites_ground_offices, "../graphics/detailed/64/pygen/ground_offices_base_8bpp.png") { template_house_short(0, 0, 1) }
+alternative_sprites(sprites_ground_offices, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/ground_offices_base_8bpp.png") { template_house_short(0, 0, 4) }
+spriteset (sprites_house_offices, "../graphics/detailed/64/pygen/house_offices_8bpp.png") { template_house_short(0, 0, 1) }
+alternative_sprites(sprites_house_offices, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_offices_8bpp.png") { template_house_short(0, 0, 4) }
+spriteset (sprites_house_offices_snow, "../graphics/detailed/64/pygen/house_offices_snow_8bpp.png") { template_houseoverlay_short(0, 0, 1) }
+alternative_sprites(sprites_house_offices_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_offices_snow_8bpp.png") { template_houseoverlay_short(0, 0, 4) }
+
+spritelayout layout_house_offices_0 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+}
+
+spritelayout layout_house_offices_1 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	building {
+		sprite: sprites_constructionmidtarp_4animframe_back(0);
+	}
+	childsprite {
+		sprite: sprites_constructionmidtarp_4animframe_front(0);
+	}
+}
+
+spritelayout layout_house_offices_2 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	childsprite {
+		sprite: sprites_ground_offices(LOAD_TEMP(1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_constructionmidtarp_4animframe_back(0);
+	}
+	childsprite {
+		sprite: sprites_constructioncrane_4animframe(0);
+	}
+	childsprite {
+		sprite: sprites_constructionmidtarp_4animframe_front(0);
+	}
+}
+
+spritelayout layout_house_offices {
+	ground {
+		sprite: GROUNDSPRITE_CONCRETE+(1-LOAD_TEMP(2))*3130;
+	}
+	childsprite {
+		sprite: sprites_ground_offices(LOAD_TEMP(1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_house_offices(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_offices_snow(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_offices_constr, [
+	construction_state
+]) {
+	0: layout_house_offices_0;
+	1: layout_house_offices_1;
+	2: layout_house_offices_2;
+	layout_house_offices;
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_offices_random, [
+	STORE_TEMP(random_bits%4, 1),
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2)
+]) {
+	switch_house_offices_constr;
+}
+
+item(FEAT_HOUSES, item_house_offices, 50) {
+	property {
+		substitute: 13;
+		name: string(STR_HOUSE_OFFICES_NAME);
+		population: 120;
+		mail_multiplier: 55;
+		accepted_cargos: [[PASS, 8], [MAIL, 1], [GOOD, 4]];
+		local_authority_impact: 120;
+		removal_cost_multiplier: 120;
+		probability: 4;
+		years_available: [1960, 65535];
+		minimum_lifetime: 15;
+		availability_mask: [bitmask(TOWNZONE_CENTRE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
+		building_class: 50; //Tall building class
+	}
+
+	graphics {
+		colour: switch_house_recolour_perclimate_skyscraper;
+		default: switch_house_offices_random;
+	}
+}
+
+//Office tower blocks 
+spriteset (sprites_ground_officetower, "../graphics/detailed/64/pygen/ground_officetower_base_8bpp.png") { template_house_short(0, 0, 1) }
+alternative_sprites(sprites_ground_officetower, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/ground_officetower_base_8bpp.png") { template_house_short(0, 0, 4) }
+spriteset (sprites_house_officetower, "../graphics/detailed/64/pygen/house_officetower_8bpp.png") { template_house_mid(0, 0, 1) }
+alternative_sprites(sprites_house_officetower, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_officetower_8bpp.png") { template_house_mid(0, 0, 4) }
+spriteset (sprites_house_officetower_snow, "../graphics/detailed/64/pygen/house_officetower_snow_8bpp.png") { template_houseoverlay_mid(0, 0, 1) }
+alternative_sprites(sprites_house_officetower_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_officetower_snow_8bpp.png") { template_houseoverlay_mid(0, 0, 4) }
+
+spritelayout layout_house_officetower_0 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	building {
+		sprite: sprites_constructionmidtarp_4animframe_back(0);
+	}
+	childsprite {
+		sprite: sprites_constructionmidtarp_4animframe_front(0);
+	}
+}
+
+spritelayout layout_house_officetower_1 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	building {
+		sprite: sprites_constructionmidtarp_4animframe_back(0);
+	}
+	childsprite {
+		sprite: sprites_constructioncrane_4animframe(0);
+	}
+	childsprite {
+		sprite: sprites_constructionmidtarp_4animframe_front(0);
+	}
+}
+
+spritelayout layout_house_officetower_2 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	building {
+		sprite: sprites_house_officetower(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_constructionmidtarp_4animframe_backoverlay(0);
+	}
+	childsprite {
+		sprite: sprites_constructioncrane_4animframe(0);
+	}
+	childsprite {
+		sprite: sprites_constructionmidtarp_4animframe_front(0);
+	}
+}
+
+spritelayout layout_house_officetower {
+	ground {
+		sprite: GROUNDSPRITE_CONCRETE+(1-LOAD_TEMP(2))*3130;
+	}
+	childsprite {
+		sprite: sprites_ground_officetower(LOAD_TEMP(1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_house_officetower(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_officetower_snow(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_officetower_constr, [
+	construction_state
+]) {
+	0: layout_house_officetower_0;
+	1: layout_house_officetower_1;
+	2: layout_house_officetower_2;
+	layout_house_officetower;
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_officetower_random, [
+	STORE_TEMP(random_bits%4, 1),
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2)
+]) {
+	switch_house_officetower_constr;
+}
+
+//Only allow construction in cities
+switch (FEAT_HOUSES, PARENT, switch_house_officetower_constrcheck, [
+	is_city + (1 - cities_enabled) //1 if city, 1 if cities not enabled, 0 if not city or cities not enabled
+]) {
+	0: return 0;
+	switch_house_tightclustering;
+}
+
+//General office tower, tends to be built in clusters
+item(FEAT_HOUSES, item_house_officetower, 60) {
+	property {
+		substitute: 17;
+		name: string(STR_HOUSE_OFFICETOWER_NAME);
+		population: 150;
+		mail_multiplier: 65;
+		accepted_cargos: [[PASS, 8], [MAIL, 4], [GOOD, 6]];
+		local_authority_impact: 150;
+		removal_cost_multiplier: 200;
+		probability: 8;
+		years_available: [1960, 65535];
+		minimum_lifetime: 25;
+		availability_mask: [bitmask(TOWNZONE_CENTRE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
+		building_class: 60; //Skyscraper class
+	}
+
+	graphics {
+		colour: switch_house_recolour_perclimate_skyscraper;
+		construction_check: switch_town_zone_gt4; //switch_house_officetower_constrcheck;
+		default: switch_house_officetower_random;
+	}
+}
+
+//Skyscraper
+if (param_skyscraperprevalence == 0) {
+	skyscraper_base_probability = 0;
+} else {
+	skyscraper_base_probability = 4;
+}
+
+spriteset (sprites_ground_skyscraper, "../graphics/detailed/64/pygen/ground_skyscraper_base_8bpp.png") { template_house_short(0, 0, 1) }
+alternative_sprites(sprites_ground_skyscraper, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/ground_skyscraper_base_8bpp.png") { template_house_short(0, 0, 4) }
+spriteset (sprites_house_skyscraper, "../graphics/detailed/64/pygen/house_skyscraper_8bpp.png") { template_house_tall(0, 0, 1) }
+alternative_sprites(sprites_house_skyscraper, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_skyscraper_8bpp.png") { template_house_tall(0, 0, 4) }
+spriteset (sprites_house_skyscraper_snow, "../graphics/detailed/64/pygen/house_skyscraper_snow_8bpp.png") { template_houseoverlay_tall(0, 0, 1) }
+alternative_sprites(sprites_house_skyscraper_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_skyscraper_snow_8bpp.png") { template_houseoverlay_tall(0, 0, 4) }
+
+spritelayout layout_house_skyscraper_0 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	building {
+		sprite: sprites_constructionmidtarp_4animframe_back(0);
+	}
+	childsprite {
+		sprite: sprites_constructionmidtarp_4animframe_front(0);
+	}
+}
+
+spritelayout layout_house_skyscraper_1 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	building {
+		sprite: sprites_constructionmidtarp_4animframe_back(0);
+	}
+	childsprite {
+		sprite: sprites_constructioncrane_4animframe(0);
+	}
+	childsprite {
+		sprite: sprites_constructionmidtarp_4animframe_front(0);
+	}
+}
+
+spritelayout layout_house_skyscraper_2 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	building {
+		sprite: sprites_house_skyscraper(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_constructionmidtarp_4animframe_backoverlay(0);
+		yoffset: 64;
+	}
+	childsprite {
+		sprite: sprites_constructioncrane_4animframe(0);
+		yoffset: 64;
+	}
+	childsprite {
+		sprite: sprites_constructionmidtarp_4animframe_front(0);
+		yoffset: 64;
+	}
+}
+
+spritelayout layout_house_skyscraper {
+	ground {
+		sprite: GROUNDSPRITE_CONCRETE+(1-LOAD_TEMP(2))*3130;
+	}
+	childsprite {
+		sprite: sprites_ground_skyscraper(LOAD_TEMP(1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_house_skyscraper(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_skyscraper_snow(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+}
+
+switch (FEAT_HOUSES, SELF, layout_house_skyscraper_constr, [
+	construction_state
+]) {
+	0: layout_house_skyscraper_0;
+	1: layout_house_skyscraper_1;
+	2: layout_house_skyscraper_2;
+	layout_house_skyscraper;
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_skyscraper_random, [
+	STORE_TEMP(random_bits%4, 1),
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2)
+]) {
+	layout_house_skyscraper_constr;
+}
+
+//Only allow construction in cities
+switch (FEAT_HOUSES, PARENT, switch_house_skyscraper_constrcheck, [
+	(is_city + (1 - cities_enabled)) //1 if city, 1 if cities not enabled, 0 if not city or cities not enabled
+]) {
+	0: return 0;
+	switch_town_zone_gt5;
+}
+
+//Skyscraper, tends to be built in clusters
+item(FEAT_HOUSES, item_house_skyscraper, 70) {
+	property {
+		substitute: 36;
+		name: string(STR_HOUSE_SKYSCRAPER_NAME);
+		population: 180;
+		mail_multiplier: 85;
+		accepted_cargos: [[PASS, 8], [MAIL, 6], [GOOD, 6]];
+		local_authority_impact: 170;
+		removal_cost_multiplier: 200;
+		probability: skyscraper_base_probability;
+		years_available: [1970, 65535];
+		minimum_lifetime: 30;
+		availability_mask: [bitmask(TOWNZONE_CENTRE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
+		building_class: 60; //Skyscraper class
+	}
+
+	graphics {
+		colour: switch_house_recolour_perclimate_skyscraper;
+		construction_check: switch_house_skyscraper_constrcheck;
+		default: switch_house_skyscraper_random;
+	}
+}
+
+/*
+
+//Futuristic skyscraper
+spriteset (sprites_ground_futureskyscraper, "../graphics/detailed/64/pygen/ground_modernskyscraper_base_8bpp.png") { template_house_short(0, 0, 1) }
+//alternative_sprites(sprites_ground_futureskyscraper, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/ground_modernskyscraper_base_8bpp.png") { template_house_short(0, 0, 4) }
+spriteset (sprites_house_futureskyscraper, "../graphics/detailed/64/pygen/house_modernskyscraper_8bpp.png") { template_house_tall(0, 0, 1) }
+//alternative_sprites(sprites_house_futureskyscraper, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_modernskyscraper_8bpp.png") { template_house_tall(0, 0, 4) }
+spriteset (sprites_house_futureskyscraper_snow, "../graphics/detailed/64/pygen/house_modernskyscraper_snow_8bpp.png") { template_houseoverlay_tall(0, 0, 1) }
+//alternative_sprites(sprites_house_futureskyscraper_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_modernskyscraper_snow_8bpp.png") { template_houseoverlay_tall(0, 0, 4) }
+
+if (param_skyscraperprevalence == 0 || param_futuristicprevalence == 0) {
+	futureskyscraper_base_probability = 0;
+} else {
+	futureskyscraper_base_probability = 4;
+}
+
+spritelayout layout_house_futureskyscraper_0 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	building {
+		sprite: sprites_constructionmidtarp_4animframe_back(0);
+	}
+	childsprite {
+		sprite: sprites_constructionmidtarp_4animframe_front(0);
+	}
+}
+
+spritelayout layout_house_futureskyscraper_1 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	building {
+		sprite: sprites_constructionmidtarp_4animframe_back(0);
+	}
+	childsprite {
+		sprite: sprites_constructioncrane_4animframe(0);
+	}
+	childsprite {
+		sprite: sprites_constructionmidtarp_4animframe_front(0);
+	}
+}
+
+spritelayout layout_house_futureskyscraper_2 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	building {
+		sprite: sprites_house_futureskyscraper(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_constructionmidtarp_4animframe_backoverlay(0);
+		yoffset: 64;
+	}
+	childsprite {
+		sprite: sprites_constructioncrane_4animframe(0);
+		yoffset: 64;
+	}
+	childsprite {
+		sprite: sprites_constructionmidtarp_4animframe_front(0);
+		yoffset: 64;
+	}
+}
+
+spritelayout layout_house_futureskyscraper {
+	ground {
+		sprite: GROUNDSPRITE_CONCRETE+(1-LOAD_TEMP(2))*3130;
+	}
+	childsprite {
+		sprite: sprites_ground_futureskyscraper(LOAD_TEMP(1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_house_futureskyscraper(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_futureskyscraper_snow(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+}
+
+switch (FEAT_HOUSES, SELF, layout_house_futureskyscraper_constr, [
+	construction_state
+]) {
+	0: layout_house_futureskyscraper_0;
+	1: layout_house_futureskyscraper_1;
+	2: layout_house_futureskyscraper_2;
+	layout_house_futureskyscraper;
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_futureskyscraper_random, [
+	STORE_TEMP(random_bits%4, 1),
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2)
+]) {
+	layout_house_futureskyscraper_constr;
+}
+
+item(FEAT_HOUSES, item_house_futureskyscraper, 72) {
+	property {
+		substitute: 36;
+		name: string(STR_HOUSE_FUTURESKYSCRAPER_NAME);
+		population: 180;
+		mail_multiplier: 85;
+		accepted_cargos: [[PASS, 8], [MAIL, 6], [GOOD, 6]];
+		local_authority_impact: 170;
+		removal_cost_multiplier: 200;
+		probability: futureskyscraper_base_probability * 2;
+		years_available: [2020, 65535];
+		minimum_lifetime: 30;
+		availability_mask: [bitmask(TOWNZONE_CENTRE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
+		building_class: 60; //Skyscraper class
+	}
+
+	graphics {
+		colour: switch_house_recolour_perclimate_skyscraper;
+		construction_check: switch_house_skyscraper_constrcheck;
+		default: switch_house_futureskyscraper_random;
+	}
+}
+
+*/
+
+/*
+
+//Skyscraper 2x2
+spriteset (sprites_ground_skyscraper2x2, "../graphics/detailed/64/pygen/ground2x2_skyscraper_base_tiles_8bpp.png") { template_house2x2_vtall(0, 0, 1) }
+spriteset (sprites_house_skyscraper2x2, "../graphics/detailed/64/pygen/house2x2_skyscraper_tiles_8bpp.png") { template_house2x2_vtall(0, 0, 1) }
+//spriteset (sprites_house_skyscraper2x2, "../graphics/detailed/64/pygen/house2x2_skyscraper_tiles_8bpp.png") { template_house2x2_vtall(0, 0, 1) }
+spriteset (sprites_house_skyscraper2x2_snow, "../graphics/detailed/64/pygen/house2x2_skyscraper_snow_tiles_8bpp.png") { template_houseoverlay2x2_vtall(0, 0, 1) }
+//spriteset (sprites_house_skyscraper2x2_snow, "../graphics/detailed/64/pygen/house2x2_skyscraper_snow_tiles_8bpp.png") { template_houseoverlay2x2_vtall(0, 0, 1) }
+
+spritelayout layout_house_skyscraper2x2_0 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+}
+
+spritelayout layout_house_skyscraper2x2 {
+	ground {
+		sprite: GROUNDSPRITE_CONCRETE+(1-LOAD_TEMP(2))*3130;
+	}
+	childsprite {
+		sprite: sprites_ground_skyscraper2x2(LOAD_TEMP(1)*4+LOAD_TEMP(4));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_house_skyscraper2x2(LOAD_TEMP(1)*4+LOAD_TEMP(4));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_skyscraper2x2_snow(LOAD_TEMP(1)*4+LOAD_TEMP(4));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+}
+
+switch (FEAT_HOUSES, SELF, layout_house_skyscraper2x2_constr, [
+	construction_state
+]) {
+	0: layout_house_skyscraper2x2_0;
+	layout_house_skyscraper2x2;
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_skyscraper2x2_random, [
+	STORE_TEMP(random_bits%4, 1),
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2),
+	STORE_TEMP(house_tile, 4)
+]) {
+	layout_house_skyscraper2x2_constr;
+}
+
+//General large skyscraper, tends to be built in clusters
+item(FEAT_HOUSES, item_house_skyscraper2x2, 75, HOUSE_SIZE_2X2) {
+	property {
+		substitute: 40;
+		name: string(STR_HOUSE_SKYSCRAPER2X2_NAME);
+		population: 0;
+		mail_multiplier: 10;
+		accepted_cargos: [[PASS, 8], [MAIL, 8], [GOOD, 8]];
+		local_authority_impact: 250;
+		removal_cost_multiplier: 250;
+		probability: 0;//skyscraper_base_probability / 2;
+		years_available: [1980, 65535];
+		minimum_lifetime: 40;
+		availability_mask: [bitmask(TOWNZONE_CENTRE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
+		building_class: 60; //Skyscraper class
+	}
+
+	graphics {
+		colour: switch_house_recolour_perclimate_skyscraper;
+		construction_check: switch_house_skyscraper_constrcheck;
+		default: switch_house_skyscraper2x2_random;
+	}
+}
+
+*/
+
+//Warehouse
+spriteset (sprites_ground_warehouse, "../graphics/detailed/64/pygen/ground_warehouse_base_8bpp.png") { template_house_short(0, 0, 1) }
+alternative_sprites(sprites_ground_warehouse, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/ground_warehouse_base_8bpp.png") { template_house_short(0, 0, 4) }
+spriteset (sprites_house_warehouse, "../graphics/detailed/64/pygen/house_warehouse_8bpp.png") { template_houseoverlay_short(0, 0, 1) }
+alternative_sprites(sprites_house_warehouse, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_warehouse_8bpp.png") { template_houseoverlay_short(0, 0, 4) }
+spriteset (sprites_house_warehouse_snow, "../graphics/detailed/64/pygen/house_warehouse_snow_8bpp.png") { template_houseoverlay_short(0, 0, 1) }
+alternative_sprites(sprites_house_warehouse_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_warehouse_snow_8bpp.png") { template_houseoverlay_short(0, 0, 4) }
+
+spritelayout layout_house_warehouse_0 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+}
+
+spritelayout layout_house_warehouse_1 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	building {
+		sprite: sprites_construction_4animframe_back(0);
+	}
+	childsprite {
+		sprite: sprites_construction_4animframe_front(0);
+	}
+}
+
+spritelayout layout_house_warehouse_2 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+	building {
+		sprite: sprites_construction_4animframe_back(0);
+	}
+	childsprite {
+		sprite: sprites_house_warehouse(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_construction_4animframe_front(0);
+	}
+}
+
+spritelayout layout_house_warehouse {
+	ground {
+		sprite: GROUNDSPRITE_CONCRETE+(1-LOAD_TEMP(2))*3130;
+	}
+	childsprite {
+		sprite: sprites_ground_warehouse(LOAD_TEMP(1));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_chainfences_4animframe_back(max(0, animation_frame-1));
+	}
+	childsprite {
+		sprite: sprites_chainfencesgaps_4animframe_back(max(0, animation_frame-1));
+	}
+	childsprite {
+		sprite: sprites_house_warehouse(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_warehouse_snow(LOAD_TEMP(1));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_chainfences_4animframe_front(max(0, animation_frame-1));
+	}
+	childsprite {
+		sprite: sprites_chainfencesgaps_4animframe_front(max(0, animation_frame-1));
+	}
+}
+
+switch (FEAT_HOUSES, SELF, layout_house_warehouse_constr, [
+	construction_state
+]) {
+	0: layout_house_warehouse_0;
+	1: layout_house_warehouse_1;
+	2: layout_house_warehouse_2;
+	layout_house_warehouse;
+}
+
+//Allow construction near railway, otherwise to tightclustering
+switch (FEAT_HOUSES, SELF, switch_houses_warehouse_railcheck, [
+	(nearby_tile_class(2, 0) == TILE_CLASS_RAIL) +
+	(nearby_tile_class(1, 0) == TILE_CLASS_RAIL) +
+	(nearby_tile_class(-1, 0) == TILE_CLASS_RAIL) +
+	(nearby_tile_class(-2, 0) == TILE_CLASS_RAIL) +
+	(nearby_tile_class(0, 2) == TILE_CLASS_RAIL) +
+	(nearby_tile_class(0, 1) == TILE_CLASS_RAIL) +
+	(nearby_tile_class(0, -1) == TILE_CLASS_RAIL) +
+	(nearby_tile_class(0, -2) == TILE_CLASS_RAIL) +
+	(nearby_tile_class(1, 1) == TILE_CLASS_RAIL) +
+	(nearby_tile_class(1, -1) == TILE_CLASS_RAIL) +
+	(nearby_tile_class(-1, -1) == TILE_CLASS_RAIL) +
+	(nearby_tile_class(-1, 1) == TILE_CLASS_RAIL)
+]) {
+	1..12: return 1;
+	switch_house_tightclustering;
+}
+
+//Allow construction if first in city, otherwise to railcheck
+switch (FEAT_HOUSES, SELF, switch_houses_warehouse_firstincity, [
+	same_class_count_town //Count instances matching class
+]) {
+	0: 1; //Allow construction if zero instances
+	switch_houses_warehouse_railcheck; //Otherwise rail check
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_warehouse_random, [
+	STORE_TEMP(random_bits%4, 1),
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2)
+]) {
+	layout_house_warehouse_constr;
+}
+
+//General warehouse, tends to be built near railway or in clusters
+item(FEAT_HOUSES, item_house_warehouse, 80) {
+	property {
+		substitute: 18;
+		name: string(STR_HOUSE_WAREHOUSE_NAME);
+		population: 0;
+		mail_multiplier: 10;
+		accepted_cargos: [[PASS, 6], [MAIL, 3], [GOOD, 8]];
+		local_authority_impact: 100;
+		removal_cost_multiplier: 110;
+		probability: 15; //Highly likely, as clustering callback will reduce construction rate by ~16x
+		years_available: [0, 65535];
+		minimum_lifetime: 10;
+		availability_mask: [bitmask(TOWNZONE_OUTSKIRT, TOWNZONE_OUTER_SUBURB, TOWNZONE_INNER_SUBURB), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
+		building_class: 70; //Warehouse class
+	}
+
+	graphics {
+		colour: switch_house_recolour_random_house;
+		construction_check: switch_houses_warehouse_firstincity;
+		anim_control: switch_house_aminframe_4road;
+		default: switch_house_warehouse_random;
+	}
+}
+
+//Warehouse 2x2
+spriteset (sprites_ground_warehouse2x2, "../graphics/detailed/64/pygen/ground2x2_warehouse_base_tiles_8bpp.png") { template_house2x2_short(0, 0, 1) }
+alternative_sprites(sprites_ground_warehouse2x2, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/ground2x2_warehouse_base_tiles_8bpp.png") { template_house2x2_short(0, 0, 4) }
+spriteset (sprites_house_warehouse2x2, "../graphics/detailed/64/pygen/house2x2_warehouse_tiles_8bpp.png") { template_houseoverlay2x2_mid(0, 0, 1) }
+alternative_sprites(sprites_house_warehouse2x2, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house2x2_warehouse_tiles_8bpp.png") { template_houseoverlay2x2_mid(0, 0, 4) }
+spriteset (sprites_house_warehouse2x2_snow, "../graphics/detailed/64/pygen/house2x2_warehouse_snow_tiles_8bpp.png") { template_houseoverlay2x2_mid(0, 0, 1) }
+alternative_sprites(sprites_house_warehouse2x2_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house2x2_warehouse_snow_tiles_8bpp.png") { template_houseoverlay2x2_mid(0, 0, 4) }
+
+spritelayout layout_house_warehouse2x2_0 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+}
+
+spritelayout layout_house_warehouse2x2 {
+	ground {
+		sprite: GROUNDSPRITE_CONCRETE+(1-LOAD_TEMP(2))*3130;
+	}
+	childsprite {
+		sprite: sprites_ground_warehouse2x2(LOAD_TEMP(1)*4+LOAD_TEMP(4));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_blankmid_16animframe(0);
+	}
+	childsprite {
+		sprite: sprites_chainfences_bitmask_backover_16(max(0, (animation_frame/4)%4));
+		yoffset: 64;
+	}
+	childsprite {
+		sprite: sprites_chainfencesgaps_bitmask_back_16(max(0, (animation_frame/64)%4));
+		yoffset: 64;
+	}
+	childsprite {
+		sprite: sprites_house_warehouse2x2(LOAD_TEMP(1)*4+LOAD_TEMP(4));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_warehouse2x2_snow(LOAD_TEMP(1)*4+LOAD_TEMP(4));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_chainfences_bitmask_front_16(max(0, (animation_frame/1)%4));
+		yoffset: 64;
+	}
+	childsprite {
+		sprite: sprites_chainfencesgaps_bitmask_front_16(max(0, (animation_frame/16)%4));
+		yoffset: 64;
+	}
+}
+
+switch (FEAT_HOUSES, SELF, layout_house_warehouse2x2_constr, [
+	construction_state
+]) {
+	0: layout_house_warehouse2x2_0;
+	layout_house_warehouse2x2;
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_warehouse2x2_random, [
+	STORE_TEMP(random_bits%4, 1),
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2),
+	STORE_TEMP(house_tile, 4)
+]) {
+	layout_house_warehouse2x2_constr;
+}
+
+//General large warehouse, tends to be built near railway or in clusters
+item(FEAT_HOUSES, item_house_warehouse2x2, 90, HOUSE_SIZE_2X2) {
+	property {
+		substitute: 40;
+		name: string(STR_HOUSE_WAREHOUSE2X2_NAME);
+		population: 0;
+		mail_multiplier: 10;
+		accepted_cargos: [[PASS, 6], [MAIL, 3], [GOOD, 8]];
+		local_authority_impact: 100;
+		removal_cost_multiplier: 110;
+		probability: 15; //Highly likely, as clustering callback will reduce construction rate by ~16x
+		years_available: [1900, 65535];
+		minimum_lifetime: 10;
+		availability_mask: [bitmask(TOWNZONE_OUTSKIRT, TOWNZONE_OUTER_SUBURB, TOWNZONE_INNER_SUBURB), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
+		building_class: 70; //Warehouse class
+	}
+
+	graphics {
+		colour: switch_house_recolour_random_house;
+		construction_check: switch_houses_warehouse_firstincity; //Currently 16x probability of constructio reduction clashes with random variant
+		anim_control: switch_house_animframe_fencemask_road2x2;
+		default: switch_house_warehouse2x2_random;
+	}
+}
+
+//Superstore 2x2
+spriteset (sprites_ground_superstore2x2, "../graphics/detailed/64/pygen/ground2x2_superstore_base_tiles_8bpp.png") { template_house2x2_mid(0, 0, 1) }
+alternative_sprites(sprites_ground_superstore2x2, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/ground2x2_superstore_base_tiles_8bpp.png") { template_house2x2_mid(0, 0, 4) }
+spriteset (sprites_house_superstore2x2, "../graphics/detailed/64/pygen/house2x2_superstore_tiles_8bpp.png") { template_houseoverlay2x2_mid(0, 0, 1) }
+alternative_sprites(sprites_house_superstore2x2, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house2x2_superstore_tiles_8bpp.png") { template_houseoverlay2x2_mid(0, 0, 4) }
+spriteset (sprites_house_superstore2x2_snow, "../graphics/detailed/64/pygen/house2x2_superstore_snow_tiles_8bpp.png") { template_houseoverlay2x2_mid(0, 0, 1) }
+alternative_sprites(sprites_house_superstore2x2_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house2x2_superstore_snow_tiles_8bpp.png") { template_houseoverlay2x2_mid(0, 0, 4) }
+spriteset (sprites_ground_superstorebrands, "../graphics/detailed/64/pygen/house_brandoverlay_8bpp.png") { template_house_short(0, 0, 1) template_house_short(0, 0, 1) template_house_short(0, 0, 1) template_house_short(0, 0, 1) }
+alternative_sprites(sprites_ground_superstorebrands, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_brandoverlay_8bpp.png") { template_house_short(0, 0, 4) template_house_short(0, 0, 4) template_house_short(0, 0, 4) template_house_short(0, 0, 4) }
+
+spritelayout layout_house_superstore2x2_0 {
+	ground {
+		sprite: GROUNDSPRITE_CLEARED;
+	}
+}
+
+spritelayout layout_house_superstore2x2 {
+	ground {
+		sprite: GROUNDSPRITE_CONCRETE+(1-LOAD_TEMP(2))*3130;
+	}
+	childsprite {
+		sprite: sprites_ground_superstore2x2(LOAD_TEMP(1)*4+LOAD_TEMP(4));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_blankmid_16animframe(0);
+	}
+	childsprite {
+		sprite: sprites_bollardsgaps_bitmask_back_16(max(0, (animation_frame/64)%4));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		yoffset: 64;
+	}
+	childsprite {
+		sprite: sprites_house_superstore2x2(LOAD_TEMP(1)*4+LOAD_TEMP(4));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_superstore2x2_snow(LOAD_TEMP(1)*4+LOAD_TEMP(4));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_ground_superstorebrands((LOAD_TEMP(11)+1)*LOAD_TEMP(12)); //Zero if not W tile, otherwise correct brand offset
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		xoffset: 38;
+		yoffset: 134;
+	}
+	childsprite {
+		sprite: sprites_bollardsgaps_bitmask_front_16(max(0, (animation_frame/16)%4));
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		yoffset: 64;
+	}
+}
+
+switch (FEAT_HOUSES, SELF, layout_house_superstore2x2_constr, [
+	construction_state
+]) {
+	0: layout_house_superstore2x2_0;
+	layout_house_superstore2x2;
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_superstore2x2_random, [
+	STORE_TEMP(random_bits%4, 1),
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2),
+	STORE_TEMP(house_tile, 4),
+	STORE_TEMP((random_bits>>4)%5, 11), //Matches brand recolour random bits, brand overlays defined in same order
+	STORE_TEMP(house_tile==2, 12) //If W tile then 1, otherwise zero
+]) {
+	layout_house_superstore2x2_constr;
+}
+
+//Large superstore
+item(FEAT_HOUSES, item_house_superstore2x2, 120, HOUSE_SIZE_2X2) {
+	property {
+		substitute: 40;
+		name: string(STR_HOUSE_SUPERSTORE2X2_NAME);
+		population: 0;
+		mail_multiplier: 10;
+		accepted_cargos: [[PASS, 6], [MAIL, 2], [GOOD, 8]];
+		local_authority_impact: 100;
+		removal_cost_multiplier: 110;
+		probability: 2;
+		years_available: [1970, 65535];
+		minimum_lifetime: 15;
+		availability_mask: [bitmask(TOWNZONE_OUTSKIRT, TOWNZONE_OUTER_SUBURB), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
+		building_class: 100; //Superstore class
+	}
+
+	graphics {
+		colour: switch_house_recolour_random_superstorebrands;
+		anim_control: switch_house_animframe_fencemask_road2x2;
+		default: switch_house_superstore2x2_random;
+	}
+}
+
+//Church
+spriteset (sprites_ground_church, "../graphics/detailed/64/pygen/ground_church_base_8bpp.png") { template_house_tile_single(0, 0, 1) }
+alternative_sprites(sprites_ground_church, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/ground_church_base_8bpp.png") { template_house_tile_single(0, 0, 4) }
+spriteset (sprites_house_church, "../graphics/detailed/64/pygen/house_church_8bpp.png") { template_houseoverlay_short_single(0, 0, 1) }
+alternative_sprites(sprites_house_church, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_church_8bpp.png") { template_houseoverlay_short_single(0, 0, 4) }
+spriteset (sprites_house_church_snow, "../graphics/detailed/64/pygen/house_church_snow_8bpp.png") { template_houseoverlay_short_single(0, 0, 1) }
+alternative_sprites(sprites_house_church_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_church_snow_8bpp.png") { template_houseoverlay_short_single(0, 0, 4) }
+
+spritelayout layout_house_church {
+	ground {
+		sprite: GROUNDSPRITE_NORMAL+(1-LOAD_TEMP(2))*569;
+	}
+	childsprite {
+		sprite: sprites_ground_church(0);
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_hedges_bitmask_back(max(0, (animation_frame/4)%4));
+	}
+	childsprite {
+		sprite: sprites_hedges_bitmask_back_snow(max(0, (animation_frame/4)%4));
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_hedgesgaps_bitmask_back(max(0, (animation_frame/64)%4));
+	}
+	childsprite {
+		sprite: sprites_hedgesgaps_bitmask_back_snow(max(0, (animation_frame/64)%4));
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_house_church(0);
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+	}
+	childsprite {
+		sprite: sprites_house_church_snow(0);
+		recolour_mode: RECOLOUR_REMAP;
+		palette: 0;
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: tree_start+tree_sizeoffs+(1-LOAD_TEMP(2))*tree_snowlineoffs+LOAD_TEMP(5)*tree_numperset;
+		xoffset: 16;
+		yoffset: 42;
+	}
+	childsprite {
+		sprite: sprites_hedges_bitmask_front(max(0, (animation_frame/1)%4));
+	}
+	childsprite {
+		sprite: sprites_hedges_bitmask_front_snow(max(0, (animation_frame/1)%4));
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_hedgesgaps_bitmask_front(max(0, (animation_frame/16)%4));
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_hedgesgaps_bitmask_front_snow(max(0, (animation_frame/16)%4));
+		hide_sprite: LOAD_TEMP(2);
+	}
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_church_constr, [
+	STORE_TEMP(random_bits%4, 1),
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2),
+	STORE_TEMP((random_bits>>4)%3, 3),
+	STORE_TEMP((random_bits>>5)%tree_setcount, 5),
+	construction_state
+]) {
+	layout_house_church;
+}
+
+item(FEAT_HOUSES, item_house_church, 130) {
+	property {
+		substitute: 03;
+		name: string(STR_HOUSE_CHURCH_NAME);
+		population: 0;
+		mail_multiplier: 2;
+		accepted_cargos: [[PASS, 4], [MAIL, 0], [FOOD, 0]];
+		local_authority_impact: 230;
+		removal_cost_multiplier: 90;
+		probability: 4;
+		years_available: [0, 65535];
+		minimum_lifetime: 100;
+		building_flags: bitmask(HOUSE_FLAG_PROTECTED);
+		availability_mask: [ALL_TOWNZONES & ~bitmask(TOWNZONE_CENTRE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
+		building_class: 110; //Church/churchyard class
+	}
+
+	graphics {
+		construction_check: switch_town_oneper200;
+		colour: switch_house_recolour_percity_house;
+		anim_control: switch_house_animframe_fencemask_roadclass;
+		default: switch_house_church_constr;
+	}
+}
+
+//Graveyard
+spriteset (sprites_house_graveyard, "../graphics/detailed/64/pygen/house_graveyard_8bpp.png") { template_houseoverlay_short(0, 0, 1) }
+alternative_sprites(sprites_house_graveyard, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_graveyard_8bpp.png") { template_houseoverlay_short(0, 0, 4) }
+spriteset (sprites_house_graveyard_snow, "../graphics/detailed/64/pygen/house_graveyard_snow_8bpp.png") { template_houseoverlay_short(0, 0, 1) }
+alternative_sprites(sprites_house_graveyard_snow, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/house_graveyard_snow_8bpp.png") { template_houseoverlay_short(0, 0, 4) }
+
+spritelayout layout_house_graveyard {
+	ground {
+		sprite: GROUNDSPRITE_NORMAL+(1-LOAD_TEMP(2))*569;
+	}
+	building {
+		sprite: sprites_hedges_bitmask_back(max(0, (animation_frame/4)%4));
+	}
+	childsprite {
+		sprite: sprites_hedges_bitmask_back_snow(max(0, (animation_frame/4)%4));
+		hide_sprite: LOAD_TEMP(2);
+	}	
+	childsprite {
+		sprite: sprites_hedgesgaps_bitmask_back(max(0, (animation_frame/64)%4));
+	}
+	childsprite {
+		sprite: sprites_hedgesgaps_bitmask_back_snow(max(0, (animation_frame/64)%4));
+		hide_sprite: LOAD_TEMP(2);
+	}	
+	childsprite {
+		sprite: sprites_house_graveyard(LOAD_TEMP(1));
+	}
+	childsprite {
+		sprite: sprites_house_graveyard_snow(LOAD_TEMP(1));
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_hedges_bitmask_front(max(0, (animation_frame/1)%4));
+	}
+	childsprite {
+		sprite: sprites_hedges_bitmask_front_snow(max(0, (animation_frame/1)%4));
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_hedgesgaps_bitmask_front(max(0, (animation_frame/16)%4));
+	}
+	childsprite {
+		sprite: sprites_hedgesgaps_bitmask_front_snow(max(0, (animation_frame/16)%4));
+		hide_sprite: LOAD_TEMP(2);
+	}
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_graveyard_constr, [
+	STORE_TEMP(random_bits%4, 1),
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2),
+	STORE_TEMP((random_bits>>4)%3, 3),
+	STORE_TEMP((random_bits>>5)%tree_setcount, 5),
+	construction_state
+]) {
+	layout_house_graveyard;
+}
+
+item(FEAT_HOUSES, item_house_graveyard, 135) {
+	property {
+		substitute: 11;
+		name: string(STR_HOUSE_GRAVEYARD_NAME);
+		population: 0;
+		mail_multiplier: 0;
+		accepted_cargos: [[PASS, 2], [MAIL, 0], [FOOD, 0]];
+		local_authority_impact: 180;
+		removal_cost_multiplier: 60;
+		probability: 15; //Highly likely, as clustering callback will reduce construction rate by ~16x
+		years_available: [0, 65535];
+		minimum_lifetime: 30;
+		building_flags: bitmask(HOUSE_FLAG_NOT_SLOPED);
+		availability_mask: [ALL_TOWNZONES, ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		building_class: 110; //Church/churchyard class
+	}
+
+	graphics {
+		anim_control: switch_house_animframe_fencemask_roadclass;
+		construction_check: switch_house_tightclustering_exclusive;
+		default: switch_house_graveyard_constr;
+	}
+}
+
+//Park
+spriteset (sprites_ground_park, "../graphics/detailed/64/pygen/ground_parkpaths_base_8bpp.png") { template_house_short(0, 0, 1) template_house_short(260, 0, 1) template_house_short(520, 0, 1) template_house_short(780, 0, 1) }
+alternative_sprites(sprites_ground_park, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "../graphics/detailed/256/pygen/ground_parkpaths_base_8bpp.png") { template_house_short(0, 0, 4) template_house_short(260, 0, 4) template_house_short(520, 0, 4) template_house_short(780, 0, 4) }
+
+if (climate == CLIMATE_TEMPERATE) {
+	park_tree=1648;
+}
+if (climate == CLIMATE_ARCTIC) {
+	park_tree=1725;
+}
+if (climate == CLIMATE_TROPICAL) {
+	park_tree=1823;
+}
+if (climate == CLIMATE_TOYLAND) {
+	park_tree=1964;
+}
+
+//Suburban
+spritelayout layout_house_park {
+	ground {
+		sprite: GROUNDSPRITE_NORMAL+(1-LOAD_TEMP(2))*569;
+	}
+	childsprite {
+		sprite: sprites_ground_park(max(0, (animation_frame/1)%16));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_hedges_bitmask_back_16(max(0, (animation_frame/4)%4));
+	}
+	childsprite {
+		sprite: sprites_hedges_bitmask_back_16_snow(max(0, (animation_frame/4)%4));
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_hedgesgaps_bitmask_back_16(max(0, (animation_frame/64)%4));
+	}
+	childsprite {
+		sprite: sprites_hedgesgaps_bitmask_back_16_snow(max(0, (animation_frame/64)%4));
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		//sprite: park_tree+(1-LOAD_TEMP(2))*tree_snowlineoffs;
+		sprite: tree_start+tree_sizeoffs+(1-LOAD_TEMP(2))*tree_snowlineoffs+LOAD_TEMP(5)*tree_numperset;
+		xoffset: 33;
+		yoffset: 44;
+	}
+	childsprite {
+		sprite: sprites_hedges_bitmask_front_16(max(0, (animation_frame/1)%4));
+	}
+	childsprite {
+		sprite: sprites_hedges_bitmask_front_16_snow(max(0, (animation_frame/1)%4));
+		hide_sprite: LOAD_TEMP(2);
+	}
+	childsprite {
+		sprite: sprites_hedgesgaps_bitmask_front_16(max(0, (animation_frame/16)%4));
+	}
+	childsprite {
+		sprite: sprites_hedgesgaps_bitmask_front_16_snow(max(0, (animation_frame/16)%4));
+		hide_sprite: LOAD_TEMP(2);
+	}
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_park_constr, [
+	STORE_TEMP(random_bits%4, 1),
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2),
+	STORE_TEMP((random_bits>>4)%3, 3),
+	STORE_TEMP((random_bits>>5)%tree_setcount, 5),
+	construction_state
+]) {
+	layout_house_park;
+}
+
+item(FEAT_HOUSES, item_house_park, 140) {
+	property {
+		substitute: 11;
+		name: string(STR_HOUSE_PARK_NAME);
+		population: 0;
+		mail_multiplier: 0;
+		accepted_cargos: [[PASS, 4], [MAIL, 0], [FOOD, 0]];
+		local_authority_impact: 75;
+		removal_cost_multiplier: 60;
+		probability: 6; //Highly likely, as clustering callback will reduce construction rate by ~16x
+		years_available: [0, 65535];
+		minimum_lifetime: 30;
+		building_flags: bitmask(HOUSE_FLAG_NOT_SLOPED);
+		availability_mask: [ALL_TOWNZONES & ~bitmask(TOWNZONE_CENTRE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		building_class: 120; //Parks class
+	}
+
+	graphics {
+		anim_control: switch_house_animframe_fencemask_roadclass;
+		construction_check: switch_house_tightclustering;
+		default: switch_house_park_constr;
+	}
+}
+
+//City
+spritelayout layout_house_citypark {
+	ground {
+		sprite: GROUNDSPRITE_NORMAL+(1-LOAD_TEMP(2))*569;
+	}
+	childsprite {
+		sprite: sprites_ground_park(max(0, (animation_frame/1)%16));
+		always_draw: 1;
+	}
+	building {
+		sprite: sprites_railings_bitmask_back_16(max(0, (animation_frame/4)%4));
+	}
+	childsprite {
+		sprite: sprites_railingsgaps_bitmask_back_16(max(0, (animation_frame/64)%4));
+	}
+	childsprite {
+		sprite: park_tree+(1-LOAD_TEMP(2))*tree_snowlineoffs;
+		//sprite: tree_start+tree_sizeoffs+(1-LOAD_TEMP(2))*tree_snowlineoffs+LOAD_TEMP(5)*tree_numperset;
+		xoffset: 33;
+		yoffset: 44;
+	}
+	childsprite {
+		sprite: sprites_railings_bitmask_front_16(max(0, (animation_frame/1)%4));
+	}
+	childsprite {
+		sprite: sprites_railingsgaps_bitmask_front_16(max(0, (animation_frame/16)%4));
+	}
+}
+
+switch (FEAT_HOUSES, SELF, switch_house_citypark_constr, [
+	STORE_TEMP(random_bits%4, 1),
+	STORE_TEMP(terrain_type != TILETYPE_SNOW, 2),
+	STORE_TEMP((random_bits>>4)%3, 3),
+	STORE_TEMP((random_bits>>5)%tree_setcount, 5),
+	construction_state
+]) {
+	layout_house_citypark;
+}
+
+item(FEAT_HOUSES, item_house_citypark, 150) {
+	property {
+		substitute: 11;
+		name: string(STR_HOUSE_CITYPARK_NAME);
+		population: 0;
+		mail_multiplier: 0;
+		accepted_cargos: [[PASS, 4], [MAIL, 0], [FOOD, 0]];
+		local_authority_impact: 75;
+		removal_cost_multiplier: 60;
+		probability: 6; //Highly likely, as clustering callback will reduce construction rate by ~16x
+		years_available: [0, 65535];
+		minimum_lifetime: 30;
+		building_flags: bitmask(HOUSE_FLAG_NOT_SLOPED);
+		availability_mask: [bitmask(TOWNZONE_CENTRE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		building_class: 120; //Parks class
+	}
+
+	graphics {
+		anim_control: switch_house_animframe_fencemask_roadclass;
+		construction_check: switch_house_tightclustering;
+		default: switch_house_citypark_constr;
+	}
+}
+
+//Park with fountain/statue

@@ -1,0 +1,131 @@
+//Empty sprite templates, for padding sprite sets to match in number
+template template_empty() {
+	//[ 1, 1, 1, 1, 0, 0, NOCROP, "../graphics/empty_8bpp.png" ]
+	[]
+}
+template template_empty_4view() { template_empty() template_empty() template_empty() template_empty() }
+template template_empty_8view() { template_empty_4view() template_empty_4view() }
+template template_empty_12view() { template_empty_8view() template_empty_4view() }
+template template_empty_16view() { template_empty_12view() template_empty_4view() }
+
+//House templates
+template template_house_single(x, y, z, h) {
+	[   1*z+x*z, 1*z+y*z, 64*z, h*z-1, -31*z, (32-h)*z, NOCROP ]
+}
+template template_house(x, y, z, h) {
+	template_house_single(  x+0, y, z, h)
+	template_house_single( x+65, y, z, h)
+	template_house_single(x+130, y, z, h)
+	template_house_single(x+195, y, z, h)
+}
+template template_house_tile(x, y, z) { template_house(x, y, z, 32) }
+template template_house_short(x, y, z) { template_house(x, y, z, 65) }
+template template_house_mid(x, y, z) { template_house(x, y, z, 129) }
+template template_house_tall(x, y, z) { template_house(x, y, z, 257) }
+template template_house_tile_single(x, y, z) { template_house_single(x, y, z, 32) template_empty() template_empty() template_empty() }
+template template_house_short_single(x, y, z) { template_house_single(x, y, z, 65) template_empty() template_empty() template_empty() }
+template template_house_mid_single(x, y, z) { template_house_single(x, y, z, 129) template_empty() template_empty() template_empty() }
+template template_house_tall_single(x, y, z) { template_house_single(x, y, z, 257) template_empty() template_empty() template_empty() }
+
+template template_houseoverlay_single(x, y, z, h) {
+	[   1*z+x*z, 1*z+y*z, 64*z, h*z-1, 0*z, 0*z, NOCROP ]
+}
+template template_houseoverlay(x, y, z, h) {
+	template_houseoverlay_single(  x+0, y, z, h)
+	template_houseoverlay_single( x+65, y, z, h)
+	template_houseoverlay_single(x+130, y, z, h)
+	template_houseoverlay_single(x+195, y, z, h)
+}
+template template_houseoverlay_tile(x, y, z) { template_houseoverlay(x, y, z, 32) }
+template template_houseoverlay_short(x, y, z) { template_houseoverlay(x, y, z, 65) }
+template template_houseoverlay_mid(x, y, z) { template_houseoverlay(x, y, z, 129) }
+template template_houseoverlay_tall(x, y, z) { template_houseoverlay(x, y, z, 257) }
+template template_houseoverlay_tile_single(x, y, z) { template_houseoverlay_single(x, y, z, 32) template_empty() template_empty() template_empty() }
+template template_houseoverlay_short_single(x, y, z) { template_houseoverlay_single(x, y, z, 65) template_empty() template_empty() template_empty() }
+template template_houseoverlay_mid_single(x, y, z) { template_houseoverlay_single(x, y, z, 129) template_empty() template_empty() template_empty() }
+template template_houseoverlay_tall_single(x, y, z) { template_houseoverlay_single(x, y, z, 257) template_empty() template_empty() template_empty() }
+
+//2x2 house templates
+template template_house2x2(x, y, z, h) {
+	template_house(  x+0, y, z, h)
+	template_house(x+260, y, z, h)
+	template_house(x+520, y, z, h)
+	template_house(x+780, y, z, h)
+}
+template template_house2x2_short(x, y, z) { template_house2x2(x, y, z, 81)}
+template template_house2x2_mid(x, y, z) { template_house2x2(x, y, z, 129)}
+template template_house2x2_tall(x, y, z) { template_house2x2(x, y, z, 257)}
+template template_house2x2_vtall(x, y, z) { template_house2x2(x, y, z, 385)}
+
+template template_houseoverlay2x2(x, y, z, h) {
+	template_houseoverlay(  x+0, y, z, h)
+	template_houseoverlay(x+260, y, z, h)
+	template_houseoverlay(x+520, y, z, h)
+	template_houseoverlay(x+780, y, z, h)
+}
+template template_houseoverlay2x2_short(x, y, z) { template_houseoverlay2x2(x, y, z, 81)}
+template template_houseoverlay2x2_mid(x, y, z) { template_houseoverlay2x2(x, y, z, 129)}
+template template_houseoverlay2x2_tall(x, y, z) { template_houseoverlay2x2(x, y, z, 257)}
+template template_houseoverlay2x2_vtall(x, y, z) { template_houseoverlay2x2(x, y, z, 385)}
+
+//Construction templates
+template template_construction4view_short(x, y, z) {
+	[   1*z+x*z, 1*z+y*z, 64*z, 65*z-1, -31*z, -33*z, NOCROP ]
+	template_empty()
+	template_empty()
+	template_empty()
+}
+template template_constructionoverlay4view_short(x, y, z) {
+	[   1*z+x*z, 1*z+y*z, 64*z, 65*z-1, 0*z, 0*z, NOCROP ]
+	template_empty()
+	template_empty()
+	template_empty()
+}
+template template_construction8view_short(x, y, z) {
+	[   1*z+x*z, 1*z+y*z, 64*z, 65*z-1, -31*z, -33*z, NOCROP ]
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+}
+template template_constructionoverlay8view_short(x, y, z) {
+	[   1*z+x*z, 1*z+y*z, 64*z, 65*z-1, 0*z, 0*z, NOCROP ]
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+}
+template template_construction12view_short(x, y, z) {
+	[   1*z+x*z, 1*z+y*z, 64*z, 65*z-1, -31*z, -33*z, NOCROP ]
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+}
+template template_constructionoverlay12view_short(x, y, z) {
+	[   1*z+x*z, 1*z+y*z, 64*z, 65*z-1, 0*z, 0*z, NOCROP ]
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+	template_empty()
+}

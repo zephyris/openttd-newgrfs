@@ -1,0 +1,38 @@
+##grflangid 0x01
+STR_GRF_NAME:Full English - UK Townset
+STR_GRF_DESC:{ORANGE}Full English - UK Townset{}{BLACK}UK-style houses, terraces, shops, warehouses, offices and skyscrapers in full (4x) zoom. Pixel art 8-bit graphics in the OpenGFX2 style.{}Graphics by {SILVER}Zephyris, {BLACK}coding by {SILVER}Zephyris.
+
+STR_PARAM_DISABLEDEFAULTBUILDINGS_NAME:Disable default buildings
+STR_PARAM_DISABLEDEFAULTBUILDINGS_DESC:Set to 'On' to disable the default OpenTTD buildings, set to 'Off' to have the default OpenTTD buildings mixed with the Full English UK townset buildings.
+
+STR_PARAM_SKYSCRAPERPREVALENCE_NAME:Skyscraper prevalence
+STR_PARAM_SKYSCRAPERPREVALENCE_DESC:Configure when skyscrapers appear, allow building in all towns and cities, cities only, or never build skyscrapers.
+STR_PARAM_SKYSCRAPERPREVALENCE_OFF:No Skyscrapers
+STR_PARAM_SKYSCRAPERPREVALENCE_CITIES:Cities Only
+STR_PARAM_SKYSCRAPERPREVALENCE_ALL:All Towns
+
+STR_PARAM_FUTURISTICPREVALENCE_NAME:Futuristic building prevalence
+STR_PARAM_FUTURISTICPREVALENCE_DESC:Set to 'On' to enable less realistic futuristic buildings, set to 'Off' to disable futuristic buildings.
+
+STR_HOUSE_THATCHED_NAME:Thatched cottages
+STR_HOUSE_DETACHED_NAME:Detached house
+STR_HOUSE_SEMIDETACHED_NAME:Semi-detached houses
+STR_HOUSE_TERRACE_NAME:Terraced houses
+STR_HOUSE_TERRACESHOPS_NAME:Terraced shops and flats
+STR_HOUSE_TALLTERRACE_NAME:Tall terraced houses
+STR_HOUSE_OFFICES_NAME:Office block
+STR_HOUSE_OFFICETOWER_NAME:Office tower block
+STR_HOUSE_SKYSCRAPER_NAME:Skyscraper
+STR_HOUSE_FUTURESKYSCRAPER_NAME:Futuristic skyscraper
+STR_HOUSE_SKYSCRAPER2X2_NAME:Large skyscraper
+STR_HOUSE_WAREHOUSE_NAME:Warehouse
+STR_HOUSE_WAREHOUSE2X2_NAME:Large warehouse
+STR_HOUSE_SUPERSTORE2X2_NAME:Superstore
+
+STR_HOUSE_PARK_NAME:Park
+STR_HOUSE_CITYPARK_NAME:City park
+STR_HOUSE_CHURCH_NAME:Church
+STR_HOUSE_GRAVEYARD_NAME:Graveyard
+STR_HOUSE_FOUNTAIN_NAME:Park with fountain
+STR_HOUSE_STATUE_NAME:Park with statue
+STR_HOUSE_PARK2X2_NAME:Large park

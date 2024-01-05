@@ -1,0 +1,26 @@
+# python scripts (all fetched from opengfx2)
+*.py
+
+# python optimised files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# generated images
+*_8bpp.png
+*_bt32bpp.png
+*_rm32bpp.png
+pygen/
+
+# generated nml
+*.nml
+
+# nmlc intermediates and output
+.nmlcache/
+*.grf
+*.grf.cache
+*.grf.cacheindex
+grf/
+
+# output
+*.tar

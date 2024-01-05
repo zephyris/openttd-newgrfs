@@ -1,0 +1,55 @@
+//Define the grf
+grf {
+	grfid: "ZUK\21";
+	name: string(STR_GRF_NAME);
+	desc: string(STR_GRF_DESC);
+	version: 0;
+	min_compatible_version: 0;
+	param 1 {
+		param_disabledefaultbuildings {
+			type: bool;
+			name: string(STR_PARAM_DISABLEDEFAULTBUILDINGS_NAME);
+			desc: string(STR_PARAM_DISABLEDEFAULTBUILDINGS_DESC);
+			def_value: 1;
+		}
+	}
+	param 2 {
+		param_skyscraperprevalence {
+			type: int;
+			name: string(STR_PARAM_SKYSCRAPERPREVALENCE_NAME);
+			desc: string(STR_PARAM_SKYSCRAPERPREVALENCE_DESC);
+			def_value: 1;
+			min_value: 0;
+			max_value: 2;
+			names: {
+				0: string(STR_PARAM_SKYSCRAPERPREVALENCE_OFF);
+				1: string(STR_PARAM_SKYSCRAPERPREVALENCE_CITIES);
+				2: string(STR_PARAM_SKYSCRAPERPREVALENCE_ALL);
+			};
+		}
+	}
+	/*
+	param 3 {
+		param_futuristicprevalence {
+			type: bool;
+			name: string(STR_PARAM_FUTURISTICPREVALENCE_NAME);
+			desc: string(STR_PARAM_FUTURISTICPREVALENCE_DESC);
+			def_value: 1;
+			min_value: 0;
+			max_value: 1;
+			names: {
+				0: string(STR_PARAM_FUTURISTICPREVALENCE_OFF);
+				1: string(STR_PARAM_FUTURISTICPREVALENCE_ON);
+			};
+		}
+	}
+	*/
+}
+
+//Cargoes
+cargotable {PASS, GOOD, MAIL, FOOD}
+
+//Disable all buildings
+if (param_disabledefaultbuildings == 1) {
+	disable_item(FEAT_HOUSES);
+}
