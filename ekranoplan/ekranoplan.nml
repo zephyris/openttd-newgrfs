@@ -1,0 +1,613 @@
+grf {
+	grfid: "ZEK\0";
+	name: string(STR_GRF_NAME);
+	desc: string(STR_GRF_DESC);
+	url:  string(STR_GRF_URL);
+	version: 1;
+	min_compatible_version: version_openttd(1, 3, 0);
+}
+
+//Inspired by kamnet
+//https://www.tt-forums.net/viewtopic.php?p=1146842#p1146842
+//https://docs.google.com/spreadsheets/d/1Dz2kBMW0YSSxURqkVrLonlqEtSitanCTRWQZ_ku9vSQ
+
+//Coded as two broad classes:
+// Large (very fast, very large capacity, but slow on rivers/canals)
+// Small (smaller, but faster on rivers/canals)
+//Early large have short lifespans
+
+cargotable {PASS, MAIL}
+
+template template_ogfx2_vehicle_water_8view(xindex, yindex, z) {
+	[(1+  0+xindex*778)*z, (1+yindex*97)*z, 96*z, 96*z, -48*z, -48*z, CROP]
+	[(2+ 96+xindex*778)*z, (1+yindex*97)*z, 96*z, 96*z, -74*z, -32*z, CROP]
+	[(3+192+xindex*778)*z, (1+yindex*97)*z, 96*z, 96*z, -48*z, -48*z, CROP]
+	[(4+288+xindex*778)*z, (1+yindex*97)*z, 96*z, 96*z, -22*z, -32*z, CROP]
+	[(5+384+xindex*778)*z, (1+yindex*97)*z, 96*z, 96*z, -48*z, -48*z, CROP]
+	[(6+480+xindex*778)*z, (1+yindex*97)*z, 96*z, 96*z, -74*z, -32*z, CROP]
+	[(7+576+xindex*778)*z, (1+yindex*97)*z, 96*z, 96*z, -48*z, -48*z, CROP]
+	[(8+672+xindex*778)*z, (1+yindex*97)*z, 96*z, 96*z, -22*z, -32*z, CROP]
+}
+
+//Antonov ESKA-1
+spriteset (spriteset_ekr_0, "ekranoplan.png") {
+	template_ogfx2_vehicle_water_8view(0, 0, 1)
+}
+
+switch (FEAT_SHIPS, SELF, switch_ekr_0_capacity, cargo_type_in_veh) {
+	PASS: return 4;
+	MAIL: return 3; //~PASS*0.7;
+	1;
+}
+
+item(FEAT_SHIPS, item_ekr_0, 11) {
+	property {
+		//name
+		name: string(STR_EKR_0);
+		//availability
+		introduction_date: date(1960, 01, 01);
+		model_life: 40;
+		vehicle_life: 20;
+		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		retire_early: 0;
+		//reliability
+		reliability_decay: 20;
+		//cargo
+		default_cargo_type: PASS;
+		cargo_capacity: 4; //0.5T
+		is_refittable: 1;
+		cargo_allow_refit: [PASS];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED);
+		non_refittable_cargo_classes: bitmask(CC_LIQUID, CC_PIECE_GOODS, CC_REFRIGERATED);
+		loading_speed: 15;
+		//cost
+		cost_factor: 28;
+		running_cost_factor: 28;
+		refit_cost: 32;
+		//speed
+		speed: 127 km/h; // 115 km/h;
+		ocean_speed_fraction: 1;
+		canal_speed_fraction: 0.6;
+		//sprites
+		sprite_id: SPRITE_ID_NEW_SHIP;
+		misc_flags: bitmask(SHIP_FLAG_2CC);
+		visual_effect: (VISUAL_EFFECT_DISABLE);
+		//sound
+		sound_effect: SOUND_TAKEOFF_PROPELLER;
+	}
+	graphics {
+		cargo_capacity: switch_ekr_0_capacity;
+		spriteset_ekr_0;
+	}
+}
+
+//Antonov An-2E
+spriteset (spriteset_ekr_1, "ekranoplan.png") {
+	template_ogfx2_vehicle_water_8view(0, 1, 1)
+}
+
+switch (FEAT_SHIPS, SELF, switch_ekr_1_capacity, cargo_type_in_veh) {
+	PASS: return 18;
+	MAIL: return 12; //~PASS*0.7;
+	2;
+}
+
+item(FEAT_SHIPS, item_ekr_1, 12) {
+	property {
+		//name
+		name: string(STR_EKR_1);
+		//availability
+		introduction_date: date(1970, 01, 01);
+		model_life: 40;
+		vehicle_life: 20;
+		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		retire_early: 0;
+		//reliability
+		reliability_decay: 20;
+		//cargo
+		default_cargo_type: PASS;
+		cargo_capacity: 18; //1.2T
+		is_refittable: 1;
+		cargo_allow_refit: [PASS];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED);
+		non_refittable_cargo_classes: bitmask(CC_LIQUID, CC_PIECE_GOODS, CC_REFRIGERATED);
+		loading_speed: 15;
+		//cost
+		cost_factor: 40;
+		running_cost_factor: 40;
+		refit_cost: 32;
+		//speed
+		speed: 127 km/h; // 200 km/h;
+		ocean_speed_fraction: 1;
+		canal_speed_fraction: 0.6;
+		//sprites
+		sprite_id: SPRITE_ID_NEW_SHIP;
+		misc_flags: bitmask(SHIP_FLAG_2CC);
+		visual_effect: (VISUAL_EFFECT_DISABLE);
+		//sound
+		sound_effect: SOUND_TAKEOFF_PROPELLER;
+	}
+	graphics {
+		cargo_capacity: switch_ekr_1_capacity;
+		spriteset_ekr_1;
+	}
+}
+
+//Alexeev KM-1
+spriteset (spriteset_ekr_2, "ekranoplan.png") {
+	template_ogfx2_vehicle_water_8view(0, 2, 1)
+}
+
+switch (FEAT_SHIPS, SELF, switch_ekr_2_capacity, cargo_type_in_veh) {
+	PASS: return 700;
+	MAIL: return 490; //~PASS*0.7;
+	150;
+}
+
+item(FEAT_SHIPS, item_ekr_2, 13) {
+	property {
+		//name
+		name: string(STR_EKR_2);
+		//availability
+		introduction_date: date(1971, 01, 01);
+		model_life: 40;
+		vehicle_life: 12;
+		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		retire_early: 0;
+		//reliability
+		reliability_decay: 70;
+		//cargo
+		default_cargo_type: PASS;
+		cargo_capacity: 700; //150T
+		is_refittable: 1;
+		cargo_allow_refit: [PASS];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_PIECE_GOODS, CC_REFRIGERATED);
+		non_refittable_cargo_classes: bitmask(CC_LIQUID);
+		loading_speed: 15;
+		//cost
+		cost_factor: 250;
+		running_cost_factor: 250;
+		refit_cost: 32;
+		//speed
+		speed: 127 km/h; // 430 km/h;
+		ocean_speed_fraction: 1;
+		canal_speed_fraction: 0.1;
+		//sprites
+		sprite_id: SPRITE_ID_NEW_SHIP;
+		misc_flags: bitmask(SHIP_FLAG_2CC);
+		visual_effect: (VISUAL_EFFECT_DISABLE);
+		//sound
+		sound_effect: SOUND_TAKEOFF_JET_BIG;
+	}
+	graphics {
+		cargo_capacity: switch_ekr_2_capacity;
+		spriteset_ekr_2;
+	}
+}
+
+//Alexeev A-90 Orlyonok
+spriteset (spriteset_ekr_3, "ekranoplan.png") {
+	template_ogfx2_vehicle_water_8view(0, 3, 1)
+}
+
+switch (FEAT_SHIPS, SELF, switch_ekr_3_capacity, cargo_type_in_veh) {
+	PASS: return 250;
+	MAIL: return 175; //~PASS*0.7;
+	28;
+}
+
+item(FEAT_SHIPS, item_ekr_3, 14) {
+	property {
+		//name
+		name: string(STR_EKR_3);
+		//availability
+		introduction_date: date(1974, 01, 01);
+		model_life: 40;
+		vehicle_life: 23;
+		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		retire_early: 0;
+		//reliability
+		reliability_decay: 20;
+		//cargo
+		default_cargo_type: PASS;
+		cargo_capacity: 250; //28T
+		is_refittable: 1;
+		cargo_allow_refit: [PASS];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_PIECE_GOODS, CC_REFRIGERATED);
+		non_refittable_cargo_classes: bitmask(CC_LIQUID);
+		loading_speed: 15;
+		//cost
+		cost_factor: 170;
+		running_cost_factor: 170;
+		refit_cost: 32;
+		//speed
+		speed: 127 km/h; // 400 km/h;
+		ocean_speed_fraction: 1;
+		canal_speed_fraction: 0.1;
+		//sprites
+		sprite_id: SPRITE_ID_NEW_SHIP;
+		misc_flags: bitmask(SHIP_FLAG_2CC);
+		visual_effect: (VISUAL_EFFECT_DISABLE);
+		//sound
+		sound_effect: SOUND_TAKEOFF_PROPELLER;
+	}
+	graphics {
+		cargo_capacity: switch_ekr_3_capacity;
+		spriteset_ekr_3;
+	}
+}
+
+//Alexeev MD-160 Lun-class
+spriteset (spriteset_ekr_4, "ekranoplan.png") {
+	template_ogfx2_vehicle_water_8view(0, 4, 1)
+}
+
+switch (FEAT_SHIPS, SELF, switch_ekr_4_capacity, cargo_type_in_veh) {
+	PASS: return 650;
+	MAIL: return 450; //~PASS*0.7;
+	100;
+}
+
+item(FEAT_SHIPS, item_ekr_4, 15) {
+	property {
+		//name
+		name: string(STR_EKR_4);
+		//availability
+		introduction_date: date(1987, 01, 01);
+		model_life: 17;
+		vehicle_life: 16;
+		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		retire_early: 0;
+		//reliability
+		reliability_decay: 30;
+		//cargo
+		default_cargo_type: PASS;
+		cargo_capacity: 650; //100T
+		is_refittable: 1;
+		cargo_allow_refit: [PASS];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_PIECE_GOODS, CC_REFRIGERATED);
+		non_refittable_cargo_classes: bitmask(CC_LIQUID);
+		loading_speed: 15;
+		//cost
+		cost_factor: 220;
+		running_cost_factor: 220;
+		refit_cost: 32;
+		//speed
+		speed: 127 km/h; // 550 km/h;
+		ocean_speed_fraction: 1;
+		canal_speed_fraction: 0.1;
+		//sprites
+		sprite_id: SPRITE_ID_NEW_SHIP;
+		misc_flags: bitmask(SHIP_FLAG_2CC);
+		visual_effect: (VISUAL_EFFECT_DISABLE);
+		//sound
+		sound_effect: SOUND_TAKEOFF_JET_BIG;
+	}
+	graphics {
+		cargo_capacity: switch_ekr_4_capacity;
+		spriteset_ekr_4;
+	}
+}
+
+//Sukhoi S-90-200
+spriteset (spriteset_ekr_5, "ekranoplan.png") {
+	template_ogfx2_vehicle_water_8view(0, 5, 1)
+}
+
+switch (FEAT_SHIPS, SELF, switch_ekr_5_capacity, cargo_type_in_veh) {
+	PASS: return 400;
+	MAIL: return 280; //~PASS*0.7;
+	25;
+}
+
+item(FEAT_SHIPS, item_ekr_5, 16) {
+	property {
+		//name
+		name: string(STR_EKR_5);
+		//availability
+		introduction_date: date(1992, 01, 01);
+		model_life: 40;
+		vehicle_life: 22;
+		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		retire_early: 0;
+		//reliability
+		reliability_decay: 20;
+		//cargo
+		default_cargo_type: PASS;
+		cargo_capacity: 400; //25T
+		is_refittable: 1;
+		cargo_allow_refit: [PASS];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_PIECE_GOODS, CC_REFRIGERATED);
+		non_refittable_cargo_classes: bitmask(CC_LIQUID);
+		loading_speed: 15;
+		//cost
+		cost_factor: 170;
+		running_cost_factor: 170;
+		refit_cost: 32;
+		//speed
+		speed: 127 km/h; // 470 km/h;
+		ocean_speed_fraction: 1;
+		canal_speed_fraction: 0.1;
+		//sprites
+		sprite_id: SPRITE_ID_NEW_SHIP;
+		misc_flags: bitmask(SHIP_FLAG_2CC);
+		visual_effect: (VISUAL_EFFECT_DISABLE);
+		//sound
+		sound_effect: SOUND_TAKEOFF_PROPELLER;
+	}
+	graphics {
+		cargo_capacity: switch_ekr_5_capacity;
+		spriteset_ekr_5;
+	}
+}
+
+//Raketa 2
+spriteset (spriteset_ekr_6, "ekranoplan.png") {
+	template_ogfx2_vehicle_water_8view(0, 6, 1)
+}
+
+switch (FEAT_SHIPS, SELF, switch_ekr_6_capacity, cargo_type_in_veh) {
+	PASS: return 89;
+	MAIL: return 62; //~PASS*0.7;
+	15;
+}
+
+item(FEAT_SHIPS, item_ekr_6, 17) {
+	property {
+		//name
+		name: string(STR_EKR_6);
+		//availability
+		introduction_date: date(1994, 01, 01);
+		model_life: 40;
+		vehicle_life: 25;
+		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		retire_early: 0;
+		//reliability
+		reliability_decay: 20;
+		//cargo
+		default_cargo_type: PASS;
+		cargo_capacity: 89; //15T
+		is_refittable: 1;
+		cargo_allow_refit: [PASS];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED);
+		non_refittable_cargo_classes: bitmask(CC_LIQUID, CC_PIECE_GOODS, CC_REFRIGERATED);
+		loading_speed: 15;
+		//cost
+		cost_factor: 60;
+		running_cost_factor: 60;
+		refit_cost: 32;
+		//speed
+		speed: 127 km/h; // 190 km/h;
+		ocean_speed_fraction: 1;
+		canal_speed_fraction: 0.6;
+		//sprites
+		sprite_id: SPRITE_ID_NEW_SHIP;
+		misc_flags: bitmask(SHIP_FLAG_2CC);
+		visual_effect: (VISUAL_EFFECT_DISABLE);
+		//sound
+		sound_effect: SOUND_TAKEOFF_PROPELLER;
+	}
+	graphics {
+		cargo_capacity: switch_ekr_6_capacity;
+		spriteset_ekr_6;
+	}
+}
+
+//Sukhoi P-100 //Fictional "Projet Sukhoi"
+spriteset (spriteset_ekr_7, "ekranoplan.png") {
+	template_ogfx2_vehicle_water_8view(0, 7, 1)
+}
+
+switch (FEAT_SHIPS, SELF, switch_ekr_7_capacity, cargo_type_in_veh) {
+	PASS: return 127;
+	MAIL: return 90; //~PASS*0.7;
+	30;
+}
+
+item(FEAT_SHIPS, item_ekr_7, 18) {
+	property {
+		//name
+		name: string(STR_EKR_7);
+		//availability
+		introduction_date: date(2002, 01, 01);
+		model_life: 40;
+		vehicle_life: 22;
+		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		retire_early: 0;
+		//reliability
+		reliability_decay: 20;
+		//cargo
+		default_cargo_type: PASS;
+		cargo_capacity: 127; //30T
+		is_refittable: 1;
+		cargo_allow_refit: [PASS];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED);
+		non_refittable_cargo_classes: bitmask(CC_LIQUID, CC_PIECE_GOODS, CC_REFRIGERATED);
+		loading_speed: 15;
+		//cost
+		cost_factor: 75;
+		running_cost_factor: 75;
+		refit_cost: 32;
+		//speed
+		speed: 127 km/h; // 225 km/h;
+		ocean_speed_fraction: 1;
+		canal_speed_fraction: 0.6;
+		//sprites
+		sprite_id: SPRITE_ID_NEW_SHIP;
+		misc_flags: bitmask(SHIP_FLAG_2CC);
+		visual_effect: (VISUAL_EFFECT_DISABLE);
+		//sound
+		sound_effect: SOUND_TAKEOFF_JET;
+	}
+	graphics {
+		cargo_capacity: switch_ekr_7_capacity;
+		spriteset_ekr_7;
+	}
+}
+
+//Pachenkov C-801 // Fictional "Constructeur Pachenkov"
+spriteset (spriteset_ekr_8, "ekranoplan.png") {
+	template_ogfx2_vehicle_water_8view(0, 8, 1)
+}
+
+switch (FEAT_SHIPS, SELF, switch_ekr_8_capacity, cargo_type_in_veh) {
+	PASS: return 480;
+	MAIL: return 330; //~PASS*0.7;
+	60;
+}
+
+item(FEAT_SHIPS, item_ekr_8, 19) {
+	property {
+		//name
+		name: string(STR_EKR_8);
+		//availability
+		introduction_date: date(2012, 01, 01);
+		model_life: 40;
+		vehicle_life: 25;
+		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		retire_early: 0;
+		//reliability
+		reliability_decay: 20;
+		//cargo
+		default_cargo_type: PASS;
+		cargo_capacity: 480; //60T
+		is_refittable: 1;
+		cargo_allow_refit: [PASS];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_PIECE_GOODS, CC_REFRIGERATED);
+		non_refittable_cargo_classes: bitmask(CC_LIQUID);
+		loading_speed: 15;
+		//cost
+		cost_factor: 200;
+		running_cost_factor: 200;
+		refit_cost: 32;
+		//speed
+		speed: 127 km/h; // 525 km/h;
+		ocean_speed_fraction: 1;
+		canal_speed_fraction: 0.1;
+		//sprites
+		sprite_id: SPRITE_ID_NEW_SHIP;
+		misc_flags: bitmask(SHIP_FLAG_2CC);
+		visual_effect: (VISUAL_EFFECT_DISABLE);
+		//sound
+		sound_effect: SOUND_TAKEOFF_JET;
+	}
+	graphics {
+		cargo_capacity: switch_ekr_8_capacity;
+		spriteset_ekr_8;
+	}
+}
+
+//Beriev Be-2500 // Concept
+spriteset (spriteset_ekr_9, "ekranoplan.png") {
+	template_ogfx2_vehicle_water_8view(0, 9, 1)
+}
+
+switch (FEAT_SHIPS, SELF, switch_ekr_9_capacity, cargo_type_in_veh) {
+	PASS: return 1300;
+	MAIL: return 900; //~PASS*0.7;
+	220;
+}
+
+item(FEAT_SHIPS, item_ekr_9, 20) {
+	property {
+		//name
+		name: string(STR_EKR_9);
+		//availability
+		introduction_date: date(2019, 01, 01);
+		model_life: 40;
+		vehicle_life: 20;
+		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		retire_early: 0;
+		//reliability
+		reliability_decay: 20;
+		//cargo
+		default_cargo_type: PASS;
+		cargo_capacity: 1300; //220T
+		is_refittable: 1;
+		cargo_allow_refit: [PASS];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_PIECE_GOODS, CC_REFRIGERATED);
+		non_refittable_cargo_classes: bitmask(CC_LIQUID);
+		loading_speed: 15;
+		//cost
+		cost_factor: 240;
+		running_cost_factor: 240;
+		refit_cost: 32;
+		//speed
+		speed: 127 km/h; // 450 km/h;
+		ocean_speed_fraction: 1;
+		canal_speed_fraction: 0.1;
+		//sprites
+		sprite_id: SPRITE_ID_NEW_SHIP;
+		misc_flags: bitmask(SHIP_FLAG_2CC);
+		visual_effect: (VISUAL_EFFECT_DISABLE);
+		//sound
+		sound_effect: SOUND_TAKEOFF_JET_BIG;
+	}
+	graphics {
+		cargo_capacity: switch_ekr_9_capacity;
+		spriteset_ekr_9;
+	}
+}
+
+//Aerocon Dash-1.6 Wingship // Concept
+spriteset (spriteset_ekr_10, "ekranoplan.png") {
+	template_ogfx2_vehicle_water_8view(0, 10, 1)
+}
+
+switch (FEAT_SHIPS, SELF, switch_ekr_10_capacity, cargo_type_in_veh) {
+	PASS: return 1900;
+	MAIL: return 1300; //~PASS*0.7;
+	350;
+}
+
+item(FEAT_SHIPS, item_ekr_10, 21) {
+	property {
+		//name
+		name: string(STR_EKR_10);
+		//availability
+		introduction_date: date(2029, 01, 01);
+		model_life: 40;
+		vehicle_life: 30;
+		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		retire_early: 0;
+		//reliability
+		reliability_decay: 20;
+		//cargo
+		default_cargo_type: PASS;
+		cargo_capacity: 1900;
+		is_refittable: 1;
+		cargo_allow_refit: [PASS];
+		cargo_disallow_refit: [];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_EXPRESS, CC_ARMOURED, CC_PIECE_GOODS, CC_REFRIGERATED);
+		non_refittable_cargo_classes: bitmask(CC_LIQUID);
+		loading_speed: 15;
+		//cost
+		cost_factor: 255;
+		running_cost_factor: 255;
+		refit_cost: 32;
+		//speed
+		speed: 127 km/h; // 650 km/h;
+		ocean_speed_fraction: 1;
+		canal_speed_fraction: 0.1;
+		//sprites
+		sprite_id: SPRITE_ID_NEW_SHIP;
+		misc_flags: bitmask(SHIP_FLAG_2CC);
+		visual_effect: (VISUAL_EFFECT_DISABLE);
+		//sound
+		sound_effect: SOUND_TAKEOFF_JET_FAST;
+	}
+	graphics {
+		cargo_capacity: switch_ekr_10_capacity;
+		spriteset_ekr_10;
+	}
+}

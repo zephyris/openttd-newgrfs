@@ -1,0 +1,16 @@
+##grflangid 0x01
+STR_GRF_NAME :Ekranoplan
+STR_GRF_DESC :{ORANGE}Ekranoplan{}{BLACK}High speed watercraft based on real-life ekranoplan: ground effect aircraft primarily designed and developed in the USSR. Classic (1x zoom, 8-bit pixel art) two company color graphics.{}Graphics by {SILVER}Zephyris, {BLACK}coding by {SILVER}Zephyris. {BLACK}Vehicle statistics inspired by {SILVER}kamnet.
+STR_GRF_URL  :https://github.com/zephyris/openttd-newgrfs
+
+STR_EKR_0    :Antonov ESKA-1
+STR_EKR_1    :Antonov An-2E
+STR_EKR_2    :Alexeev KM-1
+STR_EKR_3    :Alexeev A-90 Orlyonok
+STR_EKR_4    :Alexeev MD-160 Lun-class
+STR_EKR_5    :Sukhoi S-90-200
+STR_EKR_6    :Raketa 2
+STR_EKR_7    :Sukhoi P-100
+STR_EKR_8    :Pachenkov C-801
+STR_EKR_9    :Beriev Be-2500
+STR_EKR_10   :Aerocon Dash-1.6 Wingship

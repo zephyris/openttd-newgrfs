@@ -1,0 +1,12 @@
+# nmlc intermediates and output
+.nmlcache/
+*.grf
+*.grf.cache
+*.grf.cacheindex
+grf/
+
+# output
+*.tar
+
+# blender backups
+*.blend1
