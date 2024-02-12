@@ -3,8 +3,8 @@ grf {
 	name: string(STR_GRF_NAME);
 	desc: string(STR_GRF_DESC);
 	url:  string(STR_GRF_URL);
-	version: 1;
-	min_compatible_version: version_openttd(1, 3, 0);
+	version: 2;
+	min_compatible_version: version_openttd(14, 0);
 }
 
 //Inspired by kamnet
@@ -66,7 +66,8 @@ item(FEAT_SHIPS, item_ekr_0, 11) {
 		running_cost_factor: 28;
 		refit_cost: 32;
 		//speed
-		speed: 127 km/h; // 115 km/h;
+		speed: 115 km/h;
+		acceleration: 12;
 		ocean_speed_fraction: 1;
 		canal_speed_fraction: 0.6;
 		//sprites
@@ -119,7 +120,8 @@ item(FEAT_SHIPS, item_ekr_1, 12) {
 		running_cost_factor: 40;
 		refit_cost: 32;
 		//speed
-		speed: 127 km/h; // 200 km/h;
+		speed: 200 km/h;
+		acceleration: 12;
 		ocean_speed_fraction: 1;
 		canal_speed_fraction: 0.6;
 		//sprites
@@ -172,7 +174,8 @@ item(FEAT_SHIPS, item_ekr_2, 13) {
 		running_cost_factor: 250;
 		refit_cost: 32;
 		//speed
-		speed: 127 km/h; // 430 km/h;
+		speed: 430 km/h;
+		acceleration: 12;
 		ocean_speed_fraction: 1;
 		canal_speed_fraction: 0.1;
 		//sprites
@@ -225,7 +228,8 @@ item(FEAT_SHIPS, item_ekr_3, 14) {
 		running_cost_factor: 170;
 		refit_cost: 32;
 		//speed
-		speed: 127 km/h; // 400 km/h;
+		speed: 400 km/h;
+		acceleration: 12;
 		ocean_speed_fraction: 1;
 		canal_speed_fraction: 0.1;
 		//sprites
@@ -278,7 +282,8 @@ item(FEAT_SHIPS, item_ekr_4, 15) {
 		running_cost_factor: 220;
 		refit_cost: 32;
 		//speed
-		speed: 127 km/h; // 550 km/h;
+		speed: 550 km/h;
+		acceleration: 12;
 		ocean_speed_fraction: 1;
 		canal_speed_fraction: 0.1;
 		//sprites
@@ -331,7 +336,8 @@ item(FEAT_SHIPS, item_ekr_5, 16) {
 		running_cost_factor: 170;
 		refit_cost: 32;
 		//speed
-		speed: 127 km/h; // 470 km/h;
+		speed: 470 km/h;
+		acceleration: 12;
 		ocean_speed_fraction: 1;
 		canal_speed_fraction: 0.1;
 		//sprites
@@ -384,7 +390,8 @@ item(FEAT_SHIPS, item_ekr_6, 17) {
 		running_cost_factor: 60;
 		refit_cost: 32;
 		//speed
-		speed: 127 km/h; // 190 km/h;
+		speed: 190 km/h;
+		acceleration: 12;
 		ocean_speed_fraction: 1;
 		canal_speed_fraction: 0.6;
 		//sprites
@@ -437,7 +444,8 @@ item(FEAT_SHIPS, item_ekr_7, 18) {
 		running_cost_factor: 75;
 		refit_cost: 32;
 		//speed
-		speed: 127 km/h; // 225 km/h;
+		speed: 225 km/h;
+		acceleration: 12;
 		ocean_speed_fraction: 1;
 		canal_speed_fraction: 0.6;
 		//sprites
@@ -490,7 +498,8 @@ item(FEAT_SHIPS, item_ekr_8, 19) {
 		running_cost_factor: 200;
 		refit_cost: 32;
 		//speed
-		speed: 127 km/h; // 525 km/h;
+		speed: 525 km/h;
+		acceleration: 12;
 		ocean_speed_fraction: 1;
 		canal_speed_fraction: 0.1;
 		//sprites
@@ -543,7 +552,8 @@ item(FEAT_SHIPS, item_ekr_9, 20) {
 		running_cost_factor: 240;
 		refit_cost: 32;
 		//speed
-		speed: 127 km/h; // 450 km/h;
+		speed: 450 km/h;
+		acceleration: 12;
 		ocean_speed_fraction: 1;
 		canal_speed_fraction: 0.1;
 		//sprites
@@ -596,7 +606,8 @@ item(FEAT_SHIPS, item_ekr_10, 21) {
 		running_cost_factor: 255;
 		refit_cost: 32;
 		//speed
-		speed: 127 km/h; // 650 km/h;
+		speed: 650 km/h;
+		acceleration: 12;
 		ocean_speed_fraction: 1;
 		canal_speed_fraction: 0.1;
 		//sprites
