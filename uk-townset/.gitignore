@@ -1,0 +1,6 @@
+# grfcodec backups and output
+*.grf
+*.bak
+
+# output
+*.tar
