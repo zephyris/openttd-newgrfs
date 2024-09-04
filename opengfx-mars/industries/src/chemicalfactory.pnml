@@ -1,0 +1,182 @@
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#include "industry_templates.pnml"
+
+// Low fan.
+spriteset(chemical_factory_low_fan_sprites, "../graphics/Buildings/Industry_ChemicalFactory_8bpp.png") {
+    SPRITE3(4, 140, 72, 4, 64, 64, -31, -34)
+}
+SPRITE_LAYOUT(chemical_factory_low_fan_sprite_layout, chemical_factory_low_fan_sprites, 16)
+item(FEAT_INDUSTRYTILES, chemical_factory_low_fan_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[N2__, 8], [CHEM, 8]];
+    }
+    graphics { chemical_factory_low_fan_sprite_layout; }
+}
+
+
+// Electrical power
+spriteset(chemical_factory_power_sprites, "../graphics/Buildings/Industry_ChemicalFactory_8bpp.png") {
+    SPRITE3(72, 140, 72, 4, 64, 64, -31, -34)
+}
+SPRITE_LAYOUT(chemical_factory_power_sprite_layout, chemical_factory_power_sprites, 24)
+item(FEAT_INDUSTRYTILES, chemical_factory_power_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[N2__, 8], [CHEM, 8]];
+    }
+    graphics { chemical_factory_power_sprite_layout; }
+}
+
+
+// Small round tanks
+spriteset(chemical_factory_white_tanks_sprites, "../graphics/Buildings/Industry_ChemicalFactory_8bpp.png") {
+    SPRITE3(140, 140, 72, 4, 64, 64, -31, -34)
+}
+SPRITE_LAYOUT(chemical_factory_white_tanks_sprite_layout, chemical_factory_white_tanks_sprites, 16)
+item(FEAT_INDUSTRYTILES, chemical_factory_white_tanks_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[N2__, 8], [CHEM, 8]];
+    }
+    graphics { chemical_factory_white_tanks_sprite_layout; }
+}
+
+
+// Tubes across the factory
+spriteset(chemical_factory_tubes_sprites, "../graphics/Buildings/Industry_ChemicalFactory_8bpp.png") {
+    SPRITE3(208, 140, 72, 4, 64, 64, -31, -34)
+}
+SPRITE_LAYOUT(chemical_factory_tubes_sprite_layout, chemical_factory_tubes_sprites, 20)
+item(FEAT_INDUSTRYTILES, chemical_factory_tubes_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[N2__, 8], [CHEM, 8]];
+    }
+    graphics { chemical_factory_tubes_sprite_layout; }
+}
+
+
+// Blue storage tanks
+spriteset(chemical_factory_storage_sprites, "../graphics/Buildings/Industry_ChemicalFactory_8bpp.png") {
+    SPRITE3(276, 140, 72, 4, 64, 64, -31, -34)
+}
+SPRITE_LAYOUT(chemical_factory_storage_sprite_layout, chemical_factory_storage_sprites, 24)
+item(FEAT_INDUSTRYTILES, chemical_factory_storage_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[N2__, 8], [CHEM, 8]];
+    }
+    graphics { chemical_factory_storage_sprite_layout; }
+}
+
+// High fan
+spriteset(chemical_factory_high_fan_sprites, "../graphics/Buildings/Industry_ChemicalFactory_8bpp.png") {
+    SPRITE3(344, 140, 72, 4, 64, 64, -31, -34)
+}
+SPRITE_LAYOUT(chemical_factory_high_fan_sprite_layout, chemical_factory_high_fan_sprites, 28)
+item(FEAT_INDUSTRYTILES, chemical_factory_high_fan_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[N2__, 8], [CHEM, 8]];
+    }
+    graphics { chemical_factory_high_fan_sprite_layout; }
+}
+
+tilelayout chemical_factory_layout {
+	0, 0: chemical_factory_low_fan_tile;
+	0, 1: chemical_factory_tubes_tile;
+	0, 2: chemical_factory_power_tile;
+	1, 0: chemical_factory_low_fan_tile;
+	1, 1: chemical_factory_storage_tile;
+	1, 2: chemical_factory_white_tanks_tile;
+	1, 3: chemical_factory_power_tile;
+}
+
+tilelayout chemical_factory_layout_1 {
+	0, 0: chemical_factory_low_fan_tile;
+	0, 1: chemical_factory_power_tile;
+	1, 0: chemical_factory_low_fan_tile;
+	1, 1: chemical_factory_storage_tile;
+	1, 2: chemical_factory_high_fan_tile;
+	1, 3: chemical_factory_tubes_tile;
+	1, 4: chemical_factory_power_tile;
+}
+
+tilelayout chemical_factory_layout_2 {
+	0, 0: chemical_factory_low_fan_tile;
+	0, 1: chemical_factory_high_fan_tile;
+	0, 2: chemical_factory_tubes_tile;
+	0, 3: chemical_factory_power_tile;
+	1, 1: chemical_factory_low_fan_tile;
+	1, 2: chemical_factory_white_tanks_tile;
+	1, 3: chemical_factory_power_tile;
+}
+
+tilelayout chemical_factory_layout_3 {
+	0, 0: chemical_factory_low_fan_tile;
+	0, 1: chemical_factory_tubes_tile;
+	0, 2: chemical_factory_white_tanks_tile;
+	0, 3: chemical_factory_power_tile;
+	2, 0: chemical_factory_low_fan_tile;
+	2, 1: chemical_factory_high_fan_tile;
+	2, 2: chemical_factory_power_tile;
+}
+
+tilelayout chemical_factory_layout_4 {
+	0, 0: chemical_factory_low_fan_tile;
+	0, 1: chemical_factory_storage_tile;
+	0, 2: chemical_factory_white_tanks_tile;
+	0, 3: chemical_factory_tubes_tile;
+	0, 4: chemical_factory_power_tile;
+	2, 2: chemical_factory_low_fan_tile;
+	2, 3: chemical_factory_power_tile;
+}
+
+item(FEAT_INDUSTRIES, chemical_factory_industry, CHEMICAL_FACTORY_ID) {
+    property {
+        substitute: CHEMICAL_FACTORY_ID;
+        name: string(STR_CHEMICAL_FACTORY_NAME);
+        layouts: [chemical_factory_layout, chemical_factory_layout_1, chemical_factory_layout_2, chemical_factory_layout_3, chemical_factory_layout_4];
+        life_type: IND_LIFE_TYPE_PROCESSING;
+        accept_cargo_types: [cargotype("N2__"), cargotype("CHEM")];
+        prod_cargo_types: [cargotype("FERT"), cargotype("PLAS")];
+        prod_multiplier: [0, 0];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: 0;
+        input_multiplier_1: [2,1];
+        input_multiplier_2: [1,2];
+        input_multiplier_3: [0,0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_CHEMICAL_FACTORY_STATION_NAME));
+    }
+}
+
+
+// vim: sw=4 et sts=4 nospell
+

@@ -1,0 +1,13 @@
+##grflangid 0x02
+##plural 0
+##gender m w n p
+
+STR_GRF_NAME :OpenGFX Mars Houses (Häuser)
+STR_GRF_DESC :{ORANGE}Mars-Habitate{}{BLACK}Graphik: {SILVER}Zephyris{}{BLACK}Programmierung: {SILVER}Elyon
+STR_GRF_URL :http://dev.openttdcoop.org/projects/opengfx-mars-houses
+
+STR_NAME_HABITAT :Habitat
+STR_NAME_LARGE_HABITAT :Großes Habitat
+STR_NAME_TALL_HABITAT :Hohes Habitat
+STR_NAME_PARK :Park
+STR_NAME_TALL_PARK :Hoher Park

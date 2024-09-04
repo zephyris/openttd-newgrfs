@@ -1,0 +1,134 @@
+//  OpenGFX Mars Aircraft
+//
+//  This program is free software; you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation; either version 2 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License along
+//  with this program; if not, write to the Free Software Foundation, Inc.,
+//  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#include "src/header.pnml"
+
+#include "../graphics/common_nml/cargo_table.pnml"
+
+//Replace the airport graphics
+//Base graphics oil refinery/city airport building
+replace airport_city_refinerybuilding(2095, "../graphics/Buildings/Airport_City_8bpp.png") {
+	[72, 106, 64, 64, -32, -39]
+}
+
+//Base graphics transmitter
+replace airport_city_transmitter(2601, "../graphics/Buildings/Airport_Transmitters_8bpp.png") {
+	[4, 4, 64, 128, -32, -111]
+}
+
+//Base graphics heliport
+replace airport_heliport(2633, "../graphics/Buildings/Airport_Heliport_8bpp.png") {
+	[4, 4, 64, 128, -32, -97]
+}
+
+//Base graphics city airport ground tiles
+replace airport_city_ground_concrete_1(2634, "../graphics/Infrastructure/Airports/Airports_GroundTiles_NewConcrete_8bpp.png") {
+	[1, 1, 64, 31, -32, 0]
+	[81, 1, 64, 31, -32, 0]
+}
+
+template template_airport_city_ground_grass(x, y) {
+	[x+1, y+1, 64, 31, -32, 0]
+	[x+81, y+1, 64, 31, -32, 0]
+	[x+161, y+1, 64, 31, -32, 0]
+	[x+241, y+1, 64, 31, -32, 0]
+	[x+321, y+1, 64, 31, -32, 0]
+	[x+401, y+1, 64, 31, -32, 0]
+	[x+481, y+1, 64, 31, -32, 0]
+	[x+561, y+1, 64, 31, -32, 0]
+	[x+641, y+1, 64, 31, -32, 0]
+}
+
+//Todo: snow/desert sensitive ground tiles
+replace airport_city_ground_grass(2636, "../graphics/Infrastructure/Airports/Airports_GroundTiles_NewGrass_8bpp.png") {
+	template_airport_city_ground_grass(0, 0)
+}
+
+replace airport_city_ground_concrete_2(2645, "../graphics/Infrastructure/Airports/Airports_GroundTiles_NewConcrete_8bpp.png") {
+	[161, 1, 64, 31, -32, 0]
+	[241, 1, 64, 31, -32, 0]
+	[321, 1, 64, 31, -32, 0]
+	[401, 1, 64, 31, -32, 0]
+	[481, 1, 64, 31, -32, 0]
+}
+
+replace airport_city_buildings(2650, "../graphics/Buildings/Airport_City_8bpp.png") {
+	[4, 40, 64, 64, -27, -35]
+	[72, 40, 64, 64, -32, -40]
+	[140, 40, 64, 64, -36, -34]
+	[208, 40, 64, 64, -32, -40]
+	[4, 106, 64, 64, -37, -37]
+}
+
+//Base graphics airport depots
+template template_airport_depot(x, y) {
+	[x+4, y+4, 64, 64, -4, -47]
+	[x+4, y+72, 64, 64, -32, -33]
+}
+
+replace airport_city_depot(2655, "../graphics/Buildings/AirportDepots_8bpp.png") {
+	template_airport_depot(0, 0)
+}
+
+replace airport_small_depot(2657, "../graphics/Buildings/AirportDepots_8bpp.png") {
+	template_airport_depot(0, 0)
+}
+
+//Base graphics city airport walkways
+replace airport_city_walkways(2659, "../graphics/Buildings/Airport_City_8bpp.png") {
+	[4, 4, 64, 31, -41, -11]
+	[72, 4, 64, 31, -34, -15]
+	[140, 4, 64, 31, -42, -11]
+	[208, 4, 64, 31, -47, -9]
+}
+
+//Base graphics small airport ground tiles 1
+replace airport_small_ground_1(2665, "../graphics/Infrastructure/Airports/Airports_OldAirportGroundTiles_8bpp.png") {
+	[1, 1, 64, 31, -32, 0]
+	[81, 1, 64, 31, -32, 0]
+	[161, 1, 64, 31, -32, 0]
+}
+
+//Base graphics small airport
+replace airport_small_building(2668, "../graphics/Buildings/Airport_Small_8bpp.png") {
+	[4, 4, 64, 64, -32, -33]
+}
+
+//Base graphics small airport ground tiles 2
+replace airport_small_ground_2(2669, "../graphics/Infrastructure/Airports/Airports_OldAirportGroundTiles_8bpp.png") {
+	[1, 33, 64, 31, -32, 0]
+	[81, 33, 64, 31, -32, 0]
+	[161, 33, 64, 31, -32, 0]
+	[241, 33, 64, 31, -32, 0]
+	[1, 65, 64, 31, -32, 0]
+	[81, 65, 64, 31, -32, 0]
+	[161, 65, 64, 31, -32, 0]
+}
+
+//Base graphics small airport windsock
+replace airport_small_windsock(2676, "../graphics/Buildings/Airport_Transmitters_8bpp.png") {
+	[72, 84, 14, 48, -2, -42]
+	[72, 84, 14, 48, -2, -42]
+	[72, 84, 14, 48, -2, -42]
+	[72, 84, 14, 48, -2, -42]
+}
+
+//Todo: Extra new airport sprites
+//Alternative runway orientation
+//Extra depot orientation
+//Helipad H
+//Half grass tiles (and snow/desert tiles)
+//Helipad circle(?)

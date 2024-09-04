@@ -1,0 +1,100 @@
+//  OpenGFX Mars Houses
+//
+//  This program is free software; you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation; either version 2 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License along
+//  with this program; if not, write to the Free Software Foundation, Inc.,
+//  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#include "templates.pnml"
+
+
+
+/* Park spritesets. */
+spriteset(spriteset_park_0, "../graphics/Buildings/TownBuildings_Parks_8bpp.png") {
+  template_building(0)
+}
+
+spriteset(spriteset_park_1, "../graphics/Buildings/TownBuildings_Parks_8bpp.png") {
+  template_building(1)
+}
+
+spriteset(spriteset_park_2, "../graphics/Buildings/TownBuildings_Parks_8bpp.png") {
+  template_building(2)
+}
+
+spriteset(spriteset_park_3, "../graphics/Buildings/TownBuildings_Parks_8bpp.png") {
+  template_building(3)
+}
+
+
+
+/* Park spritelayouts. */
+spritelayout spritelayout_park_0 {
+  ground { sprite: terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : terrain_type == TILETYPE_SNOW ? GROUNDSPRITE_SNOW : GROUNDSPRITE_NORMAL; }
+  building {
+    sprite: spriteset_park_0;
+    zextent: 24;
+  }
+}
+
+spritelayout spritelayout_park_1 {
+  ground { sprite: terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : terrain_type == TILETYPE_SNOW ? GROUNDSPRITE_SNOW : GROUNDSPRITE_NORMAL; }
+  building {
+    sprite: spriteset_park_1;
+    zextent: 24;
+  }
+}
+
+spritelayout spritelayout_park_2 {
+  ground { sprite: terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : terrain_type == TILETYPE_SNOW ? GROUNDSPRITE_SNOW : GROUNDSPRITE_NORMAL; }
+  building {
+    sprite: spriteset_park_2;
+    zextent: 24;
+  }
+}
+
+spritelayout spritelayout_park_3 {
+  ground { sprite: terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : terrain_type == TILETYPE_SNOW ? GROUNDSPRITE_SNOW : GROUNDSPRITE_NORMAL; }
+  building {
+    sprite: spriteset_park_3;
+    zextent: 24;
+  }
+}
+
+
+
+/* Random park selection. */
+random_switch(FEAT_HOUSES, SELF, random_park) {
+  1: spritelayout_park_0;
+  1: spritelayout_park_1;
+  1: spritelayout_park_2;
+  1: spritelayout_park_3;
+}
+
+
+
+/* Park item */
+item (FEAT_HOUSES, item_park) {
+  property {
+    substitute: 0;
+    name: string(STR_NAME_PARK);
+    probability: 1;
+    years_available: [0, -1];
+    minimum_lifetime: 0;
+    availability_mask: [bitmask(TOWNZONE_EDGE, TOWNZONE_OUTSKIRT, TOWNZONE_OUTER_SUBURB), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+	accepted_cargos: [[PASS, 4]];
+	removal_cost_multiplier: 100;
+	local_authority_impact: 200;
+  }
+
+  graphics { default: random_park; }
+}

@@ -1,0 +1,16 @@
+##grflangid 0x2f
+##plural 0
+##gender masculine feminine neuter
+##case small
+
+STR_GRF_NAME :OpenGFX Mars Hus
+STR_GRF_DESC :{ORANGE}Mars Habitats{}{BLACK}Grafikk: {SILVER}Zephyris{}{BLACK}Programmering: {SILVER}Elyon
+STR_GRF_URL :http://dev.openttdcoop.org/projects/opengfx-mars-houses
+
+STR_NAME_HABITAT :Habitat
+STR_NAME_LARGE_HABITAT :Stort habitat
+STR_NAME_TALL_HABITAT :Høyt habitat
+STR_NAME_TOWER_HABITAT :Tårnhabitat
+STR_NAME_LUXURY_TOWER_HABITAT :Luksus tårnhabitat
+STR_NAME_PARK :Park
+STR_NAME_TALL_PARK :Høy park

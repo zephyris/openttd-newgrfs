@@ -1,0 +1,143 @@
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#include "industry_templates.pnml"
+
+
+// Large round tank
+spriteset(fusion_plant_round_tank_sprites, "../graphics/Buildings/Industry_FusionPlant_8bpp.png") {
+    [4, 72, 64, 64, -31, -33]
+    [4, 4,  64, 64, -31, -33]
+}
+SPRITE_LAYOUT(fusion_plant_round_tank_sprite_layout, fusion_plant_round_tank_sprites, 26)
+item(FEAT_INDUSTRYTILES, fusion_plant_round_tank_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[H2__, 8]];
+    }
+    graphics { fusion_plant_round_tank_sprite_layout; }
+}
+
+
+// Back building
+spriteset(fusion_plant_back_building_sprites, "../graphics/Buildings/Industry_FusionPlant_8bpp.png") {
+    SPRITE3(72, 140, 72, 4, 64, 64, -31, -33)
+}
+SPRITE_LAYOUT(fusion_plant_back_building_sprite_layout, fusion_plant_back_building_sprites, 14)
+item(FEAT_INDUSTRYTILES, fusion_plant_back_building_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[H2__, 8]];
+    }
+    graphics { fusion_plant_back_building_sprite_layout; }
+}
+
+
+// Front building
+spriteset(fusion_plant_front_building_sprites, "../graphics/Buildings/Industry_FusionPlant_8bpp.png") {
+    SPRITE3(140, 140, 72, 4, 64, 64, -31, -33)
+}
+SPRITE_LAYOUT(fusion_plant_front_building_sprite_layout, fusion_plant_front_building_sprites, 14)
+item(FEAT_INDUSTRYTILES, fusion_plant_front_building_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[H2__, 8]];
+    }
+    graphics { fusion_plant_front_building_sprite_layout; }
+}
+
+
+// Sphere tank
+spriteset(fusion_plant_sphere_tank_sprites, "../graphics/Buildings/Industry_FusionPlant_8bpp.png") {
+    SPRITE3(208, 140, 72, 4, 64, 64, -33, -35)
+}
+SPRITE_LAYOUT(fusion_plant_sphere_tank_sprite_layout, fusion_plant_sphere_tank_sprites, 18)
+item(FEAT_INDUSTRYTILES, fusion_plant_sphere_tank_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[H2__, 8]];
+    }
+    graphics { fusion_plant_sphere_tank_sprite_layout; }
+}
+
+
+// Power grid
+spriteset(fusion_plant_power_sprites, "../graphics/Buildings/Industry_FusionPlant_8bpp.png") {
+    [276, 4, 64, 64, -31, -33]
+}
+SPRITE_LAYOUT(fusion_plant_power_sprite_layout, fusion_plant_power_sprites, 26)
+item(FEAT_INDUSTRYTILES, fusion_plant_power_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[H2__, 8]];
+    }
+    graphics { fusion_plant_power_sprite_layout; }
+}
+
+tilelayout fusion_plant_layout {
+	1, 0: fusion_plant_back_building_tile;
+	1, 1: fusion_plant_front_building_tile;
+	2, 0: fusion_plant_round_tank_tile;
+	0, 1: fusion_plant_sphere_tank_tile;
+	2, 1: fusion_plant_power_tile;
+}
+
+tilelayout fusion_plant_layout_1 {
+	0, 1: fusion_plant_back_building_tile;
+	0, 2: fusion_plant_front_building_tile;
+	1, 1: fusion_plant_round_tank_tile;
+	2, 1: fusion_plant_sphere_tank_tile;
+	1, 0: fusion_plant_power_tile;
+}
+
+tilelayout fusion_plant_layout_2 {
+	0, 0: fusion_plant_back_building_tile;
+	0, 1: fusion_plant_front_building_tile;
+	2, 1: fusion_plant_round_tank_tile;
+	2, 0: fusion_plant_sphere_tank_tile;
+	2, 2: fusion_plant_sphere_tank_tile;
+	3, 1: fusion_plant_power_tile;
+}
+
+item(FEAT_INDUSTRIES, fusion_plant_industry, FUSION_PLANT_ID) {
+    property {
+        substitute: FUSION_PLANT_ID;
+        name: string(STR_FUSION_PLANT_NAME);
+        layouts: [fusion_plant_layout, fusion_plant_layout_1, fusion_plant_layout_2];
+        life_type: IND_LIFE_TYPE_BLACK_HOLE;
+        accept_cargo_types: [cargotype("H2__")];
+        prod_cargo_types: [];
+        prod_multiplier: [0, 0];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: bitmask(IND_FLAG_BUILT_NEAR_TOWN);
+        input_multiplier_1: [0,0];
+        input_multiplier_2: [0,0];
+        input_multiplier_3: [0,0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_FUSION_PLANT_STATION_NAME));
+    }
+}
+
+// vim: sw=4 et sts=4 nospell

@@ -1,0 +1,1 @@
+[{"crop": [0, 0, 0, 0], "info": 4, "mask_file": "../graphics/Terrain/ConcreteGroundTile_8bpp.png", "mask_pal": "DEFAULT", "mask_rect": [1, 1, 64, 31], "offset": 0, "pixel_stats": {"alpha": 0, "anim": 0, "total": 1984, "white": 0}, "size": 532}]

@@ -1,0 +1,4 @@
+##grflangid 0x01
+STR_GRF_NAME                                                    :OpenGFX Mars Landscape {VERSION}
+STR_GRF_DESCRIPTION                                             :{ORANGE}Martian Landscape{}Landscape elements for a Martian environment{}{BLACK}Graphics: {SILVER}Zephyris{}{BLACK}Programming: {SILVER}Alberth{BLACK}, {SILVER}planetmaker{BLACK}, and {SILVER}Zephyris
+STR_GRF_URL                                                     :http://dev.openttdcoop.org/projects/opengfx-mars-landscape

@@ -1,0 +1,2060 @@
+// 	OpenGFX Mars Rovers and Roads
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+// Define the NewGRF
+grf {
+	grfid: "OGM\2";
+	name: string(STR_GRF_NAME);
+	desc: string(STR_GRF_DESCRIPTION);
+	url:  string(STR_GRF_URL);
+	version: 1;
+	min_compatible_version: 1;
+}
+
+#include "../graphics/common_nml/cargo_table.pnml"
+
+//Define the road infrastructure replacement
+template template_road_tiles(x, y) {
+	[x+1, y+1, 64, 31, -32, 0]
+	[x+66, y+1, 64, 31, -32, 0]
+	[x+131, y+1, 64, 31, -32, 0]
+	[x+196, y+1, 64, 31, -32, 0]
+	[x+261, y+1, 64, 31, -32, 0]
+	[x+326, y+1, 64, 31, -32, 0]
+	[x+391, y+1, 64, 31, -32, 0]
+	[x+456, y+1, 64, 31, -32, 0]
+	[x+521, y+1, 64, 31, -32, 0]
+	[x+586, y+1, 64, 31, -32, 0]
+	[x+651, y+1, 64, 31, -32, 0]
+	[x+976, y+1, 64, 39, -32, -8]
+	[x+1041, y+1, 64, 23, -32, 0]
+	[x+1106, y+1, 64, 23, -32, 0]
+	[x+1171, y+1, 64, 39, -32, -8]
+	[x+846, y+1, 64, 31, -32, 0]
+	[x+911, y+1, 64, 31, -32, 0]
+	[x+716, y+1, 64, 31, -32, 0]
+	[x+781, y+1, 64, 31, -32, 0]
+}
+
+template template_stop_tiles(x, y) {
+	[x+131, y+1, 64, 31, -32, 0]
+	[x+196, y+1, 64, 31, -32, 0]
+	[x+1, y+1, 64, 31, -32, 0]
+	[x+66, y+1, 64, 31, -32, 0]
+}
+
+template template_stop_old(x, y) {
+	[x+276, y+4, 64, 64, -24, -37]
+	[x+208, y+4, 64, 64, -0, -48]
+	[x+140, y+4, 64, 64, -58, -50]
+	[x+344, y+4, 64, 64, -43, -38]
+	[x+276, y+72, 64, 64, -6, -46]
+	[x+208, y+72, 64, 64, -32, -33]
+	[x+140, y+72, 64, 64, -32, -33]
+	[x+344, y+140, 64, 64, -58, -46]
+	[x+276, y+140, 64, 64, -58, -46]
+	[x+208, y+140, 64, 64, -12, -49]
+	[x+140, y+140, 64, 64, -26, -36]
+	[x+344, y+72, 64, 64, -32, -33]
+}
+
+template template_stop_new(x, y) {
+	[x+72, y+72, 64, 64, -6, -45]
+	[x+72, y+140, 64, 64, -32, -33]
+	[x+4, y+140, 64, 64, -32, -32]
+	[x+4, y+72, 64, 64, -58, -46]
+}
+
+template template_road_depot(x, y) {
+	[x+4, y+72, 64, 64, -32, -33]
+	[x+4, y+4, 64, 64, -2, -48]
+	[x+208, y+72, 64, 64, -32, -33]
+	[x+208, y+4, 64, 64, -62, -48]
+	[x+140, y+4, 64, 64, -62, -48]
+	[x+72, y+4, 64, 64, -2, -48]
+}
+
+template template_road_tunnels(x, y) {
+	[x+1, y+1, 64, 39, -32, -8]
+	[x+66, y+1, 64, 39, -32, -38]
+	[x+261, y+1, 64, 23, -32, 0]
+	[x+326, y+1, 64, 23, -32, -30]
+	[x+131, y+1, 64, 23, -32, 0]
+	[x+196, y+1, 64, 23, -32, -30]
+	[x+391, y+1, 64, 39, -32, -8]
+	[x+456, y+1, 64, 39, -32, -38]
+}
+
+//Replace all road graphics
+//Replace tiles
+if (climate==CLIMATE_TOYLAND) {
+	replace toyland_road_normal(1332, "../graphics/Infrastructure/Roads/RoadTiles_8bpp.png") {
+		template_road_tiles(0, 82)
+	}
+} else {
+	replace normal_road_normal(1332, "../graphics/Infrastructure/Roads/RoadTiles_8bpp.png") {
+		template_road_tiles(0, 0)
+	}
+}
+replace road_town(1313, "../graphics/Infrastructure/Roads/RoadTiles_8bpp.png") {
+	template_road_tiles(0, 41)
+}
+if (climate==CLIMATE_ARCTIC) {
+	replace road_snow(1351, "../graphics/Infrastructure/Roads/RoadTiles_8bpp.png") {
+		template_road_tiles(0, 82)
+	}
+} else if (climate==CLIMATE_TROPICAL) {
+	replace road_desert(1351, "../graphics/Infrastructure/Roads/RoadTiles_8bpp.png") {
+		template_road_tiles(0, 123)
+	}
+}
+
+//Replace truck and bus stops
+replace road_stop_tiles_bus(2692, "../graphics/Infrastructure/Roads/RoadTiles_BusStop_8bpp.png") {
+	template_stop_tiles(0, 0)
+}
+replace road_stop_tiles_truck(2708, "../graphics/Infrastructure/Roads/RoadTiles_BusStop_8bpp.png") {
+	template_stop_tiles(0, 0)
+}
+
+replace road_stop_old_bus(2696, "../graphics/Buildings/RoadStops_8bpp.png") {
+	template_stop_old(0, 0)
+}
+replace road_stop_old_truck(2712, "../graphics/Buildings/RoadStops_Truck_8bpp.png") {
+	template_stop_old(0, 0)
+}
+replacenew road_stop_new_bus(ROAD_STOPS, "../graphics/Buildings/RoadStops_8bpp.png", 0) {
+	template_stop_new(0, 0)
+}
+replacenew road_stop_new_truck(ROAD_STOPS, "../graphics/Buildings/RoadStops_Truck_8bpp.png", 4) {
+	template_stop_new(0, 0)
+}
+
+//Replace depot
+replace road_depot(1408, "../graphics/Buildings/RoadDepots_8bpp.png") {
+	template_road_depot(0, 0)
+}
+
+//Replace tunnels
+replace road_tunnels_normal(2389, "../graphics/Infrastructure/Roads/RoadTunnels_8bpp.png") {
+	template_road_tunnels(0, 0)
+}
+if (climate==CLIMATE_ARCTIC || climate==CLIMATE_TOYLAND) {
+	replace road_tunnels_snow(2421, "../graphics/Infrastructure/Roads/RoadTunnels_8bpp.png") {
+		template_road_tunnels(0, 80)
+	}
+}
+else if (climate==CLIMATE_TROPICAL) {
+	replace road_tunnels_desert(2421, "../graphics/Infrastructure/Roads/RoadTunnels_8bpp.png") {
+		template_road_tunnels(0, 40)
+	}
+}
+
+//Replace the default bridge graphics
+//Default bridge ramps
+template bridge_ramps_default(x, y) {
+	[x+1, y+1, 50, 27, -23, -7]
+	[x+65, y+1, 48, 27, -23, -6]
+	[x+129, y+1, 48, 26, -23, -6]
+	[x+193, y+1, 48, 27, -23, -6]
+	[x+257, y+1, 48, 34, -23, -6]
+	[x+321, y+1, 49, 21, -23, 2]
+	[x+385, y+1, 48, 34, -23, -6]
+	[x+448, y+1, 49, 21, -24, 2]
+}
+
+replace bridge_ramps_default_rail(2437, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_ramps_default(0, 0)
+}
+
+replace bridge_ramps_default_road(2445, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_ramps_default(0, 0)
+}
+
+replace bridge_ramps_default_monorail(4326, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_ramps_default(0, 0)
+}
+
+replace bridge_ramps_default_maglev(4366, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_ramps_default(0, 0)
+}
+
+//Replace suspension bridge
+template bridge_suspension_full_1(x, y) {
+	[x+1, y+1, 52, 46, -24, -21]
+	[x+65, y+1, 51, 62, -24, -37]
+	[x+129, y+1, 34, 38, 0, -24]
+	[x+177, y+1, 34, 56, -3, -42]
+	[x+225, y+1, 52, 46, -24, -21]
+	[x+289, y+1, 51, 62, -24, -37]
+	[x+353, y+1, 34, 38, 0, -24]
+	[x+401, y+1, 35, 56, -3, -42]
+	[x+1, y+64, 52, 46, -26 , -21]
+	[x+65, y+64, 51, 62, -25, -37]
+	[x+129, y+64, 34, 38, -32, -24]
+	[x+177, y+64, 35, 56, -30, -42]
+	[x+225, y+64, 52, 46, -26, -21]
+	[x+289, y+64, 51, 62, -25, -37]
+	[x+353, y+64, 34, 38, -32, -24]
+	[x+401, y+64, 35, 56, -30, -42]
+}
+
+template bridge_suspension_partial_1(x, y) {
+	[x+1, y+1, 52, 46, -24, -21]
+	[x+65, y+1, 51, 62, -24, -37]
+	[x+225, y+1, 52, 46, -24, -21]
+	[x+289, y+1, 51, 62, -24, -37]
+	[x+1, y+64, 52, 46, -26 , -21]
+	[x+65, y+64, 51, 62, -25, -37]
+	[x+225, y+64, 52, 46, -26, -21]
+	[x+289, y+64, 51, 62, -25, -37]
+}
+
+replace bridge_suspension_road_1(2453, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_suspension_full_1(0, 35)
+}
+
+replace bridge_suspension_rail_1(2469, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_suspension_partial_1(0, 35)
+}
+
+replace bridge_suspension_monorail_1(4334, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_suspension_partial_1(0, 35)
+}
+
+replace bridge_suspension_maglev_1(4374, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_suspension_partial_1(0, 35)
+}
+
+template bridge_suspension_legs(x, y) {
+	[x+1, y+1, 4, 8, 31, 17]
+	[x+17, y+1, 4, 9, -1, 1]
+	[x+33, y+1, 4, 8, 31, 17]
+	[x+49, y+1, 4, 9, -1, 1]
+	[x+65, y+1, 4, 8, -33, 16]
+	[x+81, y+1, 4, 9, -1, -1]
+	[x+97, y+1, 4, 8, -33, 16]
+	[x+113, y+1, 4, 9, -1, -1]
+}
+
+replace bridge_suspension_legs(2477, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_suspension_legs(261, 199)
+}
+
+replace bridge_suspension_doublelegs(2491, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	[262, 210, 1, 1, 0, 0]
+	[262, 210, 1, 1, 0, 0]
+}
+
+template bridge_suspension_full_2(x, y) {
+	[x+1, y+1, 52, 62, -24, -37]
+	[x+65, y+1, 52, 62, -26, -37]
+	[x+129, y+1, 37, 56, -3, -42]
+	[x+177, y+1, 37, 56, -32, -42]
+}
+
+template bridge_suspension_partial_2(x, y) {
+	[x+1, y+1, 52, 62, -24, -37]
+	[x+65, y+1, 52, 62, -26, -37]
+}
+
+replace bridge_suspension_road_2(2487, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_suspension_full_2(0, 161)
+}
+
+replace bridge_suspension_rail_2(2485, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_suspension_partial_2(0, 161)
+}
+
+replace bridge_suspension_monorail_2(4342, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_suspension_partial_2(0, 161)
+}
+
+replace bridge_suspension_maglev_2(4382, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_suspension_partial_2(0, 161)
+}
+
+//Replace small bridges
+template bridge_small_legs(x, y) {
+	[x+1, y+1, 34, 25, -32, -3]
+	[x+49, y+1, 34, 25, -0, -2]
+}
+
+replace bridge_small_legs(2506, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_small_legs(251, 265)
+}
+
+//Replace concrete bridge
+template bridge_small_full(x, y) {
+	[x+1, y+1, 51, 40, -26, -15]
+	[x+65, y+1, 51, 40, -23, -15]
+	[x+129, y+1, 51, 40, -47, -26]
+	[x+193, y+1, 51, 40, -2, -26]
+}
+
+template bridge_small_partial(x, y) {
+	[x+1, y+1, 51, 40, -25, -15]
+	[x+65, y+1, 51, 40, -23, -15]
+}
+
+replace bridge_concrete_road(2495, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_small_full(0, 224)
+}
+
+replace bridge_concrete_rail(2493, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_small_partial(0, 224)
+}
+
+replace bridge_concrete_monorail(4344, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_small_partial(0, 224)
+}
+
+replace bridge_concrete_maglev(4384, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_small_partial(0, 224)
+}
+
+//Replace steel bridge 1
+replace bridge_steel1_road (2501, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_small_full(0, 265)
+}
+
+replace bridge_steel1_rail (2499, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_small_partial(0, 265)
+}
+
+replace bridge_steel1_monorail (4324, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_small_partial(0, 265)
+}
+
+replace bridge_steel1_maglevrail (4364, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_small_partial(0, 265)
+}
+
+replace bridge_steel1_legs (2505, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_small_legs(251, 265)
+}
+
+//Replace steel bridge 2
+replace bridge_steel2_road (2555, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_small_full(0, 306)
+}
+
+replace bridge_steel2_rail (2553, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_small_partial(0, 306)
+}
+
+replace bridge_steel2_monorail (4362, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_small_partial(0, 306)
+}
+
+replace bridge_steel2_maglevrail (4402, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_small_partial(0, 306)
+}
+
+//Replace wooden bridge
+template bridge_ramps_wood(x, y) {
+	[x+1, y+1, 49, 21, -24, 2]
+	[x+65, y+1, 49, 21, -23, 2]
+	[x+129, y+1, 50, 35, -23, -8]
+	[x+193, y+1, 50, 35, -25, -8]
+	[x+257, y+1, 51, 32, -25, -6]
+	[x+321, y+1, 51, 32, -24, -6]
+	[x+385, y+1, 53, 28, -28, -7]
+	[x+449, y+1, 43, 28, -23, -7]
+}
+
+replace bridge_ramps_wood_road(2529, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_ramps_wood(0, 347)
+}
+
+replace bridge_ramps_wood_rail(2537, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_ramps_wood(0, 347)
+}
+
+replace bridge_ramps_wood_monorail(4352, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_ramps_wood(0, 347)
+}
+
+replace bridge_ramps_wood_maglev(4392, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_ramps_wood(0, 347)
+}
+
+template bridge_wood_full(x, y) {
+	[x+1, y+1, 49, 26, -23, -2]
+	[x+65, y+1, 49, 26, -24, -2]
+	[x+129, y+1, 35, 18, -4, -4]
+	[x+177, y+1, 35, 18, -29, -4]
+}
+
+template bridge_wood_partial(x, y) {
+	[x+1, y+1, 49, 26, -26, -2]
+	[x+65, y+1, 49, 26, -27, -2]
+}
+
+replace bridge_wood_road(2547, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_wood_full(0, 383)
+}
+
+replace bridge_wood_rail(2545, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_wood_partial(0, 383)
+}
+
+replace bridge_wood_monorail(4360, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_wood_partial(0, 383)
+}
+
+replace bridge_wood_maglev(4400, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_wood_partial(0, 383)
+}
+
+template bridge_wood_legs(x, y) {
+	[x+1, y+1, 28, 24, -1, -2]
+	[x+42, y+1, 28, 24, -25, -2]
+}
+
+replace bridge_wood_legs(2551, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_wood_legs(224, 383)
+}
+
+//Replace cantilever bridge
+template bridge_cantilever_full(x, y) {
+	[x+1, y+1, 48, 47, -23, -24]
+	[x+65, y+1, 48, 47, -23, -24]
+	[x+129, y+1, 48, 41, -23, -18]
+	[x+193, y+1, 50, 41, -23, -17]
+	[x+257, y+1, 50, 47, -23, -23]
+	[x+321, y+1, 50, 47, -23, -23]
+	[x+385, y+1, 45, 46, -42, -34]
+	[x+449, y+1, 51, 46, -48, -34]
+	[x+513, y+1, 50, 41, -47, -29]
+	[x+577, y+1, 51, 41, 1, -28]
+	[x+641, y+1, 51, 46, 1, -33]
+	[x+705, y+1, 45, 46, 1, -33]
+}
+
+template bridge_cantilever_partial(x, y) {
+	[x+1, y+1, 48, 47, -23, -24]
+	[x+65, y+1, 48, 47, -23, -24]
+	[x+129, y+1, 48, 41, -23, -18]
+	[x+193, y+1, 50, 41, -23, -17]
+	[x+257, y+1, 50, 47, -23, -23]
+	[x+321, y+1, 50, 47, -23, -23]
+}
+
+replace bridge_cantilever_road(2513, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_cantilever_full(0, 410)
+}
+
+replace bridge_cantilever_rail(2507, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_cantilever_partial(0, 410)
+}
+
+replace bridge_cantilever_monorail(4346, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_cantilever_partial(0, 410)
+}
+
+replace bridge_cantilever_maglev(4386, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_cantilever_partial(0, 410)
+}
+
+template bridge_cantilever_legs(x, y) {
+	[x+1, y+1, 6, 11, 0, -5]
+	[x+17, y+1, 6, 11, 0, -5]
+	[x+33, y+1, 6, 11, -4, -5]
+	[x+49, y+1, 6, 11, -4, -5]
+}
+
+replace bridge_cantilever_legs(2525, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_cantilever_legs(694, 396)
+}
+
+//Replace tubular bridge
+template bridge_tubular_front(x, y) {
+	[x+1, y+1, 34, 43, -31, -27]
+	[x+49, y+1, 48, 42, -45, -27]
+	[x+113, y+1, 50, 27, -45, -12]
+	[x+177, y+1, 50, 27, -3, -12]
+	[x+241, y+1, 48, 42, -1, -27]
+	[x+305, y+1, 34, 43, -1, -27]
+}
+
+template bridge_tubular_back(x, y) {
+	[x+1, y+1, 50, 39, -25, -15]
+	[x+65, y+1, 48, 37,-23, -13]
+	[x+129, y+1, 48, 31, -23, -7]
+	[x+193, y+1, 48, 31, -21, -6]
+	[x+257, y+1, 48, 37, -21, -12]
+	[x+321, y+1, 50, 39, -21, -14]
+}
+
+replace bridge_tubular_front(2559, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_tubular_front(384, 458)
+}
+
+replace bridge_tubular_road(2575, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_tubular_back(0, 458)
+}
+
+replace bridge_tubular_rail(2569, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_tubular_back(0, 458)
+}
+
+replace bridge_tubular_monorail(2581, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_tubular_back(0, 458)
+}
+
+replace bridge_tubular_maglev(2587, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_tubular_back(0, 458)
+}
+
+template bridge_tubular_legs(x, y) {
+	[x+1, y+1, 6, 9, -1, -1]
+	[x+17, y+1, 6, 9, -1, -1]
+	[x+33, y+1, 6, 9, -3, -1]
+	[x+49, y+1, 6, 9, -3, -1]
+}
+
+replace bridge_tubular_legs(2565, "../graphics/Infrastructure/Bridges/MainSheet_8bpp.png") {
+	bridge_tubular_legs(736, 458)
+}
+
+//Disable all default vehicles
+disable_item(FEAT_ROADVEHS, 0, 76);
+
+// Define the Road vehicles
+//Assumes a PixelTool generated set of sprites
+template template_roadveh_8(x, y) {
+	[0, 0, 12, 26, -6, -17]
+	[13, 0, 25, 22, -13, -15]
+	[39, 0, 32, 14, -16, -8]
+	[72, 0, 25, 22, -13, -15]
+	[98, 0, 12, 26, -6, -17]
+	[111, 0, 25, 22, -13, -15]
+	[137, 0, 32, 14, -16, -8]
+	[170, 0, 25, 22, -13, -15]
+}
+
+//Engine 1
+spriteset (spriteset_Passenger_1, "../graphics/Vehicles/PixelTool_Rovers/Rover_4_Passenger_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Passenger_1) {
+	property {
+		name:				string(STR_NAME_Passenger_1);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1940, 01, 01);
+		vehicle_life:			20;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			109;
+		running_cost_factor:		106;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				45 km/h;
+		cargo_capacity:			21;
+		loading_speed:			3;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1049;
+		weight:				27;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.133;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_PASSENGERS);
+		non_refittable_cargo_classes:	0;
+		cargo_allow_refit:		[PASS];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Passenger_1;
+	}
+}
+
+//Engine 2
+spriteset (spriteset_Passenger_2, "../graphics/Vehicles/PixelTool_Rovers/Rover_1_Passenger_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Passenger_2) {
+	property {
+		name:				string(STR_NAME_Passenger_2);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1960, 01, 01);
+		vehicle_life:			20;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			113;
+		running_cost_factor:		137;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				59 km/h;
+		cargo_capacity:			24;
+		loading_speed:			3;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1163;
+		weight:				34;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.102;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_PASSENGERS);
+		non_refittable_cargo_classes:	0;
+		cargo_allow_refit:		[PASS];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Passenger_2;
+	}
+}
+
+//Engine 3
+spriteset (spriteset_Passenger_3, "../graphics/Vehicles/PixelTool_Rovers/Rover_2_Passenger_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Passenger_3) {
+	property {
+		name:				string(STR_NAME_Passenger_3);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1982, 01, 01);
+		vehicle_life:			20;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			114;
+		running_cost_factor:		151;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				66 km/h;
+		cargo_capacity:			27;
+		loading_speed:			3;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1255;
+		weight:				37;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.091;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_PASSENGERS);
+		non_refittable_cargo_classes:	0;
+		cargo_allow_refit:		[PASS];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Passenger_3;
+	}
+}
+
+//Engine 4
+spriteset (spriteset_Passenger_4, "../graphics/Vehicles/PixelTool_Rovers/Rover_5_Passenger_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Passenger_4) {
+	property {
+		name:				string(STR_NAME_Passenger_4);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1999, 01, 01);
+		vehicle_life:			20;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			120;
+		running_cost_factor:		198;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				84 km/h;
+		cargo_capacity:			30;
+		loading_speed:			3;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1406;
+		weight:				42;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.071;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_PASSENGERS);
+		non_refittable_cargo_classes:	0;
+		cargo_allow_refit:		[PASS];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Passenger_4;
+	}
+}
+
+//Engine 5
+spriteset (spriteset_Passenger_5, "../graphics/Vehicles/PixelTool_Rovers/Rover_3_Passenger_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Passenger_5) {
+	property {
+		name:				string(STR_NAME_Passenger_5);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2023, 01, 01);
+		vehicle_life:			20;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			121;
+		running_cost_factor:		209;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				102 km/h;
+		cargo_capacity:			33;
+		loading_speed:			3;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1611;
+		weight:				48;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.059;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_PASSENGERS);
+		non_refittable_cargo_classes:	0;
+		cargo_allow_refit:		[PASS];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Passenger_5;
+	}
+}
+
+//Engine 6
+spriteset (spriteset_PressurisedCargo_1, "../graphics/Vehicles/PixelTool_Rovers/Rover_4_PressurisedCargo_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_PressurisedCargo_1) {
+	property {
+		name:				string(STR_NAME_PressurisedCargo_1);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1943, 01, 01);
+		vehicle_life:			20;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			106;
+		running_cost_factor:		99;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				32 km/h;
+		cargo_capacity:			18;
+		loading_speed:			3;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				973;
+		weight:				26;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.188;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED);
+		cargo_allow_refit:		[PRGD, FOOD];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_PressurisedCargo_1;
+	}
+}
+
+//Engine 7
+spriteset (spriteset_PressurisedCargo_2, "../graphics/Vehicles/PixelTool_Rovers/Rover_1_PressurisedCargo_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_PressurisedCargo_2) {
+	property {
+		name:				string(STR_NAME_PressurisedCargo_2);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1960, 01, 01);
+		vehicle_life:			20;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			107;
+		running_cost_factor:		128;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				49 km/h;
+		cargo_capacity:			21;
+		loading_speed:			3;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1173;
+		weight:				30;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.122;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED);
+		cargo_allow_refit:		[PRGD, FOOD];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_PressurisedCargo_2;
+	}
+}
+
+//Engine 8
+spriteset (spriteset_PressurisedCargo_3, "../graphics/Vehicles/PixelTool_Rovers/Rover_2_PressurisedCargo_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_PressurisedCargo_3) {
+	property {
+		name:				string(STR_NAME_PressurisedCargo_3);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1984, 01, 01);
+		vehicle_life:			20;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			113;
+		running_cost_factor:		147;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				54 km/h;
+		cargo_capacity:			24;
+		loading_speed:			3;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1296;
+		weight:				40;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.111;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED);
+		cargo_allow_refit:		[PRGD, FOOD];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_PressurisedCargo_3;
+	}
+}
+
+//Engine 9
+spriteset (spriteset_PressurisedCargo_4, "../graphics/Vehicles/PixelTool_Rovers/Rover_5_PressurisedCargo_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_PressurisedCargo_4) {
+	property {
+		name:				string(STR_NAME_PressurisedCargo_4);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2001, 01, 01);
+		vehicle_life:			20;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			115;
+		running_cost_factor:		191;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				63 km/h;
+		cargo_capacity:			27;
+		loading_speed:			3;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1447;
+		weight:				43;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.095;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED);
+		cargo_allow_refit:		[PRGD, FOOD];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_PressurisedCargo_4;
+	}
+}
+
+//Engine 10
+spriteset (spriteset_PressurisedCargo_5, "../graphics/Vehicles/PixelTool_Rovers/Rover_3_PressurisedCargo_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_PressurisedCargo_5) {
+	property {
+		name:				string(STR_NAME_PressurisedCargo_5);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2021, 01, 01);
+		vehicle_life:			20;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			116;
+		running_cost_factor:		207;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				78 km/h;
+		cargo_capacity:			30;
+		loading_speed:			3;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1614;
+		weight:				45;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.077;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED);
+		cargo_allow_refit:		[PRGD, FOOD];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_PressurisedCargo_5;
+	}
+}
+
+//Engine 11
+spriteset (spriteset_Cargo_1, "../graphics/Vehicles/PixelTool_Rovers/Rover_4_Cargo_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Cargo_1) {
+	property {
+		name:				string(STR_NAME_Cargo_1);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1940, 01, 01);
+		vehicle_life:			22;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			97;
+		running_cost_factor:		72;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				32 km/h;
+		cargo_capacity:			21;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1022;
+		weight:				29;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.188;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[ENSP, PLAS, BDMT];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Cargo_1;
+	}
+}
+
+//Engine 12
+spriteset (spriteset_Cargo_2, "../graphics/Vehicles/PixelTool_Rovers/Rover_1_Cargo_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Cargo_2) {
+	property {
+		name:				string(STR_NAME_Cargo_2);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1964, 01, 01);
+		vehicle_life:			22;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			101;
+		running_cost_factor:		102;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				49 km/h;
+		cargo_capacity:			24;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1152;
+		weight:				33;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.122;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[ENSP, PLAS, BDMT];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Cargo_2;
+	}
+}
+
+//Engine 13
+spriteset (spriteset_Cargo_3, "../graphics/Vehicles/PixelTool_Rovers/Rover_2_Cargo_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Cargo_3) {
+	property {
+		name:				string(STR_NAME_Cargo_3);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1984, 01, 01);
+		vehicle_life:			22;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			106;
+		running_cost_factor:		120;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				54 km/h;
+		cargo_capacity:			27;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1316;
+		weight:				36;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.111;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[ENSP, PLAS, BDMT];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Cargo_3;
+	}
+}
+
+//Engine 14
+spriteset (spriteset_Cargo_4, "../graphics/Vehicles/PixelTool_Rovers/Rover_5_Cargo_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Cargo_4) {
+	property {
+		name:				string(STR_NAME_Cargo_4);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1995, 01, 01);
+		vehicle_life:			22;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			106;
+		running_cost_factor:		149;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				63 km/h;
+		cargo_capacity:			30;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1418;
+		weight:				41;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.095;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[ENSP, PLAS, BDMT];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Cargo_4;
+	}
+}
+
+//Engine 15
+spriteset (spriteset_Cargo_5, "../graphics/Vehicles/PixelTool_Rovers/Rover_3_Cargo_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Cargo_5) {
+	property {
+		name:				string(STR_NAME_Cargo_5);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2022, 01, 01);
+		vehicle_life:			22;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			114;
+		running_cost_factor:		169;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				78 km/h;
+		cargo_capacity:			33;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1569;
+		weight:				47;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.077;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[ENSP, PLAS, BDMT];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Cargo_5;
+	}
+}
+
+//Engine 16
+spriteset (spriteset_Chemicals_1, "../graphics/Vehicles/PixelTool_Rovers/Rover_4_Chemicals_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Chemicals_1) {
+	property {
+		name:				string(STR_NAME_Chemicals_1);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1935, 01, 01);
+		vehicle_life:			22;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			102;
+		running_cost_factor:		78;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				32 km/h;
+		cargo_capacity:			18;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				997;
+		weight:				26;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.188;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_LIQUID, CC_HAZARDOUS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[CHEM, FERT];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Chemicals_1;
+	}
+}
+
+//Engine 17
+spriteset (spriteset_Chemicals_2, "../graphics/Vehicles/PixelTool_Rovers/Rover_1_Chemicals_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Chemicals_2) {
+	property {
+		name:				string(STR_NAME_Chemicals_2);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1956, 01, 01);
+		vehicle_life:			22;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			101;
+		running_cost_factor:		110;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				49 km/h;
+		cargo_capacity:			21;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1103;
+		weight:				30;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.122;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_LIQUID, CC_HAZARDOUS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[CHEM, FERT];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Chemicals_2;
+	}
+}
+
+//Engine 18
+spriteset (spriteset_Chemicals_3, "../graphics/Vehicles/PixelTool_Rovers/Rover_2_Chemicals_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Chemicals_3) {
+	property {
+		name:				string(STR_NAME_Chemicals_3);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1979, 01, 01);
+		vehicle_life:			22;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			103;
+		running_cost_factor:		114;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				54 km/h;
+		cargo_capacity:			24;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1269;
+		weight:				39;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.111;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_LIQUID, CC_HAZARDOUS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[CHEM, FERT];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Chemicals_3;
+	}
+}
+
+//Engine 19
+spriteset (spriteset_Chemicals_4, "../graphics/Vehicles/PixelTool_Rovers/Rover_5_Chemicals_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Chemicals_4) {
+	property {
+		name:				string(STR_NAME_Chemicals_4);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1996, 01, 01);
+		vehicle_life:			22;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			112;
+		running_cost_factor:		154;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				63 km/h;
+		cargo_capacity:			27;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1454;
+		weight:				44;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.095;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_LIQUID, CC_HAZARDOUS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[CHEM, FERT];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Chemicals_4;
+	}
+}
+
+//Engine 20
+spriteset (spriteset_Chemicals_5, "../graphics/Vehicles/PixelTool_Rovers/Rover_3_Chemicals_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Chemicals_5) {
+	property {
+		name:				string(STR_NAME_Chemicals_5);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2023, 01, 01);
+		vehicle_life:			22;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			111;
+		running_cost_factor:		189;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				78 km/h;
+		cargo_capacity:			30;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1629;
+		weight:				45;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.077;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_LIQUID, CC_HAZARDOUS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[CHEM, FERT];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Chemicals_5;
+	}
+}
+
+//Engine 21
+spriteset (spriteset_Water_1, "../graphics/Vehicles/PixelTool_Rovers/Rover_4_Water_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Water_1) {
+	property {
+		name:				string(STR_NAME_Water_1);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1937, 01, 01);
+		vehicle_life:			20;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			96;
+		running_cost_factor:		77;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				32 km/h;
+		cargo_capacity:			18;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				996;
+		weight:				29;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.188;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_LIQUID);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[WATR];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Water_1;
+	}
+}
+
+//Engine 22
+spriteset (spriteset_Water_2, "../graphics/Vehicles/PixelTool_Rovers/Rover_1_Water_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Water_2) {
+	property {
+		name:				string(STR_NAME_Water_2);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1958, 01, 01);
+		vehicle_life:			20;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			105;
+		running_cost_factor:		90;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				49 km/h;
+		cargo_capacity:			21;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1197;
+		weight:				30;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.122;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_LIQUID);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[WATR];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Water_2;
+	}
+}
+
+//Engine 23
+spriteset (spriteset_Water_3, "../graphics/Vehicles/PixelTool_Rovers/Rover_2_Water_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Water_3) {
+	property {
+		name:				string(STR_NAME_Water_3);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1985, 01, 01);
+		vehicle_life:			20;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			107;
+		running_cost_factor:		118;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				54 km/h;
+		cargo_capacity:			24;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1322;
+		weight:				37;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.111;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_LIQUID);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[WATR];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Water_3;
+	}
+}
+
+//Engine 24
+spriteset (spriteset_Water_4, "../graphics/Vehicles/PixelTool_Rovers/Rover_5_Water_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Water_4) {
+	property {
+		name:				string(STR_NAME_Water_4);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2004, 01, 01);
+		vehicle_life:			20;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			107;
+		running_cost_factor:		149;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				63 km/h;
+		cargo_capacity:			27;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1422;
+		weight:				43;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.095;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_LIQUID);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[WATR];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Water_4;
+	}
+}
+
+//Engine 25
+spriteset (spriteset_Water_5, "../graphics/Vehicles/PixelTool_Rovers/Rover_3_Water_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_Water_5) {
+	property {
+		name:				string(STR_NAME_Water_5);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2024, 01, 01);
+		vehicle_life:			20;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			113;
+		running_cost_factor:		168;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				78 km/h;
+		cargo_capacity:			30;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1563;
+		weight:				49;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.077;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_LIQUID);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[WATR];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Water_5;
+	}
+}
+
+//Engine 26
+spriteset (spriteset_CompressedGas_1, "../graphics/Vehicles/PixelTool_Rovers/Rover_4_CompressedGas_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_CompressedGas_1) {
+	property {
+		name:				string(STR_NAME_CompressedGas_1);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1944, 01, 01);
+		vehicle_life:			22;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			101;
+		running_cost_factor:		81;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				32 km/h;
+		cargo_capacity:			18;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				960;
+		weight:				29;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.188;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_LIQUID);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED);
+		cargo_allow_refit:		[N2__, O2__, H2__];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_CompressedGas_1;
+	}
+}
+
+//Engine 27
+spriteset (spriteset_CompressedGas_2, "../graphics/Vehicles/PixelTool_Rovers/Rover_1_CompressedGas_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_CompressedGas_2) {
+	property {
+		name:				string(STR_NAME_CompressedGas_2);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1958, 01, 01);
+		vehicle_life:			22;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			104;
+		running_cost_factor:		88;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				49 km/h;
+		cargo_capacity:			21;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1148;
+		weight:				33;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.122;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_LIQUID);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED);
+		cargo_allow_refit:		[N2__, O2__, H2__];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_CompressedGas_2;
+	}
+}
+
+//Engine 28
+spriteset (spriteset_CompressedGas_3, "../graphics/Vehicles/PixelTool_Rovers/Rover_2_CompressedGas_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_CompressedGas_3) {
+	property {
+		name:				string(STR_NAME_CompressedGas_3);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1976, 01, 01);
+		vehicle_life:			22;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			108;
+		running_cost_factor:		135;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				54 km/h;
+		cargo_capacity:			24;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1322;
+		weight:				39;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.111;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_LIQUID);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED);
+		cargo_allow_refit:		[N2__, O2__, H2__];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_CompressedGas_3;
+	}
+}
+
+//Engine 29
+spriteset (spriteset_CompressedGas_4, "../graphics/Vehicles/PixelTool_Rovers/Rover_5_CompressedGas_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_CompressedGas_4) {
+	property {
+		name:				string(STR_NAME_CompressedGas_4);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2000, 01, 01);
+		vehicle_life:			22;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			111;
+		running_cost_factor:		167;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				63 km/h;
+		cargo_capacity:			27;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1416;
+		weight:				44;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.095;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_LIQUID);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED);
+		cargo_allow_refit:		[N2__, O2__, H2__];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_CompressedGas_4;
+	}
+}
+
+//Engine 30
+spriteset (spriteset_CompressedGas_5, "../graphics/Vehicles/PixelTool_Rovers/Rover_3_CompressedGas_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+item(FEAT_ROADVEHS, item_CompressedGas_5) {
+	property {
+		name:				string(STR_NAME_CompressedGas_5);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2017, 01, 01);
+		vehicle_life:			22;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			113;
+		running_cost_factor:		193;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				78 km/h;
+		cargo_capacity:			30;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1642;
+		weight:				47;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.077;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_LIQUID);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED);
+		cargo_allow_refit:		[N2__, O2__, H2__];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_CompressedGas_5;
+	}
+}
+
+//Engine 31
+spriteset (spriteset_Bulk_1, "../graphics/Vehicles/PixelTool_Rovers/Rover_4_Bulk_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+spriteset (spriteset_Bulk_1_Regolith, "../graphics/Vehicles/PixelTool_Rovers/Rover_4_Bulk_Regolith_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+spriteset (spriteset_Bulk_1_MixedOres, "../graphics/Vehicles/PixelTool_Rovers/Rover_4_Bulk_MixedOres_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+spriteset (spriteset_Bulk_1_Organics, "../graphics/Vehicles/PixelTool_Rovers/Rover_4_Bulk_Organics_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+spritegroup spritegroup_Bulk_1_Regolith {
+	loaded: [spriteset_Bulk_1, spriteset_Bulk_1_Regolith];
+	loading: [spriteset_Bulk_1, spriteset_Bulk_1_Regolith];
+}
+spritegroup spritegroup_Bulk_1_MixedOres {
+	loaded: [spriteset_Bulk_1, spriteset_Bulk_1_MixedOres];
+	loading: [spriteset_Bulk_1, spriteset_Bulk_1_MixedOres];
+}
+spritegroup spritegroup_Bulk_1_Organics {
+	loaded: [spriteset_Bulk_1, spriteset_Bulk_1_Organics];
+	loading: [spriteset_Bulk_1, spriteset_Bulk_1_Organics];
+}
+
+item(FEAT_ROADVEHS, item_Bulk_1) {
+	property {
+		name:				string(STR_NAME_Bulk_1);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1943, 01, 01);
+		vehicle_life:			24;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			91;
+		running_cost_factor:		77;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				29 km/h;
+		cargo_capacity:			24;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				993;
+		weight:				27;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.207;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_BULK);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_LIQUID, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[GRVL, ORES, ORGN];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Bulk_1;
+	}
+}
+
+//Engine 32
+spriteset (spriteset_Bulk_2, "../graphics/Vehicles/PixelTool_Rovers/Rover_1_Bulk_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+spriteset (spriteset_Bulk_2_Regolith, "../graphics/Vehicles/PixelTool_Rovers/Rover_1_Bulk_Regolith_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+spriteset (spriteset_Bulk_2_MixedOres, "../graphics/Vehicles/PixelTool_Rovers/Rover_1_Bulk_MixedOres_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+spriteset (spriteset_Bulk_2_Organics, "../graphics/Vehicles/PixelTool_Rovers/Rover_1_Bulk_Organics_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+spritegroup spritegroup_Bulk_2_Regolith {
+	loaded: [spriteset_Bulk_2, spriteset_Bulk_2_Regolith];
+	loading: [spriteset_Bulk_2, spriteset_Bulk_2_Regolith];
+}
+spritegroup spritegroup_Bulk_2_MixedOres {
+	loaded: [spriteset_Bulk_2, spriteset_Bulk_2_MixedOres];
+	loading: [spriteset_Bulk_2, spriteset_Bulk_2_MixedOres];
+}
+spritegroup spritegroup_Bulk_2_Organics {
+	loaded: [spriteset_Bulk_2, spriteset_Bulk_2_Organics];
+	loading: [spriteset_Bulk_2, spriteset_Bulk_2_Organics];
+}
+
+item(FEAT_ROADVEHS, item_Bulk_2) {
+	property {
+		name:				string(STR_NAME_Bulk_2);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1962, 01, 01);
+		vehicle_life:			24;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			97;
+		running_cost_factor:		92;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				41 km/h;
+		cargo_capacity:			27;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1114;
+		weight:				33;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.146;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_BULK);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_LIQUID, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[GRVL, ORES, ORGN];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Bulk_2;
+	}
+}
+
+//Engine 33
+spriteset (spriteset_Bulk_3, "../graphics/Vehicles/PixelTool_Rovers/Rover_2_Bulk_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+spriteset (spriteset_Bulk_3_Regolith, "../graphics/Vehicles/PixelTool_Rovers/Rover_2_Bulk_Regolith_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+spriteset (spriteset_Bulk_3_MixedOres, "../graphics/Vehicles/PixelTool_Rovers/Rover_2_Bulk_MixedOres_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+spriteset (spriteset_Bulk_3_Organics, "../graphics/Vehicles/PixelTool_Rovers/Rover_2_Bulk_Organics_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+spritegroup spritegroup_Bulk_3_Regolith {
+	loaded: [spriteset_Bulk_3, spriteset_Bulk_3_Regolith];
+	loading: [spriteset_Bulk_3, spriteset_Bulk_3_Regolith];
+}
+spritegroup spritegroup_Bulk_3_MixedOres {
+	loaded: [spriteset_Bulk_3, spriteset_Bulk_3_MixedOres];
+	loading: [spriteset_Bulk_3, spriteset_Bulk_3_MixedOres];
+}
+spritegroup spritegroup_Bulk_3_Organics {
+	loaded: [spriteset_Bulk_3, spriteset_Bulk_3_Organics];
+	loading: [spriteset_Bulk_3, spriteset_Bulk_3_Organics];
+}
+
+item(FEAT_ROADVEHS, item_Bulk_3) {
+	property {
+		name:				string(STR_NAME_Bulk_3);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1984, 01, 01);
+		vehicle_life:			24;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			99;
+		running_cost_factor:		131;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				47 km/h;
+		cargo_capacity:			30;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1317;
+		weight:				39;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.128;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_BULK);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_LIQUID, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[GRVL, ORES, ORGN];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Bulk_3;
+	}
+}
+
+//Engine 34
+spriteset (spriteset_Bulk_4, "../graphics/Vehicles/PixelTool_Rovers/Rover_5_Bulk_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+spriteset (spriteset_Bulk_4_Regolith, "../graphics/Vehicles/PixelTool_Rovers/Rover_5_Bulk_Regolith_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+spriteset (spriteset_Bulk_4_MixedOres, "../graphics/Vehicles/PixelTool_Rovers/Rover_5_Bulk_MixedOres_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+spriteset (spriteset_Bulk_4_Organics, "../graphics/Vehicles/PixelTool_Rovers/Rover_5_Bulk_Organics_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+spritegroup spritegroup_Bulk_4_Regolith {
+	loaded: [spriteset_Bulk_4, spriteset_Bulk_4_Regolith];
+	loading: [spriteset_Bulk_4, spriteset_Bulk_4_Regolith];
+}
+spritegroup spritegroup_Bulk_4_MixedOres {
+	loaded: [spriteset_Bulk_4, spriteset_Bulk_4_MixedOres];
+	loading: [spriteset_Bulk_4, spriteset_Bulk_4_MixedOres];
+}
+spritegroup spritegroup_Bulk_4_Organics {
+	loaded: [spriteset_Bulk_4, spriteset_Bulk_4_Organics];
+	loading: [spriteset_Bulk_4, spriteset_Bulk_4_Organics];
+}
+
+item(FEAT_ROADVEHS, item_Bulk_4) {
+	property {
+		name:				string(STR_NAME_Bulk_4);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2001, 01, 01);
+		vehicle_life:			24;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			102;
+		running_cost_factor:		150;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				56 km/h;
+		cargo_capacity:			33;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1410;
+		weight:				44;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.107;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_BULK);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_LIQUID, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[GRVL, ORES, ORGN];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Bulk_4;
+	}
+}
+
+//Engine 35
+spriteset (spriteset_Bulk_5, "../graphics/Vehicles/PixelTool_Rovers/Rover_3_Bulk_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+spriteset (spriteset_Bulk_5_Regolith, "../graphics/Vehicles/PixelTool_Rovers/Rover_3_Bulk_Regolith_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+spriteset (spriteset_Bulk_5_MixedOres, "../graphics/Vehicles/PixelTool_Rovers/Rover_3_Bulk_MixedOres_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+spriteset (spriteset_Bulk_5_Organics, "../graphics/Vehicles/PixelTool_Rovers/Rover_3_Bulk_Organics_8bpp.png") {
+	template_roadveh_8(0, 0)
+}
+
+spritegroup spritegroup_Bulk_5_Regolith {
+	loaded: [spriteset_Bulk_5, spriteset_Bulk_5_Regolith];
+	loading: [spriteset_Bulk_5, spriteset_Bulk_5_Regolith];
+}
+spritegroup spritegroup_Bulk_5_MixedOres {
+	loaded: [spriteset_Bulk_5, spriteset_Bulk_5_MixedOres];
+	loading: [spriteset_Bulk_5, spriteset_Bulk_5_MixedOres];
+}
+spritegroup spritegroup_Bulk_5_Organics {
+	loaded: [spriteset_Bulk_5, spriteset_Bulk_5_Organics];
+	loading: [spriteset_Bulk_5, spriteset_Bulk_5_Organics];
+}
+
+item(FEAT_ROADVEHS, item_Bulk_5) {
+	property {
+		name:				string(STR_NAME_Bulk_5);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2022, 01, 01);
+		vehicle_life:			24;
+		model_life:			45;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			106;
+		running_cost_factor:		176;
+		sprite_id:			SPRITE_ID_NEW_ROADVEH;
+		speed:				62 km/h;
+		cargo_capacity:			36;
+		loading_speed:			5;
+		refit_cost:			0;
+		running_cost_base:		RUNNING_COST_ROADVEH;
+		misc_flags:			bitmask(ROADVEH_FLAG_2CC);
+		power:				1551;
+		weight:				49;
+		tractive_effort_coefficient:	0.4;
+		air_drag_coefficient:		0.097;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		sound_effect:			SOUND_TRUCK_START_2;
+		length:				8;
+		refittable_cargo_classes:		bitmask(CC_BULK);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_LIQUID, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED);
+		cargo_allow_refit:		[GRVL, ORES, ORGN];
+		cargo_disallow_refit:		[];
+	}
+	graphics {
+		default:	spriteset_Bulk_5;
+	}
+}

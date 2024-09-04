@@ -1,0 +1,148 @@
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+spriteset(aquiferpump_extracter_sprites, "../graphics/Buildings/Industry_AquiferPump_8bpp.png") {
+    [  4, 140, 64, 64, -32, -33]
+    [  4,  72, 64, 64, -32, -33]
+    [  4,   4, 64, 64, -32, -33]
+}
+spritelayout aquiferpump_extracter_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset:  0; yoffset:  0; zoffset:  0;
+        xextent: 16; yextent: 16; zextent: 36;
+        sprite: aquiferpump_extracter_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, aquiferpump_extracter_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [];
+    }
+    graphics { aquiferpump_extracter_sprite_layout; }
+}
+
+spriteset(aquiferpump_storage_sprites, "../graphics/Buildings/Industry_AquiferPump_8bpp.png") {
+    [ 72, 140, 64, 64, -32, -33]
+    [ 72,  72, 64, 64, -32, -33]
+    [ 72,   4, 64, 64, -32, -33]
+}
+spritelayout aquiferpump_storage_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset:  0; yoffset:  0; zoffset:  0;
+        xextent: 16; yextent: 16; zextent: 28;
+        sprite: aquiferpump_storage_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, aquiferpump_storage_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [];
+    }
+    graphics { aquiferpump_storage_sprite_layout; }
+}
+
+spriteset(aquiferpump_buildings_sprites, "../graphics/Buildings/Industry_AquiferPump_8bpp.png") {
+    [140, 140, 64, 64, -32, -33]
+    [140,  72, 64, 64, -32, -33]
+    [140,   4, 64, 64, -32, -33]
+}
+spritelayout aquiferpump_buildings_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset:  0; yoffset:  0; zoffset:  0;
+        xextent: 16; yextent: 16; zextent: 31;
+        sprite: aquiferpump_buildings_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, aquiferpump_buildings_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [];
+    }
+    graphics { aquiferpump_buildings_sprite_layout; }
+}
+
+
+tilelayout aquiferpump_layout {
+	0, 0: aquiferpump_extracter_tile;
+	3, 0: aquiferpump_extracter_tile;
+	1, 2: aquiferpump_buildings_tile;
+	2, 2: aquiferpump_storage_tile;
+	1, 3: aquiferpump_extracter_tile;
+}
+
+tilelayout aquiferpump_layout_1 {
+	2, 2: aquiferpump_buildings_tile;
+	1, 2: aquiferpump_storage_tile;
+	1, 1: aquiferpump_extracter_tile;
+	3, 0: aquiferpump_extracter_tile;
+	2, 4: aquiferpump_extracter_tile;
+}
+
+tilelayout aquiferpump_layout_2 {
+	1, 1: aquiferpump_buildings_tile;
+	1, 2: aquiferpump_storage_tile;
+	0, 0: aquiferpump_extracter_tile;
+	3, 2: aquiferpump_extracter_tile;
+	1, 3: aquiferpump_extracter_tile;
+}
+
+tilelayout aquiferpump_layout_3 {
+	1, 2: aquiferpump_buildings_tile;
+	1, 1: aquiferpump_storage_tile;
+	0, 1: aquiferpump_extracter_tile;
+	2, 0: aquiferpump_extracter_tile;
+	3, 3: aquiferpump_extracter_tile;
+}
+
+tilelayout aquiferpump_layout_4 {
+	1, 1: aquiferpump_buildings_tile;
+	2, 2: aquiferpump_storage_tile;
+	0, 2: aquiferpump_extracter_tile;
+	3, 0: aquiferpump_extracter_tile;
+	2, 3: aquiferpump_extracter_tile;
+}
+
+item(FEAT_INDUSTRIES, aquifer_industry, AQUIFER_PUMP_ID) {
+    property {
+        substitute: AQUIFER_PUMP_ID;
+        name: string(STR_AQUIFER_PUMP_NAME);
+        layouts: [aquiferpump_layout, aquiferpump_layout_1, aquiferpump_layout_2, aquiferpump_layout_3, aquiferpump_layout_4];
+        life_type: IND_LIFE_TYPE_ORGANIC;
+        accept_cargo_types: [cargotype("ENSP")];
+        prod_cargo_types: [cargotype("WATR")];
+        prod_multiplier: [16, 0];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: 0;
+        input_multiplier_1: [20,0];
+        input_multiplier_2: [0,0];
+        input_multiplier_3: [0,0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_AQUIFER_PUMP_STATION_NAME));
+    }
+}
+
+
+// vim: sw=4 et sts=4 nospell

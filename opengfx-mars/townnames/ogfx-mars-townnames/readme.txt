@@ -1,0 +1,76 @@
+OpenGFX Mars Townnames 
+----------------------
+
+Contents:
+
+1 About
+2 Usage
+3 Contributing and reporting bugs
+4 Credits
+5 License
+
+
+
+-------
+1 About
+-------
+
+This NewGRF provides a Martian Townnames
+
+Name of this Repo:  OpenGFX Mars Townnames
+Repository version: 5443
+
+
+
+-------
+2 Usage
+-------
+
+Just add the NewGRF to the selection of active NewGRFs within the
+configuration window as accessible from the main menu and select
+the townnames in the game options afterwards.
+
+
+
+---------------------------------
+3 Contributing and reporting bugs
+---------------------------------
+
+The issue tracker is located at the #openttdcoop DevZone at
+    http://dev.openttdcoop.org/projects/opengfx-mars-townnames
+
+The complete source code is available as mercurial checkout via
+    hg clone http://hg.openttdcoop.org/opengfx-mars
+
+
+
+---------
+4 Credits
+---------
+
+Author:   Zephyris 
+Graphics: Zephyris
+
+
+
+---------
+5 License
+---------
+
+OpenGFX Mars Landscape
+Copyright (C) 2014 Zephyris, planetmaker and others
+Contact: planetmaker@openttd.org
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.

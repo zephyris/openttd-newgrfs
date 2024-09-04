@@ -1,0 +1,14 @@
+##grflangid 0x23
+##plural 0
+
+STR_GRF_NAME :OpenGFX Mars Haiser
+STR_GRF_DESC :{ORANGE}Haiser vum Mars{}{BLACK}Grafik: {SILVER}Zephyris{}{BLACK}Programméirung: {SILVER}Elyon
+STR_GRF_URL :http://dev.openttdcoop.org/projects/opengfx-mars-houses
+
+STR_NAME_HABITAT :Haus
+STR_NAME_LARGE_HABITAT :Grousst Haus
+STR_NAME_TALL_HABITAT :Grousst Haus
+STR_NAME_TOWER_HABITAT :Tuermhaus
+STR_NAME_LUXURY_TOWER_HABITAT :Luxustuermhaus
+STR_NAME_PARK :Park
+STR_NAME_TALL_PARK :Grousse Park

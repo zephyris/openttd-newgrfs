@@ -1,0 +1,2886 @@
+﻿// 	OpenGFX Mars Tracks and Trains
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+// Define the NewGRF
+grf {
+	grfid: "OGM\1";
+	name: string(STR_GRF_NAME);
+	desc: string(STR_GRF_DESCRIPTION);
+	url:  string(STR_GRF_URL);
+	version: 1;
+	min_compatible_version: 1;
+}
+
+#include "../graphics/common_nml/cargo_table.pnml"
+
+
+//Define the rail type translation table
+railtypetable {
+	RAIL, //Standard rail
+	GDGR, //Guided ground trains
+	MONO, //Monorail
+	MGLV  //Maglev
+}
+
+//Disable all default vehicles
+disable_item(FEAT_TRAINS, 0, 115);
+
+//Define the rail types
+//Define the guided ground train track
+
+template template_rail_overlay(x, y) {
+	[x+66, y+1, 64, 31, -32, 0]
+	[x+1, y+1, 64, 31, -32, 0]
+	[x+131, y+1, 64, 31, -32, 0]
+	[x+196, y+1, 64, 31, -32, 0]
+	[x+261, y+1, 64, 31, -32, 0]
+	[x+326, y+1, 64, 31, -32, 0]
+	[x+391, y+1, 64, 39, -32, 0]
+	[x+456, y+1, 64, 23, -32, 0]
+	[x+521, y+1, 64, 23, -32, 0]
+	[x+586, y+1, 64, 39, -32, 0]
+}
+
+template template_rail_underlay(x, y) {
+	[x+66, y+1, 64, 31, -32, 0]
+	[x+1, y+1, 64, 31, -32, 0]
+	[x+131, y+1, 64, 31, -32, 0]
+	[x+196, y+1, 64, 31, -32, 0]
+	[x+261, y+1, 64, 31, -32, 0]
+	[x+326, y+1, 64, 31, -32, 0]
+	[x+391, y+1, 64, 39, -32, -8]
+	[x+456, y+1, 64, 23, -32, 0]
+	[x+521, y+1, 64, 23, -32, 0]
+	[x+586, y+1, 64, 39, -32, -8]
+	[x+651, y+1, 64, 31, -32, 0]
+	[x+716, y+1, 64, 31, -32, 0]
+	[x+781, y+1, 64, 31, -32, 0]
+	[x+846, y+1, 64, 31, -32, 0]
+	[x+911, y+1, 64, 31, -32, 0]
+	[x+976, y+1, 64, 31, -32, 0]
+}
+
+template template_rail_depot(x, y) {
+	[x+4, y+72, 64, 64, -31, -37]
+	[x+4, y+4, 64, 64, -9, -48]
+	[x+208, y+72, 64, 64, -31, -38]
+	[x+208, y+4, 64, 64, -53, -48]
+	[x+140, y+4, 64, 64, -53, -48]
+	[x+72, y+4, 64, 64, -8, -48]
+}
+
+template template_rail_bridge_surfaces(x, y) {
+	[x+66, y+1, 64, 31, -32, 0]
+	[x+1, y+1, 64, 31, -32, 0]
+	[x+391, y+1, 64, 39, -32, -8]
+	[x+456, y+1, 64, 23, -32, 0]
+	[x+521, y+1, 64, 23, -32, 0]
+	[x+586, y+1, 64, 39, -32, -8]
+}
+
+template template_rail_crossing_lights(x, y) {
+	[x+1, y+1, 64, 31, -32, 0, "../graphics/Infrastructure/RailTypes/LevelCrossing_Lights_8bpp.png"]
+	[x+1, y+33, 64, 31, -32, 0, "../graphics/Infrastructure/RailTypes/LevelCrossing_Lights_8bpp.png"]
+	[x+1, y+65, 64, 31, -32, 0, "../graphics/Infrastructure/RailTypes/LevelCrossing_Lights_8bpp.png"]
+	[x+1, y+97, 64, 31, -32, 0, "../graphics/Infrastructure/RailTypes/LevelCrossing_Lights_8bpp.png"]
+	[x+66, y+1, 64, 31, -32, 0, "../graphics/Infrastructure/RailTypes/LevelCrossing_Lights_8bpp.png"]
+	[x+66, y+33, 64, 31, -32, 0, "../graphics/Infrastructure/RailTypes/LevelCrossing_Lights_8bpp.png"]
+	[x+66, y+65, 64, 31, -32, 0, "../graphics/Infrastructure/RailTypes/LevelCrossing_Lights_8bpp.png"]
+	[x+66, y+97, 64, 31, -32, 0, "../graphics/Infrastructure/RailTypes/LevelCrossing_Lights_8bpp.png"]
+}
+
+template template_rail_crossing_overlay(x, y) {
+	[x+66, y+1, 64, 31, -32, 0]
+	[x+1, y+1, 64, 31, -32, 0]
+}
+
+template template_rail_tunnel_overlay(x, y) {
+	[x+1, y+1, 64, 39, -32, -8]
+	[x+261, y+1, 64, 23, -32, 8]
+	[x+131, y+1, 64, 23, -32, 8]
+	[x+391, y+1, 64, 39, -32, -8]
+}
+
+template template_rail_tunnel_base(x, y) {
+	[x+1, y+1, 64, 39, -32, -8]
+	[x+66, y+1, 64, 39, -32, -38]
+	[x+261, y+1, 64, 23, -32, 0]
+	[x+326, y+1, 64, 23, -32, -30]
+	[x+131, y+1, 64, 23, -32, 0]
+	[x+196, y+1, 64, 23, -32, -30]
+	[x+391, y+1, 64, 39, -32, -8]
+	[x+456, y+1, 64, 39, -32, -38]
+}
+
+//Replace general tunnels
+//TODO: desert/snow graphics
+if (climate!=CLIMATE_TOYLAND) {
+	//Normal graphics
+	replace tunnels_rail(2365, "../graphics/Infrastructure/RailTypes/General_Tunnels_8bpp.png") {
+		template_rail_tunnel_base(0, 0)
+	}
+	replace tunnels_monorail(2373, "../graphics/Infrastructure/RailTypes/General_Tunnels_8bpp.png") {
+		template_rail_tunnel_base(0, 0)
+	}
+	replace tunnels_maglev(2381, "../graphics/Infrastructure/RailTypes/General_Tunnels_8bpp.png") {
+		template_rail_tunnel_base(0, 0)
+	}
+	replacenew(RAILTYPE_TUNNELS, "../graphics/Infrastructure/RailTypes/General_Tunnels_8bpp.png") {
+		template_rail_tunnel_base(0, 0)
+	}
+	//Snow/desert graphics
+	if (climate==CLIMATE_ARCTIC) {
+		replace tunnels_rail_snow(2397, "../graphics/Infrastructure/RailTypes/General_Tunnels_Snow_8bpp.png") {
+			template_rail_tunnel_base(0, 0)
+		}
+		replace tunnels_monorail_snow(2405, "../graphics/Infrastructure/RailTypes/General_Tunnels_Snow_8bpp.png") {
+			template_rail_tunnel_base(0, 0)
+		}
+		replace tunnels_maglev_snow(2413, "../graphics/Infrastructure/RailTypes/General_Tunnels_Snow_8bpp.png") {
+			template_rail_tunnel_base(0, 0)
+		}
+		replacenew(RAILTYPE_TUNNELS, "../graphics/Infrastructure/RailTypes/General_Tunnels_Snow_8bpp.png") {
+			template_rail_tunnel_base(0, 0)
+		}
+	} else {
+		replace tunnels_rail_desert(2397, "../graphics/Infrastructure/RailTypes/General_Tunnels_Desert_8bpp.png") {
+			template_rail_tunnel_base(0, 0)
+		}
+		replace tunnels_monorail_desert(2405, "../graphics/Infrastructure/RailTypes/General_Tunnels_Desert_8bpp.png") {
+			template_rail_tunnel_base(0, 0)
+		}
+		replace tunnels_maglev_desert(2413, "../graphics/Infrastructure/RailTypes/General_Tunnels_Desert_8bpp.png") {
+			template_rail_tunnel_base(0, 0)
+		}
+		replacenew(RAILTYPE_TUNNELS, "../graphics/Infrastructure/RailTypes/General_Tunnels_Desert_8bpp.png") {
+			template_rail_tunnel_base(0, 0)
+		}
+	}
+} else {
+	//Normal graphics
+	replace tunnels_rail_polar(2365, "../graphics/Infrastructure/RailTypes/General_Tunnels_Snow_8bpp.png") {
+		template_rail_tunnel_base(0, 0)
+	}
+	replace tunnels_monorail_polar(2373, "../graphics/Infrastructure/RailTypes/General_Tunnels_Snow_8bpp.png") {
+		template_rail_tunnel_base(0, 0)
+	}
+	replace tunnels_maglev_polar(2381, "../graphics/Infrastructure/RailTypes/General_Tunnels_Snow_8bpp.png") {
+		template_rail_tunnel_base(0, 0)
+	}
+	replacenew(RAILTYPE_TUNNELS, "../graphics/Infrastructure/RailTypes/General_Tunnels_Snow_8bpp.png") {
+		template_rail_tunnel_base(0, 0)
+	}
+}
+
+//Ground guides track overlay
+spriteset (spriteset_gg_track_overlay_normal, "../graphics/Infrastructure/RailTypes/GuidedGroundTrain/GuidedGroundTrain_RailOverlay_8bpp.png") {
+	template_rail_overlay(0, 0)
+}
+
+spriteset (spriteset_gg_track_overlay_snow, "../graphics/Infrastructure/RailTypes/GuidedGroundTrain/GuidedGroundTrain_RailOverlay_8bpp.png") {
+	template_rail_overlay(0, 40)
+}
+
+spriteset (spriteset_gg_track_overlay_desert, "../graphics/Infrastructure/RailTypes/GuidedGroundTrain/GuidedGroundTrain_RailOverlay_8bpp.png") {
+	template_rail_overlay(0, 80)
+}
+
+switch(FEAT_RAILTYPES, SELF, switch_gg_overlay_ground, terrain_type) {
+	TILETYPE_SNOW:				spriteset_gg_track_overlay_snow;
+	TILETYPE_DESERT:			spriteset_gg_track_overlay_desert;
+	spriteset_gg_track_overlay_normal;
+}
+
+//Ground guides track underlay
+spriteset (spriteset_gg_track_underlay_normal, "../graphics/Infrastructure/RailTypes/GuidedGroundTrain/GuidedGroundTrain_RailUnderlay_8bpp.png") {
+	template_rail_underlay(0, 0)
+}
+
+spriteset (spriteset_gg_track_underlay_snow, "../graphics/Infrastructure/RailTypes/GuidedGroundTrain/GuidedGroundTrain_RailUnderlay_8bpp.png") {
+	template_rail_underlay(0, 40)
+}
+
+spriteset (spriteset_gg_track_underlay_desert, "../graphics/Infrastructure/RailTypes/GuidedGroundTrain/GuidedGroundTrain_RailUnderlay_8bpp.png") {
+	template_rail_underlay(0, 80)
+}
+
+switch(FEAT_RAILTYPES, SELF, switch_gg_underlay_ground, terrain_type) {
+	TILETYPE_SNOW:				spriteset_gg_track_underlay_snow;
+	TILETYPE_DESERT:			spriteset_gg_track_underlay_desert;
+	spriteset_gg_track_underlay_normal;
+}
+
+//Ground guides depot
+spriteset (spriteset_gg_depot_normal, "../graphics/Buildings/TrainDepots_8bpp.png") {
+	template_rail_depot(0, 0)
+}
+
+//Ground guides track bridge surfaces
+spriteset (spriteset_gg_track_bridge_surfaces_normal, "../graphics/Infrastructure/RailTypes/GuidedGroundTrain/GuidedGroundTrain_RailUnderlay_8bpp.png") {
+	template_rail_bridge_surfaces(0, 0)
+}
+
+spriteset (spriteset_gg_track_bridge_surfaces_snow, "../graphics/Infrastructure/RailTypes/GuidedGroundTrain/GuidedGroundTrain_RailUnderlay_8bpp.png") {
+	template_rail_bridge_surfaces(0, 40)
+}
+
+spriteset (spriteset_gg_track_bridge_surfaces_desert, "../graphics/Infrastructure/RailTypes/GuidedGroundTrain/GuidedGroundTrain_RailUnderlay_8bpp.png") {
+	template_rail_bridge_surfaces(0, 80)
+}
+
+switch(FEAT_RAILTYPES, SELF, switch_gg_bridge_surfaces_ground, terrain_type) {
+	TILETYPE_SNOW:				spriteset_gg_track_bridge_surfaces_snow;
+	TILETYPE_DESERT:			spriteset_gg_track_bridge_surfaces_desert;
+	spriteset_gg_track_bridge_surfaces_normal;
+}
+
+//Crossings
+spriteset (spriteset_gg_crossing_open, "../graphics/Infrastructure/RailTypes/GuidedGroundTrain/GuidedGroundTrain_CrossingOverlay_8bpp.png") {
+	template_rail_crossing_overlay(0, 0)
+	template_rail_crossing_lights(0, 128)
+}
+
+spriteset (spriteset_gg_crossing_closed, "../graphics/Infrastructure/RailTypes/GuidedGroundTrain/GuidedGroundTrain_CrossingOverlay_8bpp.png") {
+	template_rail_crossing_overlay(0, 0)
+	template_rail_crossing_lights(0, 0)
+}
+
+switch(FEAT_RAILTYPES, SELF, switch_gg_crossing, level_crossing_status) {
+	LEVEL_CROSSING_CLOSED:			spriteset_gg_crossing_closed;
+	spriteset_gg_crossing_open;
+}
+
+//Tunnels
+spriteset (spriteset_gg_tunnel_overlay, "../graphics/Infrastructure/RailTypes/GuidedGroundTrain/GuidedGroundTrain_Tunnels_8bpp.png") {
+	template_rail_tunnel_overlay(0, 0)
+}
+
+//Replace guided ground train rail type
+item (FEAT_RAILTYPES, item_railtype_guidedgroundtrain) {
+	property {
+		//General properties
+		label:				"GDGR";
+		introduction_date:		date(1900,1,1);
+		compatible_railtype_list:	[];
+		powered_railtype_list:		["GDGR"];
+		railtype_flags:			0;
+		sort_order:			07;
+		requires_railtype_list:		[];
+		introduces_railtype_list:	[];
+		alternative_railtype_list:	[];
+
+		//Strings
+		name:				string(STR_NAME_RAIL_GG);
+		toolbar_caption:		string(STR_NAME_RAIL_GG_TOOLBAR);
+		menu_text:			string(STR_NAME_RAIL_GG_MENU);
+		autoreplace_text:		string(STR_NAME_RAIL_GG_AUTOREPLACE);
+		new_engine_text:		string(STR_NAME_RAIL_GG_NEW_ENGINE);
+
+		//Ingame properties
+//????		curve_speed_multiplier:		value unclear, so not yet defined
+		speed_limit:			0; //No limit
+		acceleration_model:		ACC_MODEL_RAIL;
+		
+		//Construction properties
+		construction_cost:		2; //NB. very low deliberately
+		maintenance_cost:		4; //NB. low deliberately
+
+		//Graphics
+		station_graphics:		RAILTYPE_STATION_NORMAL;
+//????		map_color:			value unclear, so not yet defined
+	}
+
+	graphics {
+		track_overlay:			switch_gg_overlay_ground;
+		underlay:			switch_gg_underlay_ground;
+		depots:				spriteset_gg_depot_normal;
+		bridge_surfaces:		switch_gg_bridge_surfaces_ground;
+		level_crossings:		switch_gg_crossing;
+		tunnels:			spriteset_gg_tunnel_overlay;
+	}
+}
+
+//Monorail track overlay
+spriteset (spriteset_mono_track_overlay_normal, "../graphics/Infrastructure/RailTypes/Monorail/Monorail_RailOverlay_8bpp.png") {
+	template_rail_overlay(0, 0)
+}
+
+spriteset (spriteset_mono_track_overlay_snow, "../graphics/Infrastructure/RailTypes/Monorail/Monorail_RailOverlay_8bpp.png") {
+	template_rail_overlay(0, 40)
+}
+
+spriteset (spriteset_mono_track_overlay_desert, "../graphics/Infrastructure/RailTypes/Monorail/Monorail_RailOverlay_8bpp.png") {
+	template_rail_overlay(0, 80)
+}
+
+switch(FEAT_RAILTYPES, SELF, switch_mono_overlay_ground, terrain_type) {
+	TILETYPE_SNOW:				spriteset_mono_track_overlay_snow;
+	TILETYPE_DESERT:			spriteset_mono_track_overlay_desert;
+	spriteset_mono_track_overlay_normal;
+}
+
+//Ground guides track underlay
+spriteset (spriteset_mono_track_underlay_normal, "../graphics/Infrastructure/RailTypes/Monorail/Monorail_RailUnderlay_8bpp.png") {
+	template_rail_underlay(0, 0)
+}
+
+spriteset (spriteset_mono_track_underlay_snow, "../graphics/Infrastructure/RailTypes/Monorail/Monorail_RailUnderlay_8bpp.png") {
+	template_rail_underlay(0, 40)
+}
+
+spriteset (spriteset_mono_track_underlay_desert, "../graphics/Infrastructure/RailTypes/Monorail/Monorail_RailUnderlay_8bpp.png") {
+	template_rail_underlay(0, 80)
+}
+
+switch(FEAT_RAILTYPES, SELF, switch_mono_underlay_ground, terrain_type) {
+	TILETYPE_SNOW:				spriteset_mono_track_underlay_snow;
+	TILETYPE_DESERT:			spriteset_mono_track_underlay_desert;
+	spriteset_mono_track_underlay_normal;
+}
+
+//Ground guides depot
+spriteset (spriteset_mono_depot_normal, "../graphics/Buildings/TrainDepots_8bpp.png") {
+	template_rail_depot(0, 0)
+}
+
+//Ground guides track bridge surfaces
+spriteset (spriteset_mono_track_bridge_surfaces_normal, "../graphics/Infrastructure/RailTypes/Monorail/Monorail_RailUnderlay_8bpp.png") {
+	template_rail_bridge_surfaces(0, 0)
+}
+
+spriteset (spriteset_mono_track_bridge_surfaces_snow, "../graphics/Infrastructure/RailTypes/Monorail/Monorail_RailUnderlay_8bpp.png") {
+	template_rail_bridge_surfaces(0, 40)
+}
+
+spriteset (spriteset_mono_track_bridge_surfaces_desert, "../graphics/Infrastructure/RailTypes/Monorail/Monorail_RailUnderlay_8bpp.png") {
+	template_rail_bridge_surfaces(0, 80)
+}
+
+switch(FEAT_RAILTYPES, SELF, switch_mono_bridge_surfaces_ground, terrain_type) {
+	TILETYPE_SNOW:				spriteset_mono_track_bridge_surfaces_snow;
+	TILETYPE_DESERT:			spriteset_mono_track_bridge_surfaces_desert;
+	spriteset_mono_track_bridge_surfaces_normal;
+}
+
+//Crossings
+spriteset (spriteset_mono_crossing_open, "../graphics/Infrastructure/RailTypes/Monorail/Monorail_CrossingOverlay_8bpp.png") {
+	template_rail_crossing_overlay(0, 0)
+	template_rail_crossing_lights(0, 128)
+}
+
+spriteset (spriteset_mono_crossing_closed, "../graphics/Infrastructure/RailTypes/Monorail/Monorail_CrossingOverlay_8bpp.png") {
+	template_rail_crossing_overlay(0, 0)
+	template_rail_crossing_lights(0, 0)
+}
+
+switch(FEAT_RAILTYPES, SELF, switch_mono_crossing, level_crossing_status) {
+	LEVEL_CROSSING_CLOSED:			spriteset_mono_crossing_closed;
+	spriteset_mono_crossing_open;
+}
+
+//Tunnels
+spriteset (spriteset_mono_tunnel_overlay, "../graphics/Infrastructure/RailTypes/Monorail/Monorail_Tunnels_8bpp.png") {
+	template_rail_tunnel_overlay(0, 0)
+}
+
+//Define monorail rail type
+item (FEAT_RAILTYPES, item_railtype_monorail) {
+	property {
+		//General properties
+		label:				"MONO";
+		introduction_date:		date(1900,1,1);
+		compatible_railtype_list:	[];
+		powered_railtype_list:		["MONO"];
+		railtype_flags:			0;
+		sort_order:			47;
+		requires_railtype_list:		[];
+		introduces_railtype_list:	[];
+		alternative_railtype_list:	[];
+
+		//Strings
+		name:				string(STR_NAME_RAIL_MONO);
+		toolbar_caption:		string(STR_NAME_RAIL_MONO_TOOLBAR);
+		menu_text:			string(STR_NAME_RAIL_MONO_MENU);
+		autoreplace_text:		string(STR_NAME_RAIL_MONO_AUTOREPLACE);
+		new_engine_text:		string(STR_NAME_RAIL_MONO_NEW_ENGINE);
+
+		//Ingame properties
+//????		curve_speed_multiplier:		value unclear, so not yet defined
+		speed_limit:			0; //No limit
+		acceleration_model:		ACC_MODEL_MONORAIL;
+		
+		//Construction properties
+		construction_cost:		5; //NB. Similar to standard rail
+		maintenance_cost:		5; //NB. Similar to standard rail
+
+		//Graphics
+		station_graphics:		RAILTYPE_STATION_NORMAL;
+//????		map_color:			value unclear, so not yet defined
+	}
+
+	graphics {
+		track_overlay:			switch_mono_overlay_ground;
+		underlay:			switch_mono_underlay_ground;
+		depots:				spriteset_mono_depot_normal;
+		bridge_surfaces:		switch_mono_bridge_surfaces_ground;
+		level_crossings:		switch_mono_crossing;
+		tunnels:			spriteset_mono_tunnel_overlay;
+	}
+}
+
+//Maglev track overlay
+spriteset (spriteset_maglev_track_overlay_normal, "../graphics/Infrastructure/RailTypes/Maglev/Maglev_RailOverlay_8bpp.png") {
+	template_rail_overlay(0, 0)
+}
+
+spriteset (spriteset_maglev_track_overlay_snow, "../graphics/Infrastructure/RailTypes/Maglev/Maglev_RailOverlay_8bpp.png") {
+	template_rail_overlay(0, 40)
+}
+
+spriteset (spriteset_maglev_track_overlay_desert, "../graphics/Infrastructure/RailTypes/Maglev/Maglev_RailOverlay_8bpp.png") {
+	template_rail_overlay(0, 80)
+}
+
+switch(FEAT_RAILTYPES, SELF, switch_maglev_overlay_ground, terrain_type) {
+	TILETYPE_SNOW:				spriteset_maglev_track_overlay_snow;
+	TILETYPE_DESERT:			spriteset_maglev_track_overlay_desert;
+	spriteset_maglev_track_overlay_normal;
+}
+
+//Ground guides track underlay
+spriteset (spriteset_maglev_track_underlay_normal, "../graphics/Infrastructure/RailTypes/Maglev/Maglev_RailUnderlay_8bpp.png") {
+	template_rail_underlay(0, 0)
+}
+
+spriteset (spriteset_maglev_track_underlay_snow, "../graphics/Infrastructure/RailTypes/Maglev/Maglev_RailUnderlay_8bpp.png") {
+	template_rail_underlay(0, 40)
+}
+
+spriteset (spriteset_maglev_track_underlay_desert, "../graphics/Infrastructure/RailTypes/Maglev/Maglev_RailUnderlay_8bpp.png") {
+	template_rail_underlay(0, 80)
+}
+
+switch(FEAT_RAILTYPES, SELF, switch_maglev_underlay_ground, terrain_type) {
+	TILETYPE_SNOW:				spriteset_maglev_track_underlay_snow;
+	TILETYPE_DESERT:			spriteset_maglev_track_underlay_desert;
+	spriteset_maglev_track_underlay_normal;
+}
+
+//Ground guides depot
+spriteset (spriteset_maglev_depot_normal, "../graphics/Buildings/TrainDepots_8bpp.png") {
+	template_rail_depot(0, 0)
+}
+
+//Ground guides track bridge surfaces
+spriteset (spriteset_maglev_track_bridge_surfaces_normal, "../graphics/Infrastructure/RailTypes/Maglev/Maglev_RailUnderlay_8bpp.png") {
+	template_rail_bridge_surfaces(0, 0)
+}
+
+spriteset (spriteset_maglev_track_bridge_surfaces_snow, "../graphics/Infrastructure/RailTypes/Maglev/Maglev_RailUnderlay_8bpp.png") {
+	template_rail_bridge_surfaces(0, 40)
+}
+
+spriteset (spriteset_maglev_track_bridge_surfaces_desert, "../graphics/Infrastructure/RailTypes/Maglev/Maglev_RailUnderlay_8bpp.png") {
+	template_rail_bridge_surfaces(0, 80)
+}
+
+switch(FEAT_RAILTYPES, SELF, switch_maglev_bridge_surfaces_ground, terrain_type) {
+	TILETYPE_SNOW:				spriteset_maglev_track_bridge_surfaces_snow;
+	TILETYPE_DESERT:			spriteset_maglev_track_bridge_surfaces_desert;
+	spriteset_maglev_track_bridge_surfaces_normal;
+}
+
+//Crossings
+spriteset (spriteset_maglev_crossing_open, "../graphics/Infrastructure/RailTypes/Maglev/Maglev_CrossingOverlay_8bpp.png") {
+	template_rail_crossing_overlay(0, 0)
+	template_rail_crossing_lights(0, 128)
+}
+
+spriteset (spriteset_maglev_crossing_closed, "../graphics/Infrastructure/RailTypes/Maglev/Maglev_CrossingOverlay_8bpp.png") {
+	template_rail_crossing_overlay(0, 0)
+	template_rail_crossing_lights(0, 0)
+}
+
+switch(FEAT_RAILTYPES, SELF, switch_maglev_crossing, level_crossing_status) {
+	LEVEL_CROSSING_CLOSED:			spriteset_maglev_crossing_closed;
+	spriteset_maglev_crossing_open;
+}
+
+//Tunnels
+spriteset (spriteset_maglev_tunnel_overlay, "../graphics/Infrastructure/RailTypes/Maglev/Maglev_Tunnels_8bpp.png") {
+	template_rail_tunnel_overlay(0, 0)
+}
+
+//Define maglev rail type
+item (FEAT_RAILTYPES, item_railtype_maglev) {
+	property {
+		//General properties
+		label:				"MGLV";
+		introduction_date:		date(1900,1,1);
+		compatible_railtype_list:	[];
+		powered_railtype_list:		["MGLV"];
+		railtype_flags:			0;
+		sort_order:			57;
+		requires_railtype_list:		[];
+		introduces_railtype_list:	[];
+		alternative_railtype_list:	[];
+
+		//Strings
+		name:				string(STR_NAME_RAIL_MGLV);
+		toolbar_caption:		string(STR_NAME_RAIL_MGLV_TOOLBAR);
+		menu_text:			string(STR_NAME_RAIL_MGLV_MENU);
+		autoreplace_text:		string(STR_NAME_RAIL_MGLV_AUTOREPLACE);
+		new_engine_text:		string(STR_NAME_RAIL_MGLV_NEW_ENGINE);
+
+		//Ingame properties
+//????		curve_speed_multiplier:		value unclear, so not yet defined
+		speed_limit:			0; //No limit
+		acceleration_model:		ACC_MODEL_MAGLEV;
+		
+		//Construction properties
+		construction_cost:		20;
+		maintenance_cost:		20;
+
+		//Graphics
+		station_graphics:		RAILTYPE_STATION_NORMAL;
+//????		map_color:			value unclear, so not yet defined
+	}
+
+	graphics {
+		track_overlay:			switch_maglev_overlay_ground;
+		underlay:			switch_maglev_underlay_ground;
+		depots:				spriteset_maglev_depot_normal;
+		bridge_surfaces:		switch_maglev_bridge_surfaces_ground;
+		level_crossings:		switch_maglev_crossing;
+		tunnels:			spriteset_maglev_tunnel_overlay;
+	}
+}
+
+//Redefine default station graphics
+template template_station_replacement(x, y) {
+	[x+4, y+72, 64, 64, -9, -44]
+	[x+72, y+4, 64, 64, -32, -33]
+	[x+4, y+4, 64, 64, -32, -33]
+	[x+72, y+72, 64, 64, -54, -44]
+	[x+140, y+4, 64, 64, -32, -33]
+	[x+140, y+72, 64, 64, -32, -33]
+	[x+208, y+72, 64, 64, -9, -44]
+	[x+276, y+4, 64, 64, -32, -33]
+	[x+208, y+4, 64, 64, -32, -33]
+	[x+276, y+72, 64, 64, -54, -44]
+	[x+412, y+4, 64, 64, -32, -28]
+	[x+344, y+4, 64, 64, -32, -28]
+	[x+412, y+72, 64, 64, -32, -28]
+	[x+344, y+72, 64, 64, -31, -28]
+	[0, 0, 1, 1, 0, 0, "../graphics/nosprite_8bpp.png"]
+	[0, 0, 1, 1, 0, 0, "../graphics/nosprite_8bpp.png"]
+	[0, 0, 1, 1, 0, 0, "../graphics/nosprite_8bpp.png"]
+	[0, 0, 1, 1, 0, 0, "../graphics/nosprite_8bpp.png"]
+}
+
+//Replace all three station graphics
+replace station_rail(1069, "../graphics/Buildings/TrainStations_8bpp.png") {
+	template_station_replacement(0, 0)
+}
+replace station_monorail(1151, "../graphics/Buildings/TrainStations_8bpp.png") {
+	template_station_replacement(0, 0)
+}
+replace station_maglev(1233, "../graphics/Buildings/TrainStations_8bpp.png") {
+	template_station_replacement(0, 0)
+}
+
+// Define the Train vehicles
+// Define the Guided Ground Trains
+//Assumes a PixelTool generated set of sprites
+template template_ggtr_8PT(x, y) {
+	[0, 0, 12, 26, -6, -17]
+	[13, 0, 25, 22, -13, -15]
+	[39, 0, 32, 14, -16, -8]
+	[72, 0, 25, 22, -13, -15]
+	[98, 0, 12, 26, -6, -17]
+	[111, 0, 25, 22, -13, -15]
+	[137, 0, 32, 14, -16, -8]
+	[170, 0, 25, 22, -13, -15]
+}
+
+//Engine 1
+spriteset (spriteset_GDGR_engine_1, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Engine_7_8bpp.png") {
+	template_ggtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_GDGR_engine_1) {
+	property {
+		name:				string(STR_NAME_GDGR_ENGINE_1);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1930, 01, 01);
+		model_life:				35;
+		vehicle_life:			18;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			4;
+		running_cost_factor:		27;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				43 km/h;
+		refit_cost:			0;
+		track_type:			GDGR;
+		power:				4526 hp;
+		running_cost_base:		RUNNING_COST_DIESEL;
+		dual_headed:			0;
+		weight:				94 ton;
+		engine_class:			ENGINE_CLASS_DIESEL;
+		tractive_effort_coefficient:	0.7;
+		air_drag_coefficient:		0.22;
+		length:				4;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_DIESEL, 4, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_GDGR_engine_1;
+	}
+}
+
+//Engine 2
+spriteset (spriteset_GDGR_engine_2, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Engine_8_8bpp.png") {
+	template_ggtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_GDGR_engine_2) {
+	property {
+		name:				string(STR_NAME_GDGR_ENGINE_2);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1939, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			7;
+		running_cost_factor:		37;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				48 km/h;
+		refit_cost:			1;
+		track_type:			GDGR;
+		power:				5136 hp;
+		running_cost_base:		RUNNING_COST_DIESEL;
+		dual_headed:			0;
+		weight:				89 ton;
+		engine_class:			ENGINE_CLASS_DIESEL;
+		tractive_effort_coefficient:	0.7;
+		air_drag_coefficient:		0.24;
+		length:				4;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_DIESEL, 4, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_GDGR_engine_2;
+	}
+}
+
+//Engine 3
+spriteset (spriteset_GDGR_engine_3, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Engine_1_8bpp.png") {
+	template_ggtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_GDGR_engine_3) {
+	property {
+		name:				string(STR_NAME_GDGR_ENGINE_3);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1949, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			9;
+		running_cost_factor:		47;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				52 km/h;
+		refit_cost:			2;
+		track_type:			GDGR;
+		power:				7300 hp;
+		running_cost_base:		RUNNING_COST_DIESEL;
+		dual_headed:			0;
+		weight:				116 ton;
+		engine_class:			ENGINE_CLASS_DIESEL;
+		tractive_effort_coefficient:	0.7;
+		air_drag_coefficient:		0.26;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_GDGR_engine_3;
+	}
+}
+
+//Engine 4
+spriteset (spriteset_GDGR_engine_4, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Engine_2_8bpp.png") {
+	template_ggtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_GDGR_engine_4) {
+	property {
+		name:				string(STR_NAME_GDGR_ENGINE_4);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1971, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			11;
+		running_cost_factor:		54;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				62 km/h;
+		refit_cost:			3;
+		track_type:			GDGR;
+		power:				7912 hp;
+		running_cost_base:		RUNNING_COST_DIESEL;
+		dual_headed:			0;
+		weight:				105 ton;
+		engine_class:			ENGINE_CLASS_DIESEL;
+		tractive_effort_coefficient:	0.7;
+		air_drag_coefficient:		0.31;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_GDGR_engine_4;
+	}
+}
+
+//Engine 5
+spriteset (spriteset_GDGR_engine_5, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Engine_3_8bpp.png") {
+	template_ggtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_GDGR_engine_5) {
+	property {
+		name:				string(STR_NAME_GDGR_ENGINE_5);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1969, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			13;
+		running_cost_factor:		59;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				66 km/h;
+		refit_cost:			4;
+		track_type:			GDGR;
+		power:				10012 hp;
+		running_cost_base:		RUNNING_COST_DIESEL;
+		dual_headed:			0;
+		weight:				125 ton;
+		engine_class:			ENGINE_CLASS_DIESEL;
+		tractive_effort_coefficient:	0.7;
+		air_drag_coefficient:		0.33;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_GDGR_engine_5;
+	}
+}
+
+//Engine 6
+spriteset (spriteset_GDGR_engine_6, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Engine_5_8bpp.png") {
+	template_ggtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_GDGR_engine_6) {
+	property {
+		name:				string(STR_NAME_GDGR_ENGINE_6);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1985, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			15;
+		running_cost_factor:		70;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				78 km/h;
+		refit_cost:			5;
+		track_type:			GDGR;
+		power:				15120 hp;
+		running_cost_base:		RUNNING_COST_STEAM;
+		dual_headed:			0;
+		weight:				108 ton;
+		engine_class:			ENGINE_CLASS_STEAM;
+		tractive_effort_coefficient:	0.7;
+		air_drag_coefficient:		0.39;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_STEAM, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_GDGR_engine_6;
+	}
+}
+
+//Engine 7
+spriteset (spriteset_GDGR_engine_7, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Engine_6_8bpp.png") {
+	template_ggtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_GDGR_engine_7) {
+	property {
+		name:				string(STR_NAME_GDGR_ENGINE_7);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1999, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			17;
+		running_cost_factor:		78;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				88 km/h;
+		refit_cost:			6;
+		track_type:			GDGR;
+		power:				15724 hp;
+		running_cost_base:		RUNNING_COST_STEAM;
+		dual_headed:			0;
+		weight:				126 ton;
+		engine_class:			ENGINE_CLASS_STEAM;
+		tractive_effort_coefficient:	0.7;
+		air_drag_coefficient:		0.44;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_STEAM, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_GDGR_engine_7;
+	}
+}
+
+//Engine 8
+spriteset (spriteset_GDGR_engine_8, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Engine_4_8bpp.png") {
+	template_ggtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_GDGR_engine_8) {
+	property {
+		name:				string(STR_NAME_GDGR_ENGINE_8);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2018, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			20;
+		running_cost_factor:		80;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				95 km/h;
+		refit_cost:			7;
+		track_type:			GDGR;
+		power:				15786 hp;
+		running_cost_base:		RUNNING_COST_DIESEL;
+		dual_headed:			0;
+		weight:				143 ton;
+		engine_class:			ENGINE_CLASS_DIESEL;
+		tractive_effort_coefficient:	0.7;
+		air_drag_coefficient:		0.48;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_GDGR_engine_8;
+	}
+}
+
+//Engine 9
+spriteset (spriteset_GDGR_engine_9, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Engine_9_8bpp.png") {
+	template_ggtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_GDGR_engine_9) {
+	property {
+		name:				string(STR_NAME_GDGR_ENGINE_9);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2030, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			22;
+		running_cost_factor:		95;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				100 km/h;
+		refit_cost:			8;
+		track_type:			GDGR;
+		power:				16000 hp;
+		running_cost_base:		RUNNING_COST_STEAM;
+		dual_headed:			0;
+		weight:				168 ton;
+		engine_class:			ENGINE_CLASS_STEAM;
+		tractive_effort_coefficient:	0.7;
+		air_drag_coefficient:		0.5;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_STEAM, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_GDGR_engine_9;
+	}
+}
+
+//Engine 10
+spriteset (spriteset_GDGR_engine_10, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Engine_10_8bpp.png") {
+	template_ggtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_GDGR_engine_10) {
+	property {
+		name:				string(STR_NAME_GDGR_ENGINE_10);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2044, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			24;
+		running_cost_factor:		100;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				110 km/h;
+		refit_cost:			9;
+		track_type:			GDGR;
+		power:				16100 hp;
+		running_cost_base:		RUNNING_COST_STEAM;
+		dual_headed:			0;
+		weight:				153 ton;
+		engine_class:			ENGINE_CLASS_STEAM;
+		tractive_effort_coefficient:	0.7;
+		air_drag_coefficient:		0.55;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_STEAM, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_GDGR_engine_10;
+	}
+}
+
+//Non-visible cargo carriages
+spriteset (spriteset_ggtrain_carriagepax, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Carriage_Passenger_8bpp.png") {
+	template_ggtr_8PT(0, 0)
+}
+
+spriteset (spriteset_ggtrain_carriagepcont, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Carriage_PressurisedCargo_8bpp.png") {
+	template_ggtr_8PT(0, 25)
+}
+
+spriteset (spriteset_ggtrain_carriagecont, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Carriage_Cargo_8bpp.png") {
+	template_ggtr_8PT(0, 50)
+}
+
+spriteset (spriteset_ggtrain_carriagechem, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Carriage_Chemical_8bpp.png") {
+	template_ggtr_8PT(0, 75)
+}
+
+spriteset (spriteset_ggtrain_carriagewater, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Carriage_Water_8bpp.png") {
+	template_ggtr_8PT(0, 100)
+}
+
+spriteset (spriteset_ggtrain_carriagegas, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Carriage_CompressedGas_8bpp.png") {
+	template_ggtr_8PT(0, 125)
+}
+
+item(FEAT_TRAINS, spriteset_ggtrain_carriage_pax) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_GGTRAIN_CARRIAGE_PAX);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			GDGR;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				14;
+
+		//Cargo properties
+		cargo_capacity:			28;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_PASSENGERS);
+		//non_refittable_cargo_classes:	not defined, so none excluded
+		cargo_allow_refit:		[PASS]; //Fallback to guarantee fitting
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			3; //NB. deliberately low for pressurised cargo
+
+		//Costs
+		cost_factor:			12; //NB. deliberately high for pressurised cargo
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		default: spriteset_ggtrain_carriagepax;
+	}
+}
+
+item(FEAT_TRAINS, spriteset_ggtrain_carriage_pcont) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_GGTRAIN_CARRIAGE_PCONT);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			GDGR;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				15;
+
+		//Cargo properties
+		cargo_capacity:			20;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED);
+		cargo_allow_refit:		[PRGD, FOOD]; //Fallback to guarantee fitting
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			3; //NB. deliberately low for pressurised cargo
+
+		//Costs
+		cost_factor:			10; //NB. deliberately high for pressurised cargo
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		default: spriteset_ggtrain_carriagepcont;
+	}
+}
+
+item(FEAT_TRAINS, spriteset_ggtrain_carriage_cont) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_GGTRAIN_CARRIAGE_CONT);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			GDGR;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				13;
+
+		//Cargo properties
+		cargo_capacity:			24;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED); //Using CC_COVERED to indicate pressurised
+		cargo_allow_refit:		[ENSP, PLAS, BDMT]; //Fallback to guarantee
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			5;
+
+		//Costs
+		cost_factor:			5;
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		default: spriteset_ggtrain_carriagecont;
+	}
+}
+
+item(FEAT_TRAINS, spriteset_ggtrain_carriage_chem) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_GGTRAIN_CARRIAGE_CHEM);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			GDGR;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				12;
+
+		//Cargo properties
+		cargo_capacity:			16;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_LIQUID, CC_HAZARDOUS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_OVERSIZED, CC_COVERED); //Using CC_COVERED to indicate pressurised
+		cargo_allow_refit:		[CHEM, FERT]; //Fallback to guarantee fitting
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			5;
+
+		//Costs
+		cost_factor:			6;
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		default: spriteset_ggtrain_carriagechem;
+	}
+}
+
+item(FEAT_TRAINS, spriteset_ggtrain_carriage_water) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_GGTRAIN_CARRIAGE_WATER);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			GDGR;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				12;
+
+		//Cargo properties
+		cargo_capacity:			18;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_LIQUID);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED); //Using CC_COVERED to indicate pressurised
+		cargo_allow_refit:		[WATR]; //Fallback to guarantee fitting
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			5;
+
+		//Costs
+		cost_factor:			5;
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		default: spriteset_ggtrain_carriagewater;
+	}
+}
+
+item(FEAT_TRAINS, spriteset_ggtrain_carriage_gas) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_GGTRAIN_CARRIAGE_GAS);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			GDGR;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				16;
+
+		//Cargo properties
+		cargo_capacity:			12;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_LIQUID);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED); //Using CC_COVERED to indicate pressurised
+		cargo_allow_refit:		[N2__, O2__, H2__]; //Fallback to guarantee fitting
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			5;
+
+		//Costs
+		cost_factor:			7;
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		default: spriteset_ggtrain_carriagegas;
+	}
+}
+
+//Visible cargo carriages
+//Low capacity bulk waggon
+spriteset (spriteset_ggtrain_carriage_bulk1_empty, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Carriage_Bulk_8bpp.png") {
+	template_ggtr_8PT(0, 0)
+}
+
+spriteset (spriteset_ggtrain_carriage_bulk1_regolith, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Carriage_Bulk_Regolith_8bpp.png") {
+	template_ggtr_8PT(0, 0)
+}
+
+spriteset (spriteset_ggtrain_carriage_bulk1_mixedore, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Carriage_Bulk_MixedOres_8bpp.png") {
+	template_ggtr_8PT(0, 0)
+}
+
+spriteset (spriteset_ggtrain_carriage_bulk1_organics, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Carriage_Bulk_Organics_8bpp.png") {
+	template_ggtr_8PT(0, 0)
+}
+
+spritegroup spritegroup_ggtrain_carriage_bulk1_regolith {
+	loaded: [spriteset_ggtrain_carriage_bulk1_empty, spriteset_ggtrain_carriage_bulk1_regolith];
+	loading: [spriteset_ggtrain_carriage_bulk1_empty, spriteset_ggtrain_carriage_bulk1_regolith];
+}
+
+spritegroup spritegroup_ggtrain_carriage_bulk1_mixedore {
+	loaded: [spriteset_ggtrain_carriage_bulk1_empty, spriteset_ggtrain_carriage_bulk1_mixedore];
+	loading: [spriteset_ggtrain_carriage_bulk1_empty, spriteset_ggtrain_carriage_bulk1_mixedore];
+}
+
+spritegroup spritegroup_ggtrain_carriage_bulk1_organics {
+	loaded: [spriteset_ggtrain_carriage_bulk1_empty, spriteset_ggtrain_carriage_bulk1_organics];
+	loading: [spriteset_ggtrain_carriage_bulk1_empty, spriteset_ggtrain_carriage_bulk1_organics];
+}
+
+item(FEAT_TRAINS, spriteset_ggtrain_carriage_bulk1) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_GGTRAIN_CARRIAGE_BULK1);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			GDGR;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				11;
+
+		//Cargo properties
+		cargo_capacity:			25;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_BULK);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_LIQUID, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED); //Using CC_COVERED to indicate pressurised
+		cargo_allow_refit:		[GRVL, ORES, ORGN]; //Fallback to guarantee fitting
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			5;
+
+		//Costs
+		cost_factor:			7;
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		GRVL: spritegroup_ggtrain_carriage_bulk1_regolith;
+		ORES: spritegroup_ggtrain_carriage_bulk1_mixedore;
+		ORGN: spritegroup_ggtrain_carriage_bulk1_organics;
+		default: spritegroup_ggtrain_carriage_bulk1_regolith;
+	}
+}
+
+//High capacity bulk waggon
+spriteset (spriteset_ggtrain_carriage_bulk2_empty, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Carriage_Bulk_8bpp.png") {
+	template_ggtr_8PT(0, 0)
+}
+
+spriteset (spriteset_ggtrain_carriage_bulk2_regolith, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Carriage_Bulk_Regolith_8bpp.png") {
+	template_ggtr_8PT(0, 0)
+}
+
+spriteset (spriteset_ggtrain_carriage_bulk2_mixedore, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Carriage_Bulk_MixedOres_8bpp.png") {
+	template_ggtr_8PT(0, 0)
+}
+
+spriteset (spriteset_ggtrain_carriage_bulk2_organics, "../graphics/Vehicles/PixelTool_GroundTrains/Rail_GroundTrain_Carriage_Bulk_Organics_8bpp.png") {
+	template_ggtr_8PT(0, 0)
+}
+
+spritegroup spritegroup_ggtrain_carriage_bulk2_regolith {
+	loaded: [spriteset_ggtrain_carriage_bulk2_empty, spriteset_ggtrain_carriage_bulk2_regolith];
+	loading: [spriteset_ggtrain_carriage_bulk2_empty, spriteset_ggtrain_carriage_bulk2_regolith];
+}
+
+spritegroup spritegroup_ggtrain_carriage_bulk2_mixedore {
+	loaded: [spriteset_ggtrain_carriage_bulk2_empty, spriteset_ggtrain_carriage_bulk2_mixedore];
+	loading: [spriteset_ggtrain_carriage_bulk2_empty, spriteset_ggtrain_carriage_bulk2_mixedore];
+}
+
+spritegroup spritegroup_ggtrain_carriage_bulk2_organics {
+	loaded: [spriteset_ggtrain_carriage_bulk2_empty, spriteset_ggtrain_carriage_bulk2_organics];
+	loading: [spriteset_ggtrain_carriage_bulk2_empty, spriteset_ggtrain_carriage_bulk2_organics];
+}
+
+item(FEAT_TRAINS, spriteset_ggtrain_carriage_bulk2) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_GGTRAIN_CARRIAGE_BULK2);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			GDGR;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				11;
+
+		//Cargo properties
+		cargo_capacity:			35;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_BULK);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_LIQUID, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED); //Using CC_COVERED to indicate pressurised
+		cargo_allow_refit:		[GRVL, ORES, ORGN]; //Fallback to guarantee fitting
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			5;
+
+		//Costs
+		cost_factor:			7;
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		GRVL: spritegroup_ggtrain_carriage_bulk2_regolith;
+		ORES: spritegroup_ggtrain_carriage_bulk2_mixedore;
+		ORGN: spritegroup_ggtrain_carriage_bulk2_organics;
+		default: spritegroup_ggtrain_carriage_bulk2_regolith;
+	}
+}
+
+// Define the Monorail templates
+//Based on Pikka's alignment templates: http://users.tt-forums.net/pikka/wiki/index.php?title=Sprite_templates&oldid=3941
+//Assumes a PixelTool generated set of sprites
+template template_monotr_8PT(x, y) {
+	[0, 0, 8, 26, -4, -17]
+	[9, 0, 22, 21, -11, -15]
+	[32, 0, 32, 13, -16, -7]
+	[65, 0, 22, 21, -11, -15]
+	[88, 0, 8, 26, -4, -17]
+	[97, 0, 22, 21, -11, -15]
+	[120, 0, 32, 13, -16, -7]
+	[153, 0, 22, 21, -11, -15]
+}
+
+//Engine 1
+spriteset (spriteset_MONO_engine_1, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Engine_6_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MONO_engine_1) {
+	property {
+		name:				string(STR_NAME_MONO_ENGINE_1);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1932, 01, 01);
+		model_life:				35;
+		vehicle_life:			18;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			6;
+		running_cost_factor:		41;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				85 km/h;
+		refit_cost:			0;
+		track_type:			MONO;
+		power:				2263 hp;
+		running_cost_base:		RUNNING_COST_DIESEL;
+		dual_headed:			0;
+		weight:				75 ton;
+		engine_class:			ENGINE_CLASS_DIESEL;
+		tractive_effort_coefficient:	0.42;
+		air_drag_coefficient:		0.1;
+		length:				6;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_DIESEL, 2, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MONO_engine_1;
+	}
+}
+
+//Engine 2
+spriteset (spriteset_MONO_engine_2, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Engine_4_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MONO_engine_2) {
+	property {
+		name:				string(STR_NAME_MONO_ENGINE_2);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1943, 01, 01);
+		model_life:				35;
+		vehicle_life:			18;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			10;
+		running_cost_factor:		64;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				96 km/h;
+		refit_cost:			1;
+		track_type:			MONO;
+		power:				2568 hp;
+		running_cost_base:		RUNNING_COST_ELECTRIC;
+		dual_headed:			0;
+		weight:				81 ton;
+		engine_class:			ENGINE_CLASS_ELECTRIC;
+		tractive_effort_coefficient:	0.42;
+		air_drag_coefficient:		0.08;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MONO_engine_2;
+	}
+}
+
+//Engine 3
+spriteset (spriteset_MONO_engine_3, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Engine_5_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MONO_engine_3) {
+	property {
+		name:				string(STR_NAME_MONO_ENGINE_3);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1953, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			13;
+		running_cost_factor:		82;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				103 km/h;
+		refit_cost:			2;
+		track_type:			MONO;
+		power:				3650 hp;
+		running_cost_base:		RUNNING_COST_ELECTRIC;
+		dual_headed:			0;
+		weight:				92 ton;
+		engine_class:			ENGINE_CLASS_ELECTRIC;
+		tractive_effort_coefficient:	0.42;
+		air_drag_coefficient:		0.08;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MONO_engine_3;
+	}
+}
+
+//Engine 4
+spriteset (spriteset_MONO_engine_4, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Engine_10_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MONO_engine_4) {
+	property {
+		name:				string(STR_NAME_MONO_ENGINE_4);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1968, 01, 01);
+		model_life:				35;
+		vehicle_life:			18;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			16;
+		running_cost_factor:		95;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				123 km/h;
+		refit_cost:			3;
+		track_type:			MONO;
+		power:				3956 hp;
+		running_cost_base:		RUNNING_COST_ELECTRIC;
+		dual_headed:			0;
+		weight:				113 ton;
+		engine_class:			ENGINE_CLASS_ELECTRIC;
+		tractive_effort_coefficient:	0.42;
+		air_drag_coefficient:		0.065;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MONO_engine_4;
+	}
+}
+
+//Engine 5
+spriteset (spriteset_MONO_engine_5, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Engine_9_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MONO_engine_5) {
+	property {
+		name:				string(STR_NAME_MONO_ENGINE_5);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1972, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			20;
+		running_cost_factor:		103;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				132 km/h;
+		refit_cost:			4;
+		track_type:			MONO;
+		power:				5006 hp;
+		running_cost_base:		RUNNING_COST_ELECTRIC;
+		dual_headed:			1;
+		weight:				120 ton;
+		engine_class:			ENGINE_CLASS_ELECTRIC;
+		tractive_effort_coefficient:	0.42;
+		air_drag_coefficient:		0.06;
+		length:				4;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_ELECTRIC, 4, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MONO_engine_5;
+	}
+}
+
+//Engine 6
+spriteset (spriteset_MONO_engine_6, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Engine_1_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MONO_engine_6) {
+	property {
+		name:				string(STR_NAME_MONO_ENGINE_6);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1989, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			23;
+		running_cost_factor:		98;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				156 km/h;
+		refit_cost:			5;
+		track_type:			MONO;
+		power:				7560 hp;
+		running_cost_base:		RUNNING_COST_DIESEL;
+		dual_headed:			0;
+		weight:				135 ton;
+		engine_class:			ENGINE_CLASS_DIESEL;
+		tractive_effort_coefficient:	0.42;
+		air_drag_coefficient:		0.05;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MONO_engine_6;
+	}
+}
+
+//Engine 7
+spriteset (spriteset_MONO_engine_7, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Engine_3_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MONO_engine_7) {
+	property {
+		name:				string(STR_NAME_MONO_ENGINE_7);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1997, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			26;
+		running_cost_factor:		117;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				175 km/h;
+		refit_cost:			6;
+		track_type:			MONO;
+		power:				7862 hp;
+		running_cost_base:		RUNNING_COST_STEAM;
+		dual_headed:			0;
+		weight:				65 ton;
+		engine_class:			ENGINE_CLASS_STEAM;
+		tractive_effort_coefficient:	0.42;
+		air_drag_coefficient:		0.045;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_STEAM, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MONO_engine_7;
+	}
+}
+
+//Engine 8
+spriteset (spriteset_MONO_engine_8, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Engine_2_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MONO_engine_8) {
+	property {
+		name:				string(STR_NAME_MONO_ENGINE_8);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2020, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			29;
+		running_cost_factor:		120;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				189 km/h;
+		refit_cost:			7;
+		track_type:			MONO;
+		power:				7893 hp;
+		running_cost_base:		RUNNING_COST_DIESEL;
+		dual_headed:			1;
+		weight:				79 ton;
+		engine_class:			ENGINE_CLASS_DIESEL;
+		tractive_effort_coefficient:	0.42;
+		air_drag_coefficient:		0.04;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MONO_engine_8;
+	}
+}
+
+//Engine 9
+spriteset (spriteset_MONO_engine_9, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Engine_7_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MONO_engine_9) {
+	property {
+		name:				string(STR_NAME_MONO_ENGINE_9);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2035, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			32;
+		running_cost_factor:		143;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				199 km/h;
+		refit_cost:			8;
+		track_type:			MONO;
+		power:				8000 hp;
+		running_cost_base:		RUNNING_COST_STEAM;
+		dual_headed:			0;
+		weight:				89 ton;
+		engine_class:			ENGINE_CLASS_STEAM;
+		tractive_effort_coefficient:	0.42;
+		air_drag_coefficient:		0.04;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_STEAM, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MONO_engine_9;
+	}
+}
+
+//Engine 10
+spriteset (spriteset_MONO_engine_10, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Engine_8_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MONO_engine_10) {
+	property {
+		name:				string(STR_NAME_MONO_ENGINE_10);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2045, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			35;
+		running_cost_factor:		151;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				220 km/h;
+		refit_cost:			9;
+		track_type:			MONO;
+		power:				8050 hp;
+		running_cost_base:		RUNNING_COST_STEAM;
+		dual_headed:			1;
+		weight:				91 ton;
+		engine_class:			ENGINE_CLASS_STEAM;
+		tractive_effort_coefficient:	0.42;
+		air_drag_coefficient:		0.035;
+		length:				7;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_STEAM, 1, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MONO_engine_10;
+	}
+}
+
+
+//Cargo carriages
+//Non-visible cargo carriages
+spriteset (spriteset_monorail_carriagepax, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Carriage_Passenger_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+spriteset (spriteset_monorail_carriagepcont, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Carriage_PressurisedCargo_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+spriteset (spriteset_monorail_carriagecont, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Carriage_Cargo_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+spriteset (spriteset_monorail_carriagechem, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Carriage_Chemical_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+spriteset (spriteset_monorail_carriagewater, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Carriage_Water_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+spriteset (spriteset_monorail_carriagegas, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Carriage_CompressedGas_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, spriteset_monorail_carriage_pax) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_MONORAIL_CARRIAGE_PAX);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			MONO;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				14;
+
+		//Cargo properties
+		cargo_capacity:			28;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_PASSENGERS);
+		//non_refittable_cargo_classes:	not defined, so none excluded
+		cargo_allow_refit:		[PASS]; //Fallback to guarantee fitting
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			3; //NB. deliberately low for pressurised cargo
+
+		//Costs
+		cost_factor:			12; //NB. deliberately high for pressurised cargo
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		default: spriteset_monorail_carriagepax;
+	}
+}
+
+item(FEAT_TRAINS, spriteset_monorail_carriage_pcont) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_MONORAIL_CARRIAGE_PCONT);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			MONO;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				15;
+
+		//Cargo properties
+		cargo_capacity:			20;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED);
+		cargo_allow_refit:		[PRGD, FOOD]; //Fallback to guarantee fitting
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			3; //NB. deliberately low for pressurised cargo
+
+		//Costs
+		cost_factor:			10; //NB. deliberately high for pressurised cargo
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		default: spriteset_monorail_carriagepcont;
+	}
+}
+
+item(FEAT_TRAINS, spriteset_monorail_carriage_cont) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_MONORAIL_CARRIAGE_CONT);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			MONO;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				13;
+
+		//Cargo properties
+		cargo_capacity:			24;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED); //Using CC_COVERED to indicate pressurised
+		cargo_allow_refit:		[FOOD, ENSP, PLAS, BDMT]; //Fallback to guarantee
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			5;
+
+		//Costs
+		cost_factor:			5;
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		default: spriteset_monorail_carriagecont;
+	}
+}
+
+item(FEAT_TRAINS, spriteset_monorail_carriage_chem) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_MONORAIL_CARRIAGE_CHEM);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			MONO;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				12;
+
+		//Cargo properties
+		cargo_capacity:			16;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_LIQUID, CC_HAZARDOUS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_OVERSIZED, CC_COVERED); //Using CC_COVERED to indicate pressurised
+		cargo_allow_refit:		[CHEM, FERT]; //Fallback to guarantee fitting
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			5;
+
+		//Costs
+		cost_factor:			6;
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		default: spriteset_monorail_carriagechem;
+	}
+}
+
+item(FEAT_TRAINS, spriteset_monorail_carriage_water) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_MONORAIL_CARRIAGE_WATER);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			MONO;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				12;
+
+		//Cargo properties
+		cargo_capacity:			18;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_LIQUID);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED); //Using CC_COVERED to indicate pressurised
+		cargo_allow_refit:		[WATR]; //Fallback to guarantee fitting
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			5;
+
+		//Costs
+		cost_factor:			5;
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		default: spriteset_monorail_carriagewater;
+	}
+}
+
+item(FEAT_TRAINS, spriteset_monorail_carriage_gas) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_MONORAIL_CARRIAGE_GAS);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			MONO;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				16;
+
+		//Cargo properties
+		cargo_capacity:			12;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_LIQUID);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED); //Using CC_COVERED to indicate pressurised
+		cargo_allow_refit:		[N2__, O2__, H2__]; //Fallback to guarantee fitting
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			5;
+
+		//Costs
+		cost_factor:			7;
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		default: spriteset_monorail_carriagegas;
+	}
+}
+
+//Visible cargo carriages
+//Low capacity bulk waggon
+spriteset (spriteset_monorail_carriage_bulk1_empty, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Carriage_Bulk_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+spriteset (spriteset_monorail_carriage_bulk1_regolith, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Carriage_Bulk_Regolith_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+spriteset (spriteset_monorail_carriage_bulk1_mixedore, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Carriage_Bulk_MixedOres_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+spriteset (spriteset_monorail_carriage_bulk1_organics, "../graphics/Vehicles/PixelTool_Monorail/Rail_Monorail_Carriage_Bulk_Organics_8bpp.png") {
+	template_monotr_8PT(0, 0)
+}
+
+spritegroup spritegroup_monorail_carriage_bulk1_regolith {
+	loaded: [spriteset_monorail_carriage_bulk1_empty, spriteset_monorail_carriage_bulk1_regolith];
+	loading: [spriteset_monorail_carriage_bulk1_empty, spriteset_monorail_carriage_bulk1_regolith];
+}
+
+spritegroup spritegroup_monorail_carriage_bulk1_mixedore {
+	loaded: [spriteset_monorail_carriage_bulk1_empty, spriteset_monorail_carriage_bulk1_mixedore];
+	loading: [spriteset_monorail_carriage_bulk1_empty, spriteset_monorail_carriage_bulk1_mixedore];
+}
+
+spritegroup spritegroup_monorail_carriage_bulk1_organics {
+	loaded: [spriteset_monorail_carriage_bulk1_empty, spriteset_monorail_carriage_bulk1_organics];
+	loading: [spriteset_monorail_carriage_bulk1_empty, spriteset_monorail_carriage_bulk1_organics];
+}
+
+item(FEAT_TRAINS, spriteset_monorail_carriage_bulk1) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_MONORAIL_CARRIAGE_BULK1);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			MONO;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				11;
+
+		//Cargo properties
+		cargo_capacity:			25;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_BULK);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_LIQUID, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED); //Using CC_COVERED to indicate pressurised
+		cargo_allow_refit:		[GRVL, ORES, ORGN]; //Fallback to guarantee fitting
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			5;
+
+		//Costs
+		cost_factor:			7;
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		GRVL: spritegroup_monorail_carriage_bulk1_regolith;
+		ORES: spritegroup_monorail_carriage_bulk1_mixedore;
+		ORGN: spritegroup_monorail_carriage_bulk1_organics;
+		default: spritegroup_monorail_carriage_bulk1_regolith;
+	}
+}
+
+// Define the Maglev templates
+//Based on Pikka's alignment templates: http://users.tt-forums.net/pikka/wiki/index.php?title=Sprite_templates&oldid=3941
+//Assumes a PixelTool generated set of sprites
+template template_magtr_8PT(x, y) {
+	[x+1, y+1, 8, 26, -4, -13]
+	[x+10, y+1, 22, 21, -11, -11]
+	[x+33, y+1, 32, 13, -16, -7]
+	[x+66, y+1, 22, 21, -11, -11]
+	[x+89, y+1, 8, 26, -4, -13]
+	[x+98, y+1, 22, 21, -11, -11]
+	[x+121, y+1, 32, 13, -16, -7]
+	[x+154, y+1, 22, 21, -11, -11]
+}
+
+//Engine 1
+spriteset (spriteset_MGLV_engine_1, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Engine_3_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MGLV_engine_1) {
+	property {
+		name:				string(STR_NAME_MGLV_ENGINE_1);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1972, 01, 01);
+		model_life:				35;
+		vehicle_life:			18;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			13;
+		running_cost_factor:		68;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				230 km/h;
+		refit_cost:			0;
+		track_type:			MGLV;
+		power:				5650 hp;
+		running_cost_base:		RUNNING_COST_ELECTRIC;
+		dual_headed:			0;
+		weight:				75 ton;
+		engine_class:			ENGINE_CLASS_ELECTRIC;
+		tractive_effort_coefficient:	0.35;
+		air_drag_coefficient:		0.42;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MGLV_engine_1;
+	}
+}
+
+//Engine 2
+spriteset (spriteset_MGLV_engine_2, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Engine_4_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MGLV_engine_2) {
+	property {
+		name:				string(STR_NAME_MGLV_ENGINE_2);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1985, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			21;
+		running_cost_factor:		103;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				256 km/h;
+		refit_cost:			1;
+		track_type:			MGLV;
+		power:				7551 hp;
+		running_cost_base:		RUNNING_COST_ELECTRIC;
+		dual_headed:			0;
+		weight:				81 ton;
+		engine_class:			ENGINE_CLASS_ELECTRIC;
+		tractive_effort_coefficient:	0.35;
+		air_drag_coefficient:		0.4;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MGLV_engine_2;
+	}
+}
+
+//Engine 3
+spriteset (spriteset_MGLV_engine_3, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Engine_5_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MGLV_engine_3) {
+	property {
+		name:				string(STR_NAME_MGLV_ENGINE_3);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1996, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			27;
+		running_cost_factor:		108;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				279 km/h;
+		refit_cost:			2;
+		track_type:			MGLV;
+		power:				9153 hp;
+		running_cost_base:		RUNNING_COST_DIESEL;
+		dual_headed:			0;
+		weight:				92 ton;
+		engine_class:			ENGINE_CLASS_DIESEL;
+		tractive_effort_coefficient:	0.35;
+		air_drag_coefficient:		0.38;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MGLV_engine_3;
+	}
+}
+
+//Engine 4
+spriteset (spriteset_MGLV_engine_4, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Engine_7_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MGLV_engine_4) {
+	property {
+		name:				string(STR_NAME_MGLV_ENGINE_4);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2012, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			36;
+		running_cost_factor:		162;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				305 km/h;
+		refit_cost:			3;
+		track_type:			MGLV;
+		power:				11241 hp;
+		running_cost_base:		RUNNING_COST_ELECTRIC;
+		dual_headed:			0;
+		weight:				113 ton;
+		engine_class:			ENGINE_CLASS_ELECTRIC;
+		tractive_effort_coefficient:	0.35;
+		air_drag_coefficient:		0.35;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MGLV_engine_4;
+	}
+}
+
+//Engine 5
+spriteset (spriteset_MGLV_engine_5, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Engine_10_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MGLV_engine_5) {
+	property {
+		name:				string(STR_NAME_MGLV_ENGINE_5);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2024, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			39;
+		running_cost_factor:		151;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				360 km/h;
+		refit_cost:			4;
+		track_type:			MGLV;
+		power:				13501 hp;
+		running_cost_base:		RUNNING_COST_DIESEL;
+		dual_headed:			0;
+		weight:				120 ton;
+		engine_class:			ENGINE_CLASS_DIESEL;
+		tractive_effort_coefficient:	0.35;
+		air_drag_coefficient:		0.33;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MGLV_engine_5;
+	}
+}
+
+//Engine 6
+spriteset (spriteset_MGLV_engine_6, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Engine_1_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MGLV_engine_6) {
+	property {
+		name:				string(STR_NAME_MGLV_ENGINE_6);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2035, 01, 01);
+		model_life:				35;
+		vehicle_life:			24;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			52;
+		running_cost_factor:		196;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				380 km/h;
+		refit_cost:			5;
+		track_type:			MGLV;
+		power:				15321 hp;
+		running_cost_base:		RUNNING_COST_DIESEL;
+		dual_headed:			1;
+		weight:				135 ton;
+		engine_class:			ENGINE_CLASS_DIESEL;
+		tractive_effort_coefficient:	0.35;
+		air_drag_coefficient:		0.21;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MGLV_engine_6;
+	}
+}
+
+//Engine 7
+spriteset (spriteset_MGLV_engine_7, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Engine_6_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MGLV_engine_7) {
+	property {
+		name:				string(STR_NAME_MGLV_ENGINE_7);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1982, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			14;
+		running_cost_factor:		72;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				300 km/h;
+		refit_cost:			6;
+		track_type:			MGLV;
+		power:				3015 hp;
+		running_cost_base:		RUNNING_COST_ELECTRIC;
+		dual_headed:			1;
+		weight:				65 ton;
+		engine_class:			ENGINE_CLASS_ELECTRIC;
+		tractive_effort_coefficient:	0.31;
+		air_drag_coefficient:		0.24;
+		length:				6;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_ELECTRIC, 2, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MGLV_engine_7;
+	}
+}
+
+//Engine 8
+spriteset (spriteset_MGLV_engine_8, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Engine_9_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MGLV_engine_8) {
+	property {
+		name:				string(STR_NAME_MGLV_ENGINE_8);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1999, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			25;
+		running_cost_factor:		101;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				356 km/h;
+		refit_cost:			7;
+		track_type:			MGLV;
+		power:				5632 hp;
+		running_cost_base:		RUNNING_COST_DIESEL;
+		dual_headed:			1;
+		weight:				79 ton;
+		engine_class:			ENGINE_CLASS_DIESEL;
+		tractive_effort_coefficient:	0.31;
+		air_drag_coefficient:		0.21;
+		length:				6;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_DIESEL, 2, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MGLV_engine_8;
+	}
+}
+
+//Engine 9
+spriteset (spriteset_MGLV_engine_9, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Engine_8_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MGLV_engine_9) {
+	property {
+		name:				string(STR_NAME_MGLV_ENGINE_9);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2015, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			31;
+		running_cost_factor:		131;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				420 km/h;
+		refit_cost:			8;
+		track_type:			MGLV;
+		power:				7651 hp;
+		running_cost_base:		RUNNING_COST_STEAM;
+		dual_headed:			1;
+		weight:				89 ton;
+		engine_class:			ENGINE_CLASS_STEAM;
+		tractive_effort_coefficient:	0.31;
+		air_drag_coefficient:		0.18;
+		length:				6;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_STEAM, 2, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MGLV_engine_9;
+	}
+}
+
+//Engine 10
+spriteset (spriteset_MGLV_engine_10, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Engine_11_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MGLV_engine_10) {
+	property {
+		name:				string(STR_NAME_MGLV_ENGINE_10);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2026, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			44;
+		running_cost_factor:		198;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				475 km/h;
+		refit_cost:			9;
+		track_type:			MGLV;
+		power:				9223 hp;
+		running_cost_base:		RUNNING_COST_ELECTRIC;
+		dual_headed:			1;
+		weight:				91 ton;
+		engine_class:			ENGINE_CLASS_ELECTRIC;
+		tractive_effort_coefficient:	0.31;
+		air_drag_coefficient:		0.15;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MGLV_engine_10;
+	}
+}
+
+//Engine 11
+spriteset (spriteset_MGLV_engine_11, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Engine_2_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, item_MGLV_engine_11) {
+	property {
+		name:				string(STR_NAME_MGLV_ENGINE_11);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2037, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			51;
+		running_cost_factor:		210;
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+		speed:				530 km/h;
+		refit_cost:			10;
+		track_type:			MGLV;
+		power:				11564 hp;
+		running_cost_base:		RUNNING_COST_STEAM;
+		dual_headed:			1;
+		weight:				106 ton;
+		engine_class:			ENGINE_CLASS_STEAM;
+		tractive_effort_coefficient:	0.31;
+		air_drag_coefficient:		0.14;
+		length:				8;
+//????		visual_effect_and_powered:	[VISUAL_EFFECT_STEAM, 0, DISABLE_WAGON_POWER];
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_MGLV_engine_11;
+	}
+}
+
+//Cargo carriages
+//Non-visible cargo carriages
+spriteset (spriteset_maglev_carriagepax, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Carriage_Passenger_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+spriteset (spriteset_maglev_carriagepcont, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Carriage_PressurisedCargo_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+spriteset (spriteset_maglev_carriagecont, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Carriage_Cargo_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+spriteset (spriteset_maglev_carriagechem, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Carriage_Chemical_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+spriteset (spriteset_maglev_carriagewater, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Carriage_Water_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+spriteset (spriteset_maglev_carriagegas, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Carriage_CompressedGas_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+item(FEAT_TRAINS, spriteset_maglev_carriage_pax) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_MAGLEV_CARRIAGE_PAX);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			MGLV;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				14;
+
+		//Cargo properties
+		cargo_capacity:			28;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_PASSENGERS);
+		//non_refittable_cargo_classes:	not defined, so none excluded
+		cargo_allow_refit:		[PASS]; //Fallback to guarantee fitting
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			3; //NB. deliberately low for pressurised cargo
+
+		//Costs
+		cost_factor:			12; //NB. deliberately high for pressurised cargo
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		default: spriteset_maglev_carriagepax;
+	}
+}
+
+item(FEAT_TRAINS, spriteset_maglev_carriage_pcont) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_MAGLEV_CARRIAGE_PCONT);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			MGLV;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				15;
+
+		//Cargo properties
+		cargo_capacity:			20;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED);
+		cargo_allow_refit:		[PRGD, FOOD]; //Fallback to guarantee fitting
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			3; //NB. deliberately low for pressurised cargo
+
+		//Costs
+		cost_factor:			10; //NB. deliberately high for pressurised cargo
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		default: spriteset_maglev_carriagepcont;
+	}
+}
+
+item(FEAT_TRAINS, spriteset_maglev_carriage_cont) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_MAGLEV_CARRIAGE_CONT);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			MGLV;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				13;
+
+		//Cargo properties
+		cargo_capacity:			24;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_PIECE_GOODS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED); //Using CC_COVERED to indicate pressurised
+		cargo_allow_refit:		[FOOD, ENSP, PLAS, BDMT]; //Fallback to guarantee
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			5;
+
+		//Costs
+		cost_factor:			5;
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		default: spriteset_maglev_carriagecont;
+	}
+}
+
+item(FEAT_TRAINS, spriteset_maglev_carriage_chem) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_MAGLEV_CARRIAGE_CHEM);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			MGLV;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				12;
+
+		//Cargo properties
+		cargo_capacity:			16;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_LIQUID, CC_HAZARDOUS);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_OVERSIZED, CC_COVERED); //Using CC_COVERED to indicate pressurised
+		cargo_allow_refit:		[CHEM, FERT]; //Fallback to guarantee fitting
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			5;
+
+		//Costs
+		cost_factor:			6;
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		default: spriteset_maglev_carriagechem;
+	}
+}
+
+item(FEAT_TRAINS, spriteset_maglev_carriage_water) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_MAGLEV_CARRIAGE_WATER);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			MGLV;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				12;
+
+		//Cargo properties
+		cargo_capacity:			18;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_LIQUID);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED); //Using CC_COVERED to indicate pressurised
+		cargo_allow_refit:		[WATR]; //Fallback to guarantee fitting
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			5;
+
+		//Costs
+		cost_factor:			5;
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		default: spriteset_maglev_carriagewater;
+	}
+}
+
+item(FEAT_TRAINS, spriteset_maglev_carriage_gas) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_MAGLEV_CARRIAGE_GAS);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			MGLV;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				16;
+
+		//Cargo properties
+		cargo_capacity:			12;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_LIQUID);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_NON_POURABLE, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED); //Using CC_COVERED to indicate pressurised
+		cargo_allow_refit:		[N2__, O2__, H2__]; //Fallback to guarantee fitting
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			5;
+
+		//Costs
+		cost_factor:			7;
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		default: spriteset_maglev_carriagegas;
+	}
+}
+
+//Visible cargo carriages
+//Low capacity bulk waggon
+spriteset (spriteset_maglev_carriage_bulk1_empty, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Carriage_Bulk_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+spriteset (spriteset_maglev_carriage_bulk1_regolith, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Carriage_Bulk_Regolith_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+spriteset (spriteset_maglev_carriage_bulk1_mixedore, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Carriage_Bulk_MixedOres_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+spriteset (spriteset_maglev_carriage_bulk1_organics, "../graphics/Vehicles/PixelTool_Maglev/Rail_Maglev_Carriage_Bulk_Organics_8bpp.png") {
+	template_magtr_8PT(0, 0)
+}
+
+spritegroup spritegroup_maglev_carriage_bulk1_regolith {
+	loaded: [spriteset_maglev_carriage_bulk1_empty, spriteset_maglev_carriage_bulk1_regolith];
+	loading: [spriteset_maglev_carriage_bulk1_empty, spriteset_maglev_carriage_bulk1_regolith];
+}
+
+spritegroup spritegroup_maglev_carriage_bulk1_mixedore {
+	loaded: [spriteset_maglev_carriage_bulk1_empty, spriteset_maglev_carriage_bulk1_mixedore];
+	loading: [spriteset_maglev_carriage_bulk1_empty, spriteset_maglev_carriage_bulk1_mixedore];
+}
+
+spritegroup spritegroup_maglev_carriage_bulk1_organics {
+	loaded: [spriteset_maglev_carriage_bulk1_empty, spriteset_maglev_carriage_bulk1_organics];
+	loading: [spriteset_maglev_carriage_bulk1_empty, spriteset_maglev_carriage_bulk1_organics];
+}
+
+item(FEAT_TRAINS, spriteset_maglev_carriage_bulk1) {
+	property {
+		//Basic properties
+		name:				string(STR_NAME_MAGLEV_CARRIAGE_BULK1);
+		climates_available:		bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+
+		//Ground train general properties
+		track_type:			MGLV;
+
+		//Vehicle properties
+		introduction_date:		date(1900,01,01);
+		model_life:				VEHICLE_NEVER_EXPIRES;
+		vehicle_life:			35;
+		//Zero power, so carriage
+		power:				0;
+		length:				8;
+		weight:				11;
+
+		//Cargo properties
+		cargo_capacity:			25;
+		default_cargo_type:		DEFAULT_CARGO_FIRST_REFITTABLE;
+		refittable_cargo_classes:	bitmask(CC_BULK);
+		non_refittable_cargo_classes:	bitmask(CC_PASSENGERS, CC_MAIL, CC_LIQUID, CC_ARMOURED, CC_HAZARDOUS, CC_OVERSIZED, CC_COVERED); //Using CC_COVERED to indicate pressurised
+		cargo_allow_refit:		[GRVL, ORES, ORGN]; //Fallback to guarantee fitting
+		//cargo_disallow_refit:		not defined, so none excluded
+		loading_speed:			5;
+
+		//Costs
+		cost_factor:			7;
+		//Carriage, so no running cost defined
+
+		//Graphics
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+		sprite_id:			SPRITE_ID_NEW_TRAIN;
+	}
+
+	graphics {
+		GRVL: spritegroup_maglev_carriage_bulk1_regolith;
+		ORES: spritegroup_maglev_carriage_bulk1_mixedore;
+		ORGN: spritegroup_maglev_carriage_bulk1_organics;
+		default: spritegroup_maglev_carriage_bulk1_regolith;
+	}
+}

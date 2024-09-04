@@ -1,0 +1,58 @@
+// 	OpenGFX Industries
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#include "industry_templates.pnml"
+
+spriteset(life_support_main_sprites, "../graphics/Buildings/Industry_LifeSupport_8bpp.png") {
+    SPRITE3(4, 268, 136, 4, 64, 128, -32, -98)
+}
+SPRITE_LAYOUT(life_support_main_sprite_layout, life_support_main_sprites, 60)
+
+item(FEAT_INDUSTRYTILES, life_support_main_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[O2__, 8], [WATR, 8], [FOOD, 8]];
+    }
+    graphics { life_support_main_sprite_layout; }
+}
+
+tilelayout life_support_layout {
+    0, 0: life_support_main_tile;
+}
+
+item(FEAT_INDUSTRIES, life_support_industry, LIFE_SUPPORT_ID) {
+    property {
+        substitute: LIFE_SUPPORT_ID;
+        name: string(STR_LIFE_SUPPORT_NAME);
+        layouts: [life_support_layout];
+        life_type: IND_LIFE_TYPE_BLACK_HOLE;
+        accept_cargo_types: [cargotype("O2__"), cargotype("WATR"), cargotype("FOOD")];
+        prod_cargo_types: [];
+        prod_multiplier: [];
+        min_cargo_distr: 1;
+        prob_random: 30;
+        prob_in_game: 60;
+        spec_flags: bitmask(IND_FLAG_ONLY_IN_TOWNS);
+        input_multiplier_1: [];
+        input_multiplier_2: [];
+        input_multiplier_3: [];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_LIFE_SUPPORT_STATION_NAME));
+    }
+}

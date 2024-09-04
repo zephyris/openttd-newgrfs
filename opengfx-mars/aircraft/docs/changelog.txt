@@ -1,0 +1,4 @@
+Changelog for OpenGFX Mars Aircraft
+
+0.1.0 (not released yet):
+  first release

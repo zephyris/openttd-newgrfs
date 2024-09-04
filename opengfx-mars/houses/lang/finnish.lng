@@ -1,0 +1,14 @@
+##grflangid 0x35
+##plural 0
+
+STR_GRF_NAME :OpenGFX Marsin Talot
+STR_GRF_DESC :{ORANGE}Marsilaiset Elinpaikat{}{BLACK}Grafiikka: {SILVER}Zephyris{}{BLACK}Ohjelmointi: {SILVER}Elyon
+STR_GRF_URL :http://dev.openttdcoop.org/projects/opengfx-mars-houses
+
+STR_NAME_HABITAT :Talo
+STR_NAME_LARGE_HABITAT :Suuri talo
+STR_NAME_TALL_HABITAT :Korkea talo
+STR_NAME_TOWER_HABITAT :Tornitalo
+STR_NAME_LUXURY_TOWER_HABITAT :Ylellinen tornitalo
+STR_NAME_PARK :Puisto
+STR_NAME_TALL_PARK :Korkea puisto

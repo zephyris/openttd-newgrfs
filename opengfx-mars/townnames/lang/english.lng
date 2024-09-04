@@ -1,0 +1,6 @@
+##grflangid 0x01
+STR_GRF_NAME							:OpenGFX Mars Town Names {VERSION}
+STR_GRF_DESCRIPTION						:{ORANGE}Martian Town Names{}Town names for a Martian environment{}{BLACK}Graphics: {SILVER}Zephyris{}{BLACK}Programming: {SILVER}Zephyris
+STR_GRF_URL							:http://dev.openttdcoop.org/projects/opengfx-mars-townnames
+
+STR_TOWN_NAMES_MARS						:Martian

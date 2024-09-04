@@ -1,0 +1,16 @@
+##grflangid 0x66
+##plural 0
+##gender m f n mp fp np
+##case abl acc dat gen
+
+STR_GRF_NAME :OpenGFX Domi Martiae {VERSION}
+STR_GRF_DESC :{ORANGE}Habitationes Martiae{}{BLACK}Graphica: {SILVER}Zephyris{}{BLACK}Programmatio: {SILVER}Elyon
+STR_GRF_URL :http://dev.openttdcoop.org/projects/opengfx-mars-houses
+
+STR_NAME_HABITAT :Habitatio
+STR_NAME_LARGE_HABITAT :Habitatio magna
+STR_NAME_TALL_HABITAT :Habitatio alta
+STR_NAME_TOWER_HABITAT :Habitatio turrita
+STR_NAME_LUXURY_TOWER_HABITAT :Habitatio turrita luxuriosa
+STR_NAME_PARK :Hortus
+STR_NAME_TALL_PARK :Hortus celsus

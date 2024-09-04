@@ -1,0 +1,15 @@
+##grflangid 0x1b
+##plural 0
+##gender male
+
+STR_GRF_NAME :OpenGFX Mars Huise {VERSION}
+STR_GRF_DESC :{ORANGE}Mars Habitat{}Habitat vir 'n Mars Landskap{}{BLACK}Grafika: {SILVER}Zephyris{}{BLACK}Geprogrameer: {SILVER}Elyon
+STR_GRF_URL :http://dev.openttdcoop.org/projects/opengfx-mars-houses
+
+STR_NAME_HABITAT :Habitat
+STR_NAME_LARGE_HABITAT :Groot habitat
+STR_NAME_TALL_HABITAT :Hoë habitat
+STR_NAME_TOWER_HABITAT :Toring habitat
+STR_NAME_LUXURY_TOWER_HABITAT :Luukse toring habitat
+STR_NAME_PARK :Park
+STR_NAME_TALL_PARK :Hoë park

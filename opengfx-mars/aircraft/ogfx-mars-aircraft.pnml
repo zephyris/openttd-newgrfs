@@ -1,0 +1,1004 @@
+//  OpenGFX Mars Aircraft
+//
+//  This program is free software; you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation; either version 2 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License along
+//  with this program; if not, write to the Free Software Foundation, Inc.,
+//  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#include "src/header.pnml"
+
+#include "../graphics/common_nml/cargo_table.pnml"
+
+//Disable all default vehicles
+disable_item(FEAT_AIRCRAFT, 0, 41);
+
+//Define the Aircraft
+//Assumes a Blender generated set of sprites
+template template_blender_aircraft(x, y) {
+	[1, 1, 108, 108, -54, -54]
+	[110, 1, 108, 108, -54, -54]
+	[219, 1, 108, 108, -54, -54]
+	[328, 1, 108, 108, -54, -54]
+	[437, 1, 108, 108, -54, -54]
+	[546, 1, 108, 108, -54, -54]
+	[655, 1, 108, 108, -54, -54]
+	[764, 1, 108, 108, -54, -54]
+}
+
+//Define the hidden rotor sprite set
+spriteset (spriteset_rotor) {
+	[0, 0, 1, 1, 0, 0, "../graphics/nosprite_8bpp.png"]
+	[0, 0, 1, 1, 0, 0, "../graphics/nosprite_8bpp.png"]
+	[0, 0, 1, 1, 0, 0, "../graphics/nosprite_8bpp.png"]
+	[0, 0, 1, 1, 0, 0, "../graphics/nosprite_8bpp.png"]
+}
+
+//Aircraft 1
+spriteset (spriteset_DIRI_1, "../graphics/Vehicles/Blender_Aircraft/Dirigible_1/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_DIRI_1) {
+	property {
+		name:				string(STR_NAME_DIRI_1);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1938, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			9;
+		running_cost_factor:		69;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				283 km/h;
+		acceleration:			6;
+		passenger_capacity:		200;
+		mail_capacity:			20;
+		loading_speed:			20;
+		refit_cost:				0;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_SMALL;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_DIRI_1;
+	}
+}
+
+//Aircraft 2
+spriteset (spriteset_DIRI_2, "../graphics/Vehicles/Blender_Aircraft/Dirigible_6/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_DIRI_2) {
+	property {
+		name:				string(STR_NAME_DIRI_2);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1947, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			11;
+		running_cost_factor:		78;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				308 km/h;
+		acceleration:			6;
+		passenger_capacity:		300;
+		mail_capacity:			30;
+		loading_speed:			20;
+		refit_cost:				1;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_SMALL;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_DIRI_2;
+	}
+}
+
+//Aircraft 3
+spriteset (spriteset_DIRI_3, "../graphics/Vehicles/Blender_Aircraft/Dirigible_5/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_DIRI_3) {
+	property {
+		name:				string(STR_NAME_DIRI_3);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1962, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			13;
+		running_cost_factor:		94;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				335 km/h;
+		acceleration:			7;
+		passenger_capacity:		300;
+		mail_capacity:			30;
+		loading_speed:			20;
+		refit_cost:				2;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_SMALL;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_DIRI_3;
+	}
+}
+
+//Aircraft 4
+spriteset (spriteset_DIRI_4, "../graphics/Vehicles/Blender_Aircraft/Dirigible_3/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_DIRI_4) {
+	property {
+		name:				string(STR_NAME_DIRI_4);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1974, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			14;
+		running_cost_factor:		109;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				367 km/h;
+		acceleration:			7;
+		passenger_capacity:		360;
+		mail_capacity:			35;
+		loading_speed:			20;
+		refit_cost:				3;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_SMALL;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_DIRI_4;
+	}
+}
+
+//Aircraft 5
+spriteset (spriteset_DIRI_5, "../graphics/Vehicles/Blender_Aircraft/Dirigible_2/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_DIRI_5) {
+	property {
+		name:				string(STR_NAME_DIRI_5);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1984, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			16;
+		running_cost_factor:		116;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				401 km/h;
+		acceleration:			8;
+		passenger_capacity:		400;
+		mail_capacity:			40;
+		loading_speed:			20;
+		refit_cost:				4;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_SMALL;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_DIRI_5;
+	}
+}
+
+//Aircraft 6
+spriteset (spriteset_DIRI_6, "../graphics/Vehicles/Blender_Aircraft/Dirigible_4/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_DIRI_6) {
+	property {
+		name:				string(STR_NAME_DIRI_6);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1996, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			17;
+		running_cost_factor:		134;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				421 km/h;
+		acceleration:			8;
+		passenger_capacity:		470;
+		mail_capacity:			45;
+		loading_speed:			20;
+		refit_cost:				5;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_SMALL;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_DIRI_6;
+	}
+}
+
+//Aircraft 7
+spriteset (spriteset_DIRI_7, "../graphics/Vehicles/Blender_Aircraft/Dirigible_7/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_DIRI_7) {
+	property {
+		name:				string(STR_NAME_DIRI_7);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2003, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			19;
+		running_cost_factor:		137;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				465 km/h;
+		acceleration:			9;
+		passenger_capacity:		520;
+		mail_capacity:			50;
+		loading_speed:			20;
+		refit_cost:				6;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_SMALL;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_DIRI_7;
+	}
+}
+
+//Aircraft 8
+spriteset (spriteset_DIRI_8, "../graphics/Vehicles/Blender_Aircraft/Dirigible_8/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_DIRI_8) {
+	property {
+		name:				string(STR_NAME_DIRI_8);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2018, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			21;
+		running_cost_factor:		154;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				493 km/h;
+		acceleration:			10;
+		passenger_capacity:		590;
+		mail_capacity:			60;
+		loading_speed:			20;
+		refit_cost:				7;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_SMALL;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_DIRI_8;
+	}
+}
+
+//Aircraft 9
+spriteset (spriteset_DIRI_9, "../graphics/Vehicles/Blender_Aircraft/Dirigible_9/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_DIRI_9) {
+	property {
+		name:				string(STR_NAME_DIRI_9);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2023, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			22;
+		running_cost_factor:		162;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				508 km/h;
+		acceleration:			10;
+		passenger_capacity:		630;
+		mail_capacity:			65;
+		loading_speed:			20;
+		refit_cost:				8;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_SMALL;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_DIRI_9;
+	}
+}
+
+//Aircraft 10
+spriteset (spriteset_AERO_1, "../graphics/Vehicles/Blender_Aircraft/Aeroplane_2/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_AERO_1) {
+	property {
+		name:				string(STR_NAME_AERO_1);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1996, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			0;
+		reliability_decay:		20;
+		cost_factor:			21;
+		running_cost_factor:		138;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				717 km/h;
+		acceleration:			14;
+		passenger_capacity:		140;
+		mail_capacity:			15;
+		loading_speed:			20;
+		refit_cost:				9;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_LARGE;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_AERO_1;
+	}
+}
+
+//Aircraft 11
+spriteset (spriteset_AERO_2, "../graphics/Vehicles/Blender_Aircraft/Aeroplane_3/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_AERO_2) {
+	property {
+		name:				string(STR_NAME_AERO_2);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2016, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			1;
+		reliability_decay:		20;
+		cost_factor:			22;
+		running_cost_factor:		183;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				801 km/h;
+		acceleration:			16;
+		passenger_capacity:		150;
+		mail_capacity:			15;
+		loading_speed:			20;
+		refit_cost:				10;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_LARGE;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_AERO_2;
+	}
+}
+
+//Aircraft 12
+spriteset (spriteset_AERO_3, "../graphics/Vehicles/Blender_Aircraft/Aeroplane_1/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_AERO_3) {
+	property {
+		name:				string(STR_NAME_AERO_3);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2029, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			2;
+		reliability_decay:		20;
+		cost_factor:			26;
+		running_cost_factor:		201;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				887 km/h;
+		acceleration:			18;
+		passenger_capacity:		190;
+		mail_capacity:			20;
+		loading_speed:			20;
+		refit_cost:				11;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_LARGE;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_AERO_3;
+	}
+}
+
+//Aircraft 13
+spriteset (spriteset_AERO_4, "../graphics/Vehicles/Blender_Aircraft/Aeroplane_4/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_AERO_4) {
+	property {
+		name:				string(STR_NAME_AERO_4);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2041, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			3;
+		reliability_decay:		20;
+		cost_factor:			31;
+		running_cost_factor:		219;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				922 km/h;
+		acceleration:			18;
+		passenger_capacity:		210;
+		mail_capacity:			20;
+		loading_speed:			20;
+		refit_cost:				12;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_LARGE;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_AERO_4;
+	}
+}
+
+//Aircraft 14
+spriteset (spriteset_RPLA_1, "../graphics/Vehicles/Blender_Aircraft/RocketPlane_4/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_RPLA_1) {
+	property {
+		name:				string(STR_NAME_RPLA_1);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1937, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			4;
+		reliability_decay:		20;
+		cost_factor:			44;
+		running_cost_factor:		171;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				2024 km/h;
+		acceleration:			40;
+		passenger_capacity:		15;
+		mail_capacity:			0;
+		loading_speed:			20;
+		refit_cost:				13;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_LARGE;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_RPLA_1;
+	}
+}
+
+//Aircraft 15
+spriteset (spriteset_RPLA_2, "../graphics/Vehicles/Blender_Aircraft/RocketPlane_2/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_RPLA_2) {
+	property {
+		name:				string(STR_NAME_RPLA_2);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1962, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			5;
+		reliability_decay:		16;
+		cost_factor:			54;
+		running_cost_factor:		186;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				2154 km/h;
+		acceleration:			43;
+		passenger_capacity:		20;
+		mail_capacity:			0;
+		loading_speed:			20;
+		refit_cost:				14;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_LARGE;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_RPLA_2;
+	}
+}
+
+//Aircraft 16
+spriteset (spriteset_RPLA_3, "../graphics/Vehicles/Blender_Aircraft/RocketPlane_3/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_RPLA_3) {
+	property {
+		name:				string(STR_NAME_RPLA_3);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1977, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			6;
+		reliability_decay:		16;
+		cost_factor:			58;
+		running_cost_factor:		212;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				2241 km/h;
+		acceleration:			45;
+		passenger_capacity:		20;
+		mail_capacity:			0;
+		loading_speed:			20;
+		refit_cost:				15;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_LARGE;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_RPLA_3;
+	}
+}
+
+//Aircraft 17
+spriteset (spriteset_RPLA_4, "../graphics/Vehicles/Blender_Aircraft/RocketPlane_1/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_RPLA_4) {
+	property {
+		name:				string(STR_NAME_RPLA_4);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1995, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			7;
+		reliability_decay:		16;
+		cost_factor:			63;
+		running_cost_factor:		239;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				2424 km/h;
+		acceleration:			48;
+		passenger_capacity:		25;
+		mail_capacity:			5;
+		loading_speed:			20;
+		refit_cost:				16;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_LARGE;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_RPLA_4;
+	}
+}
+
+//Aircraft 18
+spriteset (spriteset_RPLA_5, "../graphics/Vehicles/Blender_Aircraft/RocketPlane_5/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_RPLA_5) {
+	property {
+		name:				string(STR_NAME_RPLA_5);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2011, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			8;
+		reliability_decay:		16;
+		cost_factor:			71;
+		running_cost_factor:		248;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				2498 km/h;
+		acceleration:			50;
+		passenger_capacity:		30;
+		mail_capacity:			5;
+		loading_speed:			20;
+		refit_cost:				17;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_LARGE;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_RPLA_5;
+	}
+}
+
+//Aircraft 19
+spriteset (spriteset_RPLA_6, "../graphics/Vehicles/Blender_Aircraft/RocketPlane_6/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_RPLA_6) {
+	property {
+		name:				string(STR_NAME_RPLA_6);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2027, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			9;
+		reliability_decay:		16;
+		cost_factor:			79;
+		running_cost_factor:		255;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				2686 km/h;
+		acceleration:			54;
+		passenger_capacity:		30;
+		mail_capacity:			5;
+		loading_speed:			20;
+		refit_cost:				18;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_LARGE;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		default:	spriteset_RPLA_6;
+	}
+}
+
+//Aircraft 20
+spriteset (spriteset_VTBA_1, "../graphics/Vehicles/Blender_Aircraft/VTOL_Balloon_2/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_VTBA_1) {
+	property {
+		name:				string(STR_NAME_VTBA_1);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1935, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			10;
+		reliability_decay:		20;
+		cost_factor:			6;
+		running_cost_factor:		44;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				181 km/h;
+		acceleration:			4;
+		passenger_capacity:		90;
+		mail_capacity:			10;
+		loading_speed:			20;
+		refit_cost:				19;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_HELICOPTER;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		rotor:		spriteset_rotor;
+		default:	spriteset_VTBA_1;
+	}
+}
+
+//Aircraft 21
+spriteset (spriteset_VTBA_2, "../graphics/Vehicles/Blender_Aircraft/VTOL_Balloon_3/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_VTBA_2) {
+	property {
+		name:				string(STR_NAME_VTBA_2);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1947, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			11;
+		reliability_decay:		20;
+		cost_factor:			7;
+		running_cost_factor:		48;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				232 km/h;
+		acceleration:			5;
+		passenger_capacity:		110;
+		mail_capacity:			10;
+		loading_speed:			20;
+		refit_cost:				20;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_HELICOPTER;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		rotor:		spriteset_rotor;
+		default:	spriteset_VTBA_2;
+	}
+}
+
+//Aircraft 22
+spriteset (spriteset_VTBA_3, "../graphics/Vehicles/Blender_Aircraft/VTOL_Balloon_2/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_VTBA_3) {
+	property {
+		name:				string(STR_NAME_VTBA_3);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1960, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			12;
+		reliability_decay:		20;
+		cost_factor:			7;
+		running_cost_factor:		60;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				252 km/h;
+		acceleration:			5;
+		passenger_capacity:		130;
+		mail_capacity:			15;
+		loading_speed:			20;
+		refit_cost:				21;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_HELICOPTER;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		rotor:		spriteset_rotor;
+		default:	spriteset_VTBA_3;
+	}
+}
+
+//Aircraft 23
+spriteset (spriteset_VTBA_4, "../graphics/Vehicles/Blender_Aircraft/VTOL_Balloon_1/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_VTBA_4) {
+	property {
+		name:				string(STR_NAME_VTBA_4);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1973, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			13;
+		reliability_decay:		20;
+		cost_factor:			9;
+		running_cost_factor:		63;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				271 km/h;
+		acceleration:			5;
+		passenger_capacity:		140;
+		mail_capacity:			15;
+		loading_speed:			20;
+		refit_cost:				22;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_HELICOPTER;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		rotor:		spriteset_rotor;
+		default:	spriteset_VTBA_4;
+	}
+}
+
+//Aircraft 24
+spriteset (spriteset_VTBA_5, "../graphics/Vehicles/Blender_Aircraft/VTOL_Balloon_4/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_VTBA_5) {
+	property {
+		name:				string(STR_NAME_VTBA_5);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1985, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			14;
+		reliability_decay:		20;
+		cost_factor:			10;
+		running_cost_factor:		73;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				299 km/h;
+		acceleration:			6;
+		passenger_capacity:		150;
+		mail_capacity:			15;
+		loading_speed:			20;
+		refit_cost:				23;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_HELICOPTER;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		rotor:		spriteset_rotor;
+		default:	spriteset_VTBA_5;
+	}
+}
+
+//Aircraft 25
+spriteset (spriteset_QUAD_6, "../graphics/Vehicles/Blender_Aircraft/Quadcopter_1/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_QUAD_6) {
+	property {
+		name:				string(STR_NAME_QUAD_6);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(1988, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			15;
+		reliability_decay:		20;
+		cost_factor:			11;
+		running_cost_factor:		84;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				321 km/h;
+		acceleration:			6;
+		passenger_capacity:		170;
+		mail_capacity:			15;
+		loading_speed:			20;
+		refit_cost:				24;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_HELICOPTER;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		rotor:		spriteset_rotor;
+		default:	spriteset_QUAD_6;
+	}
+}
+
+//Aircraft 26
+spriteset (spriteset_QUAD_7, "../graphics/Vehicles/Blender_Aircraft/Quadcopter_2/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_QUAD_7) {
+	property {
+		name:				string(STR_NAME_QUAD_7);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2002, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			16;
+		reliability_decay:		20;
+		cost_factor:			13;
+		running_cost_factor:		93;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				346 km/h;
+		acceleration:			7;
+		passenger_capacity:		180;
+		mail_capacity:			20;
+		loading_speed:			20;
+		refit_cost:				25;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_HELICOPTER;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		rotor:		spriteset_rotor;
+		default:	spriteset_QUAD_7;
+	}
+}
+
+//Aircraft 27
+spriteset (spriteset_QUAD_8, "../graphics/Vehicles/Blender_Aircraft/Quadcopter_3/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_QUAD_8) {
+	property {
+		name:				string(STR_NAME_QUAD_8);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2019, 01, 01);
+		model_life:				35;
+		vehicle_life:			20;
+		retire_early:			17;
+		reliability_decay:		20;
+		cost_factor:			14;
+		running_cost_factor:		99;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				389 km/h;
+		acceleration:			8;
+		passenger_capacity:		190;
+		mail_capacity:			20;
+		loading_speed:			20;
+		refit_cost:				26;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_HELICOPTER;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		rotor:		spriteset_rotor;
+		default:	spriteset_QUAD_8;
+	}
+}
+
+//Aircraft 28
+spriteset (spriteset_QUAD_9, "../graphics/Vehicles/Blender_Aircraft/Quadcopter_4/combined_8bpp.png") {
+	template_blender_aircraft(0, 0)
+}
+
+item(FEAT_AIRCRAFT, item_QUAD_9) {
+	property {
+		name:				string(STR_NAME_QUAD_9);
+		climates_available:		ALL_CLIMATES;
+		introduction_date:		date(2032, 01, 01);
+		model_life:				35;
+		vehicle_life:			22;
+		retire_early:			18;
+		reliability_decay:		20;
+		cost_factor:			15;
+		running_cost_factor:		110;
+		sprite_id:			SPRITE_ID_NEW_AIRCRAFT;
+		speed:				404 km/h;
+		acceleration:			8;
+		passenger_capacity:		210;
+		mail_capacity:			20;
+		loading_speed:			20;
+		refit_cost:				27;
+		//running_//cost_base:		PR_RUNNING_AIRCRAFT;
+		//cost_base:			PF_BUILD_VEHICLE_AIRCRAFT;
+		range:				0;
+		aircraft_type:			AIRCRAFT_TYPE_HELICOPTER;
+		misc_flags:			bitmask(TRAIN_FLAG_2CC);
+	}
+	graphics {
+		rotor:		spriteset_rotor;
+		default:	spriteset_QUAD_9;
+	}
+}

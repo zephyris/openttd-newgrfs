@@ -1,0 +1,79 @@
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#define STOCKPILE_SPRITESET1(basename, filename) \
+    spriteset(basename ## _sprite11, filename) { [ 25,  15, 16,  5,  -8, 7] } \
+    spriteset(basename ## _sprite12, filename) { [151,  13, 24,  8, -12, 5] } \
+    spriteset(basename ## _sprite13, filename) { [276,  12, 30, 11, -15, 3] } \
+    spriteset(basename ## _sprite14, filename) { [ 16, 139, 37, 18, -18, 6] } \
+    spriteset(basename ## _sprite15, filename) { [139, 137, 45, 24, -24, 2] } \
+    spriteset(basename ## _sprite16, filename) { [266, 135, 51, 27, -27, 2] }
+
+#define STOCKPILE_SPRITESET2(basename, filename) \
+    spriteset(basename ## _sprite21, filename) { [ 27,  61,  9,  9,  -4, 7] } \
+    spriteset(basename ## _sprite22, filename) { [154,  59, 13, 12,  -6, 5] } \
+    spriteset(basename ## _sprite23, filename) { [279,  57, 20, 17, -10, 3] } \
+    spriteset(basename ## _sprite24, filename) { [ 17, 184, 33, 20, -16, 2] } \
+    spriteset(basename ## _sprite25, filename) { [141, 182, 46, 25, -23, 2] } \
+    spriteset(basename ## _sprite26, filename) { [267, 181, 51, 27, -26, 2] }
+
+#define STOCKPILE_SPRITESET3(basename, filename) \
+    spriteset(basename ## _sprite31, filename) { [ 26, 109, 17,  6,  -8, 7] } \
+    spriteset(basename ## _sprite32, filename) { [151, 108, 24,  8, -12, 5] } \
+    spriteset(basename ## _sprite33, filename) { [278, 106, 30, 12, -15, 3] } \
+    spriteset(basename ## _sprite34, filename) { [ 15, 232, 36, 17, -18, 4] } \
+    spriteset(basename ## _sprite35, filename) { [141, 228, 46, 24, -23, 1] } \
+    spriteset(basename ## _sprite36, filename) { [266, 226, 52, 27, -26, 1] }
+
+#define STOCKPILE_SPRITESET4(basename, filename) \
+    spriteset(basename ## _sprite41, filename) { [ 92, 107,  9,  9,  -4, 7] } \
+    spriteset(basename ## _sprite42, filename) { [219, 105, 13, 13,  -6, 5] } \
+    spriteset(basename ## _sprite43, filename) { [345, 103, 20, 16, -10, 3] } \
+    spriteset(basename ## _sprite44, filename) { [ 78, 230, 33, 20, -17, 2] } \
+    spriteset(basename ## _sprite45, filename) { [199, 228, 46, 24, -24, 0] } \
+    spriteset(basename ## _sprite46, filename) { [326, 227, 51, 27, -26, 1] }
+
+STOCKPILE_SPRITESET1(stockpile_mixed_ores, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png")
+STOCKPILE_SPRITESET2(stockpile_mixed_ores, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png")
+STOCKPILE_SPRITESET3(stockpile_mixed_ores, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png")
+STOCKPILE_SPRITESET4(stockpile_mixed_ores, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png")
+
+STOCKPILE_SPRITESET1(stockpile_regolith, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png")
+STOCKPILE_SPRITESET2(stockpile_regolith, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png")
+STOCKPILE_SPRITESET3(stockpile_regolith, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png")
+//STOCKPILE_SPRITESET4(stockpile_regolith, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png")
+
+#define STOCKPILE_SPRITELAYOUT(layoutbase, spritebase) \
+    spritelayout layoutbase ## 1 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: spritebase ## 1; } } \
+    spritelayout layoutbase ## 2 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: spritebase ## 2; } } \
+    spritelayout layoutbase ## 3 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: spritebase ## 3; } } \
+    spritelayout layoutbase ## 4 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: spritebase ## 4; } } \
+    spritelayout layoutbase ## 5 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: spritebase ## 5; } } \
+    spritelayout layoutbase ## 6 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: spritebase ## 6; } }
+
+STOCKPILE_SPRITELAYOUT(stockpile_mixed_ores_sprite_layout1, stockpile_mixed_ores_sprite1)
+STOCKPILE_SPRITELAYOUT(stockpile_mixed_ores_sprite_layout2, stockpile_mixed_ores_sprite2)
+STOCKPILE_SPRITELAYOUT(stockpile_mixed_ores_sprite_layout3, stockpile_mixed_ores_sprite3)
+STOCKPILE_SPRITELAYOUT(stockpile_mixed_ores_sprite_layout4, stockpile_mixed_ores_sprite4)
+
+STOCKPILE_SPRITELAYOUT(stockpile_regolith_sprite_layout1, stockpile_regolith_sprite1)
+STOCKPILE_SPRITELAYOUT(stockpile_regolith_sprite_layout2, stockpile_regolith_sprite2)
+STOCKPILE_SPRITELAYOUT(stockpile_regolith_sprite_layout3, stockpile_regolith_sprite3)
+//STOCKPILE_SPRITELAYOUT(stockpile_regolith_sprite_layout4, stockpile_regolith_sprite4)
+
+// vim: syn=cpp sw=4 et sts=4 nospell

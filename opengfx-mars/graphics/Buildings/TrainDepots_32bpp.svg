@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="276"
+   height="140"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="TrainDepots_32bpp.svg"
+   inkscape:export-filename="TrainDepots_32bpp.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="4.0000001"
+     inkscape:cx="129.49712"
+     inkscape:cy="73.693174"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:snap-bbox="true"
+     inkscape:window-width="1680"
+     inkscape:window-height="1028"
+     inkscape:window-x="1672"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2985"
+       empspacing="2"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-912.36218)">
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       id="rect3064"
+       width="276"
+       height="140"
+       x="0"
+       y="0"
+       transform="translate(0,912.36218)" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1"
+       width="64"
+       height="64"
+       x="4"
+       y="916.36218" />
+    <image
+       y="916.36218"
+       x="4"
+       id="image3427"
+       xlink:href="Depots/BuildingBlockv2_Depot_32x28.png"
+       height="64"
+       width="64" />
+    <image
+       y="910.36218"
+       x="4"
+       id="image3043"
+       xlink:href="Depots/BuildingBlockv2_32x28.png"
+       height="64"
+       width="64" />
+    <image
+       y="943.36218"
+       x="12"
+       id="image4242-88"
+       xlink:href="Parts/arial_tall.png"
+       height="28"
+       width="3" />
+    <image
+       y="949.36218"
+       x="4"
+       id="image3068"
+       xlink:href="BlockShapes/AirLockTunnel2_2.png"
+       height="31"
+       width="64" />
+    <image
+       y="938.36218"
+       x="22"
+       id="image4278-8-7"
+       xlink:href="Parts/top_vent.png"
+       height="8"
+       width="12" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-2"
+       width="64"
+       height="64"
+       x="72"
+       y="916.36218" />
+    <image
+       y="936.36218"
+       x="125"
+       id="image4242-88-1"
+       xlink:href="Parts/arial_tall.png"
+       height="28"
+       width="3" />
+    <image
+       y="916.36218"
+       x="72"
+       id="image3384-7"
+       xlink:href="Depots/BuildingBlockv2_Depot2_32x28.png"
+       height="64"
+       width="64" />
+    <image
+       y="910.36218"
+       x="72"
+       id="image3395-6"
+       xlink:href="Depots/BuildingBlockv2_32x28.png"
+       height="64"
+       width="64" />
+    <image
+       y="948.36218"
+       x="108"
+       id="image4278-8-1"
+       xlink:href="Parts/top_vent.png"
+       height="8"
+       width="12" />
+    <image
+       y="910.36218"
+       x="140"
+       id="image3031-7"
+       xlink:href="Depots/BuildingBlockv2_28x32.png"
+       height="64"
+       width="64" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-3-1"
+       width="64"
+       height="64"
+       x="140"
+       y="916.36218" />
+    <image
+       y="936.36218"
+       x="148"
+       id="image4242-88-1-7"
+       xlink:href="Parts/arial_tall.png"
+       height="28"
+       width="3" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-3-5"
+       width="64"
+       height="64"
+       x="208"
+       y="916.36218" />
+    <image
+       y="928.36218"
+       x="236"
+       id="image4242-88-18"
+       xlink:href="Parts/arial_tall.png"
+       height="28"
+       width="3" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-3-5-2"
+       width="64"
+       height="64"
+       x="208"
+       y="984.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-1"
+       width="64"
+       height="64"
+       x="4"
+       y="984.36218" />
+    <image
+       y="984.36218"
+       x="4"
+       id="image3427-4"
+       xlink:href="Depots/BuildingBlockv2_Depot_32x28.png"
+       height="64"
+       width="64" />
+    <image
+       y="1017.3622"
+       x="4"
+       id="image3068-2"
+       xlink:href="BlockShapes/AirLockTunnel2_2.png"
+       height="31"
+       width="64" />
+    <image
+       y="978.36218"
+       x="4"
+       id="image3395-2"
+       xlink:href="Depots/BuildingBlockv2_32x28.png"
+       height="64"
+       width="64" />
+    <image
+       y="1006.3622"
+       x="22"
+       id="image4278-8-7-2"
+       xlink:href="Parts/top_vent.png"
+       height="8"
+       width="12" />
+    <image
+       y="916.36218"
+       x="140"
+       id="image3491"
+       xlink:href="Depots/BuildingBlockv2_Depot2_28x32.png"
+       height="64"
+       width="64" />
+    <image
+       y="916.36218"
+       x="208"
+       id="image3502"
+       xlink:href="Depots/BuildingBlockv2_Depot_28x32.png"
+       height="64"
+       width="64" />
+    <image
+       y="910.36218"
+       x="140"
+       id="image3513"
+       xlink:href="Depots/BuildingBlockv2_28x32.png"
+       height="64"
+       width="64" />
+    <image
+       y="910.36218"
+       x="208"
+       id="image3513-6"
+       xlink:href="Depots/BuildingBlockv2_28x32.png"
+       height="64"
+       width="64" />
+    <image
+       y="949.36218"
+       x="140"
+       id="image3542"
+       xlink:href="BlockShapes/AirLockTunnel_2.png"
+       height="31"
+       width="64" />
+    <image
+       y="949.36218"
+       x="208"
+       id="image3542-8"
+       xlink:href="BlockShapes/AirLockTunnel_2.png"
+       height="31"
+       width="64" />
+    <image
+       y="938.36218"
+       x="242"
+       id="image4278-8-7-9"
+       xlink:href="Parts/top_vent.png"
+       height="8"
+       width="12" />
+    <image
+       y="948.36218"
+       x="156"
+       id="image4278-8-1-2"
+       xlink:href="Parts/top_vent.png"
+       height="8"
+       width="12" />
+    <image
+       y="1011.3622"
+       x="12"
+       id="image4242-88-3"
+       xlink:href="Parts/arial_tall.png"
+       height="28"
+       width="3" />
+    <path
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       d="m 42,1048.3622 0,-16 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 8,0 0,-39.00002 -64,0 0,64.00002 z"
+       id="path3463-1"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccccccccccccc" />
+    <path
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       d="m 234,980.36218 0,-16 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -8,0 0,25 z"
+       id="path3463-7"
+       inkscape:connector-curvature="0" />
+    <image
+       y="996.36218"
+       x="236"
+       id="image4242-88-18-3"
+       xlink:href="Parts/arial_tall.png"
+       height="28"
+       width="3" />
+    <image
+       y="984.36218"
+       x="208"
+       id="image3502-4"
+       xlink:href="Depots/BuildingBlockv2_Depot_28x32.png"
+       height="64"
+       width="64" />
+    <image
+       y="978.36218"
+       x="208"
+       id="image3513-6-1"
+       xlink:href="Depots/BuildingBlockv2_28x32.png"
+       height="64"
+       width="64" />
+    <image
+       y="1017.3622"
+       x="208"
+       id="image3542-8-1"
+       xlink:href="BlockShapes/AirLockTunnel_2.png"
+       height="31"
+       width="64" />
+    <image
+       y="1006.3622"
+       x="242"
+       id="image4278-8-7-9-3"
+       xlink:href="Parts/top_vent.png"
+       height="8"
+       width="12" />
+    <path
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       d="m 234,1048.3622 0,-16 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -8,0 0,-39.00002 64,0 0,64.00002 z"
+       id="path3463-1-9"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccccccccccccc" />
+    <image
+       y="949.36218"
+       x="72"
+       id="image3068-5"
+       xlink:href="BlockShapes/AirLockTunnel2_2.png"
+       height="31"
+       width="64" />
+    <path
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       d="m 42,980.36218 0,-16 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 8,0 0,25 z"
+       id="path3463"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>

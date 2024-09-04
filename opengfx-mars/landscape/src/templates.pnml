@@ -1,0 +1,78 @@
+// 	OpenGFX Mars Landscape
+// 	Copyright (C) 2014 Zephyris, planetmaker and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+template template_ground_tile_set(x, y) {
+	[x+1, y+1, 64, 31, -32, 0]
+	[x+81, y+1, 64, 31, -32, 0]
+	[x+161, y+1, 64, 23, -32, 0]
+	[x+241, y+1, 64, 23, -32, 0]
+	[x+321, y+1, 64, 31, -32, 0]
+	[x+399, y+1, 64, 31, -32, 0]
+	[x+479, y+1, 64, 23, -32, 0]
+	[x+559, y+1, 64, 23, -32, 0]
+	[x+639, y+1, 64, 39, -32, -8]
+	[x+719, y+1, 64, 39, -32, -8]
+	[x+799, y+1, 64, 31, -32, -8]
+	[x+879, y+1, 64, 31, -32, -8]
+	[x+959, y+1, 64, 39, -32, -8]
+	[x+1039, y+1, 64, 39, -32, -8]
+	[x+1119, y+1, 64, 31, -32, -8]
+	[x+1197, y+1, 64, 47, -32, -16]
+	[x+1277, y+1, 64, 15, -32, 0]
+	[x+1357, y+1, 64, 31, -32, -8]
+	[x+1437, y+1, 64, 31, -32, -8]
+}
+
+template template_ground_tile_shore(x, y) {
+	[x+1, y+1, 64, 31, -32, 0]
+	[x+321, y+1, 64, 31, -32, 0]
+	[x+81, y+1, 64, 31, -32, 0]
+	[x+161, y+1, 64, 23, -32, 0]
+	[x+639, y+1, 64, 39, -32, -8]
+	[x+479, y+1, 64, 23, -32, 0]
+	[x+959, y+1, 64, 39, -32, -8]
+	[x+241, y+1, 64, 23, -32, 0]
+	[x+719, y+1, 64, 39, -32, -8]
+}
+
+template template_ground_tile_shore_extra(x, y) {
+	[x+1277, y+1, 64, 15, -31, 0]
+	[x+1357, y+1, 64, 31, -31, -8]
+	[x+559, y+1, 64, 23, -31, 0]
+	[x+1197, y+1, 64, 47, -31, -16]
+	[x+879, y+1, 64, 31, -31, -8]
+	[x+1039, y+1, 64, 39, -31, -8]
+	[x+1119, y+1, 64, 31, -31, -8]
+	[x+1437, y+1, 64, 31, -31, -8]
+	[x+399, y+1, 64, 31, -31, 0]
+	[x+799, y+1, 64, 31, -31, 0]
+}
+
+template template_ground_flat_tile(x, y) {
+	[x+1, y+1, 64, 31, -32, 0]
+}
+
+template template_tree_stages(x, y) {
+	[x+0, y, 32, 64, -16, -53]
+	[x+33, y, 32, 64, -16, -53]
+	[x+66, y, 32, 64, -16, -53]
+	[x+99, y, 32, 64, -16, -53]
+	[x+132, y, 32, 64, -16, -53]
+	[x+165, y, 32, 64, -16, -53]
+	[x+198, y, 32, 64, -16, -53]
+}

@@ -1,0 +1,6 @@
+VERSION        :v5443 (ca0ca4da22e3)
+VERSION_STRING :v5443 (ca0ca4da22e3)
+TITLE          :OpenGFX Mars Road Vehicles  v5443 (ca0ca4da22e3)
+FILENAME       :ogfx-mars-rv.grf
+REPO_HASH      :ca0ca4da22e3
+NEWGRF_VERSION :5443

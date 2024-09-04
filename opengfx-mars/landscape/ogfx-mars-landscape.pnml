@@ -1,0 +1,525 @@
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#include "src/header.pnml"
+#include "src/templates.pnml"
+
+//Replace the ground/terrain tiles
+
+//All base tiles (tropical, temperate, arctic)
+if (climate!=CLIMATE_TOYLAND) {
+	replace base_ground_4_4(3981, "../graphics/Terrain/BaseGroundTile_Stages_8bpp.png") {
+		template_ground_tile_set(0, 0)
+	}
+	replace base_ground_3_4(3962, "../graphics/Terrain/BaseGroundTile_Stages_8bpp.png") {
+		template_ground_tile_set(0, 48)
+	}
+	replace base_ground_2_4(3943, "../graphics/Terrain/BaseGroundTile_Stages_8bpp.png") {
+		template_ground_tile_set(0, 96)
+	}
+	replace base_ground_1_4(3924, "../graphics/Terrain/BaseGroundTile_Stages_8bpp.png") {
+		template_ground_tile_set(0, 144)
+	}
+
+	//Rough and rocky
+	replace base_ground_rough(4000, "../graphics/Terrain/BaseGroundTile_Rough_8bpp.png") {
+		template_ground_tile_set(0, 0)
+		template_ground_flat_tile(1501, 0)
+		template_ground_flat_tile(1566, 0)
+		template_ground_flat_tile(1631, 0)
+		template_ground_flat_tile(1696, 0)
+	}
+	replace base_ground_rocks(4023, "../graphics/Terrain/BaseGroundTile_Rocks_8bpp.png") {
+		template_ground_tile_set(0, 0)
+	}
+
+	//Shore
+	replace base_ground_shore(4061, "../graphics/Terrain/BaseGroundTile_Shore_8bpp_Combined.png") {
+		template_ground_tile_shore(0, 0)
+	}
+	//Additional shore tiles
+	replacenew base_ground_shore_extra(COAST_TILES_BASEGFX, "../graphics/Terrain/BaseGroundTile_Shore_8bpp_Combined.png") {
+	    template_ground_tile_shore_extra(0, 0)
+    }
+}
+//All base tiles (polar)
+else if (climate==CLIMATE_TOYLAND) {
+	//Snow as main tile type
+	replace polar_ground_4_4(3981, "../graphics/Terrain/SnowGroundTile_8bpp.png") {
+		template_ground_tile_set(0, 0)
+	}
+	//Snow transition as regrowth stages
+	replace polar_ground_3_4(3962, "../graphics/Terrain/BaseGroundTile_SnowTransition_8bpp.png") {
+		template_ground_tile_set(0, 98)
+	}
+	replace polar_ground_2_4(3943, "../graphics/Terrain/BaseGroundTile_SnowTransition_8bpp.png") {
+		template_ground_tile_set(0, 49)
+	}
+	//Normal ground as cleared tile
+	replace polar_ground_1_4(3924, "../graphics/Terrain/BaseGroundTile_Stages_8bpp.png") {
+		template_ground_tile_set(0, 0)
+	}
+
+	//Rough and rocky
+	//TODO: Specific rough tiles
+	replace polar_ground_rough(4000, "../graphics/Terrain/SnowGroundTile_8bpp.png") {
+		template_ground_tile_set(0, 0)
+		template_ground_flat_tile(0, 0)
+		template_ground_flat_tile(0, 0)
+		template_ground_flat_tile(0, 0)
+		template_ground_flat_tile(0, 0)
+	}
+	//TODO: Specific rough tiles
+	replace polar_ground_rocks(4023, "../graphics/Terrain/SnowGroundTile_8bpp.png") {
+		template_ground_tile_set(0, 0)
+	}
+
+	//Shore
+	replace polar_ground_shore(4061, "../graphics/Terrain/SnowGroundTile_Shore_8bpp.png") {
+		template_ground_tile_shore(0, 0)
+	}
+	//Additional shore tiles
+    replacenew polar_ground_shore_extra(COAST_TILES_BASEGFX, "../graphics/Terrain/SnowGroundTile_Shore_8bpp.png") {
+	    template_ground_tile_shore_extra(0, 0)
+    }
+}
+
+//Snow and snow transition
+if (climate==CLIMATE_ARCTIC) {
+	replace base_ground_snow_1_4(4493, "../graphics/Terrain/BaseGroundTile_SnowTransition_8bpp.png") {
+		template_ground_tile_set(0, 0)
+	}
+	replace base_ground_snow_2_4(4512, "../graphics/Terrain/BaseGroundTile_SnowTransition_8bpp.png") {
+		template_ground_tile_set(0, 49)
+	}
+	replace base_ground_snow_3_4(4531, "../graphics/Terrain/BaseGroundTile_SnowTransition_8bpp.png") {
+		template_ground_tile_set(0, 98)
+	}
+	replace base_ground_snow_4_4(4550, "../graphics/Terrain/SnowGroundTile_8bpp.png") {
+		template_ground_tile_set(0, 0)
+	}
+}
+//Desert and desert transition
+else if (climate==CLIMATE_TROPICAL) {
+	replace base_ground_desert_2_4(4512, "../graphics/Terrain/DesertGroundTile_Transition_8bpp.png") {
+		template_ground_tile_set(0, 0)
+	}
+	replace base_ground_desert_4_4(4550, "../graphics/Terrain/DesertGroundTile_8bpp.png") {
+		template_ground_tile_set(0, 0)
+	}
+}
+
+//Replace all trees
+
+//Temperate trees
+replace tree_temperate_1(1576, "../graphics/Landscape/Trees/Baobab1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_temperate_2(1583, "../graphics/Landscape/Trees/Baobab2S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_temperate_3(1590, "../graphics/Landscape/Trees/Cactus1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_temperate_4(1597, "../graphics/Landscape/Trees/Cactus2S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_temperate_5(1604, "../graphics/Landscape/Trees/Cactus3S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_temperate_6(1611, "../graphics/Landscape/Trees/Cactus4S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_temperate_7(1618, "../graphics/Landscape/Trees/Succulent1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_temperate_8(1625, "../graphics/Landscape/Trees/Succulent1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+//From this point on temperate graphics are duplicates
+replace tree_temperate_9(1632, "../graphics/Landscape/Trees/Baobab1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_temperate_10(1639, "../graphics/Landscape/Trees/Baobab2S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_temperate_11(1646, "../graphics/Landscape/Trees/Cactus1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_temperate_12(1653, "../graphics/Landscape/Trees/Cactus2S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_temperate_13(1660, "../graphics/Landscape/Trees/Cactus3S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_temperate_14(1667, "../graphics/Landscape/Trees/Cactus4S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_temperate_15(1674, "../graphics/Landscape/Trees/Succulent1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_temperate_16(1681, "../graphics/Landscape/Trees/Succulent1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_temperate_17(1688, "../graphics/Landscape/Trees/Cactus4S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_temperate_18(1695, "../graphics/Landscape/Trees/Succulent1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_temperate_19(1702, "../graphics/Landscape/Trees/Cactus3S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+
+//Arctic trees
+//Snow free versions
+replace tree_arctic_1(1709, "../graphics/Landscape/Trees/Baobab1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_arctic_2(1716, "../graphics/Landscape/Trees/Baobab2S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_arctic_3(1723, "../graphics/Landscape/Trees/Cactus1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_arctic_4(1730, "../graphics/Landscape/Trees/Cactus2S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_arctic_5(1737, "../graphics/Landscape/Trees/Cactus3S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_arctic_6(1744, "../graphics/Landscape/Trees/Cactus4S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_arctic_7(1751, "../graphics/Landscape/Trees/Succulent1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_arctic_8(1758, "../graphics/Landscape/Trees/Succulent1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+//Snowy versions
+replace tree_arctic_1S(1765, "../graphics/Landscape/Trees/Baobab1S_snow_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_arctic_2S(1772, "../graphics/Landscape/Trees/Baobab2S_snow_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_arctic_3S(1779, "../graphics/Landscape/Trees/Cactus1S_snow_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_arctic_4S(1786, "../graphics/Landscape/Trees/Cactus2S_snow_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_arctic_5S(1793, "../graphics/Landscape/Trees/Cactus3S_snow_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_arctic_6S(1800, "../graphics/Landscape/Trees/Cactus4S_snow_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_arctic_7S(1807, "../graphics/Landscape/Trees/Succulent1S_snow_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_arctic_8S(1814, "../graphics/Landscape/Trees/Succulent1S_snow_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+
+//Tropical trees
+replace tree_tropic_1(1821, "../graphics/Landscape/Trees/Baobab1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_tropic_2(1828, "../graphics/Landscape/Trees/Baobab2S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_tropic_3(1835, "../graphics/Landscape/Trees/Cactus1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_tropic_4(1842, "../graphics/Landscape/Trees/Cactus2S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_tropic_5(1849, "../graphics/Landscape/Trees/Cactus3S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_tropic_6(1856, "../graphics/Landscape/Trees/Cactus4S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_tropic_7(1863, "../graphics/Landscape/Trees/Succulent1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_tropic_8(1870, "../graphics/Landscape/Trees/Succulent1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+//From this point on tropical graphics are duplicates
+replace tree_tropic_9(1877, "../graphics/Landscape/Trees/Baobab1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_tropic_10(1884, "../graphics/Landscape/Trees/Baobab2S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_tropic_11(1891, "../graphics/Landscape/Trees/Cactus1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_tropic_12(1898, "../graphics/Landscape/Trees/Cactus2S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_tropic_13(1905, "../graphics/Landscape/Trees/Cactus3S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_tropic_14(1912, "../graphics/Landscape/Trees/Cactus4S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_tropic_15(1919, "../graphics/Landscape/Trees/Succulent1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_tropic_16(1926, "../graphics/Landscape/Trees/Succulent1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_tropic_17(1933, "../graphics/Landscape/Trees/Succulent1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_tropic_18(1940, "../graphics/Landscape/Trees/Succulent1S_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+
+//Polar/toyland trees
+replace tree_polar_1(1947, "../graphics/Landscape/Trees/Baobab1S_snow_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_polar_2(1954, "../graphics/Landscape/Trees/Baobab2S_snow_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_polar_3(1961, "../graphics/Landscape/Trees/Cactus1S_snow_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_polar_4(1967, "../graphics/Landscape/Trees/Cactus2S_snow_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_polar_5(1975, "../graphics/Landscape/Trees/Cactus3S_snow_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_polar_6(1982, "../graphics/Landscape/Trees/Cactus4S_snow_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_polar_7(1989, "../graphics/Landscape/Trees/Succulent1S_snow_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+replace tree_polar_8(1996, "../graphics/Landscape/Trees/Succulent1S_snow_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+//From this point on polar graphics are duplicates
+replace tree_polar_9(2002, "../graphics/Landscape/Trees/Cactus1S_snow_8bpp.png") {
+	template_tree_stages(0, 0)
+}
+
+//Replace foundations
+template template_foundation_base(x, y) {
+	[18, 8, 64, 40, -31, -9, NOCROP]
+	[98, 8, 64, 32, -31, -9, NOCROP]
+	[178, 8, 64, 32, -31, -9, NOCROP]
+	[258, 8, 64, 40, -31, -9, NOCROP]
+	[338, 8, 64, 40, -31, -9, NOCROP]
+	[418, 8, 64, 32, -31, -9, NOCROP]
+	[498, 8, 64, 32, -31, -9, NOCROP]
+	[578, 8, 64, 40, -31, -9, NOCROP]
+	[658, 8, 64, 40, -31, -9, NOCROP]
+	[738, 8, 64, 32, -31, -9, NOCROP]
+	[2, 72, 64, 32, -31, -9, NOCROP]
+	[82, 72, 64, 40, -31, -9, NOCROP]
+	[162, 72, 64, 40, -31, -9, NOCROP]
+	[242, 72, 64, 32, -31, -9, NOCROP]
+}
+
+template template_foundation_extra_slope(x, y) {
+	[18, 8, 64, 40, -31, -9, NOCROP]
+	[98, 8, 64, 40, -31, -9, NOCROP]
+	[178, 8, 64, 32, -31, -9, NOCROP]
+	[258, 8, 64, 32, -31, -9, NOCROP]
+	[338, 8, 64, 40, -31, -9, NOCROP]
+	[418, 8, 64, 40, -31, -9, NOCROP]
+	[498, 8, 64, 40, -31, -9, NOCROP]
+	[578, 8, 64, 40, -31, -9, NOCROP]
+	[658, 8, 64, 40, -31, -9, NOCROP]
+	[738, 8, 64, 32, -31, -9, NOCROP]
+	[2, 72, 64, 32, -31, -9, NOCROP]
+	[82, 72, 64, 40, -31, -9, NOCROP]
+	[162, 72, 64, 40, -31, -9, NOCROP]
+	[242, 72, 64, 32, -31, -9, NOCROP]
+	[322, 72, 64, 32, -31, -9, NOCROP]
+	[402, 72, 64, 40, -31, -9, NOCROP]
+	[482, 72, 64, 40, -31, -9, NOCROP]
+	[562, 72, 64, 32, -31, -9, NOCROP]
+	[642, 72, 64, 32, -31, -9, NOCROP]
+	[722, 72, 64, 40, -31, -9, NOCROP]
+	[2, 136, 64, 40, -31, -9, NOCROP]
+	[82, 136, 64, 32, -31, -9, NOCROP]
+	[162, 136, 64, 40, -31, -9, NOCROP]
+	[242, 136, 64, 40, -31, -9, NOCROP]
+	[322, 136, 64, 32, -31, -9, NOCROP]
+	[402, 136, 64, 32, -31, -9, NOCROP]
+	[482, 136, 64, 40, -31, -9, NOCROP]
+	[562, 136, 64, 40, -31, -9, NOCROP]
+	[642, 136, 64, 40, -31, -9, NOCROP]
+	[722, 136, 64, 40, -31, -9, NOCROP]
+	[2, 200, 64, 40, -31, -9, NOCROP]
+	[82, 200, 64, 32, -31, -9, NOCROP]
+	[162, 200, 64, 32, -31, -9, NOCROP]
+	[242, 200, 64, 40, -31, -9, NOCROP]
+	[322, 200, 64, 40, -31, -9, NOCROP]
+	[402, 200, 64, 32, -31, -9, NOCROP]
+	[482, 200, 64, 32, -31, -9, NOCROP]
+	[562, 200, 64, 40, -31, -9, NOCROP]
+	[642, 200, 64, 40, -31, -9, NOCROP]
+	[722, 200, 64, 32, -31, -9, NOCROP]
+	[2, 264, 64, 32, -31, -9, NOCROP]
+	[82, 264, 64, 40, -31, -9, NOCROP]
+	[162, 264, 64, 40, -31, -9, NOCROP]
+	[242, 264, 64, 32, -31, -9, NOCROP]
+	[322, 264, 64, 40, -31, -9, NOCROP]
+	[402, 264, 64, 40, -31, -9, NOCROP]
+	[482, 264, 64, 32, -31, -9, NOCROP]
+	[562, 264, 64, 32, -31, -9, NOCROP]
+	[642, 264, 64, 40, -31, -9, NOCROP]
+	[722, 264, 64, 40, -31, -9, NOCROP]
+	[2, 328, 64, 40, -31, -9, NOCROP]
+	[82, 328, 64, 40, -31, -9, NOCROP]
+	[162, 328, 64, 40, -31, -9, NOCROP]
+	[242, 328, 64, 32, -31, -9, NOCROP]
+	[322, 328, 64, 32, -31, -9, NOCROP]
+	[402, 328, 64, 40, -31, -9, NOCROP]
+	[482, 328, 64, 40, -31, -9, NOCROP]
+	[562, 328, 64, 32, -31, -9, NOCROP]
+	[642, 328, 64, 32, -31, -9, NOCROP]
+	[722, 328, 64, 40, -31, -9, NOCROP]
+	[2, 392, 64, 40, -31, -9, NOCROP]
+	[82, 392, 64, 32, -31, -9, NOCROP]
+	[162, 392, 64, 32, -31, -9, NOCROP]
+	[242, 392, 64, 40, -31, -9, NOCROP]
+	[322, 392, 64, 40, -31, -9, NOCROP]
+	[402, 392, 64, 32, -31, -9, NOCROP]
+	[482, 392, 64, 40, -31, -9, NOCROP]
+	[562, 392, 64, 40, -31, -9, NOCROP]
+	[642, 392, 64, 32, -31, -9, NOCROP]
+	[722, 392, 64, 32, -31, -9, NOCROP]
+	[2, 456, 64, 40, -31, -9, NOCROP]
+	[82, 456, 64, 40, -31, -9, NOCROP]
+	[162, 456, 64, 40, -31, -9, NOCROP]
+	[242, 456, 64, 40, -31, -9, NOCROP]
+}
+
+template template_foundation_extra_half(x, y) {
+	[322, 456, 64, 40, -15, -17, NOCROP]
+	[402, 456, 64, 33, -31, -25, NOCROP]
+	[482, 456, 64, 40, -47, -17, NOCROP]
+	[562, 456, 64, 33, -31, -9, NOCROP]
+	[642, 456, 64, 40, -15, -17, NOCROP]
+	[722, 456, 64, 33, -31, -25, NOCROP]
+	[2, 520, 64, 40, -47, -17, NOCROP]
+	[82, 520, 64, 33, -31, -9, NOCROP]
+	[162, 520, 64, 40, -15, -17, NOCROP]
+	[242, 520, 64, 33, -31, -25, NOCROP]
+	[322, 520, 64, 40, -47, -17, NOCROP]
+	[402, 520, 64, 33, -31, -9, NOCROP]
+	[482, 520, 64, 40, -15, -17, NOCROP]
+	[562, 520, 64, 33, -31, -25, NOCROP]
+	[642, 520, 64, 40, -47, -17, NOCROP]
+	[722, 520, 64, 33, -31, -9, NOCROP]
+}
+
+replace foundation_base(990, "../graphics/Landscape/Foundations/Foundations_Base_8bpp.png") {
+	template_foundation_base(0, 0)
+}
+
+replacenew foundation_extra_slope(FOUNDATIONS_SLOPES,  "../graphics/Landscape/Foundations/Foundations_Extra_8bpp.png") {
+	template_foundation_extra_slope(0, 0)
+}
+
+replacenew foundation_extra_slopehalf(FOUNDATIONS_SLOPES_HALFTILES,  "../graphics/Landscape/Foundations/Foundations_Extra_8bpp.png") {
+	template_foundation_extra_slope(0, 0)
+	template_foundation_extra_half(0, 0)
+}
+
+//Replace farm fields and fences
+//Fences
+template template_farm_fences(x, y) {
+	[x+1, y+40, 64, 38, -32, -7]
+	[x+1, y+1, 64, 38, 0, 8]
+	[x+1, y+79, 64, 39, -32, -8]
+	[x+1, y+143, 64, 47, 1, -1]
+	[x+1, y+119, 64, 23, -32, 8]
+	[x+1, y+191, 64, 31, 0, 16]
+}
+
+replace farm_fences_1(4090, "../graphics/Terrain/Fences/Fence1_8bpp.png") {
+	template_farm_fences(0, 0)
+}
+
+replace farm_fences_2(4096, "../graphics/Terrain/Fences/Fence1_8bpp.png") {
+	template_farm_fences(0, 0)
+}
+
+replace farm_fences_3(4102, "../graphics/Terrain/Fences/Fence2_8bpp.png") {
+	template_farm_fences(0, 0)
+}
+
+replace farm_fences_4(4108, "../graphics/Terrain/Fences/Fence3_8bpp.png") {
+	template_farm_fences(0, 0)
+}
+
+replace farm_fences_5(4114, "../graphics/Terrain/Fences/Fence4_8bpp.png") {
+	template_farm_fences(0, 0)
+}
+
+replace farm_fences_6(4120, "../graphics/Terrain/Fences/Fence5_8bpp.png") {
+	template_farm_fences(0, 0)
+}
+
+//Fields
+replace farm_fields_1(4126, "../graphics/Terrain/FieldGroundTiles_8bpp.png") {
+	template_ground_tile_set(0, 0)
+}
+
+replace farm_fields_2(4145, "../graphics/Terrain/FieldGroundTiles_8bpp.png") {
+	template_ground_tile_set(0, 49)
+}
+
+replace farm_fields_3(4164, "../graphics/Terrain/FieldGroundTiles_8bpp.png") {
+	template_ground_tile_set(0, 98)
+}
+
+replace farm_fields_4(4183, "../graphics/Terrain/FieldGroundTiles_8bpp.png") {
+	template_ground_tile_set(0, 147)
+}
+
+replace farm_fields_5(4202, "../graphics/Terrain/FieldGroundTiles_8bpp.png") {
+	template_ground_tile_set(0, 196)
+}
+
+replace farm_fields_6(4221, "../graphics/Terrain/FieldGroundTiles_8bpp.png") {
+	template_ground_tile_set(0, 245)
+}
+
+replace farm_fields_7(4240, "../graphics/Terrain/FieldGroundTiles_8bpp.png") {
+	template_ground_tile_set(0, 294)
+}
+
+replace farm_fields_8(4259, "../graphics/Terrain/FieldGroundTiles_8bpp.png") {
+	template_ground_tile_set(0, 343)
+}
+
+replace farm_fields_9(4278, "../graphics/Terrain/FieldGroundTiles_8bpp.png") {
+	template_ground_tile_set(0, 392)
+}

@@ -1,0 +1,14 @@
+##grflangid 0x56
+##plural 1
+
+STR_GRF_NAME :OpenGFX 火星房屋
+STR_GRF_DESC :{ORANGE}火星住宅{}{BLACK}绘图: {SILVER}Zephyris{}{BLACK}编程: {SILVER}Elyon
+STR_GRF_URL :http://dev.openttdcoop.org/projects/opengfx-mars-houses
+
+STR_NAME_HABITAT :住宅
+STR_NAME_LARGE_HABITAT :摩天大楼
+STR_NAME_TALL_HABITAT :高楼
+STR_NAME_TOWER_HABITAT :塔楼
+STR_NAME_LUXURY_TOWER_HABITAT :豪华大楼
+STR_NAME_PARK :停车场
+STR_NAME_TALL_PARK :大型停车场

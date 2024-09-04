@@ -1,0 +1,48 @@
+Changelog for make-nml framework
+
+0.4.5:
+- Feature: Allow to define additional help targets in custom extensions (issue #6596)
+- Fix: Irritating full stops in output of 'help' target (issue #6593)
+- Fix: Somehow windows/MinGW doesn't always like backslashes as directory separators either. Thus use normal slashes there, too (issue #6592)
+- Fix: Always use the compiler as from the CC environment variable and use 'which cc' when not set (issue #6597)
+- Fix: Generation of Makefile_gfx for gimp processing was completely broken
+- Fix: Spelling in help output (issue #6600)
+- Fix: Allow space in paths to executables invoked by Makefile (issue #5602)
+- Fix: Don't enable graphics generation by default in Makefile but do so in Makefile.config
+
+0.4.4:
+- Add: Allow to define custom place and name for main source file
+- Change: Allow slightly easier use for non-grf projects
+- Fix: custom_tags.txt depends on the 'soft' GENERATE_NML instead of 'hard' nml
+- Fix: Plug-in generation of grfs was broken for bundle_src
+- Fix: Export expected NewGRF version also to source bundle
+
+0.4.3:
+- Fix: Name the files of tagged version like the tag instead of the NewGRF version
+
+0.4.2:
+- Change: Name the NewGRF version by its name as it's not the repository version anymore.
+- Feature: Allow users to pass custom flags to gcc
+
+0.4.1:
+- Fix: Also display the correct NewGRF version in readme
+
+0.4.0:
+- Change: New versioning scheme with NewGRF version depending on commit date
+- Fix: Fail, if no nmlc could be found (issue #6311)
+- Fix: Require the grf being built for building docs in order to make sure that version info contained in a generated readme.txt are up to date
+- Cleanup: Remove unused phony target
+
+0.3.0:
+- Add: Allow to customize the grf, nml, pnml, lng, gfx and doc targets via Makefile.in. See readme chapter 2.7 or FISH r1100
+- Fix: Makesure that target 'all' also is first target in the presence of Makefile.in
+- Doc: Describe the single parts of this framework much more verbosely in the readme
+
+0.2.0:
+- Feature: Allow to specify NML version requirements by REQUIRED_NML_BRANCH and MIN_NML_REVISION (issue #4470)
+- Change: Allow again to define the four most basic definitions in a Makefile.config
+- Fix: Using gimp scripting was broken
+- Doc: Describe the single parts of this framework much more verbosely in the readme
+
+0.1.0:
+- Feature: Something fancy

@@ -1,0 +1,57 @@
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#ifndef INDUSTRY_TEMPLATES
+#define INDUSTRY_TEMPLATES
+
+#define SPRITE2(x, y1, y2, xs, ys, ox, oy) \
+    [x, y1, xs, ys, ox, oy] \
+    [x, y2, xs, ys, ox, oy]
+
+#define SPRITE3(x, y1, y2, y3, xs, ys, ox, oy) \
+    [x, y1, xs, ys, ox, oy] \
+    [x, y2, xs, ys, ox, oy] \
+    [x, y3, xs, ys, ox, oy]
+
+#define SPRITE_LAYOUT(name, spriteset, building_height) \
+    spritelayout name { \
+    ground { sprite: GROUNDSPRITE_NORMAL; } \
+    building { \
+        xoffset:  0; yoffset:  0; zoffset:  0; \
+        xextent: 16; yextent: 16; zextent: building_height; \
+        sprite: spriteset; \
+    } }
+
+// // XXX
+// spriteset(chemical_factory_XXX_sprites, "../graphics/Buildings/Industry_ChemicalFactory_8bpp.png") {
+//     SPRITE3(XXX, 140, 72, 4, 64, 64, -33, -32)
+// }
+// SPRITE_LAYOUT(chemical_factory_XXX_sprite_layout, chemical_factory_XXX_sprites, 16)
+// item(FEAT_INDUSTRYTILES, chemical_factory_XXX_tile) {
+//     property {
+//         substitute: 0;
+//         land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+//         accepted_cargos: [[PASS, 1]];
+//     }
+//     graphics { chemical_factory_XXX_sprite_layout; }
+// }
+
+
+
+// vim: syn=cpp sw=4 et sts=4 nospell
+#endif

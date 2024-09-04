@@ -1,0 +1,6 @@
+##grflangid 0x01
+
+STR_GRF_NAME :OpenGFX Mars Airports {VERSION}
+STR_GRF_DESC :{ORANGE}Martian Airports{}Airports for a Martian environment{}{BLACK}Graphics: {SILVER}Zephyris{}{BLACK}Programming: {SILVER}Zephyris
+STR_GRF_URL :http://dev.openttdcoop.org/projects/opengfx-mars-airports
+

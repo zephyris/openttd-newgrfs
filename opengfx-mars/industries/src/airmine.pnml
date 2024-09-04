@@ -1,0 +1,157 @@
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#include "industry_templates.pnml"
+
+
+// Tower sprite.
+spriteset(airmine_tower_sprites, "../graphics/Buildings/Industry_AirMine_8bpp.png") {
+    SPRITE3(4, 266, 136, 4, 64, 128, -31, -96)
+}
+SPRITE_LAYOUT(airmine_tower_sprite_layout, airmine_tower_sprites, 68)
+item(FEAT_INDUSTRYTILES, airmine_tower_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [];
+    }
+    graphics { airmine_tower_sprite_layout; }
+}
+
+
+// Front of tower sprite
+spriteset(airmine_front_tower_sprites, "../graphics/Buildings/Industry_AirMine_8bpp.png") {
+    SPRITE3(208, 140, 72, 4, 64, 64, -31, -32)
+}
+SPRITE_LAYOUT(airmine_front_tower_sprite_layout, airmine_front_tower_sprites, 22)
+item(FEAT_INDUSTRYTILES, airmine_front_tower_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [];
+    }
+    graphics { airmine_front_tower_sprite_layout; }
+}
+
+
+// White tank sprites.
+spriteset(airmine_white_tank_sprites, "../graphics/Buildings/Industry_AirMine_8bpp.png") {
+    SPRITE3(72, 140, 72, 4, 64, 64, -33, -32)
+}
+SPRITE_LAYOUT(airmine_white_tank_sprite_layout, airmine_white_tank_sprites, 28)
+item(FEAT_INDUSTRYTILES, airmine_white_tank_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [];
+    }
+    graphics { airmine_white_tank_sprite_layout; }
+}
+
+
+// Blue tank sprites.
+spriteset(airmine_blue_tank_sprites, "../graphics/Buildings/Industry_AirMine_8bpp.png") {
+    SPRITE3(140, 140, 72, 4, 64, 64, -31, -35)
+}
+SPRITE_LAYOUT(airmine_blue_tank_sprite_layout, airmine_blue_tank_sprites, 30)
+item(FEAT_INDUSTRYTILES, airmine_blue_tank_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [];
+    }
+    graphics { airmine_blue_tank_sprite_layout; }
+}
+
+
+tilelayout airmine_layout {
+	1, 1: airmine_tower_tile;
+	1, 2: airmine_front_tower_tile;
+	2, 0: airmine_tower_tile;
+	2, 1: airmine_front_tower_tile;
+	3, 1: airmine_blue_tank_tile;
+	0, 1: airmine_white_tank_tile;
+}
+
+tilelayout airmine_layout_1 {
+	0, 0: airmine_tower_tile;
+	0, 1: airmine_front_tower_tile;
+	1, 1: airmine_tower_tile;
+	1, 2: airmine_front_tower_tile;
+	1, 0: airmine_blue_tank_tile;
+	2, 1: airmine_white_tank_tile;	
+}
+
+tilelayout airmine_layout_2 {
+	1, 0: airmine_tower_tile;
+	1, 1: airmine_front_tower_tile;
+	1, 2: airmine_tower_tile;
+	1, 3: airmine_front_tower_tile;
+	0, 2: airmine_blue_tank_tile;
+	2, 1: airmine_white_tank_tile;	
+}
+
+tilelayout airmine_layout_3 {
+	0, 1: airmine_tower_tile;
+	0, 2: airmine_front_tower_tile;
+	1, 1: airmine_tower_tile;
+	1, 2: airmine_front_tower_tile;
+	2, 1: airmine_tower_tile;
+	2, 2: airmine_front_tower_tile;
+	1, 0: airmine_blue_tank_tile;
+	2, 3: airmine_white_tank_tile;	
+}
+
+tilelayout airmine_layout_4 {
+	1, 0: airmine_tower_tile;
+	1, 1: airmine_front_tower_tile;
+	0, 0: airmine_white_tank_tile;
+	0, 1: airmine_blue_tank_tile;	
+}
+
+item(FEAT_INDUSTRIES, airmine_industry, AIRMINE_ID) {
+    property {
+        substitute: AIRMINE_ID;
+        layouts: [airmine_layout, airmine_layout_1, airmine_layout_2, airmine_layout_3, airmine_layout_4];
+        life_type: IND_LIFE_TYPE_ORGANIC;
+//        closure_msg:
+//        prod_increase_msg:
+//        prod_decrease_msg:
+//        fund_cost_multiplier:
+        accept_cargo_types: [];
+        prod_cargo_types: [cargotype("N2__"), cargotype("O2__")];
+        prod_multiplier: [14, 6]; //There is more nitrogen than oxygen in the Martian atmosphere
+        min_cargo_distr: 1;
+//        random_sound_effects:
+//        conflicting_ind_types:
+        prob_random: 10;
+        prob_in_game: 10;
+//        map_colour:
+        spec_flags: 0;
+//        new_ind_msg:
+        input_multiplier_1: [0, 0];
+        input_multiplier_2: [0, 0];
+        input_multiplier_3: [0, 0];
+        name: string(STR_AIR_MINE_NAME);
+        prospect_chance: 10;
+//        remove_cost_multiplier:
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_AIR_MINE_STATION_NAME));
+    }
+}
+
+// vim: sw=4 et sts=4 nospell

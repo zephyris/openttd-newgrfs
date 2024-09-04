@@ -1,0 +1,43 @@
+// 	OpenGFX Mars Rovers and Roads
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#ifndef CARGO_TABLE
+#define CARGO_TABLE
+
+//Define the cargo translation table
+cargotable {
+	PASS, //Passengers (pressurised)			Passengers & Covered (fallback to Covered instead of Pressurised)
+	PRGD, //Pressurised goods					Piece goods & Covered
+	GOOD, //General goods						Piece goods
+	FOOD, //Food								Refrigerated & Covered
+	ENSP, //Engineering supplies/machinery		Piece goods
+	ORGN, //Organics							Bulk
+	FERT, //Fertiliser							Liquid & Hazardous (use Hazardous for non-food/drink liquids)
+	PLAS, //Plastic								Piece goods
+	BDMT, //Components							Piece goods
+	N2__, //Nitrogen							Liquid & Covered (fallback to Covered (Pressurised) Liquid instead of Gas)
+	O2__, //Oxygen								Liquid & Covered (fallback to Covered (Pressurised) Liquid instead of Gas)
+	H2__, //Hydrogen							Liquid & Covered (fallback to Covered (Pressurised) Liquid instead of Gas)
+	CHEM, //Chemicals							Liquid & Hazardous (use Hazardous for non-food/drink liquids)
+	ORES, //Mixed ores							Bulk
+	WATR, //Water								Liquid
+	GRVL, //Regolith							Bulk
+}
+
+#endif
+

@@ -1,0 +1,3612 @@
+# 1 "ogfx-mars-industries.pnml"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "ogfx-mars-industries.pnml"
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+# 1 "src/header.pnml" 1
+// 	OpenGFX Mars Landscape
+// 	Copyright (C) 2014 Zephyris, planetmaker and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+// Define the newgrf.
+grf {
+ grfid: "OGM\4";
+ name: string(STR_GRF_NAME);
+ desc: string(STR_GRF_DESCRIPTION);
+ url: string(STR_GRF_URL);
+ version: 5443;
+ min_compatible_version: 1;
+}
+# 20 "ogfx-mars-industries.pnml" 2
+
+# 1 "src/cargos.pnml" 1
+//      OpenGFX Mars Industries
+//      Copyright (C) 2014 Zephyris, planetmaker and others
+//      Contact: planetmaker@openttd.org
+//
+//      This program is free software; you can redistribute it and/or modify
+//      it under the terms of the GNU General Public License as published by
+//      the Free Software Foundation; either version 2 of the License, or
+//      (at your option) any later version.
+//
+//      This program is distributed in the hope that it will be useful,
+//      but WITHOUT ANY WARRANTY; without even the implied warranty of
+//      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//      GNU General Public License for more details.
+//
+//      You should have received a copy of the GNU General Public License along
+//      with this program; if not, write to the Free Software Foundation, Inc.,
+//      51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+//#include "src/header.pnml"
+//#include "src/templates.pnml"
+
+# 1 "src/../../graphics/common_nml/cargo_table.pnml" 1
+// 	OpenGFX Mars Rovers and Roads
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+
+
+
+//Define the cargo translation table
+cargotable {
+ PASS, //Passengers (pressurised)			Passengers & Covered (fallback to Covered instead of Pressurised)
+ PRGD, //Pressurised goods					Piece goods & Covered
+ GOOD, //General goods						Piece goods
+ FOOD, //Food								Refrigerated & Covered
+ ENSP, //Engineering supplies/machinery		Piece goods
+ ORGN, //Organics							Bulk
+ FERT, //Fertiliser							Liquid & Hazardous (use Hazardous for non-food/drink liquids)
+ PLAS, //Plastic								Piece goods
+ BDMT, //Components							Piece goods
+ N2__, //Nitrogen							Liquid & Covered (fallback to Covered (Pressurised) Liquid instead of Gas)
+ O2__, //Oxygen								Liquid & Covered (fallback to Covered (Pressurised) Liquid instead of Gas)
+ H2__, //Hydrogen							Liquid & Covered (fallback to Covered (Pressurised) Liquid instead of Gas)
+ CHEM, //Chemicals							Liquid & Hazardous (use Hazardous for non-food/drink liquids)
+ ORES, //Mixed ores							Bulk
+ WATR, //Water								Liquid
+ GRVL, //Regolith							Bulk
+}
+# 23 "src/cargos.pnml" 2
+# 1 "src/cargosprites.pnml" 1
+// 	OpenGFX Mars Industries
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+//Define the cargo sprites
+spriteset (spriteset_cargo_oxygen, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+ [1, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_nitrogen, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+ [12, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_hydrogen, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+ [23, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_water, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+ [34, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_mixedores, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+ [45, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_regolith, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+ [56, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_organics, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+ [67, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_goods, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+ [78, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_fertiliser, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+ [89, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_chemicals, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+ [100, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_passengers, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+ [111, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_food, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+ [122, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_fertilizer, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+ [133, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_plastic, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+ [144, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_machinery, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+ [155, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_components, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+ [166, 1, 10, 10, 0, 0]
+}
+# 24 "src/cargos.pnml" 2
+
+disable_item(FEAT_CARGOS, 0, 31);
+
+// Cargo Colonists
+item(FEAT_CARGOS, colonists_cargo, 0) {
+    property {
+        number: 1;
+        type_name: string(STR_COLONISTS_TYPE_NAME);
+        unit_name: string(STR_COLONISTS_UNIT_NAME);
+        units_of_cargo: string(STR_COLONISTS_UNITS_CARGO);
+        items_of_cargo: string(STR_COLONISTS_LONG_CARGO);
+        type_abbreviation: string(STR_COLONISTS_ABBREVIATION);
+        sprite: NEW_CARGO_SPRITE;
+        weight: 0.1; // tonnes
+        penalty_lowerbound: 20;
+        single_penalty_length: 50;
+        price_factor: 75.0;
+//        station_list_colour:
+//        cargo_payment_list_colour:
+        is_freight: 0;
+        cargo_classes: bitmask(CC_PASSENGERS, CC_EXPRESS, CC_COVERED);
+        cargo_label: "PASS";
+        town_growth_effect: TOWNGROWTH_PASSENGERS;
+        town_growth_multiplier: 1.0;
+        capacity_multiplier: 4.0;
+    }
+ graphics {
+  default: spriteset_cargo_passengers;
+ }
+}
+
+// Cargo Nitrogen
+item(FEAT_CARGOS, nitrogen_cargo, 2) {
+    property {
+        number: 2;
+        type_name: string(STR_NITROGEN_TYPE_NAME);
+        unit_name: string(STR_NITROGEN_UNIT_NAME);
+        units_of_cargo: string(STR_NITROGEN_UNITS_CARGO);
+        items_of_cargo: string(STR_NITROGEN_LONG_CARGO);
+        type_abbreviation: string(STR_NITROGEN_ABBREVIATION);
+        sprite: NEW_CARGO_SPRITE;
+        weight: 1.0; // tonnes
+        penalty_lowerbound: 200;
+        single_penalty_length: 200;
+        price_factor: 180.0;
+//        station_list_colour:
+//        cargo_payment_list_colour:
+        is_freight: 1;
+        cargo_classes: bitmask(CC_LIQUID, CC_COVERED); // Gas
+        cargo_label: "N2__";
+        town_growth_effect: TOWNGROWTH_NONE;
+        town_growth_multiplier: 0.0;
+        capacity_multiplier: 1.0;
+    }
+ graphics {
+  default: spriteset_cargo_nitrogen;
+ }
+}
+
+// Cargo Oxygen
+item(FEAT_CARGOS, oxygen_cargo, 3) {
+    property {
+        number: 3;
+        type_name: string(STR_OXYGEN_TYPE_NAME);
+        unit_name: string(STR_OXYGEN_UNIT_NAME);
+        units_of_cargo: string(STR_OXYGEN_UNITS_CARGO);
+        items_of_cargo: string(STR_OXYGEN_LONG_CARGO);
+        type_abbreviation: string(STR_OXYGEN_ABBREVIATION);
+        sprite: NEW_CARGO_SPRITE;
+        weight: 1.0; // tonnes
+        penalty_lowerbound: 200;
+        single_penalty_length: 200;
+        price_factor: 2200.0;
+//        station_list_colour:
+//        cargo_payment_list_colour:
+        is_freight: 1;
+        cargo_classes: bitmask(CC_LIQUID, CC_COVERED); // Gas
+        cargo_label: "O2__";
+        town_growth_effect: TOWNGROWTH_WATER;
+        town_growth_multiplier: 0.0;
+        capacity_multiplier: 1.0;
+    }
+ graphics {
+  default: spriteset_cargo_oxygen;
+ }
+}
+
+// Cargo Hydrogen
+item(FEAT_CARGOS, hydrogen_cargo, 4) {
+    property {
+        number: 4;
+        type_name: string(STR_HYDROGEN_TYPE_NAME);
+        unit_name: string(STR_HYDROGEN_UNIT_NAME);
+        units_of_cargo: string(STR_HYDROGEN_UNITS_CARGO);
+        items_of_cargo: string(STR_HYDROGEN_LONG_CARGO);
+        type_abbreviation: string(STR_HYDROGEN_ABBREVIATION);
+        sprite: NEW_CARGO_SPRITE;
+        weight: 1.0; // tonnes
+        penalty_lowerbound: 200;
+        single_penalty_length: 200;
+        price_factor: 130.0;
+//        station_list_colour:
+//        cargo_payment_list_colour:
+        is_freight: 1;
+        cargo_classes: bitmask(CC_LIQUID, CC_COVERED); // Gas
+        cargo_label: "H2__";
+        town_growth_effect: TOWNGROWTH_NONE;
+        town_growth_multiplier: 0.0;
+        capacity_multiplier: 1.0;
+    }
+ graphics {
+  default: spriteset_cargo_hydrogen;
+ }
+}
+
+// Cargo Chemicals
+item(FEAT_CARGOS, chemicals_cargo, 5) {
+    property {
+        number: 5;
+        type_name: string(STR_CHEMICALS_TYPE_NAME);
+        unit_name: string(STR_CHEMICALS_UNIT_NAME);
+        units_of_cargo: string(STR_CHEMICALS_UNITS_CARGO);
+        items_of_cargo: string(STR_CHEMICALS_LONG_CARGO);
+        type_abbreviation: string(STR_CHEMICALS_ABBREVIATION);
+        sprite: NEW_CARGO_SPRITE;
+        weight: 1.0; // tonnes
+        penalty_lowerbound: 100;
+        single_penalty_length: 100;
+        price_factor: 170.0;
+//        station_list_colour:
+//        cargo_payment_list_colour:
+        is_freight: 1;
+        cargo_classes: bitmask(CC_LIQUID, CC_HAZARDOUS);
+        cargo_label: "CHEM";
+        town_growth_effect: TOWNGROWTH_NONE;
+        town_growth_multiplier: 0.0;
+        capacity_multiplier: 1.0;
+    }
+ graphics {
+  default: spriteset_cargo_chemicals;
+ }
+}
+
+// Cargo Mixed Ores
+item(FEAT_CARGOS, mixed_ores_cargo, 6) {
+    property {
+        number: 6;
+        type_name: string(STR_MIXED_ORED_TYPE_NAME);
+        unit_name: string(STR_MIXED_ORED_UNIT_NAME);
+        units_of_cargo: string(STR_MIXED_ORED_UNITS_CARGO);
+        items_of_cargo: string(STR_MIXED_ORED_LONG_CARGO);
+        type_abbreviation: string(STR_MIXED_ORED_ABBREVIATION);
+        sprite: NEW_CARGO_SPRITE;
+        weight: 1.0; // tonnes
+        penalty_lowerbound: 100;
+        single_penalty_length: 100;
+        price_factor: 190.0;
+//        station_list_colour:
+//        cargo_payment_list_colour:
+        is_freight: 1;
+        cargo_classes: bitmask(CC_BULK);
+        cargo_label: "ORES";
+        town_growth_effect: TOWNGROWTH_NONE;
+        town_growth_multiplier: 0.0;
+        capacity_multiplier: 1.0;
+    }
+ graphics {
+  default: spriteset_cargo_mixedores;
+ }
+}
+
+// Cargo Organics
+item(FEAT_CARGOS, organics_cargo, 7) {
+    property {
+        number: 7;
+        type_name: string(STR_ORGANICS_TYPE_NAME);
+        unit_name: string(STR_ORGANICS_UNIT_NAME);
+        units_of_cargo: string(STR_ORGANICS_UNITS_CARGO);
+        items_of_cargo: string(STR_ORGANICS_LONG_CARGO);
+        type_abbreviation: string(STR_ORGANICS_ABBREVIATION);
+        sprite: NEW_CARGO_SPRITE;
+        weight: 1.0; // tonnes
+        penalty_lowerbound: 100;
+        single_penalty_length: 100;
+        price_factor: 175.0;
+//        station_list_colour:
+//        cargo_payment_list_colour:
+        is_freight: 1;
+        cargo_classes: bitmask(CC_BULK);
+        cargo_label: "ORGN";
+        town_growth_effect: TOWNGROWTH_NONE;
+        town_growth_multiplier: 0.0;
+        capacity_multiplier: 1.0;
+    }
+ graphics {
+  default: spriteset_cargo_organics;
+ }
+}
+
+// Cargo Fertiliser
+item(FEAT_CARGOS, fertiliser_cargo, 8) {
+    property {
+        number: 8;
+        type_name: string(STR_FERTILISER_TYPE_NAME);
+        unit_name: string(STR_FERTILISER_UNIT_NAME);
+        units_of_cargo: string(STR_FERTILISER_UNITS_CARGO);
+        items_of_cargo: string(STR_FERTILISER_LONG_CARGO);
+        type_abbreviation: string(STR_FERTILISER_ABBREVIATION);
+        sprite: NEW_CARGO_SPRITE;
+        weight: 1.0; // tonnes
+        penalty_lowerbound: 100;
+        single_penalty_length: 100;
+        price_factor: 210.0;
+//        station_list_colour:
+//        cargo_payment_list_colour:
+        is_freight: 1;
+        cargo_classes: bitmask(CC_LIQUID, CC_HAZARDOUS);
+        cargo_label: "FERT";
+        town_growth_effect: TOWNGROWTH_NONE;
+        town_growth_multiplier: 0.0;
+        capacity_multiplier: 1.0;
+    }
+ graphics {
+  default: spriteset_cargo_fertiliser;
+ }
+}
+
+// Cargo Plastics
+item(FEAT_CARGOS, plastics_cargo, 9) {
+    property {
+        number: 9;
+        type_name: string(STR_PLASTICS_TYPE_NAME);
+        unit_name: string(STR_PLASTICS_UNIT_NAME);
+        units_of_cargo: string(STR_PLASTICS_UNITS_CARGO);
+        items_of_cargo: string(STR_PLASTICS_LONG_CARGO);
+        type_abbreviation: string(STR_PLASTICS_ABBREVIATION);
+        sprite: NEW_CARGO_SPRITE;
+        weight: 1.0; // tonnes
+        penalty_lowerbound: 200;
+        single_penalty_length: 100;
+        price_factor: 160.0;
+//        station_list_colour:
+//        cargo_payment_list_colour:
+        is_freight: 1;
+        cargo_classes: bitmask(CC_PIECE_GOODS);
+        cargo_label: "PLAS";
+        town_growth_effect: TOWNGROWTH_NONE;
+        town_growth_multiplier: 0.0;
+        capacity_multiplier: 1.0;
+    }
+ graphics {
+  default: spriteset_cargo_plastic;
+ }
+}
+
+// Cargo Components
+item(FEAT_CARGOS, components_cargo, 10) {
+    property {
+        number: 10;
+        type_name: string(STR_COMPONENTS_TYPE_NAME);
+        unit_name: string(STR_COMPONENTS_UNIT_NAME);
+        units_of_cargo: string(STR_COMPONENTS_UNITS_CARGO);
+        items_of_cargo: string(STR_COMPONENTS_LONG_CARGO);
+        type_abbreviation: string(STR_COMPONENTS_ABBREVIATION);
+        sprite: NEW_CARGO_SPRITE;
+        weight: 1.0; // tonnes
+        penalty_lowerbound: 200;
+        single_penalty_length: 100;
+        price_factor: 140.0;
+//        station_list_colour:
+//        cargo_payment_list_colour:
+        is_freight: 1;
+        cargo_classes: bitmask(CC_PIECE_GOODS);
+        cargo_label: "BDMT";
+        town_growth_effect: TOWNGROWTH_FOOD;
+        town_growth_multiplier: 0.0;
+        capacity_multiplier: 2.0;
+    }
+ graphics {
+  default: spriteset_cargo_components;
+ }
+}
+
+// Cargo Food
+item(FEAT_CARGOS, food_cargo, 11) {
+    property {
+        number: 11;
+        type_name: string(STR_FOOD_TYPE_NAME);
+        unit_name: string(STR_FOOD_UNIT_NAME);
+        units_of_cargo: string(STR_FOOD_UNITS_CARGO);
+        items_of_cargo: string(STR_FOOD_LONG_CARGO);
+        type_abbreviation: string(STR_FOOD_ABBREVIATION);
+        sprite: NEW_CARGO_SPRITE;
+        weight: 1.0; // tonnes
+        penalty_lowerbound: 200;
+        single_penalty_length: 100;
+        price_factor: 150.0;
+//        station_list_colour:
+//        cargo_payment_list_colour:
+        is_freight: 1;
+        cargo_classes: bitmask(CC_COVERED, CC_REFRIGERATED);
+        cargo_label: "FOOD";
+        town_growth_effect: TOWNGROWTH_FOOD;
+        town_growth_multiplier: 0.0;
+        capacity_multiplier: 2.0;
+    }
+ graphics {
+  default: spriteset_cargo_food;
+ }
+}
+
+// Cargo Goods
+item(FEAT_CARGOS, goods_cargo, 12) {
+    property {
+        number: 12;
+        type_name: string(STR_GOOD_TYPE_NAME);
+        unit_name: string(STR_GOOD_UNIT_NAME);
+        units_of_cargo: string(STR_GOOD_UNITS_CARGO);
+        items_of_cargo: string(STR_GOOD_LONG_CARGO);
+        type_abbreviation: string(STR_GOOD_ABBREVIATION);
+        sprite: NEW_CARGO_SPRITE;
+        weight: 1.0; // tonnes
+        penalty_lowerbound: 200;
+        single_penalty_length: 150;
+        price_factor: 130.0;
+//        station_list_colour:
+//        cargo_payment_list_colour:
+        is_freight: 1;
+        cargo_classes: bitmask(CC_PIECE_GOODS, CC_COVERED);
+        cargo_label: "GOOD";
+        town_growth_effect: TOWNGROWTH_GOODS;
+        town_growth_multiplier: 0.0;
+        capacity_multiplier: 2.0;
+    }
+ graphics {
+  default: spriteset_cargo_goods;
+ }
+}
+
+// Cargo Machinery
+item(FEAT_CARGOS, machinery_cargo, 13) {
+    property {
+        number: 13;
+        type_name: string(STR_MACHINERY_TYPE_NAME);
+        unit_name: string(STR_MACHINERY_UNIT_NAME);
+        units_of_cargo: string(STR_MACHINERY_UNITS_CARGO);
+        items_of_cargo: string(STR_MACHINERY_LONG_CARGO);
+        type_abbreviation: string(STR_MACHINERY_ABBREVIATION);
+        sprite: NEW_CARGO_SPRITE;
+        weight: 1.0; // tonnes
+        penalty_lowerbound: 200;
+        single_penalty_length: 150;
+        price_factor: 140.0;
+//        station_list_colour:
+//        cargo_payment_list_colour:
+        is_freight: 1;
+        cargo_classes: bitmask(CC_PIECE_GOODS);
+        cargo_label: "ENSP";
+        town_growth_effect: TOWNGROWTH_NONE;
+        town_growth_multiplier: 0.0;
+        capacity_multiplier: 1.0;
+    }
+ graphics {
+  default: spriteset_cargo_machinery;
+ }
+}
+
+
+// Cargo Water
+item(FEAT_CARGOS, water_cargo, 14) {
+    property {
+        number: 14;
+        type_name: string(STR_WATER_TYPE_NAME);
+        unit_name: string(STR_WATER_UNIT_NAME);
+        units_of_cargo: string(STR_WATER_UNITS_CARGO);
+        items_of_cargo: string(STR_WATER_LONG_CARGO);
+        type_abbreviation: string(STR_WATER_ABBREVIATION);
+        sprite: NEW_CARGO_SPRITE;
+        weight: 1.0; // tonnes
+        penalty_lowerbound: 200;
+        single_penalty_length: 150;
+        price_factor: 180.0;
+//        station_list_colour:
+//        cargo_payment_list_colour:
+        is_freight: 1;
+        cargo_classes: bitmask(CC_LIQUID);
+        cargo_label: "WATR";
+        town_growth_effect: TOWNGROWTH_WATER;
+        town_growth_multiplier: 0.0;
+        capacity_multiplier: 1.0;
+    }
+ graphics {
+  default: spriteset_cargo_water;
+ }
+}
+
+
+// Cargo Regolith
+item(FEAT_CARGOS, regolith_cargo, 15) {
+    property {
+        number: 15;
+        type_name: string(STR_REGOLITH_TYPE_NAME);
+        unit_name: string(STR_REGOLITH_UNIT_NAME);
+        units_of_cargo: string(STR_REGOLITH_UNITS_CARGO);
+        items_of_cargo: string(STR_REGOLITH_LONG_CARGO);
+        type_abbreviation: string(STR_REGOLITH_ABBREVIATION);
+        sprite: NEW_CARGO_SPRITE;
+        weight: 1.0; // tonnes
+        penalty_lowerbound: 200;
+        single_penalty_length: 150;
+        price_factor: 90.0;
+//        station_list_colour:
+//        cargo_payment_list_colour:
+        is_freight: 1;
+        cargo_classes: bitmask(CC_BULK);
+        cargo_label: "GRVL";
+        town_growth_effect: TOWNGROWTH_NONE;
+        town_growth_multiplier: 0.0;
+        capacity_multiplier: 1.0;
+    }
+ graphics {
+  default: spriteset_cargo_regolith;
+ }
+}
+
+
+// vim: et sw=4 sts=4 nospell
+# 22 "ogfx-mars-industries.pnml" 2
+# 38 "ogfx-mars-industries.pnml"
+disable_item(FEAT_INDUSTRIES, 0,36);
+
+# 1 "src/stockpiles.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# 51 "src/stockpiles.pnml"
+spriteset(stockpile_mixed_ores_sprite11, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [ 25, 15, 16, 5, -8, 7] } spriteset(stockpile_mixed_ores_sprite12, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [151, 13, 24, 8, -12, 5] } spriteset(stockpile_mixed_ores_sprite13, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [276, 12, 30, 11, -15, 3] } spriteset(stockpile_mixed_ores_sprite14, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [ 16, 139, 37, 18, -18, 6] } spriteset(stockpile_mixed_ores_sprite15, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [139, 137, 45, 24, -24, 2] } spriteset(stockpile_mixed_ores_sprite16, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [266, 135, 51, 27, -27, 2] }
+spriteset(stockpile_mixed_ores_sprite21, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [ 27, 61, 9, 9, -4, 7] } spriteset(stockpile_mixed_ores_sprite22, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [154, 59, 13, 12, -6, 5] } spriteset(stockpile_mixed_ores_sprite23, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [279, 57, 20, 17, -10, 3] } spriteset(stockpile_mixed_ores_sprite24, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [ 17, 184, 33, 20, -16, 2] } spriteset(stockpile_mixed_ores_sprite25, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [141, 182, 46, 25, -23, 2] } spriteset(stockpile_mixed_ores_sprite26, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [267, 181, 51, 27, -26, 2] }
+spriteset(stockpile_mixed_ores_sprite31, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [ 26, 109, 17, 6, -8, 7] } spriteset(stockpile_mixed_ores_sprite32, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [151, 108, 24, 8, -12, 5] } spriteset(stockpile_mixed_ores_sprite33, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [278, 106, 30, 12, -15, 3] } spriteset(stockpile_mixed_ores_sprite34, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [ 15, 232, 36, 17, -18, 4] } spriteset(stockpile_mixed_ores_sprite35, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [141, 228, 46, 24, -23, 1] } spriteset(stockpile_mixed_ores_sprite36, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [266, 226, 52, 27, -26, 1] }
+spriteset(stockpile_mixed_ores_sprite41, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [ 92, 107, 9, 9, -4, 7] } spriteset(stockpile_mixed_ores_sprite42, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [219, 105, 13, 13, -6, 5] } spriteset(stockpile_mixed_ores_sprite43, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [345, 103, 20, 16, -10, 3] } spriteset(stockpile_mixed_ores_sprite44, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [ 78, 230, 33, 20, -17, 2] } spriteset(stockpile_mixed_ores_sprite45, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [199, 228, 46, 24, -24, 0] } spriteset(stockpile_mixed_ores_sprite46, "../graphics/Buildings/Stockpiles/Stockpiles_MixedOres_8bpp.png") { [326, 227, 51, 27, -26, 1] }
+
+spriteset(stockpile_regolith_sprite11, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png") { [ 25, 15, 16, 5, -8, 7] } spriteset(stockpile_regolith_sprite12, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png") { [151, 13, 24, 8, -12, 5] } spriteset(stockpile_regolith_sprite13, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png") { [276, 12, 30, 11, -15, 3] } spriteset(stockpile_regolith_sprite14, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png") { [ 16, 139, 37, 18, -18, 6] } spriteset(stockpile_regolith_sprite15, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png") { [139, 137, 45, 24, -24, 2] } spriteset(stockpile_regolith_sprite16, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png") { [266, 135, 51, 27, -27, 2] }
+spriteset(stockpile_regolith_sprite21, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png") { [ 27, 61, 9, 9, -4, 7] } spriteset(stockpile_regolith_sprite22, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png") { [154, 59, 13, 12, -6, 5] } spriteset(stockpile_regolith_sprite23, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png") { [279, 57, 20, 17, -10, 3] } spriteset(stockpile_regolith_sprite24, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png") { [ 17, 184, 33, 20, -16, 2] } spriteset(stockpile_regolith_sprite25, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png") { [141, 182, 46, 25, -23, 2] } spriteset(stockpile_regolith_sprite26, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png") { [267, 181, 51, 27, -26, 2] }
+spriteset(stockpile_regolith_sprite31, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png") { [ 26, 109, 17, 6, -8, 7] } spriteset(stockpile_regolith_sprite32, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png") { [151, 108, 24, 8, -12, 5] } spriteset(stockpile_regolith_sprite33, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png") { [278, 106, 30, 12, -15, 3] } spriteset(stockpile_regolith_sprite34, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png") { [ 15, 232, 36, 17, -18, 4] } spriteset(stockpile_regolith_sprite35, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png") { [141, 228, 46, 24, -23, 1] } spriteset(stockpile_regolith_sprite36, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png") { [266, 226, 52, 27, -26, 1] }
+//STOCKPILE_SPRITESET4(stockpile_regolith, "../graphics/Buildings/Stockpiles/Stockpiles_Regolith_8bpp.png")
+# 69 "src/stockpiles.pnml"
+spritelayout stockpile_mixed_ores_sprite_layout11 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite11; } } spritelayout stockpile_mixed_ores_sprite_layout12 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite12; } } spritelayout stockpile_mixed_ores_sprite_layout13 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite13; } } spritelayout stockpile_mixed_ores_sprite_layout14 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite14; } } spritelayout stockpile_mixed_ores_sprite_layout15 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite15; } } spritelayout stockpile_mixed_ores_sprite_layout16 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite16; } }
+spritelayout stockpile_mixed_ores_sprite_layout21 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite21; } } spritelayout stockpile_mixed_ores_sprite_layout22 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite22; } } spritelayout stockpile_mixed_ores_sprite_layout23 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite23; } } spritelayout stockpile_mixed_ores_sprite_layout24 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite24; } } spritelayout stockpile_mixed_ores_sprite_layout25 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite25; } } spritelayout stockpile_mixed_ores_sprite_layout26 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite26; } }
+spritelayout stockpile_mixed_ores_sprite_layout31 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite31; } } spritelayout stockpile_mixed_ores_sprite_layout32 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite32; } } spritelayout stockpile_mixed_ores_sprite_layout33 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite33; } } spritelayout stockpile_mixed_ores_sprite_layout34 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite34; } } spritelayout stockpile_mixed_ores_sprite_layout35 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite35; } } spritelayout stockpile_mixed_ores_sprite_layout36 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite36; } }
+spritelayout stockpile_mixed_ores_sprite_layout41 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite41; } } spritelayout stockpile_mixed_ores_sprite_layout42 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite42; } } spritelayout stockpile_mixed_ores_sprite_layout43 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite43; } } spritelayout stockpile_mixed_ores_sprite_layout44 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite44; } } spritelayout stockpile_mixed_ores_sprite_layout45 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite45; } } spritelayout stockpile_mixed_ores_sprite_layout46 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_mixed_ores_sprite46; } }
+
+spritelayout stockpile_regolith_sprite_layout11 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_regolith_sprite11; } } spritelayout stockpile_regolith_sprite_layout12 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_regolith_sprite12; } } spritelayout stockpile_regolith_sprite_layout13 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_regolith_sprite13; } } spritelayout stockpile_regolith_sprite_layout14 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_regolith_sprite14; } } spritelayout stockpile_regolith_sprite_layout15 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_regolith_sprite15; } } spritelayout stockpile_regolith_sprite_layout16 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_regolith_sprite16; } }
+spritelayout stockpile_regolith_sprite_layout21 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_regolith_sprite21; } } spritelayout stockpile_regolith_sprite_layout22 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_regolith_sprite22; } } spritelayout stockpile_regolith_sprite_layout23 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_regolith_sprite23; } } spritelayout stockpile_regolith_sprite_layout24 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_regolith_sprite24; } } spritelayout stockpile_regolith_sprite_layout25 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_regolith_sprite25; } } spritelayout stockpile_regolith_sprite_layout26 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_regolith_sprite26; } }
+spritelayout stockpile_regolith_sprite_layout31 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_regolith_sprite31; } } spritelayout stockpile_regolith_sprite_layout32 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_regolith_sprite32; } } spritelayout stockpile_regolith_sprite_layout33 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_regolith_sprite33; } } spritelayout stockpile_regolith_sprite_layout34 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_regolith_sprite34; } } spritelayout stockpile_regolith_sprite_layout35 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_regolith_sprite35; } } spritelayout stockpile_regolith_sprite_layout36 { ground { sprite: GROUNDSPRITE_NORMAL; } childsprite { sprite: stockpile_regolith_sprite36; } }
+//STOCKPILE_SPRITELAYOUT(stockpile_regolith_sprite_layout4, stockpile_regolith_sprite4)
+
+// vim: syn=cpp sw=4 et sts=4 nospell
+# 41 "ogfx-mars-industries.pnml" 2
+# 1 "src/airmine.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+# 1 "src/industry_templates.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# 40 "src/industry_templates.pnml"
+// // XXX
+// spriteset(chemical_factory_XXX_sprites, "../graphics/Buildings/Industry_ChemicalFactory_8bpp.png") {
+//     SPRITE3(XXX, 140, 72, 4, 64, 64, -33, -32)
+// }
+// SPRITE_LAYOUT(chemical_factory_XXX_sprite_layout, chemical_factory_XXX_sprites, 16)
+// item(FEAT_INDUSTRYTILES, chemical_factory_XXX_tile) {
+//     property {
+//         substitute: 0;
+//         land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+//         accepted_cargos: [[PASS, 1]];
+//     }
+//     graphics { chemical_factory_XXX_sprite_layout; }
+// }
+
+
+
+// vim: syn=cpp sw=4 et sts=4 nospell
+# 20 "src/airmine.pnml" 2
+
+
+// Tower sprite.
+spriteset(airmine_tower_sprites, "../graphics/Buildings/Industry_AirMine_8bpp.png") {
+    [4, 266, 64, 128, -31, -96] [4, 136, 64, 128, -31, -96] [4, 4, 64, 128, -31, -96]
+}
+spritelayout airmine_tower_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 68; sprite: airmine_tower_sprites; } }
+item(FEAT_INDUSTRYTILES, airmine_tower_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [];
+    }
+    graphics { airmine_tower_sprite_layout; }
+}
+
+
+// Front of tower sprite
+spriteset(airmine_front_tower_sprites, "../graphics/Buildings/Industry_AirMine_8bpp.png") {
+    [208, 140, 64, 64, -31, -32] [208, 72, 64, 64, -31, -32] [208, 4, 64, 64, -31, -32]
+}
+spritelayout airmine_front_tower_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 22; sprite: airmine_front_tower_sprites; } }
+item(FEAT_INDUSTRYTILES, airmine_front_tower_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [];
+    }
+    graphics { airmine_front_tower_sprite_layout; }
+}
+
+
+// White tank sprites.
+spriteset(airmine_white_tank_sprites, "../graphics/Buildings/Industry_AirMine_8bpp.png") {
+    [72, 140, 64, 64, -33, -32] [72, 72, 64, 64, -33, -32] [72, 4, 64, 64, -33, -32]
+}
+spritelayout airmine_white_tank_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 28; sprite: airmine_white_tank_sprites; } }
+item(FEAT_INDUSTRYTILES, airmine_white_tank_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [];
+    }
+    graphics { airmine_white_tank_sprite_layout; }
+}
+
+
+// Blue tank sprites.
+spriteset(airmine_blue_tank_sprites, "../graphics/Buildings/Industry_AirMine_8bpp.png") {
+    [140, 140, 64, 64, -31, -35] [140, 72, 64, 64, -31, -35] [140, 4, 64, 64, -31, -35]
+}
+spritelayout airmine_blue_tank_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 30; sprite: airmine_blue_tank_sprites; } }
+item(FEAT_INDUSTRYTILES, airmine_blue_tank_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [];
+    }
+    graphics { airmine_blue_tank_sprite_layout; }
+}
+
+
+tilelayout airmine_layout {
+ 1, 1: airmine_tower_tile;
+ 1, 2: airmine_front_tower_tile;
+ 2, 0: airmine_tower_tile;
+ 2, 1: airmine_front_tower_tile;
+ 3, 1: airmine_blue_tank_tile;
+ 0, 1: airmine_white_tank_tile;
+}
+
+tilelayout airmine_layout_1 {
+ 0, 0: airmine_tower_tile;
+ 0, 1: airmine_front_tower_tile;
+ 1, 1: airmine_tower_tile;
+ 1, 2: airmine_front_tower_tile;
+ 1, 0: airmine_blue_tank_tile;
+ 2, 1: airmine_white_tank_tile;
+}
+
+tilelayout airmine_layout_2 {
+ 1, 0: airmine_tower_tile;
+ 1, 1: airmine_front_tower_tile;
+ 1, 2: airmine_tower_tile;
+ 1, 3: airmine_front_tower_tile;
+ 0, 2: airmine_blue_tank_tile;
+ 2, 1: airmine_white_tank_tile;
+}
+
+tilelayout airmine_layout_3 {
+ 0, 1: airmine_tower_tile;
+ 0, 2: airmine_front_tower_tile;
+ 1, 1: airmine_tower_tile;
+ 1, 2: airmine_front_tower_tile;
+ 2, 1: airmine_tower_tile;
+ 2, 2: airmine_front_tower_tile;
+ 1, 0: airmine_blue_tank_tile;
+ 2, 3: airmine_white_tank_tile;
+}
+
+tilelayout airmine_layout_4 {
+ 1, 0: airmine_tower_tile;
+ 1, 1: airmine_front_tower_tile;
+ 0, 0: airmine_white_tank_tile;
+ 0, 1: airmine_blue_tank_tile;
+}
+
+item(FEAT_INDUSTRIES, airmine_industry, 0) {
+    property {
+        substitute: 0;
+        layouts: [airmine_layout, airmine_layout_1, airmine_layout_2, airmine_layout_3, airmine_layout_4];
+        life_type: IND_LIFE_TYPE_ORGANIC;
+//        closure_msg:
+//        prod_increase_msg:
+//        prod_decrease_msg:
+//        fund_cost_multiplier:
+        accept_cargo_types: [];
+        prod_cargo_types: [cargotype("N2__"), cargotype("O2__")];
+        prod_multiplier: [14, 6]; //There is more nitrogen than oxygen in the Martian atmosphere
+        min_cargo_distr: 1;
+//        random_sound_effects:
+//        conflicting_ind_types:
+        prob_random: 10;
+        prob_in_game: 10;
+//        map_colour:
+        spec_flags: 0;
+//        new_ind_msg:
+        input_multiplier_1: [0, 0];
+        input_multiplier_2: [0, 0];
+        input_multiplier_3: [0, 0];
+        name: string(STR_AIR_MINE_NAME);
+        prospect_chance: 10;
+//        remove_cost_multiplier:
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_AIR_MINE_STATION_NAME));
+    }
+}
+
+// vim: sw=4 et sts=4 nospell
+# 42 "ogfx-mars-industries.pnml" 2
+# 1 "src/aquiferpump.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+spriteset(aquiferpump_extracter_sprites, "../graphics/Buildings/Industry_AquiferPump_8bpp.png") {
+    [ 4, 140, 64, 64, -32, -33]
+    [ 4, 72, 64, 64, -32, -33]
+    [ 4, 4, 64, 64, -32, -33]
+}
+spritelayout aquiferpump_extracter_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset: 0; yoffset: 0; zoffset: 0;
+        xextent: 16; yextent: 16; zextent: 36;
+        sprite: aquiferpump_extracter_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, aquiferpump_extracter_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [];
+    }
+    graphics { aquiferpump_extracter_sprite_layout; }
+}
+
+spriteset(aquiferpump_storage_sprites, "../graphics/Buildings/Industry_AquiferPump_8bpp.png") {
+    [ 72, 140, 64, 64, -32, -33]
+    [ 72, 72, 64, 64, -32, -33]
+    [ 72, 4, 64, 64, -32, -33]
+}
+spritelayout aquiferpump_storage_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset: 0; yoffset: 0; zoffset: 0;
+        xextent: 16; yextent: 16; zextent: 28;
+        sprite: aquiferpump_storage_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, aquiferpump_storage_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [];
+    }
+    graphics { aquiferpump_storage_sprite_layout; }
+}
+
+spriteset(aquiferpump_buildings_sprites, "../graphics/Buildings/Industry_AquiferPump_8bpp.png") {
+    [140, 140, 64, 64, -32, -33]
+    [140, 72, 64, 64, -32, -33]
+    [140, 4, 64, 64, -32, -33]
+}
+spritelayout aquiferpump_buildings_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset: 0; yoffset: 0; zoffset: 0;
+        xextent: 16; yextent: 16; zextent: 31;
+        sprite: aquiferpump_buildings_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, aquiferpump_buildings_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [];
+    }
+    graphics { aquiferpump_buildings_sprite_layout; }
+}
+
+
+tilelayout aquiferpump_layout {
+ 0, 0: aquiferpump_extracter_tile;
+ 3, 0: aquiferpump_extracter_tile;
+ 1, 2: aquiferpump_buildings_tile;
+ 2, 2: aquiferpump_storage_tile;
+ 1, 3: aquiferpump_extracter_tile;
+}
+
+tilelayout aquiferpump_layout_1 {
+ 2, 2: aquiferpump_buildings_tile;
+ 1, 2: aquiferpump_storage_tile;
+ 1, 1: aquiferpump_extracter_tile;
+ 3, 0: aquiferpump_extracter_tile;
+ 2, 4: aquiferpump_extracter_tile;
+}
+
+tilelayout aquiferpump_layout_2 {
+ 1, 1: aquiferpump_buildings_tile;
+ 1, 2: aquiferpump_storage_tile;
+ 0, 0: aquiferpump_extracter_tile;
+ 3, 2: aquiferpump_extracter_tile;
+ 1, 3: aquiferpump_extracter_tile;
+}
+
+tilelayout aquiferpump_layout_3 {
+ 1, 2: aquiferpump_buildings_tile;
+ 1, 1: aquiferpump_storage_tile;
+ 0, 1: aquiferpump_extracter_tile;
+ 2, 0: aquiferpump_extracter_tile;
+ 3, 3: aquiferpump_extracter_tile;
+}
+
+tilelayout aquiferpump_layout_4 {
+ 1, 1: aquiferpump_buildings_tile;
+ 2, 2: aquiferpump_storage_tile;
+ 0, 2: aquiferpump_extracter_tile;
+ 3, 0: aquiferpump_extracter_tile;
+ 2, 3: aquiferpump_extracter_tile;
+}
+
+item(FEAT_INDUSTRIES, aquifer_industry, 1) {
+    property {
+        substitute: 1;
+        name: string(STR_AQUIFER_PUMP_NAME);
+        layouts: [aquiferpump_layout, aquiferpump_layout_1, aquiferpump_layout_2, aquiferpump_layout_3, aquiferpump_layout_4];
+        life_type: IND_LIFE_TYPE_ORGANIC;
+        accept_cargo_types: [cargotype("ENSP")];
+        prod_cargo_types: [cargotype("WATR")];
+        prod_multiplier: [16, 0];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: 0;
+        input_multiplier_1: [20,0];
+        input_multiplier_2: [0,0];
+        input_multiplier_3: [0,0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_AQUIFER_PUMP_STATION_NAME));
+    }
+}
+
+
+// vim: sw=4 et sts=4 nospell
+# 43 "ogfx-mars-industries.pnml" 2
+# 1 "src/chemicalfactory.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+# 1 "src/industry_templates.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# 20 "src/chemicalfactory.pnml" 2
+
+// Low fan.
+spriteset(chemical_factory_low_fan_sprites, "../graphics/Buildings/Industry_ChemicalFactory_8bpp.png") {
+    [4, 140, 64, 64, -31, -34] [4, 72, 64, 64, -31, -34] [4, 4, 64, 64, -31, -34]
+}
+spritelayout chemical_factory_low_fan_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 16; sprite: chemical_factory_low_fan_sprites; } }
+item(FEAT_INDUSTRYTILES, chemical_factory_low_fan_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[N2__, 8], [CHEM, 8]];
+    }
+    graphics { chemical_factory_low_fan_sprite_layout; }
+}
+
+
+// Electrical power
+spriteset(chemical_factory_power_sprites, "../graphics/Buildings/Industry_ChemicalFactory_8bpp.png") {
+    [72, 140, 64, 64, -31, -34] [72, 72, 64, 64, -31, -34] [72, 4, 64, 64, -31, -34]
+}
+spritelayout chemical_factory_power_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 24; sprite: chemical_factory_power_sprites; } }
+item(FEAT_INDUSTRYTILES, chemical_factory_power_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[N2__, 8], [CHEM, 8]];
+    }
+    graphics { chemical_factory_power_sprite_layout; }
+}
+
+
+// Small round tanks
+spriteset(chemical_factory_white_tanks_sprites, "../graphics/Buildings/Industry_ChemicalFactory_8bpp.png") {
+    [140, 140, 64, 64, -31, -34] [140, 72, 64, 64, -31, -34] [140, 4, 64, 64, -31, -34]
+}
+spritelayout chemical_factory_white_tanks_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 16; sprite: chemical_factory_white_tanks_sprites; } }
+item(FEAT_INDUSTRYTILES, chemical_factory_white_tanks_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[N2__, 8], [CHEM, 8]];
+    }
+    graphics { chemical_factory_white_tanks_sprite_layout; }
+}
+
+
+// Tubes across the factory
+spriteset(chemical_factory_tubes_sprites, "../graphics/Buildings/Industry_ChemicalFactory_8bpp.png") {
+    [208, 140, 64, 64, -31, -34] [208, 72, 64, 64, -31, -34] [208, 4, 64, 64, -31, -34]
+}
+spritelayout chemical_factory_tubes_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 20; sprite: chemical_factory_tubes_sprites; } }
+item(FEAT_INDUSTRYTILES, chemical_factory_tubes_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[N2__, 8], [CHEM, 8]];
+    }
+    graphics { chemical_factory_tubes_sprite_layout; }
+}
+
+
+// Blue storage tanks
+spriteset(chemical_factory_storage_sprites, "../graphics/Buildings/Industry_ChemicalFactory_8bpp.png") {
+    [276, 140, 64, 64, -31, -34] [276, 72, 64, 64, -31, -34] [276, 4, 64, 64, -31, -34]
+}
+spritelayout chemical_factory_storage_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 24; sprite: chemical_factory_storage_sprites; } }
+item(FEAT_INDUSTRYTILES, chemical_factory_storage_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[N2__, 8], [CHEM, 8]];
+    }
+    graphics { chemical_factory_storage_sprite_layout; }
+}
+
+// High fan
+spriteset(chemical_factory_high_fan_sprites, "../graphics/Buildings/Industry_ChemicalFactory_8bpp.png") {
+    [344, 140, 64, 64, -31, -34] [344, 72, 64, 64, -31, -34] [344, 4, 64, 64, -31, -34]
+}
+spritelayout chemical_factory_high_fan_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 28; sprite: chemical_factory_high_fan_sprites; } }
+item(FEAT_INDUSTRYTILES, chemical_factory_high_fan_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[N2__, 8], [CHEM, 8]];
+    }
+    graphics { chemical_factory_high_fan_sprite_layout; }
+}
+
+tilelayout chemical_factory_layout {
+ 0, 0: chemical_factory_low_fan_tile;
+ 0, 1: chemical_factory_tubes_tile;
+ 0, 2: chemical_factory_power_tile;
+ 1, 0: chemical_factory_low_fan_tile;
+ 1, 1: chemical_factory_storage_tile;
+ 1, 2: chemical_factory_white_tanks_tile;
+ 1, 3: chemical_factory_power_tile;
+}
+
+tilelayout chemical_factory_layout_1 {
+ 0, 0: chemical_factory_low_fan_tile;
+ 0, 1: chemical_factory_power_tile;
+ 1, 0: chemical_factory_low_fan_tile;
+ 1, 1: chemical_factory_storage_tile;
+ 1, 2: chemical_factory_high_fan_tile;
+ 1, 3: chemical_factory_tubes_tile;
+ 1, 4: chemical_factory_power_tile;
+}
+
+tilelayout chemical_factory_layout_2 {
+ 0, 0: chemical_factory_low_fan_tile;
+ 0, 1: chemical_factory_high_fan_tile;
+ 0, 2: chemical_factory_tubes_tile;
+ 0, 3: chemical_factory_power_tile;
+ 1, 1: chemical_factory_low_fan_tile;
+ 1, 2: chemical_factory_white_tanks_tile;
+ 1, 3: chemical_factory_power_tile;
+}
+
+tilelayout chemical_factory_layout_3 {
+ 0, 0: chemical_factory_low_fan_tile;
+ 0, 1: chemical_factory_tubes_tile;
+ 0, 2: chemical_factory_white_tanks_tile;
+ 0, 3: chemical_factory_power_tile;
+ 2, 0: chemical_factory_low_fan_tile;
+ 2, 1: chemical_factory_high_fan_tile;
+ 2, 2: chemical_factory_power_tile;
+}
+
+tilelayout chemical_factory_layout_4 {
+ 0, 0: chemical_factory_low_fan_tile;
+ 0, 1: chemical_factory_storage_tile;
+ 0, 2: chemical_factory_white_tanks_tile;
+ 0, 3: chemical_factory_tubes_tile;
+ 0, 4: chemical_factory_power_tile;
+ 2, 2: chemical_factory_low_fan_tile;
+ 2, 3: chemical_factory_power_tile;
+}
+
+item(FEAT_INDUSTRIES, chemical_factory_industry, 4) {
+    property {
+        substitute: 4;
+        name: string(STR_CHEMICAL_FACTORY_NAME);
+        layouts: [chemical_factory_layout, chemical_factory_layout_1, chemical_factory_layout_2, chemical_factory_layout_3, chemical_factory_layout_4];
+        life_type: IND_LIFE_TYPE_PROCESSING;
+        accept_cargo_types: [cargotype("N2__"), cargotype("CHEM")];
+        prod_cargo_types: [cargotype("FERT"), cargotype("PLAS")];
+        prod_multiplier: [0, 0];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: 0;
+        input_multiplier_1: [2,1];
+        input_multiplier_2: [1,2];
+        input_multiplier_3: [0,0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_CHEMICAL_FACTORY_STATION_NAME));
+    }
+}
+
+
+// vim: sw=4 et sts=4 nospell
+# 44 "ogfx-mars-industries.pnml" 2
+# 1 "src/electrolysisplant.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+spriteset(electrolysis_power_sprites, "../graphics/Buildings/Industry_HydrolysisPlant_8bpp.png") {
+    [ 4, 4, 64, 64, -32, -33]
+}
+spritelayout electrolysis_power_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset: 0; yoffset: 0; zoffset: 0;
+        xextent: 16; yextent: 16; zextent: 26;
+        sprite: electrolysis_power_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, electrolysis_power_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[WATR, 8]];
+    }
+    graphics { electrolysis_power_sprite_layout; }
+}
+
+spriteset(electrolysis_storage_sprites, "../graphics/Buildings/Industry_HydrolysisPlant_8bpp.png") {
+    [ 72, 140, 64, 64, -32, -33]
+    [ 72, 72, 64, 64, -32, -33]
+    [ 72, 4, 64, 64, -32, -33]
+}
+spritelayout electrolysis_storage_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset: 0; yoffset: 0; zoffset: 0;
+        xextent: 16; yextent: 16; zextent: 32;
+        sprite: electrolysis_storage_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, electrolysis_storage_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[WATR, 8]];
+    }
+    graphics { electrolysis_storage_sprite_layout; }
+}
+
+spriteset(electrolysis_plant_sprites, "../graphics/Buildings/Industry_HydrolysisPlant_8bpp.png") {
+    [138, 140, 64, 64, -32, -33]
+    [138, 72, 64, 64, -32, -33]
+    [138, 4, 64, 64, -32, -33]
+}
+spritelayout electrolysis_plant_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset: 0; yoffset: 0; zoffset: 0;
+        xextent: 16; yextent: 16; zextent: 41;
+        sprite: electrolysis_plant_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, electrolysis_plant_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[WATR, 8]];
+    }
+    graphics { electrolysis_plant_sprite_layout; }
+}
+
+spriteset(electrolysis_building_sprites, "../graphics/Buildings/Industry_HydrolysisPlant_8bpp.png") {
+    [206, 140, 64, 64, -32, -33]
+    [206, 72, 64, 64, -32, -33]
+    [206, 4, 64, 64, -32, -33]
+}
+spritelayout electrolysis_building_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset: 0; yoffset: 6; zoffset: 0;
+        xextent: 16; yextent: 10; zextent: 12;
+        sprite: electrolysis_building_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, electrolysis_building_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[WATR, 8]];
+    }
+    graphics { electrolysis_building_sprite_layout; }
+}
+
+tilelayout electrolysis_layout {
+    0, 2: electrolysis_plant_tile;
+    1, 2: electrolysis_plant_tile;
+    2, 2: electrolysis_plant_tile;
+    2, 0: electrolysis_building_tile;
+    1, 1: electrolysis_storage_tile;
+    2, 1: electrolysis_power_tile;
+    1, 3: electrolysis_storage_tile;
+}
+
+tilelayout electrolysis_layout_1 {
+    0, 1: electrolysis_plant_tile;
+    1, 1: electrolysis_plant_tile;
+    2, 1: electrolysis_plant_tile;
+    1, 0: electrolysis_building_tile;
+    1, 2: electrolysis_storage_tile;
+    1, 2: electrolysis_power_tile;
+    2, 2: electrolysis_storage_tile;
+}
+
+tilelayout electrolysis_layout_2 {
+    1, 1: electrolysis_plant_tile;
+    1, 2: electrolysis_plant_tile;
+    1, 3: electrolysis_plant_tile;
+    0, 1: electrolysis_building_tile;
+    0, 2: electrolysis_storage_tile;
+    1, 0: electrolysis_power_tile;
+    0, 3: electrolysis_storage_tile;
+}
+
+tilelayout electrolysis_layout_3 {
+    2, 0: electrolysis_plant_tile;
+    2, 1: electrolysis_plant_tile;
+    2, 2: electrolysis_plant_tile;
+    1, 0: electrolysis_building_tile;
+    1, 1: electrolysis_storage_tile;
+    1, 3: electrolysis_power_tile;
+    1, 2: electrolysis_storage_tile;
+}
+
+tilelayout electrolysis_layout_4 {
+    0, 0: electrolysis_plant_tile;
+    1, 0: electrolysis_plant_tile;
+    0, 1: electrolysis_plant_tile;
+    1, 1: electrolysis_plant_tile;
+    0, 2: electrolysis_building_tile;
+    2, 1: electrolysis_storage_tile;
+    3, 1: electrolysis_power_tile;
+    2, 2: electrolysis_storage_tile;
+}
+
+item(FEAT_INDUSTRIES, electrolysis_industry, 3) {
+    property {
+        substitute: 3;
+        name: string(STR_ELECTROLYSIS_PLANT_NAME);
+        layouts: [electrolysis_layout, electrolysis_layout_1, electrolysis_layout_2, electrolysis_layout_3, electrolysis_layout_4];
+        life_type: IND_LIFE_TYPE_PROCESSING;
+        accept_cargo_types: [cargotype("WATR")];
+        prod_cargo_types: [cargotype("O2__"), cargotype("H2__")];
+        prod_multiplier: [0, 0];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: 0;
+        input_multiplier_1: [1,2];
+        input_multiplier_2: [0,0];
+        input_multiplier_3: [0,0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_ELECTROLYSIS_PLANT_STATION_NAME));
+    }
+}
+
+// vim: sw=4 et sts=4 nospell
+# 45 "ogfx-mars-industries.pnml" 2
+# 1 "src/farm.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+spriteset(farm_small_building_sprites, "../graphics/Buildings/Industry_Farm_8bpp.png") {
+    [ 4, 140, 64, 64, -32, -33]
+    [ 4, 72, 64, 64, -32, -33]
+    [ 4, 4, 64, 64, -32, -33]
+}
+spritelayout farm_small_building_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset: 0; yoffset: 0; zoffset: 0;
+        xextent: 16; yextent: 16; zextent: 20;
+        sprite: farm_small_building_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, farm_small_building_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[O2__, 8], [FERT, 8]];
+    }
+    graphics { farm_small_building_sprite_layout; }
+}
+
+spriteset(farm_silo_sprites, "../graphics/Buildings/Industry_Farm_8bpp.png") {
+    [ 72, 140, 64, 64, -32, -33]
+    [ 72, 72, 64, 64, -32, -33]
+    [ 72, 4, 64, 64, -32, -33]
+}
+spritelayout farm_silo_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset: 0; yoffset: 0; zoffset: 0;
+        xextent: 16; yextent: 16; zextent: 37;
+        sprite: farm_silo_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, farm_silo_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[O2__, 8], [FERT, 8]];
+    }
+    graphics { farm_silo_sprite_layout; }
+}
+
+spriteset(farm_big_building_sprites, "../graphics/Buildings/Industry_Farm_8bpp.png") {
+    [140, 140, 64, 64, -32, -33]
+    [140, 72, 64, 64, -32, -33]
+    [140, 4, 64, 64, -32, -33]
+}
+spritelayout farm_big_building_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset: 0; yoffset: 0; zoffset: 0;
+        xextent: 16; yextent: 16; zextent: 20;
+        sprite: farm_big_building_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, farm_big_building_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[O2__, 8], [FERT, 8]];
+    }
+    graphics { farm_big_building_sprite_layout; }
+}
+
+tilelayout farm_layout {
+    0, 0: farm_big_building_tile;
+    1, 0: farm_big_building_tile;
+    2, 0: farm_small_building_tile;
+    0, 1: farm_big_building_tile;
+    1, 1: farm_silo_tile;
+}
+
+tilelayout farm_layout_1 {
+    0, 0: farm_big_building_tile;
+    1, 0: farm_big_building_tile;
+    2, 0: farm_big_building_tile;
+    1, 1: farm_small_building_tile;
+    1, 2: farm_silo_tile;
+}
+
+tilelayout farm_layout_2 {
+    0, 0: farm_big_building_tile;
+    1, 0: farm_big_building_tile;
+    1, 1: farm_big_building_tile;
+    2, 0: farm_small_building_tile;
+    0, 1: farm_silo_tile;
+}
+
+tilelayout farm_layout_3 {
+    1, 0: farm_big_building_tile;
+    1, 1: farm_big_building_tile;
+    1, 2: farm_big_building_tile;
+    2, 1: farm_small_building_tile;
+    0, 1: farm_silo_tile;
+}
+
+tilelayout farm_layout_4 {
+    0, 0: farm_big_building_tile;
+    0, 1: farm_big_building_tile;
+    0, 2: farm_big_building_tile;
+    2, 2: farm_small_building_tile;
+    2, 1: farm_silo_tile;
+}
+
+item(FEAT_INDUSTRIES, farm_industry, 2) {
+    property {
+        substitute: 2;
+        name: string(STR_FARM_NAME);
+        layouts: [farm_layout, farm_layout_1, farm_layout_2, farm_layout_3, farm_layout_4];
+        life_type: IND_LIFE_TYPE_ORGANIC;
+        accept_cargo_types: [cargotype("O2__"), cargotype("FERT")];
+        prod_cargo_types: [cargotype("FOOD"), cargotype("ORGN")];
+        prod_multiplier: [4, 4];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: bitmask(IND_FLAG_PLANT_FIELDS_WHEN_BUILT, IND_FLAG_PLANT_FIELDS_PERIODICALLY);
+        input_multiplier_1: [4,4];
+        input_multiplier_2: [4,4];
+        input_multiplier_3: [0,0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_FARM_STATION_NAME));
+    }
+}
+
+// vim: sw=4 et sts=4 nospell
+# 46 "ogfx-mars-industries.pnml" 2
+# 1 "src/fusionpowerplant.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+# 1 "src/industry_templates.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# 20 "src/fusionpowerplant.pnml" 2
+
+
+// Large round tank
+spriteset(fusion_plant_round_tank_sprites, "../graphics/Buildings/Industry_FusionPlant_8bpp.png") {
+    [4, 72, 64, 64, -31, -33]
+    [4, 4, 64, 64, -31, -33]
+}
+spritelayout fusion_plant_round_tank_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 26; sprite: fusion_plant_round_tank_sprites; } }
+item(FEAT_INDUSTRYTILES, fusion_plant_round_tank_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[H2__, 8]];
+    }
+    graphics { fusion_plant_round_tank_sprite_layout; }
+}
+
+
+// Back building
+spriteset(fusion_plant_back_building_sprites, "../graphics/Buildings/Industry_FusionPlant_8bpp.png") {
+    [72, 140, 64, 64, -31, -33] [72, 72, 64, 64, -31, -33] [72, 4, 64, 64, -31, -33]
+}
+spritelayout fusion_plant_back_building_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 14; sprite: fusion_plant_back_building_sprites; } }
+item(FEAT_INDUSTRYTILES, fusion_plant_back_building_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[H2__, 8]];
+    }
+    graphics { fusion_plant_back_building_sprite_layout; }
+}
+
+
+// Front building
+spriteset(fusion_plant_front_building_sprites, "../graphics/Buildings/Industry_FusionPlant_8bpp.png") {
+    [140, 140, 64, 64, -31, -33] [140, 72, 64, 64, -31, -33] [140, 4, 64, 64, -31, -33]
+}
+spritelayout fusion_plant_front_building_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 14; sprite: fusion_plant_front_building_sprites; } }
+item(FEAT_INDUSTRYTILES, fusion_plant_front_building_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[H2__, 8]];
+    }
+    graphics { fusion_plant_front_building_sprite_layout; }
+}
+
+
+// Sphere tank
+spriteset(fusion_plant_sphere_tank_sprites, "../graphics/Buildings/Industry_FusionPlant_8bpp.png") {
+    [208, 140, 64, 64, -33, -35] [208, 72, 64, 64, -33, -35] [208, 4, 64, 64, -33, -35]
+}
+spritelayout fusion_plant_sphere_tank_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 18; sprite: fusion_plant_sphere_tank_sprites; } }
+item(FEAT_INDUSTRYTILES, fusion_plant_sphere_tank_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[H2__, 8]];
+    }
+    graphics { fusion_plant_sphere_tank_sprite_layout; }
+}
+
+
+// Power grid
+spriteset(fusion_plant_power_sprites, "../graphics/Buildings/Industry_FusionPlant_8bpp.png") {
+    [276, 4, 64, 64, -31, -33]
+}
+spritelayout fusion_plant_power_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 26; sprite: fusion_plant_power_sprites; } }
+item(FEAT_INDUSTRYTILES, fusion_plant_power_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[H2__, 8]];
+    }
+    graphics { fusion_plant_power_sprite_layout; }
+}
+
+tilelayout fusion_plant_layout {
+ 1, 0: fusion_plant_back_building_tile;
+ 1, 1: fusion_plant_front_building_tile;
+ 2, 0: fusion_plant_round_tank_tile;
+ 0, 1: fusion_plant_sphere_tank_tile;
+ 2, 1: fusion_plant_power_tile;
+}
+
+tilelayout fusion_plant_layout_1 {
+ 0, 1: fusion_plant_back_building_tile;
+ 0, 2: fusion_plant_front_building_tile;
+ 1, 1: fusion_plant_round_tank_tile;
+ 2, 1: fusion_plant_sphere_tank_tile;
+ 1, 0: fusion_plant_power_tile;
+}
+
+tilelayout fusion_plant_layout_2 {
+ 0, 0: fusion_plant_back_building_tile;
+ 0, 1: fusion_plant_front_building_tile;
+ 2, 1: fusion_plant_round_tank_tile;
+ 2, 0: fusion_plant_sphere_tank_tile;
+ 2, 2: fusion_plant_sphere_tank_tile;
+ 3, 1: fusion_plant_power_tile;
+}
+
+item(FEAT_INDUSTRIES, fusion_plant_industry, 6) {
+    property {
+        substitute: 6;
+        name: string(STR_FUSION_PLANT_NAME);
+        layouts: [fusion_plant_layout, fusion_plant_layout_1, fusion_plant_layout_2];
+        life_type: IND_LIFE_TYPE_BLACK_HOLE;
+        accept_cargo_types: [cargotype("H2__")];
+        prod_cargo_types: [];
+        prod_multiplier: [0, 0];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: bitmask(IND_FLAG_BUILT_NEAR_TOWN);
+        input_multiplier_1: [0,0];
+        input_multiplier_2: [0,0];
+        input_multiplier_3: [0,0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_FUSION_PLANT_STATION_NAME));
+    }
+}
+
+// vim: sw=4 et sts=4 nospell
+# 47 "ogfx-mars-industries.pnml" 2
+# 1 "src/goodsfactory.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+# 1 "src/industry_templates.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# 20 "src/goodsfactory.pnml" 2
+
+// Back
+spriteset(goods_factory_back_sprites, "../graphics/Buildings/Industry_GoodsFactory_8bpp.png") {
+    [4, 140, 64, 64, -31, -34] [4, 72, 64, 64, -31, -34] [4, 4, 64, 64, -31, -34]
+}
+spritelayout goods_factory_back_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 23; sprite: goods_factory_back_sprites; } }
+item(FEAT_INDUSTRYTILES, goods_factory_back_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[PLAS, 8], [BDMT, 8]];
+    }
+    graphics { goods_factory_back_sprite_layout; }
+}
+
+// Low middle
+spriteset(goods_factory_low_middle_sprites, "../graphics/Buildings/Industry_GoodsFactory_8bpp.png") {
+    [72, 140, 64, 64, -31, -34] [72, 72, 64, 64, -31, -34] [72, 4, 64, 64, -31, -34]
+}
+spritelayout goods_factory_low_middle_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 36; sprite: goods_factory_low_middle_sprites; } }
+item(FEAT_INDUSTRYTILES, goods_factory_low_middle_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[PLAS, 8], [BDMT, 8]];
+    }
+    graphics { goods_factory_low_middle_sprite_layout; }
+}
+
+// Middle
+spriteset(goods_factory_middle_sprites, "../graphics/Buildings/Industry_GoodsFactory_8bpp.png") {
+    [140, 140, 64, 64, -31, -34] [140, 72, 64, 64, -31, -34] [140, 4, 64, 64, -31, -34]
+}
+spritelayout goods_factory_middle_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 36; sprite: goods_factory_middle_sprites; } }
+item(FEAT_INDUSTRYTILES, goods_factory_middle_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[PLAS, 8], [BDMT, 8]];
+    }
+    graphics { goods_factory_middle_sprite_layout; }
+}
+
+
+// Front
+spriteset(goods_factory_front_sprites, "../graphics/Buildings/Industry_GoodsFactory_8bpp.png") {
+    [208, 140, 64, 64, -31, -34] [208, 72, 64, 64, -31, -34] [208, 4, 64, 64, -31, -34]
+}
+spritelayout goods_factory_front_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 23; sprite: goods_factory_front_sprites; } }
+item(FEAT_INDUSTRYTILES, goods_factory_front_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[PLAS, 8], [BDMT, 8]];
+    }
+    graphics { goods_factory_front_sprite_layout; }
+}
+
+tilelayout goods_factory_layout {
+    0, 0: goods_factory_back_tile;
+    0, 1: goods_factory_middle_tile;
+    0, 2: goods_factory_front_tile;
+}
+
+tilelayout goods_factory_layout_1 {
+    0, 0: goods_factory_back_tile;
+    0, 1: goods_factory_middle_tile;
+    0, 2: goods_factory_front_tile;
+    1, 1: goods_factory_back_tile;
+    1, 2: goods_factory_front_tile;
+}
+
+tilelayout goods_factory_layout_2 {
+    0, 0: goods_factory_back_tile;
+    0, 1: goods_factory_front_tile;
+    2, 0: goods_factory_back_tile;
+    2, 1: goods_factory_front_tile;
+}
+
+tilelayout goods_factory_layout_3 {
+    0, 0: goods_factory_back_tile;
+    0, 1: goods_factory_front_tile;
+    1, 1: goods_factory_back_tile;
+    1, 2: goods_factory_low_middle_tile;
+    1, 3: goods_factory_front_tile;
+}
+
+tilelayout goods_factory_layout_4 {
+    1, 0: goods_factory_back_tile;
+    1, 1: goods_factory_low_middle_tile;
+    1, 2: goods_factory_front_tile;
+    0, 2: goods_factory_back_tile;
+    0, 3: goods_factory_front_tile;
+}
+
+item(FEAT_INDUSTRIES, goods_factory_industry, 5) {
+    property {
+        substitute: 5;
+        name: string(STR_GOODS_FACTORY_NAME);
+        layouts: [goods_factory_layout, goods_factory_layout_1, goods_factory_layout_2, goods_factory_layout_3, goods_factory_layout_4];
+        life_type: IND_LIFE_TYPE_PROCESSING;
+        accept_cargo_types: [cargotype("PLAS"), cargotype("BDMT")];
+        prod_cargo_types: [cargotype("GOOD"), cargotype("ENSP")];
+        prod_multiplier: [0, 0];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: 0;
+        input_multiplier_1: [2,1];
+        input_multiplier_2: [1,2];
+        input_multiplier_3: [0,0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_GOODS_FACTORY_STATION_NAME));
+    }
+}
+
+// vim: sw=4 et sts=4 nospell
+# 48 "ogfx-mars-industries.pnml" 2
+# 1 "src/icemine.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+# 1 "src/industry_templates.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# 20 "src/icemine.pnml" 2
+
+// Corner sprites.
+spriteset(ice_mine_back_corner_sprites, "../graphics/Buildings/Industry_IceMine_8bpp.png") {
+    [443, 284, 64, 31, -32, 0] // Non-snowy version
+//    [443, 128, 64, 3, -32, 01] // Snowy version
+}
+spriteset(ice_mine_left_corner_sprites, "../graphics/Buildings/Industry_IceMine_8bpp.png") {
+    [443, 243, 64, 31, -32, 0] // Non-snowy version
+//    [443,  87, 64, 31, -32, 0] // Snowy version
+}
+spriteset(ice_mine_right_corner_sprites, "../graphics/Buildings/Industry_IceMine_8bpp.png") {
+    [443, 161, 64, 31, -32, 0] // Non-snowy version
+//    [443,   5, 64, 31, -32, 0] // Snowy version
+}
+spriteset(ice_mine_front_corner_sprites, "../graphics/Buildings/Industry_IceMine_8bpp.png") {
+    [443, 202, 64, 31, -32, 0] // Non-snowy version
+//    [443,  46, 64, 31, -32, 0] // Snowy version
+}
+
+spritelayout ice_mine_back_corner_sprite_layout {
+    ground {
+        sprite: ice_mine_back_corner_sprites;
+    }
+}
+spritelayout ice_mine_left_corner_sprite_layout {
+    ground {
+        sprite: ice_mine_left_corner_sprites;
+    }
+}
+spritelayout ice_mine_right_corner_sprite_layout {
+    ground {
+        sprite: ice_mine_right_corner_sprites;
+    }
+}
+spritelayout ice_mine_front_corner_sprite_layout {
+    ground {
+        sprite: ice_mine_front_corner_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, ice_mine_back_corner_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+    }
+    graphics { ice_mine_back_corner_sprite_layout; }
+}
+item(FEAT_INDUSTRYTILES, ice_mine_left_corner_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ice_mine_left_corner_sprite_layout; }
+}
+item(FEAT_INDUSTRYTILES, ice_mine_right_corner_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ice_mine_right_corner_sprite_layout; }
+}
+item(FEAT_INDUSTRYTILES, ice_mine_front_corner_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ice_mine_front_corner_sprite_layout; }
+}
+
+// 'point' at 1,1
+spriteset(ice_mine_back_point_sprites, "../graphics/Buildings/Industry_IceMine_8bpp.png") {
+    [378, 202, 64, 31, -32, 0] // Non-snowy version
+//    [378,  46, 64, 3, -32, 0] // Snowy version
+}
+spritelayout ice_mine_back_point_sprite_layout {
+    ground {
+        sprite: ice_mine_back_point_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, ice_mine_back_point_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ice_mine_back_point_sprite_layout; }
+}
+
+// Straight edges.
+spriteset(ice_mine_straight_nw_sprites, "../graphics/Buildings/Industry_IceMine_8bpp.png") {
+    [313, 202, 64, 31, -32, 0] // Non-snowy version
+//    [313,  46, 64, 31, -32, 0] // Snowy version
+}
+spriteset(ice_mine_double_straight_nw_sprites, "../graphics/Buildings/Industry_IceMine_8bpp.png") {
+    [313, 202, 64, 31, -32, 0] // Non-snowy version
+    [313, 202, 64, 31, -32, 0] // Non-snowy version
+}
+spriteset(ice_mine_straight_se_sprites, "../graphics/Buildings/Industry_IceMine_8bpp.png") {
+    [313, 161, 64, 31, -32, 0] // Non-snowy version
+//    [313,  5, 64, 31, -32, 0] // Snowy version
+}
+spriteset(ice_mine_double_straight_se_sprites, "../graphics/Buildings/Industry_IceMine_8bpp.png") {
+    [313, 161, 64, 31, -32, 0] // Non-snowy version
+    [313, 161, 64, 31, -32, 0] // Non-snowy version
+}
+spriteset(ice_mine_straight_sw_sprites, "../graphics/Buildings/Industry_IceMine_8bpp.png") {
+    [248, 161, 64, 31, -32, 0] // Non-snowy version
+//    [248,  5, 64, 31, -32, 0] // Snowy version
+}
+spritelayout ice_mine_straight_nw_sprite_layout {
+    ground {
+        sprite: ice_mine_straight_nw_sprites;
+    }
+}
+spritelayout ice_mine_straight_se_sprite_layout {
+    ground {
+        sprite: ice_mine_straight_se_sprites;
+    }
+}
+spritelayout ice_mine_straight_sw_sprite_layout {
+    ground {
+        sprite: ice_mine_straight_sw_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, ice_mine_straight_nw_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+    }
+    graphics { ice_mine_straight_nw_sprite_layout; }
+}
+item(FEAT_INDUSTRYTILES, ice_mine_straight_se_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ice_mine_straight_se_sprite_layout; }
+}
+item(FEAT_INDUSTRYTILES, ice_mine_straight_sw_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ice_mine_straight_sw_sprite_layout; }
+}
+
+// Water tile.
+spriteset(ice_mine_water_sprites, "../graphics/Buildings/Industry_IceMine_8bpp.png") {
+    [248, 284, 64, 31, -32, 0]
+}
+spritelayout ice_mine_water_sprite_layout {
+    ground {
+        sprite: ice_mine_water_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, ice_mine_water_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ice_mine_water_sprite_layout; }
+}
+
+// Water extractors.
+spriteset(ice_mine_back_extractor_sprites, "../graphics/Buildings/Industry_IceMine_8bpp.png") {
+    [ 72, 208, 64, 64, -29, -32]
+    [ 4, 208, 64, 64, -29, -32]
+}
+spriteset(ice_mine_front_extractor_sprites, "../graphics/Buildings/Industry_IceMine_8bpp.png") {
+    [ 72, 72, 64, 64, -29, -35]
+    [ 4, 72, 64, 64, -29, -35]
+}
+spritelayout ice_mine_back_extractor_sprite_layout {
+    ground {
+        sprite: ice_mine_double_straight_nw_sprites;
+    }
+    building {
+        xoffset: 0; yoffset: 0; zoffset: 0;
+        xextent: 16; yextent: 16; zextent: 22;
+        sprite: ice_mine_back_extractor_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, ice_mine_back_extractor_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ice_mine_back_extractor_sprite_layout; }
+}
+
+spritelayout ice_mine_front_extractor_sprite_layout {
+    ground {
+        sprite: ice_mine_double_straight_se_sprites;
+    }
+    building {
+        xoffset: 0; yoffset: 0; zoffset: 0;
+        xextent: 16; yextent: 16; zextent: 20;
+        sprite: ice_mine_front_extractor_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, ice_mine_front_extractor_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ice_mine_front_extractor_sprite_layout; }
+}
+
+// Storage tanks
+spriteset(ice_mine_storage_sprites, "../graphics/Buildings/Industry_IceMine_8bpp.png") {
+    [140, 140, 64, 64, -31, -33]
+    [140, 72, 64, 64, -31, -33]
+    [140, 4, 64, 64, -31, -33]
+}
+spritelayout ice_mine_storage_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 32; sprite: ice_mine_storage_sprites; } }
+item(FEAT_INDUSTRYTILES, ice_mine_storage_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ice_mine_storage_sprite_layout; }
+}
+
+tilelayout ice_mine_layout {
+    1, 0: ice_mine_back_corner_tile;
+    2, 0: ice_mine_back_extractor_tile;
+    3, 0: ice_mine_left_corner_tile;
+    0, 1: ice_mine_back_corner_tile;
+    1, 1: ice_mine_back_point_tile;
+    2, 1: ice_mine_water_tile;
+    3, 1: ice_mine_straight_sw_tile;
+    0, 2: ice_mine_right_corner_tile;
+    1, 2: ice_mine_straight_se_tile;
+    2, 2: ice_mine_front_extractor_tile;
+    3, 2: ice_mine_front_corner_tile;
+    2, 3: ice_mine_storage_tile;
+}
+
+item(FEAT_INDUSTRIES, ice_mine_industry, 7) {
+    property {
+        substitute: 7;
+        name: string(STR_ICE_MINE_NAME);
+        layouts: [ice_mine_layout];
+        life_type: IND_LIFE_TYPE_EXTRACTIVE;
+        accept_cargo_types: [cargotype("ENSP")];
+        prod_cargo_types: [cargotype("WATR")];
+        prod_multiplier: [10, 0];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: 0;
+        input_multiplier_1: [20,0];
+        input_multiplier_2: [0,0];
+        input_multiplier_3: [0,0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_ICE_MINE_STATION_NAME));
+    }
+}
+
+
+// vim: syn=cpp sw=4 et sts=4 nospell
+# 49 "ogfx-mars-industries.pnml" 2
+# 1 "src/metalworks.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+# 1 "src/industry_templates.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# 20 "src/metalworks.pnml" 2
+
+// Encased power (SW, NE).
+spriteset(metal_works_encased_power_sprites, "../graphics/Buildings/Industry_MetalWorks_8bpp.png") {
+    [4, 268, 64, 128, -32, -98] [4, 136, 64, 128, -32, -98] [4, 4, 64, 128, -32, -98]
+}
+spritelayout metal_works_encased_power_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 60; sprite: metal_works_encased_power_sprites; } }
+item(FEAT_INDUSTRYTILES, metal_works_encased_power_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ORES, 8]];
+    }
+    graphics { metal_works_encased_power_sprite_layout; }
+}
+
+
+// Open power (SE, NW).
+spriteset(metal_works_open_power_sprites, "../graphics/Buildings/Industry_MetalWorks_8bpp.png") {
+    [72, 268, 64, 128, -32, -98] [72, 136, 64, 128, -32, -98] [72, 4, 64, 128, -32, -98]
+}
+spritelayout metal_works_open_power_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 60; sprite: metal_works_open_power_sprites; } }
+item(FEAT_INDUSTRYTILES, metal_works_open_power_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ORES, 8]];
+    }
+    graphics { metal_works_open_power_sprite_layout; }
+}
+
+
+// Central power grid.
+spriteset(metal_works_power_grid_sprites, "../graphics/Buildings/Industry_MetalWorks_8bpp.png") {
+    [140, 140, 64, 64, -33, -32] [140, 72, 64, 64, -33, -32] [140, 4, 64, 64, -33, -32]
+}
+spritelayout metal_works_power_grid_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 36; sprite: metal_works_power_grid_sprites; } }
+item(FEAT_INDUSTRYTILES, metal_works_power_grid_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ORES, 8]];
+    }
+    graphics { metal_works_power_grid_sprite_layout; }
+}
+
+tilelayout metal_works_layout {
+    1, 0: metal_works_open_power_tile;
+    0, 1: metal_works_encased_power_tile;
+    1, 1: metal_works_power_grid_tile;
+    2, 1: metal_works_encased_power_tile;
+    1, 2: metal_works_open_power_tile;
+}
+
+tilelayout metal_works_layout_1 {
+    0, 0: metal_works_open_power_tile;
+    0, 1: metal_works_encased_power_tile;
+    1, 1: metal_works_power_grid_tile;
+    2, 2: metal_works_encased_power_tile;
+    1, 2: metal_works_open_power_tile;
+}
+
+tilelayout metal_works_layout_2 {
+    2, 0: metal_works_open_power_tile;
+    0, 1: metal_works_encased_power_tile;
+    1, 1: metal_works_power_grid_tile;
+    2, 0: metal_works_encased_power_tile;
+    1, 2: metal_works_open_power_tile;
+}
+
+tilelayout metal_works_layout_3 {
+    0, 0: metal_works_open_power_tile;
+    1, 0: metal_works_open_power_tile;
+    1, 1: metal_works_power_grid_tile;
+    0, 2: metal_works_encased_power_tile;
+    1, 2: metal_works_encased_power_tile;
+}
+
+tilelayout metal_works_layout_4 {
+    0, 0: metal_works_open_power_tile;
+    0, 1: metal_works_open_power_tile;
+    1, 1: metal_works_power_grid_tile;
+    2, 0: metal_works_encased_power_tile;
+    2, 1: metal_works_encased_power_tile;
+}
+
+
+item(FEAT_INDUSTRIES, metal_works_industry, 8) {
+    property {
+        substitute: 8;
+        name: string(STR_METAL_WORKS_NAME);
+        layouts: [metal_works_layout, metal_works_layout_1, metal_works_layout_2, metal_works_layout_3, metal_works_layout_4];
+        life_type: IND_LIFE_TYPE_PROCESSING;
+        accept_cargo_types: [cargotype("ORES")];
+        prod_cargo_types: [cargotype("BDMT")];
+        prod_multiplier: [0, 0];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: 0;
+        input_multiplier_1: [2,0];
+        input_multiplier_2: [0,0];
+        input_multiplier_3: [0,0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_METAL_WORKS_STATION_NAME));
+    }
+}
+
+
+// vim: syn=cpp sw=4 et sts=4 nospell
+# 50 "ogfx-mars-industries.pnml" 2
+# 1 "src/oremine.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+# 1 "src/industry_templates.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# 20 "src/oremine.pnml" 2
+
+// Tower
+spriteset(ore_mine_tower_sprites, "../graphics/Buildings/Industry_OreMine_8bpp.png") {
+    [4, 266, 64, 128, -33, -97] [4, 136, 64, 128, -33, -97] [4, 4, 64, 128, -33, -97]
+}
+spritelayout ore_mine_tower_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 81; sprite: ore_mine_tower_sprites; } }
+item(FEAT_INDUSTRYTILES, ore_mine_tower_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ore_mine_tower_sprite_layout; }
+}
+
+// Processing building
+spriteset(ore_mine_processing_sprites, "../graphics/Buildings/Industry_OreMine_8bpp.png") {
+    [140, 140, 64, 64, -33, -33] [140, 72, 64, 64, -33, -33] [140, 4, 64, 64, -33, -33]
+}
+spritelayout ore_mine_processing_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 23; sprite: ore_mine_processing_sprites; } }
+item(FEAT_INDUSTRYTILES, ore_mine_processing_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ore_mine_processing_sprite_layout; }
+}
+
+// Processing building rotated
+spriteset(ore_mine_processing_rotated_sprites, "../graphics/Buildings/Industry_OreMine_8bpp.png") {
+    [72, 140, 64, 64, -33, -33] [72, 72, 64, 64, -33, -33] [72, 4, 64, 64, -33, -33]
+}
+spritelayout ore_mine_processing_rotated_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 23; sprite: ore_mine_processing_rotated_sprites; } }
+item(FEAT_INDUSTRYTILES, ore_mine_processing_rotated_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ore_mine_processing_rotated_sprite_layout; }
+}
+
+// Left conveyor
+spriteset(ore_mine_left_conveyor_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [ 72, 208, 64, 64, -45, -37]
+}
+spritelayout ore_mine_left_conveyor_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset: 0; yoffset: 5; zoffset: 0;
+        xextent: 12; yextent: 11; zextent: 8;
+        sprite: ore_mine_left_conveyor_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, ore_mine_left_conveyor_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ore_mine_left_conveyor_sprite_layout; }
+}
+
+// Right conveyor
+spriteset(ore_mine_right_conveyor_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [ 72, 276, 64, 64, -21, -37]
+}
+spritelayout ore_mine_right_conveyor_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset: 5; yoffset: 0; zoffset: 0;
+        xextent: 11; yextent: 12; zextent: 8;
+        sprite: ore_mine_right_conveyor_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, ore_mine_right_conveyor_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ore_mine_right_conveyor_sprite_layout; }
+}
+
+// Stock piles
+switch(FEAT_INDUSTRYTILES, PARENT, stockpile_mixed_ores_switch1, production_level & 7) {
+    0: return stockpile_mixed_ores_sprite_layout31;
+    1: return stockpile_mixed_ores_sprite_layout32;
+    2: return stockpile_mixed_ores_sprite_layout33;
+    3..4: return stockpile_mixed_ores_sprite_layout34;
+    5..6: return stockpile_mixed_ores_sprite_layout35;
+    default: return stockpile_mixed_ores_sprite_layout36;
+}
+item(FEAT_INDUSTRYTILES, ore_mine_stock_pile1_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { stockpile_mixed_ores_switch1; }
+}
+
+//switch(FEAT_INDUSTRYTILES, PARENT, stockpile_mixed_ores_switch2, [STORE_TEMP(max((production_level >> 2) & 7, 5), 0), 1]) {
+switch(FEAT_INDUSTRYTILES, PARENT, stockpile_mixed_ores_switch2, (production_level >> 2) & 7) {
+    0: return stockpile_mixed_ores_sprite_layout21;
+    1: return stockpile_mixed_ores_sprite_layout22;
+    2: return stockpile_mixed_ores_sprite_layout23;
+    3..4: return stockpile_mixed_ores_sprite_layout24;
+    5..6: return stockpile_mixed_ores_sprite_layout25;
+    default: return stockpile_mixed_ores_sprite_layout26;
+}
+item(FEAT_INDUSTRYTILES, ore_mine_stock_pile2_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { stockpile_mixed_ores_switch2; }
+}
+
+switch(FEAT_INDUSTRYTILES, PARENT, stockpile_mixed_ores_switch3, (production_level >> 4) & 7) {
+    0: return stockpile_mixed_ores_sprite_layout11;
+    1: return stockpile_mixed_ores_sprite_layout12;
+    2: return stockpile_mixed_ores_sprite_layout13;
+    3..4: return stockpile_mixed_ores_sprite_layout14;
+    5..6: return stockpile_mixed_ores_sprite_layout15;
+    default: return stockpile_mixed_ores_sprite_layout16;
+}
+item(FEAT_INDUSTRYTILES, ore_mine_stock_pile3_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { stockpile_mixed_ores_switch3; }
+}
+
+tilelayout ore_mine_layout {
+    1, 0: ore_mine_tower_tile;
+    2, 0: ore_mine_left_conveyor_tile;
+    0, 1: ore_mine_tower_tile;
+    1, 1: ore_mine_processing_rotated_tile;
+    2, 1: ore_mine_stock_pile1_tile;
+    0, 2: ore_mine_right_conveyor_tile;
+    1, 2: ore_mine_stock_pile2_tile;
+    2, 2: ore_mine_stock_pile3_tile;
+}
+
+tilelayout ore_mine_layout_1 {
+    0, 0: ore_mine_tower_tile;
+    0, 1: ore_mine_tower_tile;
+    1, 0: ore_mine_processing_tile;
+    2, 0: ore_mine_stock_pile2_tile;
+    0, 1: ore_mine_right_conveyor_tile;
+    1, 1: ore_mine_stock_pile3_tile;
+}
+
+tilelayout ore_mine_layout_2 {
+    1, 0: ore_mine_tower_tile;
+    2, 0: ore_mine_left_conveyor_tile;
+    0, 1: ore_mine_tower_tile;
+    1, 2: ore_mine_processing_tile;
+    2, 1: ore_mine_stock_pile3_tile;
+    0, 2: ore_mine_right_conveyor_tile;
+    1, 1: ore_mine_stock_pile2_tile;
+    2, 2: ore_mine_stock_pile1_tile;
+}
+
+tilelayout ore_mine_layout_3 {
+    0, 0: ore_mine_tower_tile;
+    1, 0: ore_mine_stock_pile1_tile;
+    2, 0: ore_mine_tower_tile;
+    3, 0: ore_mine_right_conveyor_tile;
+    0, 1: ore_mine_processing_rotated_tile;
+    1, 1: ore_mine_stock_pile2_tile;
+    1, 2: ore_mine_stock_pile3_tile;
+}
+
+tilelayout ore_mine_layout_4 {
+    0, 0: ore_mine_tower_tile;
+    1, 0: ore_mine_left_conveyor_tile;
+    1, 1: ore_mine_right_conveyor_tile;
+    2, 1: ore_mine_processing_tile;
+    3, 1: ore_mine_stock_pile2_tile;
+    0, 1: ore_mine_stock_pile3_tile;
+    0, 2: ore_mine_tower_tile;
+    1, 2: ore_mine_right_conveyor_tile;
+    2, 2: ore_mine_stock_pile1_tile;
+}
+
+item(FEAT_INDUSTRIES, ore_mine_industry, 9) {
+    property {
+        substitute: 9;
+        name: string(STR_ORE_MINE_NAME);
+        layouts: [ore_mine_layout, ore_mine_layout_1, ore_mine_layout_2, ore_mine_layout_3, ore_mine_layout_4];
+        life_type: IND_LIFE_TYPE_EXTRACTIVE;
+        accept_cargo_types: [cargotype("ENSP")];
+        prod_cargo_types: [cargotype("ORES")];
+        prod_multiplier: [14, 0];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: 0;
+        input_multiplier_1: [20,0];
+        input_multiplier_2: [0,0];
+        input_multiplier_3: [0,0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_ORE_MINE_STATION_NAME));
+    }
+}
+
+// vim: syn=cpp sw=4 et sts=4 nospell
+# 51 "ogfx-mars-industries.pnml" 2
+# 1 "src/regolithmine.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+# 1 "src/industry_templates.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# 20 "src/regolithmine.pnml" 2
+
+// Outer corners of the mine.
+spriteset(regolith_mine_back_corner_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [443, 128, 64, 31, -32, 0]
+}
+spriteset(regolith_mine_left_corner_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [443, 87, 64, 31, -32, 0]
+}
+spriteset(regolith_mine_front_corner_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [443, 46, 64, 31, -32, 0]
+}
+spriteset(regolith_mine_right_corner_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [443, 5, 64, 31, -32, 0]
+}
+spritelayout regolith_mine_back_corner_sprite_layout {
+    ground {
+        sprite: regolith_mine_back_corner_sprites;
+    }
+}
+spritelayout regolith_mine_left_corner_sprite_layout {
+    ground {
+        sprite: regolith_mine_left_corner_sprites;
+    }
+}
+spritelayout regolith_mine_right_corner_sprite_layout {
+    ground {
+        sprite: regolith_mine_right_corner_sprites;
+    }
+}
+spritelayout regolith_mine_front_corner_sprite_layout {
+    ground {
+        sprite: regolith_mine_front_corner_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, regolith_mine_back_corner_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { regolith_mine_back_corner_sprite_layout; }
+}
+item(FEAT_INDUSTRYTILES, regolith_mine_left_corner_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { regolith_mine_left_corner_sprite_layout; }
+}
+item(FEAT_INDUSTRYTILES, regolith_mine_right_corner_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { regolith_mine_right_corner_sprite_layout; }
+}
+item(FEAT_INDUSTRYTILES, regolith_mine_front_corner_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { regolith_mine_front_corner_sprite_layout; }
+}
+
+// Floor of the mine.
+spriteset(regolith_mine_floor_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [248, 128, 64, 31, -32, 0]
+}
+spritelayout regolith_mine_floor_sprite_layout {
+    ground {
+        sprite: regolith_mine_floor_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, regolith_mine_floor_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { regolith_mine_floor_sprite_layout; }
+}
+
+// Edge up at NW
+spriteset(regolith_mine_nw_edge_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [313, 46, 64, 31, -32, 0]
+}
+spritelayout regolith_mine_nw_edge_sprite_layout {
+    ground {
+        sprite: regolith_mine_nw_edge_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, regolith_mine_nw_edge_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { regolith_mine_nw_edge_sprite_layout; }
+}
+
+// Edge up at NE
+spriteset(regolith_mine_ne_edge_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [248, 46, 64, 31, -32, 0]
+}
+
+spritelayout regolith_mine_ne_edge_sprite_layout {
+    ground {
+        sprite: regolith_mine_ne_edge_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, regolith_mine_ne_edge_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { regolith_mine_ne_edge_sprite_layout; }
+}
+
+spriteset(regolith_mine_up_conveyor_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [140, 208, 64, 64, -42, -40]
+}
+spritelayout regolith_mine_ne_edge_conveyor_sprite_layout {
+    ground {
+        sprite: regolith_mine_ne_edge_sprites;
+    }
+    building {
+        xoffset: 0; yoffset: 5; zoffset: 0;
+        xextent: 17; yextent: 7; zextent: 14;
+        sprite: regolith_mine_up_conveyor_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, regolith_mine_ne_edge_conveyor_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { regolith_mine_ne_edge_conveyor_sprite_layout; }
+}
+
+// Edge up at SW
+spriteset(regolith_mine_sw_edge_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [248, 5, 64, 31, -32, 0]
+}
+spritelayout regolith_mine_sw_edge_sprite_layout {
+    ground {
+        sprite: regolith_mine_sw_edge_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, regolith_mine_sw_edge_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { regolith_mine_sw_edge_sprite_layout; }
+}
+
+// Edge up at SE
+spriteset(regolith_mine_se_edge_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [313, 5, 64, 31, -32, 0]
+}
+spritelayout regolith_mine_se_edge_sprite_layout {
+    ground {
+        sprite: regolith_mine_se_edge_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, regolith_mine_se_edge_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { regolith_mine_se_edge_sprite_layout; }
+}
+
+// Raised point at E
+spriteset(regolith_mine_point_e_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [378, 87, 64, 31, -32, 0]
+}
+spritelayout regolith_mine_point_e_sprite_layout {
+    ground {
+        sprite: regolith_mine_point_e_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, regolith_mine_point_e_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { regolith_mine_point_e_sprite_layout; }
+}
+
+// Raised point at S
+spriteset(regolith_mine_point_s_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [378, 128, 64, 31, -32, 0]
+}
+spritelayout regolith_mine_point_s_sprite_layout {
+    ground {
+        sprite: regolith_mine_point_s_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, regolith_mine_point_s_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { regolith_mine_point_s_sprite_layout; }
+}
+
+// Raised point at N
+spriteset(regolith_mine_point_n_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [378, 46, 64, 31, -32, 0]
+}
+spritelayout regolith_mine_point_n_sprite_layout {
+    ground {
+        sprite: regolith_mine_point_n_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, regolith_mine_point_n_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { regolith_mine_point_n_sprite_layout; }
+}
+
+// Raised point at W
+spriteset(regolith_mine_point_w_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [378, 5, 64, 31, -32, 0]
+}
+spritelayout regolith_mine_point_w_sprite_layout {
+    ground {
+        sprite: regolith_mine_point_w_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, regolith_mine_point_w_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { regolith_mine_point_w_sprite_layout; }
+}
+
+// Stock pile.
+switch(FEAT_INDUSTRYTILES, PARENT, regolith_mine_stockpile_switch, (production_level >> 3) & 7) {
+    0: return stockpile_regolith_sprite_layout31;
+    1: return stockpile_regolith_sprite_layout32;
+    2: return stockpile_regolith_sprite_layout33;
+    3..4: return stockpile_regolith_sprite_layout34;
+    5..6: return stockpile_regolith_sprite_layout35;
+    default: return stockpile_regolith_sprite_layout36;
+}
+item(FEAT_INDUSTRYTILES, regolith_mine_stock_pile_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[GRVL, 8]];
+    }
+    graphics { regolith_mine_stockpile_switch; }
+}
+
+//Regolith mine buildings
+spriteset(regolith_mine_building_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [4, 140, 64, 64, -34, -34] [4, 72, 64, 64, -34, -34] [4, 4, 64, 64, -34, -34]
+}
+spritelayout regolith_mine_building_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 26; sprite: regolith_mine_building_sprites; } }
+item(FEAT_INDUSTRYTILES, regolith_mine_building_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { regolith_mine_building_sprite_layout; }
+}
+
+spriteset(regolith_mine_building_rotated_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [72, 140, 64, 64, -34, -34] [72, 72, 64, 64, -34, -34] [72, 4, 64, 64, -34, -34]
+}
+spritelayout regolith_mine_building_rotated_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 26; sprite: regolith_mine_building_rotated_sprites; } }
+item(FEAT_INDUSTRYTILES, regolith_mine_building_rotated_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { regolith_mine_building_rotated_sprite_layout; }
+}
+
+// SW - SE bend conveyors
+spriteset(regolith_mine_swse_bend_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [ 72, 412, 64, 64, -25, -38]
+}
+spritelayout regolith_mine_swse_bend_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset: 5; yoffset: 0; zoffset: 0;
+        xextent: 11; yextent: 12; zextent: 8;
+        sprite: regolith_mine_swse_bend_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, regolith_mine_swse_bend_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { regolith_mine_swse_bend_sprite_layout; }
+}
+
+// SW - NW bend conveyors
+spriteset(regolith_mine_swnw_bend_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [ 72, 276, 64, 64, -25, -38]
+}
+spritelayout regolith_mine_swnw_bend_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset: 5; yoffset: 0; zoffset: 0;
+        xextent: 11; yextent: 12; zextent: 8;
+        sprite: regolith_mine_swse_bend_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, regolith_mine_swnw_bend_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { regolith_mine_swnw_bend_sprite_layout; }
+}
+
+tilelayout regolith_mine_layout {
+    0, 0: regolith_mine_back_corner_tile;
+    1, 0: regolith_mine_nw_edge_tile;
+    2, 0: regolith_mine_nw_edge_tile;
+    3, 0: regolith_mine_left_corner_tile;
+    0, 1: regolith_mine_right_corner_tile;
+    1, 1: regolith_mine_point_e_tile;
+    2, 1: regolith_mine_floor_tile;
+    3, 1: regolith_mine_sw_edge_tile;
+    0, 2: regolith_mine_swse_bend_tile;
+    1, 2: regolith_mine_ne_edge_conveyor_tile;
+    2, 2: regolith_mine_point_s_tile;
+    3, 2: regolith_mine_front_corner_tile;
+    0, 3: regolith_mine_building_tile;
+    1, 3: regolith_mine_right_corner_tile;
+    2, 3: regolith_mine_front_corner_tile;
+    0, 4: regolith_mine_stock_pile_tile;
+}
+
+tilelayout regolith_mine_layout_1 {
+ 0, 0: regolith_mine_stock_pile_tile;
+    1, 0: regolith_mine_back_corner_tile;
+    2, 0: regolith_mine_nw_edge_tile;
+    3, 0: regolith_mine_left_corner_tile;
+    0, 1: regolith_mine_building_tile;
+ 1, 1: regolith_mine_ne_edge_tile;
+ 2, 1: regolith_mine_floor_tile;
+ 3, 1: regolith_mine_sw_edge_tile;
+ 0, 2: regolith_mine_swnw_bend_tile;
+ 1, 2: regolith_mine_ne_edge_conveyor_tile;
+    2, 2: regolith_mine_point_s_tile;
+    3, 2: regolith_mine_front_corner_tile;
+    1, 3: regolith_mine_ne_edge_tile;
+ 2, 3: regolith_mine_sw_edge_tile;
+    1, 4: regolith_mine_right_corner_tile;
+    2, 4: regolith_mine_front_corner_tile;
+}
+
+tilelayout regolith_mine_layout_2 {
+    1, 0: regolith_mine_back_corner_tile;
+    2, 0: regolith_mine_nw_edge_tile;
+ 3, 0: regolith_mine_nw_edge_tile;
+    4, 0: regolith_mine_left_corner_tile;
+    0, 1: regolith_mine_swse_bend_tile;
+ 1, 1: regolith_mine_ne_edge_conveyor_tile;
+ 2, 1: regolith_mine_floor_tile;
+ 3, 1: regolith_mine_point_s_tile;
+    4, 1: regolith_mine_front_corner_tile;
+ 0, 2: regolith_mine_building_tile;
+ 1, 2: regolith_mine_right_corner_tile;
+ 2, 2: regolith_mine_sw_edge_tile;
+ 3, 2: regolith_mine_front_corner_tile;
+ 0, 3: regolith_mine_stock_pile_tile;
+}
+
+item(FEAT_INDUSTRIES, regolith_mine_industry, 10) {
+    property {
+        substitute: 10;
+        name: string(STR_REGOLITH_MINE_NAME);
+        layouts: [regolith_mine_layout, regolith_mine_layout_1, regolith_mine_layout_2];
+        life_type: IND_LIFE_TYPE_EXTRACTIVE;
+        accept_cargo_types: [cargotype("ENSP")];
+        prod_cargo_types: [cargotype("GRVL")];
+        prod_multiplier: [20, 0];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: 0;
+        input_multiplier_1: [20, 0];
+        input_multiplier_2: [0, 0];
+        input_multiplier_3: [0, 0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_REGOLITH_MINE_STATION_NAME));
+    }
+}
+
+// vim: syn=cpp sw=4 et sts=4 nospell
+# 52 "ogfx-mars-industries.pnml" 2
+# 1 "src/regolithprocessing.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+# 1 "src/industry_templates.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# 20 "src/regolithprocessing.pnml" 2
+
+// Building with fan
+spriteset(regolith_processing_fan_sprites, "../graphics/Buildings/Industry_RegolithProcessing_8bpp.png") {
+    [4, 70, 64, 64, -33, -34] [4, 4, 64, 64, -33, -34]
+}
+spritelayout regolith_processing_fan_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 26; sprite: regolith_processing_fan_sprites; } }
+item(FEAT_INDUSTRYTILES, regolith_processing_fan_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[GRVL, 8]];
+    }
+    graphics { regolith_processing_fan_sprite_layout; }
+}
+
+// Building with small tanks
+spriteset(regolith_processing_small_tanks_sprites, "../graphics/Buildings/Industry_RegolithProcessing_8bpp.png") {
+    [72, 72, 64, 64, -33, -34] [72, 4, 64, 64, -33, -34]
+}
+spritelayout regolith_processing_small_tanks_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 26; sprite: regolith_processing_small_tanks_sprites; } }
+item(FEAT_INDUSTRYTILES, regolith_processing_small_tanks_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[GRVL, 8]];
+    }
+    graphics { regolith_processing_small_tanks_sprite_layout; }
+}
+
+// Power building
+spriteset(regolith_processing_power_sprites, "../graphics/Buildings/Industry_RegolithProcessing_8bpp.png") {
+    [140, 72, 64, 64, -33, -34] [140, 4, 64, 64, -33, -34]
+}
+spritelayout regolith_processing_power_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 34; sprite: regolith_processing_power_sprites; } }
+item(FEAT_INDUSTRYTILES, regolith_processing_power_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[GRVL, 8]];
+    }
+    graphics { regolith_processing_power_sprite_layout; }
+}
+
+// NE - SE bend conveyors
+spriteset(regolith_processing_nese_bend_sprites, "../graphics/Buildings/Industry_RegolithProcessing_8bpp.png") {
+    [276, 72, 64, 64, -33, -34] [276, 4, 64, 64, -33, -34]
+}
+spritelayout regolith_processing_nese_bend_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 24; sprite: regolith_processing_nese_bend_sprites; } }
+item(FEAT_INDUSTRYTILES, regolith_processing_nese_bend_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[GRVL, 8]];
+    }
+    graphics { regolith_processing_nese_bend_sprite_layout; }
+}
+
+// SE - SW bend conveyors
+spriteset(regolith_processing_sesw_bend_sprites, "../graphics/Buildings/Industry_RegolithProcessing_8bpp.png") {
+    [208, 72, 64, 64, -33, -34] [208, 4, 64, 64, -33, -34]
+}
+spritelayout regolith_processing_sesw_bend_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 24; sprite: regolith_processing_sesw_bend_sprites; } }
+item(FEAT_INDUSTRYTILES, regolith_processing_sesw_bend_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[GRVL, 8]];
+    }
+    graphics { regolith_processing_sesw_bend_sprite_layout; }
+}
+
+// Crossing conveyors
+spriteset(regolith_processing_crossing_sprites, "../graphics/Buildings/Industry_RegolithProcessing_8bpp.png") {
+    [344, 72, 64, 64, -33, -34] [344, 4, 64, 64, -33, -34]
+}
+spritelayout regolith_processing_crossing_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 24; sprite: regolith_processing_crossing_sprites; } }
+item(FEAT_INDUSTRYTILES, regolith_processing_crossing_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[GRVL, 8]];
+    }
+    graphics { regolith_processing_crossing_sprite_layout; }
+}
+
+// Storage tanks
+spriteset(regolith_processing_storage_sprites, "../graphics/Buildings/Industry_RegolithProcessing_8bpp.png") {
+    [412, 140, 64, 132, -33, -101] [412, 4, 64, 132, -33, -101]
+}
+spritelayout regolith_processing_storage_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 60; sprite: regolith_processing_storage_sprites; } }
+item(FEAT_INDUSTRYTILES, regolith_processing_storage_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[GRVL, 8]];
+    }
+    graphics { regolith_processing_storage_sprite_layout; }
+}
+
+// Left conveyor (almost the same as ore mine)
+spriteset(regolith_processing_left_conveyor_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [ 72, 208, 64, 64, -45, -38]
+}
+spritelayout regolith_processing_left_conveyor_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset: 0; yoffset: 5; zoffset: 0;
+        xextent: 12; yextent: 11; zextent: 8;
+        sprite: regolith_processing_left_conveyor_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, regolith_processing_left_conveyor_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[GRVL, 8]];
+    }
+    graphics { regolith_processing_left_conveyor_sprite_layout; }
+}
+
+// Right conveyor (almost the same as ore mine)
+spriteset(regolith_processing_right_conveyor_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [ 72, 276, 64, 64, -21, -38]
+}
+spritelayout regolith_processing_right_conveyor_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset: 5; yoffset: 0; zoffset: 0;
+        xextent: 11; yextent: 12; zextent: 8;
+        sprite: regolith_processing_right_conveyor_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, regolith_processing_right_conveyor_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[GRVL, 8]];
+    }
+    graphics { regolith_processing_right_conveyor_sprite_layout; }
+}
+
+// Back conveyor (almost the same as ore mine)
+spriteset(regolith_processing_back_conveyor_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [ 72, 344, 64, 64, -31, -33]
+}
+spritelayout regolith_processing_back_conveyor_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset: 0; yoffset: 0; zoffset: 0;
+        xextent: 12; yextent: 11; zextent: 8;
+        sprite: regolith_processing_back_conveyor_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, regolith_processing_back_conveyor_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[GRVL, 8]];
+    }
+    graphics { regolith_processing_back_conveyor_sprite_layout; }
+}
+
+// Stock piles.
+spritelayout regolith_processing_stock_pile_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+}
+item(FEAT_INDUSTRYTILES, regolith_processing_stock_pile_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[GRVL, 8]];
+    }
+    graphics { regolith_processing_stock_pile_sprite_layout; }
+}
+
+switch(FEAT_INDUSTRYTILES, PARENT, regolith_processing_stockpile_regolith_switch1, production_level & 7) {
+    0: return stockpile_regolith_sprite_layout11;
+    1: return stockpile_regolith_sprite_layout12;
+    2: return stockpile_regolith_sprite_layout13;
+    3..4: return stockpile_regolith_sprite_layout14;
+    5..6: return stockpile_regolith_sprite_layout15;
+    default: return stockpile_regolith_sprite_layout16;
+}
+item(FEAT_INDUSTRYTILES, regolith_processing_regolith_stock_pile1_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[GRVL, 8]];
+    }
+    graphics { regolith_processing_stockpile_regolith_switch1; }
+}
+
+switch(FEAT_INDUSTRYTILES, PARENT, regolith_processing_stockpile_regolith_switch2, (production_level >> 3) & 7) {
+    0: return stockpile_regolith_sprite_layout21;
+    1: return stockpile_regolith_sprite_layout22;
+    2: return stockpile_regolith_sprite_layout23;
+    3..4: return stockpile_regolith_sprite_layout24;
+    5..6: return stockpile_regolith_sprite_layout25;
+    default: return stockpile_regolith_sprite_layout26;
+}
+item(FEAT_INDUSTRYTILES, regolith_processing_regolith_stock_pile2_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[GRVL, 8]];
+    }
+    graphics { regolith_processing_stockpile_regolith_switch2; }
+}
+
+switch(FEAT_INDUSTRYTILES, PARENT, regolith_processing_stockpile_mixed_ores_switch1, (production_level >> 1) & 7) {
+    0: return stockpile_mixed_ores_sprite_layout41;
+    1: return stockpile_mixed_ores_sprite_layout42;
+    2: return stockpile_mixed_ores_sprite_layout43;
+    3..4: return stockpile_mixed_ores_sprite_layout44;
+    5..6: return stockpile_mixed_ores_sprite_layout45;
+    default: return stockpile_mixed_ores_sprite_layout46;
+}
+item(FEAT_INDUSTRYTILES, regolith_processing_mixed_ores_stock_pile1_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[GRVL, 8]];
+    }
+    graphics { regolith_processing_stockpile_mixed_ores_switch1; }
+}
+
+switch(FEAT_INDUSTRYTILES, PARENT, regolith_processing_stockpile_mixed_ores_switch2, (production_level >> 4) & 7) {
+    0: return stockpile_mixed_ores_sprite_layout21;
+    1: return stockpile_mixed_ores_sprite_layout22;
+    2: return stockpile_mixed_ores_sprite_layout23;
+    3..4: return stockpile_mixed_ores_sprite_layout24;
+    5..6: return stockpile_mixed_ores_sprite_layout25;
+    default: return stockpile_mixed_ores_sprite_layout26;
+}
+item(FEAT_INDUSTRYTILES, regolith_processing_mixed_ores_stock_pile2_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[GRVL, 8]];
+    }
+    graphics { regolith_processing_stockpile_mixed_ores_switch2; }
+}
+
+tilelayout regolith_processing_layout_1 {
+    1, 0: regolith_processing_regolith_stock_pile1_tile;
+    2, 0: regolith_processing_regolith_stock_pile2_tile;
+    0, 1: regolith_processing_power_tile;
+    1, 1: regolith_processing_crossing_tile;
+    2, 1: regolith_processing_small_tanks_tile;
+    3, 1: regolith_processing_left_conveyor_tile;
+    0, 2: regolith_processing_right_conveyor_tile;
+    1, 2: regolith_processing_fan_tile;
+    2, 2: regolith_processing_nese_bend_tile;
+    3, 2: regolith_processing_mixed_ores_stock_pile1_tile;
+    0, 3: regolith_processing_mixed_ores_stock_pile2_tile;
+    1, 3: regolith_processing_back_conveyor_tile;
+    2, 3: regolith_processing_storage_tile;
+}
+
+tilelayout regolith_processing_layout_2 {
+ 1, 0: regolith_processing_regolith_stock_pile2_tile;
+ 2, 0: regolith_processing_regolith_stock_pile1_tile;
+ 0, 1: regolith_processing_fan_tile;
+ 1, 1: regolith_processing_sesw_bend_tile;
+ 2, 1: regolith_processing_left_conveyor_tile;
+ 0, 2: regolith_processing_right_conveyor_tile;
+ 1, 2: regolith_processing_power_tile;
+ 2, 2: regolith_processing_small_tanks_tile;
+ 3, 2: regolith_processing_left_conveyor_tile;
+ 0, 3: regolith_processing_right_conveyor_tile;
+ 1, 3: regolith_processing_back_conveyor_tile;
+ 2, 3: regolith_processing_storage_tile;
+ 3, 3: regolith_processing_mixed_ores_stock_pile1_tile;
+ 3, 4: regolith_processing_mixed_ores_stock_pile2_tile;
+}
+
+tilelayout regolith_processing_layout_3 {
+ 0, 0: regolith_processing_regolith_stock_pile2_tile;
+ 1, 0: regolith_processing_regolith_stock_pile1_tile;
+ 2, 0: regolith_processing_storage_tile;
+ 1, 1: regolith_processing_fan_tile;
+ 2, 1: regolith_processing_nese_bend_tile;
+ 3, 1: regolith_processing_mixed_ores_stock_pile1_tile;
+ 0, 2: regolith_processing_power_tile;
+ 1, 2: regolith_processing_crossing_tile;
+ 2, 2: regolith_processing_small_tanks_tile;
+ 3, 1: regolith_processing_mixed_ores_stock_pile2_tile;
+ 1, 3: regolith_processing_small_tanks_tile;
+ 2, 3: regolith_processing_left_conveyor_tile;
+ 1, 4: regolith_processing_mixed_ores_stock_pile1_tile;
+ 2, 4: regolith_processing_back_conveyor_tile;
+}
+
+item(FEAT_INDUSTRIES, regolith_processing_industry, 11) {
+    property {
+        substitute: 11;
+        name: string(STR_REGOLITH_PROCESSING_NAME);
+        layouts: [regolith_processing_layout_1, regolith_processing_layout_2, regolith_processing_layout_3];
+        life_type: IND_LIFE_TYPE_PROCESSING;
+        accept_cargo_types: [cargotype("GRVL")];
+        prod_cargo_types: [cargotype("CHEM"), cargotype("ORES")];
+        prod_multiplier: [0, 0];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: 0;
+        input_multiplier_1: [0.2,0.4];
+        input_multiplier_2: [0,0];
+        input_multiplier_3: [0,0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_REGOLITH_PROCESSING_STATION_NAME));
+    }
+}
+
+// vim: syn=cpp sw=4 et sts=4 nospell
+# 53 "ogfx-mars-industries.pnml" 2
+# 1 "src/terraformingplant.pnml" 1
+// 	OpenGFX Mars Industries
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+# 1 "src/industry_templates.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# 20 "src/terraformingplant.pnml" 2
+
+
+
+// Green house.
+spriteset(terraforming_plant_green_house_sprites, "../graphics/Buildings/Industry_TerraformingPlant_8bpp.png") {
+    [140, 140, 64, 64, -33, -32] [140, 72, 64, 64, -33, -32] [140, 4, 64, 64, -33, -32]
+}
+spritelayout terraforming_plant_green_house_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 16; sprite: terraforming_plant_green_house_sprites; } }
+item(FEAT_INDUSTRYTILES, terraforming_plant_green_house_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ORGN, 8], [CHEM, 8]];
+    }
+    graphics { terraforming_plant_green_house_sprite_layout; }
+}
+
+
+// Buildings.
+spriteset(terraforming_plant_buildings_sprites, "../graphics/Buildings/Industry_TerraformingPlant_8bpp.png") {
+    [4, 140, 64, 64, -33, -32] [4, 72, 64, 64, -33, -32] [4, 4, 64, 64, -33, -32]
+}
+spritelayout terraforming_plant_buildings_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 20; sprite: terraforming_plant_buildings_sprites; } }
+item(FEAT_INDUSTRYTILES, terraforming_plant_buildings_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ORGN, 8], [CHEM, 8]];
+    }
+    graphics { terraforming_plant_buildings_sprite_layout; }
+}
+
+
+// Fans.
+spriteset(terraforming_plant_fans_sprites, "../graphics/Buildings/Industry_TerraformingPlant_8bpp.png") {
+    [72, 140, 64, 64, -33, -32] [72, 72, 64, 64, -33, -32] [72, 4, 64, 64, -33, -32]
+}
+spritelayout terraforming_plant_fans_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 32; sprite: terraforming_plant_fans_sprites; } }
+item(FEAT_INDUSTRYTILES, terraforming_plant_fans_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ORGN, 8], [CHEM, 8]];
+    }
+    graphics { terraforming_plant_fans_sprite_layout; }
+}
+
+tilelayout terraforming_layout_1 {
+    0, 0: terraforming_plant_fans_tile;
+    1, 0: terraforming_plant_buildings_tile;
+    1, 1: terraforming_plant_green_house_tile;
+    2, 0: terraforming_plant_green_house_tile;
+    2, 1: terraforming_plant_green_house_tile;
+}
+
+tilelayout terraforming_layout_2 {
+    0, 0: terraforming_plant_green_house_tile;
+    0, 1: terraforming_plant_green_house_tile;
+    1, 0: terraforming_plant_buildings_tile;
+    1, 1: terraforming_plant_green_house_tile;
+    2, 1: terraforming_plant_fans_tile;
+}
+
+tilelayout terraforming_layout_3 {
+    0, 1: terraforming_plant_fans_tile;
+    1, 2: terraforming_plant_buildings_tile;
+    1, 0: terraforming_plant_green_house_tile;
+    1, 1: terraforming_plant_green_house_tile;
+    2, 0: terraforming_plant_green_house_tile;
+    2, 1: terraforming_plant_green_house_tile;
+}
+
+tilelayout terraforming_layout_4 {
+    2, 2: terraforming_plant_fans_tile;
+    2, 1: terraforming_plant_buildings_tile;
+    0, 0: terraforming_plant_green_house_tile;
+    0, 1: terraforming_plant_green_house_tile;
+    1, 0: terraforming_plant_green_house_tile;
+    1, 1: terraforming_plant_green_house_tile;
+}
+
+tilelayout terraforming_layout_5 {
+    1, 2: terraforming_plant_fans_tile;
+    0, 0: terraforming_plant_green_house_tile;
+    0, 1: terraforming_plant_green_house_tile;
+    1, 0: terraforming_plant_green_house_tile;
+    1, 1: terraforming_plant_buildings_tile;
+}
+
+
+item(FEAT_INDUSTRIES, terraforming_industry, 12) {
+    property {
+        substitute: 12;
+        name: string(STR_TERRAFORMING_PLANT_NAME);
+        layouts: [terraforming_layout_1, terraforming_layout_2, terraforming_layout_3, terraforming_layout_4, terraforming_layout_5];
+        life_type: IND_LIFE_TYPE_BLACK_HOLE;
+        accept_cargo_types: [cargotype("ORGN"), cargotype("CHEM")];
+        prod_cargo_types: [];
+        prod_multiplier: [0, 0];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: 0;
+        input_multiplier_1: [0,0];
+        input_multiplier_2: [0,0];
+        input_multiplier_3: [0,0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_TERRAFORMING_PLANT_STATION_NAME));
+    }
+}
+
+// vim: syn=cpp sw=4 et sts=4 nospell
+# 54 "ogfx-mars-industries.pnml" 2
+# 1 "src/lifesupport.pnml" 1
+// 	OpenGFX Industries
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+# 1 "src/industry_templates.pnml" 1
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# 20 "src/lifesupport.pnml" 2
+
+spriteset(life_support_main_sprites, "../graphics/Buildings/Industry_LifeSupport_8bpp.png") {
+    [4, 268, 64, 128, -32, -98] [4, 136, 64, 128, -32, -98] [4, 4, 64, 128, -32, -98]
+}
+spritelayout life_support_main_sprite_layout { ground { sprite: GROUNDSPRITE_NORMAL; } building { xoffset: 0; yoffset: 0; zoffset: 0; xextent: 16; yextent: 16; zextent: 60; sprite: life_support_main_sprites; } }
+
+item(FEAT_INDUSTRYTILES, life_support_main_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[O2__, 8], [WATR, 8], [FOOD, 8]];
+    }
+    graphics { life_support_main_sprite_layout; }
+}
+
+tilelayout life_support_layout {
+    0, 0: life_support_main_tile;
+}
+
+item(FEAT_INDUSTRIES, life_support_industry, 13) {
+    property {
+        substitute: 13;
+        name: string(STR_LIFE_SUPPORT_NAME);
+        layouts: [life_support_layout];
+        life_type: IND_LIFE_TYPE_BLACK_HOLE;
+        accept_cargo_types: [cargotype("O2__"), cargotype("WATR"), cargotype("FOOD")];
+        prod_cargo_types: [];
+        prod_multiplier: [];
+        min_cargo_distr: 1;
+        prob_random: 30;
+        prob_in_game: 60;
+        spec_flags: bitmask(IND_FLAG_ONLY_IN_TOWNS);
+        input_multiplier_1: [];
+        input_multiplier_2: [];
+        input_multiplier_3: [];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_LIFE_SUPPORT_STATION_NAME));
+    }
+}
+# 55 "ogfx-mars-industries.pnml" 2
+
+// vim: sw=4 et sts=4 nospell

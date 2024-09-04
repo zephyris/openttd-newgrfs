@@ -1,0 +1,232 @@
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#include "industry_templates.pnml"
+
+// Tower
+spriteset(ore_mine_tower_sprites, "../graphics/Buildings/Industry_OreMine_8bpp.png") {
+    SPRITE3(4, 266, 136, 4, 64, 128, -33, -97)
+}
+SPRITE_LAYOUT(ore_mine_tower_sprite_layout, ore_mine_tower_sprites, 81)
+item(FEAT_INDUSTRYTILES, ore_mine_tower_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ore_mine_tower_sprite_layout; }
+}
+
+// Processing building
+spriteset(ore_mine_processing_sprites, "../graphics/Buildings/Industry_OreMine_8bpp.png") {
+    SPRITE3(140, 140, 72, 4, 64, 64, -33, -33)
+}
+SPRITE_LAYOUT(ore_mine_processing_sprite_layout, ore_mine_processing_sprites, 23)
+item(FEAT_INDUSTRYTILES, ore_mine_processing_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ore_mine_processing_sprite_layout; }
+}
+
+// Processing building rotated
+spriteset(ore_mine_processing_rotated_sprites, "../graphics/Buildings/Industry_OreMine_8bpp.png") {
+    SPRITE3(72, 140, 72, 4, 64, 64, -33, -33)
+}
+SPRITE_LAYOUT(ore_mine_processing_rotated_sprite_layout, ore_mine_processing_rotated_sprites, 23)
+item(FEAT_INDUSTRYTILES, ore_mine_processing_rotated_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ore_mine_processing_rotated_sprite_layout; }
+}
+
+// Left conveyor
+spriteset(ore_mine_left_conveyor_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [ 72, 208, 64, 64, -45, -37]
+}
+spritelayout ore_mine_left_conveyor_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset:  0; yoffset:  5; zoffset: 0;
+        xextent: 12; yextent: 11; zextent: 8;
+        sprite: ore_mine_left_conveyor_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, ore_mine_left_conveyor_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ore_mine_left_conveyor_sprite_layout; }
+}
+
+// Right conveyor
+spriteset(ore_mine_right_conveyor_sprites, "../graphics/Buildings/Industry_RegolithMine_8bpp.png") {
+    [ 72, 276, 64, 64, -21, -37]
+}
+spritelayout ore_mine_right_conveyor_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset:  5; yoffset:  0; zoffset: 0;
+        xextent: 11; yextent: 12; zextent: 8;
+        sprite: ore_mine_right_conveyor_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, ore_mine_right_conveyor_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { ore_mine_right_conveyor_sprite_layout; }
+}
+
+// Stock piles
+switch(FEAT_INDUSTRYTILES, PARENT, stockpile_mixed_ores_switch1, production_level & 7) {
+    0: return stockpile_mixed_ores_sprite_layout31;
+    1: return stockpile_mixed_ores_sprite_layout32;
+    2: return stockpile_mixed_ores_sprite_layout33;
+    3..4: return stockpile_mixed_ores_sprite_layout34;
+    5..6: return stockpile_mixed_ores_sprite_layout35;
+    default: return stockpile_mixed_ores_sprite_layout36;
+}
+item(FEAT_INDUSTRYTILES, ore_mine_stock_pile1_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { stockpile_mixed_ores_switch1; }
+}
+
+//switch(FEAT_INDUSTRYTILES, PARENT, stockpile_mixed_ores_switch2, [STORE_TEMP(max((production_level >> 2) & 7, 5), 0), 1]) {
+switch(FEAT_INDUSTRYTILES, PARENT, stockpile_mixed_ores_switch2, (production_level >> 2) & 7) {
+    0: return stockpile_mixed_ores_sprite_layout21;
+    1: return stockpile_mixed_ores_sprite_layout22;
+    2: return stockpile_mixed_ores_sprite_layout23;
+    3..4: return stockpile_mixed_ores_sprite_layout24;
+    5..6: return stockpile_mixed_ores_sprite_layout25;
+    default: return stockpile_mixed_ores_sprite_layout26;
+}
+item(FEAT_INDUSTRYTILES, ore_mine_stock_pile2_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { stockpile_mixed_ores_switch2; }
+}
+
+switch(FEAT_INDUSTRYTILES, PARENT, stockpile_mixed_ores_switch3, (production_level >> 4) & 7) {
+    0: return stockpile_mixed_ores_sprite_layout11;
+    1: return stockpile_mixed_ores_sprite_layout12;
+    2: return stockpile_mixed_ores_sprite_layout13;
+    3..4: return stockpile_mixed_ores_sprite_layout14;
+    5..6: return stockpile_mixed_ores_sprite_layout15;
+    default: return stockpile_mixed_ores_sprite_layout16;
+}
+item(FEAT_INDUSTRYTILES, ore_mine_stock_pile3_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ENSP, 8]];
+    }
+    graphics { stockpile_mixed_ores_switch3; }
+}
+
+tilelayout ore_mine_layout {
+    1, 0: ore_mine_tower_tile;
+    2, 0: ore_mine_left_conveyor_tile;
+    0, 1: ore_mine_tower_tile;
+    1, 1: ore_mine_processing_rotated_tile;
+    2, 1: ore_mine_stock_pile1_tile;
+    0, 2: ore_mine_right_conveyor_tile;
+    1, 2: ore_mine_stock_pile2_tile;
+    2, 2: ore_mine_stock_pile3_tile;
+}
+
+tilelayout ore_mine_layout_1 {
+    0, 0: ore_mine_tower_tile;
+    0, 1: ore_mine_tower_tile;
+    1, 0: ore_mine_processing_tile;
+    2, 0: ore_mine_stock_pile2_tile;
+    0, 1: ore_mine_right_conveyor_tile;
+    1, 1: ore_mine_stock_pile3_tile;
+}
+
+tilelayout ore_mine_layout_2 {
+    1, 0: ore_mine_tower_tile;
+    2, 0: ore_mine_left_conveyor_tile;
+    0, 1: ore_mine_tower_tile;
+    1, 2: ore_mine_processing_tile;
+    2, 1: ore_mine_stock_pile3_tile;
+    0, 2: ore_mine_right_conveyor_tile;
+    1, 1: ore_mine_stock_pile2_tile;
+    2, 2: ore_mine_stock_pile1_tile;
+}
+
+tilelayout ore_mine_layout_3 {
+    0, 0: ore_mine_tower_tile;
+    1, 0: ore_mine_stock_pile1_tile;
+    2, 0: ore_mine_tower_tile;
+    3, 0: ore_mine_right_conveyor_tile;
+    0, 1: ore_mine_processing_rotated_tile;
+    1, 1: ore_mine_stock_pile2_tile;
+    1, 2: ore_mine_stock_pile3_tile;
+}
+
+tilelayout ore_mine_layout_4 {
+    0, 0: ore_mine_tower_tile;
+    1, 0: ore_mine_left_conveyor_tile;
+    1, 1: ore_mine_right_conveyor_tile;
+    2, 1: ore_mine_processing_tile;
+    3, 1: ore_mine_stock_pile2_tile;
+    0, 1: ore_mine_stock_pile3_tile;
+    0, 2: ore_mine_tower_tile;
+    1, 2: ore_mine_right_conveyor_tile;
+    2, 2: ore_mine_stock_pile1_tile;
+}
+
+item(FEAT_INDUSTRIES, ore_mine_industry, ORE_MINE_ID) {
+    property {
+        substitute: ORE_MINE_ID;
+        name: string(STR_ORE_MINE_NAME);
+        layouts: [ore_mine_layout, ore_mine_layout_1, ore_mine_layout_2, ore_mine_layout_3, ore_mine_layout_4];
+        life_type: IND_LIFE_TYPE_EXTRACTIVE;
+        accept_cargo_types: [cargotype("ENSP")];
+        prod_cargo_types: [cargotype("ORES")];
+        prod_multiplier: [14, 0];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: 0;
+        input_multiplier_1: [20,0];
+        input_multiplier_2: [0,0];
+        input_multiplier_3: [0,0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_ORE_MINE_STATION_NAME));
+    }
+}
+
+// vim: syn=cpp sw=4 et sts=4 nospell

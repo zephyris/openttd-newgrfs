@@ -1,0 +1,40 @@
+//  OpenGFX Mars Houses
+//
+//  This program is free software; you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation; either version 2 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License along
+//  with this program; if not, write to the Free Software Foundation, Inc.,
+//  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#ifndef OPENGFX_MARS_HOUSES_TEMPLATES_PNML
+#define OPENGFX_MARS_HOUSES_TEMPLATES_PNML
+
+
+
+/* Templates. */
+template template_building(n) {
+  // left top width height x y
+  [4 + 64 * n + 4 * n, 140, 64, 64, -32, -32]
+  [4 + 64 * n + 4 * n,  72, 64, 64, -32, -32]
+  [4 + 64 * n + 4 * n,   4, 64, 64, -32, -32]
+}
+
+template template_tall_building(n) {
+  // left top width height x y
+  [4 + 72 * n + 4 * n, 400, 72, 128, -36, -96]
+  [4 + 72 * n + 4 * n, 268, 72, 128, -36, -96]
+  [4 + 72 * n + 4 * n, 136, 72, 128, -36, -96]
+  [4 + 72 * n + 4 * n,   4, 72, 128, -36, -96]
+}
+
+
+
+#endif // OPENGFX_MARS_HOUSES_TEMPLATES_PNML

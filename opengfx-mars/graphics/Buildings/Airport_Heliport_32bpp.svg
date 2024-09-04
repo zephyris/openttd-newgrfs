@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="276"
+   height="140"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="Airport_Heliport_32bpp.svg"
+   inkscape:export-filename="Airport_Heliport_32bpp.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8284272"
+     inkscape:cx="132.30848"
+     inkscape:cy="49.308942"
+     inkscape:document-units="px"
+     inkscape:current-layer="svg2"
+     showgrid="true"
+     inkscape:snap-bbox="true"
+     inkscape:window-width="1680"
+     inkscape:window-height="1028"
+     inkscape:window-x="1672"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2985"
+       empspacing="2"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1" />
+  <rect
+     style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+     id="rect3064"
+     width="276"
+     height="140"
+     x="0"
+     y="3.8146973e-006" />
+  <rect
+     style="fill:#0000ff;fill-opacity:1;stroke:none"
+     id="rect2987-1-1-7"
+     width="64"
+     height="128"
+     x="4"
+     y="4" />
+  <image
+     y="101"
+     x="4"
+     id="image3100"
+     xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/GeneralTiles/ConcreteGroundTile_32bpp.png"
+     height="31"
+     width="64" />
+  <image
+     y="66"
+     x="8"
+     id="image3348-2"
+     xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Depots/BuildingBlockv2_Depot2_32x32.png"
+     height="64"
+     width="64" />
+  <image
+     width="64"
+     height="64"
+     id="image3250-1-6-97-0-1-4-7-1-4"
+     x="8"
+     y="54"
+     xlink:href="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\BlockShapes/BuildingBlockv2_32x32.png"
+     sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\BlockShapes/BuildingBlockv2_32x32.png" />
+  <rect
+     style="fill:#0000ff;fill-opacity:1;stroke:none"
+     id="rect2987-1-1"
+     width="64"
+     height="64"
+     x="4"
+     y="4" />
+  <image
+     width="64"
+     height="31"
+     id="image3117-2"
+     x="4"
+     y="101"
+     xlink:href="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\BlockShapes/AirLockTunnel_0.png"
+     sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\BlockShapes/AirLockTunnel_0.png" />
+  <image
+     width="4"
+     height="4"
+     id="image3406-2-7-3-5-9-3"
+     x="15"
+     y="99"
+     xlink:href="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/window_left.png"
+     sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/window_left.png" />
+  <image
+     width="4"
+     height="4"
+     id="image3406-2-7-3-5-1-5-9"
+     x="31"
+     y="107"
+     xlink:href="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/window_left.png"
+     sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/window_left.png" />
+  <image
+     width="4"
+     height="4"
+     id="image3395-1-3-3-7-2-1"
+     x="45"
+     y="107"
+     xlink:href="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/window_right.png"
+     sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/window_right.png" />
+  <image
+     width="4"
+     height="4"
+     id="image3395-1-3-3-7-8-0-8"
+     x="61"
+     y="99"
+     xlink:href="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/window_right.png"
+     sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/window_right.png" />
+  <image
+     y="42"
+     x="8"
+     id="image3348"
+     xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Depots/BuildingBlockv2_Depot2_32x32.png"
+     height="64"
+     width="64" />
+  <image
+     width="64"
+     height="31"
+     id="image3117-2-8"
+     x="4"
+     y="77"
+     xlink:href="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\BlockShapes/AirLockTunnel_0.png"
+     sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\BlockShapes/AirLockTunnel_0.png" />
+  <image
+     width="64"
+     height="31"
+     id="image3106-6-5-7"
+     x="4"
+     y="53"
+     xlink:href="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\BlockShapes/AirLockTunnel2_0.png"
+     sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\BlockShapes/AirLockTunnel2_0.png" />
+  <image
+     width="64"
+     height="31"
+     id="image3117-2-8-9"
+     x="4"
+     y="53"
+     xlink:href="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\BlockShapes/AirLockTunnel_0.png"
+     sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\BlockShapes/AirLockTunnel_0.png" />
+  <image
+     width="64"
+     height="64"
+     id="image3250-1-6-97-0-1-4-7-1"
+     x="8"
+     y="30.000002"
+     xlink:href="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\BlockShapes/BuildingBlockv2_32x32.png"
+     sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\BlockShapes/BuildingBlockv2_32x32.png" />
+  <image
+     y="58"
+     x="15"
+     id="image3072"
+     xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/pillar_solid.png"
+     height="13"
+     width="6" />
+  <image
+     width="4"
+     height="4"
+     id="image3406-2-7-3-5-9-3-9-7-6-7"
+     x="15"
+     y="75"
+     xlink:href="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/window_left.png"
+     sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/window_left.png" />
+  <image
+     width="4"
+     height="4"
+     id="image3406-2-7-3-5-1-5-9-5-4-0-4"
+     x="31"
+     y="83"
+     xlink:href="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/window_left.png"
+     sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/window_left.png" />
+  <image
+     width="4"
+     height="4"
+     id="image3395-1-3-3-7-2-1-3-2-2-0"
+     x="45"
+     y="83"
+     xlink:href="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/window_right.png"
+     sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/window_right.png" />
+  <image
+     width="4"
+     height="4"
+     id="image3395-1-3-3-7-8-0-8-2-7-4-9"
+     x="61"
+     y="75"
+     xlink:href="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/window_right.png"
+     sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/window_right.png" />
+  <image
+     y="53"
+     x="4"
+     id="image3388"
+     xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/BlockShapes/AirLockTunnel2_16.png"
+     height="31"
+     width="64" />
+  <image
+     y="53"
+     x="4"
+     id="image3377"
+     xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/BlockShapes/AirLockTunnel_16.png"
+     height="31"
+     width="64" />
+  <image
+     y="42"
+     x="8"
+     id="image3089"
+     xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Stations/Helipad_Part.png"
+     height="31"
+     width="64" />
+  <image
+     y="107"
+     x="6"
+     id="image3021"
+     xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/cc_placard_right.png"
+     height="14"
+     width="12" />
+  <image
+     y="77"
+     x="4"
+     id="image3315-8"
+     xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/BlockShapes/AirLockTunnel2_4.png"
+     height="31"
+     width="64" />
+  <image
+     y="68"
+     x="37"
+     id="image3072-1"
+     xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/pillar_solid.png"
+     height="13"
+     width="6" />
+  <image
+     y="58"
+     x="59"
+     id="image3072-1-7"
+     xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/pillar_solid.png"
+     height="13"
+     width="6" />
+  <image
+     y="16"
+     x="8"
+     id="image3337"
+     xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Depots/BuildingBlockv2_32x32.png"
+     height="64"
+     width="64" />
+  <image
+     y="101"
+     x="4"
+     id="image3315-8-8"
+     xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/BlockShapes/AirLockTunnel2_4.png"
+     height="31"
+     width="64" />
+  <image
+     y="40"
+     x="8"
+     id="image3028"
+     xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Stations/Helipad_Part.png"
+     height="31"
+     width="64" />
+</svg>

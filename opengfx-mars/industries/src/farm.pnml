@@ -1,0 +1,146 @@
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+spriteset(farm_small_building_sprites, "../graphics/Buildings/Industry_Farm_8bpp.png") {
+    [  4, 140, 64, 64, -32, -33]
+    [  4,  72, 64, 64, -32, -33]
+    [  4,   4, 64, 64, -32, -33]
+}
+spritelayout farm_small_building_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset:  0; yoffset:  0; zoffset:  0;
+        xextent: 16; yextent: 16; zextent: 20;
+        sprite: farm_small_building_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, farm_small_building_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[O2__, 8], [FERT, 8]];
+    }
+    graphics { farm_small_building_sprite_layout; }
+}
+
+spriteset(farm_silo_sprites, "../graphics/Buildings/Industry_Farm_8bpp.png") {
+    [ 72, 140, 64, 64, -32, -33]
+    [ 72,  72, 64, 64, -32, -33]
+    [ 72,   4, 64, 64, -32, -33]
+}
+spritelayout farm_silo_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset:  0; yoffset:  0; zoffset:  0;
+        xextent: 16; yextent: 16; zextent: 37;
+        sprite: farm_silo_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, farm_silo_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[O2__, 8], [FERT, 8]];
+    }
+    graphics { farm_silo_sprite_layout; }
+}
+
+spriteset(farm_big_building_sprites, "../graphics/Buildings/Industry_Farm_8bpp.png") {
+    [140, 140, 64, 64, -32, -33]
+    [140,  72, 64, 64, -32, -33]
+    [140,   4, 64, 64, -32, -33]
+}
+spritelayout farm_big_building_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset:  0; yoffset:  0; zoffset:  0;
+        xextent: 16; yextent: 16; zextent: 20;
+        sprite: farm_big_building_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, farm_big_building_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[O2__, 8], [FERT, 8]];
+    }
+    graphics { farm_big_building_sprite_layout; }
+}
+
+tilelayout farm_layout {
+    0, 0: farm_big_building_tile;
+    1, 0: farm_big_building_tile;
+    2, 0: farm_small_building_tile;
+    0, 1: farm_big_building_tile;
+    1, 1: farm_silo_tile;
+}
+
+tilelayout farm_layout_1 {
+    0, 0: farm_big_building_tile;
+    1, 0: farm_big_building_tile;
+    2, 0: farm_big_building_tile;
+    1, 1: farm_small_building_tile;
+    1, 2: farm_silo_tile;
+}
+
+tilelayout farm_layout_2 {
+    0, 0: farm_big_building_tile;
+    1, 0: farm_big_building_tile;
+    1, 1: farm_big_building_tile;
+    2, 0: farm_small_building_tile;
+    0, 1: farm_silo_tile;
+}
+
+tilelayout farm_layout_3 {
+    1, 0: farm_big_building_tile;
+    1, 1: farm_big_building_tile;
+    1, 2: farm_big_building_tile;
+    2, 1: farm_small_building_tile;
+    0, 1: farm_silo_tile;
+}
+
+tilelayout farm_layout_4 {
+    0, 0: farm_big_building_tile;
+    0, 1: farm_big_building_tile;
+    0, 2: farm_big_building_tile;
+    2, 2: farm_small_building_tile;
+    2, 1: farm_silo_tile;
+}
+
+item(FEAT_INDUSTRIES, farm_industry, FARM_ID) {
+    property {
+        substitute: FARM_ID;
+        name: string(STR_FARM_NAME);
+        layouts: [farm_layout, farm_layout_1, farm_layout_2, farm_layout_3, farm_layout_4];
+        life_type: IND_LIFE_TYPE_ORGANIC;
+        accept_cargo_types: [cargotype("O2__"), cargotype("FERT")];
+        prod_cargo_types: [cargotype("FOOD"), cargotype("ORGN")];
+        prod_multiplier: [4, 4];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: bitmask(IND_FLAG_PLANT_FIELDS_WHEN_BUILT, IND_FLAG_PLANT_FIELDS_PERIODICALLY);
+        input_multiplier_1: [4,4];
+        input_multiplier_2: [4,4];
+        input_multiplier_3: [0,0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_FARM_STATION_NAME));
+    }
+}
+
+// vim: sw=4 et sts=4 nospell

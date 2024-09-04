@@ -1,0 +1,15 @@
+##grflangid 0x3a
+##plural 11
+##gender m f
+
+STR_GRF_NAME :OpenGFX 화성 기후 건물
+STR_GRF_DESC : {ORANGE}화성인 거주지{}{BLACK}그래픽 {SILVER}Zephyris{}{BLACK}프로그램 중: {SILVER}Elyon
+STR_GRF_URL :http://dev.openttdcoop.org/projects/opengfx-mars-houses
+
+STR_NAME_HABITAT :거주지
+STR_NAME_LARGE_HABITAT :거대한 거주지
+STR_NAME_TALL_HABITAT :많은 거주지
+STR_NAME_TOWER_HABITAT :타워형 거주지
+STR_NAME_LUXURY_TOWER_HABITAT :초호화 타워형 거주지
+STR_NAME_PARK :공원
+STR_NAME_TALL_PARK :많은 공원

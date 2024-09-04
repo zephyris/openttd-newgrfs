@@ -1,0 +1,6 @@
+VERSION        :v5443 (d4301dc12729)
+VERSION_STRING :v5443 (d4301dc12729)
+TITLE          :OpenGFX Mars Townnames v5443 (d4301dc12729)
+FILENAME       :ogfx-mars-townnames.grf
+REPO_HASH      :d4301dc12729
+NEWGRF_VERSION :5443

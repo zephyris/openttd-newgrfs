@@ -1,0 +1,16 @@
+##grflangid 0x13
+##plural 13
+##gender m f
+##case dat gen nom voc
+
+STR_GRF_NAME :Taighean Cuirg OpenGFX {VERSION}
+STR_GRF_DESC :{ORANGE}Taighean Cuirg{}Àiteachan-còmhnaidh Corgach{}{BLACK}Grafaigeachd: {SILVER}Zephyris{}{BLACK}Prògramachadh: {SILVER}Elyon
+STR_GRF_URL :http://dev.openttdcoop.org/projects/opengfx-mars-houses
+
+STR_NAME_HABITAT :Àite-còmhnaidh
+STR_NAME_LARGE_HABITAT :Àite-còmhnaidh mòr
+STR_NAME_TALL_HABITAT :Àite-còmhnaidh àrd
+STR_NAME_TOWER_HABITAT :Tùr-còmhnaidh
+STR_NAME_LUXURY_TOWER_HABITAT :Tùr-còmhnaidh sòghach
+STR_NAME_PARK :Pàirc
+STR_NAME_TALL_PARK :Pàirc àrd

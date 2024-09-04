@@ -1,0 +1,123 @@
+##grflangid 0x01
+##plural 0
+
+STR_GRF_NAME                          :OpenGFX Mars Industries {VERSION}
+STR_GRF_DESCRIPTION                   :{ORANGE}Martian Industries{}Industries for a Martian environment{}{BLACK}Graphics: {SILVER}Zephyris{}{BLACK}Programming: {SILVER}Alberth{BLACK}, {SILVER}planetmaker{BLACK}, and {SILVER}Zephyris
+STR_GRF_URL                           :http://dev.openttdcoop.org/projects/opengfx-mars-industries
+
+STR_AIR_MINE_NAME                     :Air Mine
+STR_AQUIFER_PUMP_NAME                 :Aquifer Pump
+STR_CHEMICAL_FACTORY_NAME             :Chemical Factory
+STR_ELECTROLYSIS_PLANT_NAME           :Electrolysis Plant
+STR_FARM_NAME                         :Farm
+STR_FUSION_PLANT_NAME                 :Fusion Power Plant
+STR_GOODS_FACTORY_NAME                :Goods Factory
+STR_ICE_MINE_NAME                     :Ice Mine
+STR_METAL_WORKS_NAME                  :Metal Works
+STR_ORE_MINE_NAME                     :Ore Mine
+STR_REGOLITH_MINE_NAME                :Regolith Mine
+STR_REGOLITH_PROCESSING_NAME          :Regolith Processing
+STR_TERRAFORMING_PLANT_NAME           :Terraforming Plant
+STR_LIFE_SUPPORT_NAME                 :Life Support Centre
+
+#Cargo type name
+STR_COLONISTS_TYPE_NAME               :Colonists
+STR_NITROGEN_TYPE_NAME                :Nitrogen
+STR_OXYGEN_TYPE_NAME                  :Oxygen
+STR_HYDROGEN_TYPE_NAME                :Hydrogen
+STR_CHEMICALS_TYPE_NAME               :Chemicals
+STR_MIXED_ORED_TYPE_NAME              :Mixed Ores
+STR_ORGANICS_TYPE_NAME                :Organics
+STR_FERTILISER_TYPE_NAME              :Fertiliser
+STR_PLASTICS_TYPE_NAME                :Plastics
+STR_COMPONENTS_TYPE_NAME              :Components
+STR_FOOD_TYPE_NAME                    :Food
+STR_GOOD_TYPE_NAME                    :Goods
+STR_MACHINERY_TYPE_NAME               :Machinery
+STR_WATER_TYPE_NAME                   :Water
+STR_REGOLITH_TYPE_NAME                :Regolith
+
+# Cargo unit name
+STR_COLONISTS_UNIT_NAME               :Colonist
+STR_NITROGEN_UNIT_NAME                :Nitrogen
+STR_OXYGEN_UNIT_NAME                  :Oxygen
+STR_HYDROGEN_UNIT_NAME                :Hydrogen
+STR_CHEMICALS_UNIT_NAME               :Chemicals
+STR_MIXED_ORED_UNIT_NAME              :Mixed Ore
+STR_ORGANICS_UNIT_NAME                :Organics
+STR_FERTILISER_UNIT_NAME              :Fertiliser
+STR_PLASTICS_UNIT_NAME                :Plastics
+STR_COMPONENTS_UNIT_NAME              :Component
+STR_FOOD_UNIT_NAME                    :Food
+STR_GOOD_UNIT_NAME                    :Good
+STR_MACHINERY_UNIT_NAME               :Machine
+STR_WATER_UNIT_NAME                   :Water
+STR_REGOLITH_UNIT_NAME                :Regolith
+
+# Short cargo name ('units')
+STR_COLONISTS_UNITS_CARGO             :colonist
+STR_NITROGEN_UNITS_CARGO              :liter
+STR_OXYGEN_UNITS_CARGO                :liter
+STR_HYDROGEN_UNITS_CARGO              :liter
+STR_CHEMICALS_UNITS_CARGO             :liter
+STR_MIXED_ORED_UNITS_CARGO            :tonne
+STR_ORGANICS_UNITS_CARGO              :tonne
+STR_FERTILISER_UNITS_CARGO            :liter
+STR_PLASTICS_UNITS_CARGO              :liter
+STR_COMPONENTS_UNITS_CARGO            :item
+STR_FOOD_UNITS_CARGO                  :tonne
+STR_GOOD_UNITS_CARGO                  :item
+STR_MACHINERY_UNITS_CARGO             :item
+STR_WATER_UNITS_CARGO                 :liter
+STR_REGOLITH_UNITS_CARGO              :tonne
+
+# Long cargo name
+STR_COLONISTS_LONG_CARGO              :{COMMA} colonist{P "" s}
+STR_NITROGEN_LONG_CARGO               :{COMMA} liter{P "" s} of nitrogen
+STR_OXYGEN_LONG_CARGO                 :{COMMA} liter{P "" s} of oxygen
+STR_HYDROGEN_LONG_CARGO               :{COMMA} liter{P "" s} of hydrogen
+STR_CHEMICALS_LONG_CARGO              :{COMMA} liter{P "" s} of chemicals
+STR_MIXED_ORED_LONG_CARGO             :{COMMA} tonne{P "" s} of mixed ores
+STR_ORGANICS_LONG_CARGO               :{COMMA} tonne{P "" s} of organics
+STR_FERTILISER_LONG_CARGO             :{COMMA} liter{P "" s} of fertiliser
+STR_PLASTICS_LONG_CARGO               :{COMMA} liter{P "" s} of plastic
+STR_COMPONENTS_LONG_CARGO             :{COMMA} component{P "" s}
+STR_FOOD_LONG_CARGO                   :{COMMA} tonne{P "" s} of food
+STR_GOOD_LONG_CARGO                   :{COMMA} item{P "" s} of goods
+STR_MACHINERY_LONG_CARGO              :{COMMA} machine{P "" s}
+STR_WATER_LONG_CARGO                  :{COMMA} liter{P "" s} of water
+STR_REGOLITH_LONG_CARGO               :{COMMA} tonne{P "" s} of regolith
+
+# Two letter cargo abbreviation
+STR_COLONISTS_ABBREVIATION            :{TINYFONT}PS
+STR_NITROGEN_ABBREVIATION             :{TINYFONT}N2
+STR_OXYGEN_ABBREVIATION               :{TINYFONT}O2
+STR_HYDROGEN_ABBREVIATION             :{TINYFONT}H2
+STR_CHEMICALS_ABBREVIATION            :{TINYFONT}CH
+STR_MIXED_ORED_ABBREVIATION           :{TINYFONT}MO
+STR_ORGANICS_ABBREVIATION             :{TINYFONT}OG
+STR_FERTILISER_ABBREVIATION           :{TINYFONT}FT
+STR_PLASTICS_ABBREVIATION             :{TINYFONT}PL
+STR_COMPONENTS_ABBREVIATION           :{TINYFONT}CP
+STR_FOOD_ABBREVIATION                 :{TINYFONT}FD
+STR_GOOD_ABBREVIATION                 :{TINYFONT}GD
+STR_MACHINERY_ABBREVIATION            :{TINYFONT}MC
+STR_WATER_ABBREVIATION                :{TINYFONT}WT
+STR_REGOLITH_ABBREVIATION             :{TINYFONT}RL
+
+STR_TOWN                              :{STRING}
+STR_STATION                           :{STRING} {STRING}
+STR_AIR_MINE_STATION_NAME             :Air Mine
+STR_AQUIFER_PUMP_STATION_NAME         :Pumping Station
+STR_FARM_STATION_NAME                 :Farm
+STR_ELECTROLYSIS_PLANT_STATION_NAME   :Water Plant
+STR_CHEMICAL_FACTORY_STATION_NAME     :Chemicals
+STR_FUSION_PLANT_STATION_NAME         :Power Station
+STR_GOODS_FACTORY_STATION_NAME        :Goods Factory
+STR_ICE_MINE_STATION_NAME             :Ice Mine
+STR_METAL_WORKS_STATION_NAME          :Metalworks
+STR_ORE_MINE_STATION_NAME             :Mine
+STR_TERRAFORMING_PLANT_STATION_NAME   :Terraforming
+STR_REGOLITH_PROCESSING_STATION_NAME  :Processing
+STR_REGOLITH_MINE_STATION_NAME        :Regolith Mine
+STR_LIFE_SUPPORT_STATION_NAME         :Life Support

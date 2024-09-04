@@ -1,0 +1,6 @@
+VERSION        :v
+VERSION_STRING :v
+TITLE          :OpenGFX Mars Landscape v
+FILENAME       :ogfx-mars-landscape.grf
+REPO_HASH      :
+NEWGRF_VERSION :

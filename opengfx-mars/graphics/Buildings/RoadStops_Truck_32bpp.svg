@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="412"
+   height="208"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="RoadStops_Truck_32bpp.svg"
+   inkscape:export-filename="RoadStops_32bpp.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8284272"
+     inkscape:cx="254.27557"
+     inkscape:cy="108.71138"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:snap-bbox="true"
+     inkscape:window-width="1680"
+     inkscape:window-height="1028"
+     inkscape:window-x="1672"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2985"
+       empspacing="2"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-844.36218)">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       id="rect3064"
+       width="412"
+       height="208"
+       x="0"
+       y="844.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1"
+       width="64"
+       height="64"
+       x="4"
+       y="916.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-2"
+       width="64"
+       height="64"
+       x="72"
+       y="916.36218" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Depots/BuildingBlockv2_28x32.png"
+       xlink:href="Depots/BuildingBlockv2_28x32.png"
+       width="64"
+       height="64"
+       id="image3031-7"
+       x="140"
+       y="910.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-3-1"
+       width="64"
+       height="64"
+       x="140"
+       y="916.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-3-5"
+       width="64"
+       height="64"
+       x="208"
+       y="916.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-3-5-2"
+       width="64"
+       height="64"
+       x="208"
+       y="984.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-1"
+       width="64"
+       height="64"
+       x="4"
+       y="984.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-3-1-1"
+       width="64"
+       height="64"
+       x="72"
+       y="984.36218" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_placard_right.png"
+       xlink:href="Parts/cc_placard_right.png"
+       width="12"
+       height="14"
+       id="image3185"
+       x="84"
+       y="961.36218" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_placard_left.png"
+       xlink:href="Parts/cc_placard_left.png"
+       width="12"
+       height="14"
+       id="image3196"
+       x="44"
+       y="961.36218" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_placard_left.png"
+       xlink:href="Parts/cc_placard_left.png"
+       width="12"
+       height="14"
+       id="image3196-4"
+       x="18"
+       y="1017.3622" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_placard_right.png"
+       xlink:href="Parts/cc_placard_right.png"
+       width="12"
+       height="14"
+       id="image3185-8"
+       x="110"
+       y="1017.3622" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-3-1-8"
+       width="64"
+       height="64"
+       x="140"
+       y="984.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-3-5-24"
+       width="64"
+       height="64"
+       x="276"
+       y="916.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-3-5-2-5"
+       width="64"
+       height="64"
+       x="276"
+       y="984.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-3-5-5"
+       width="64"
+       height="64"
+       x="344"
+       y="916.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-3-5-2-1"
+       width="64"
+       height="64"
+       x="344"
+       y="984.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-3-1-7"
+       width="64"
+       height="64"
+       x="140"
+       y="848.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-3-5-1"
+       width="64"
+       height="64"
+       x="208"
+       y="848.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-3-5-24-1"
+       width="64"
+       height="64"
+       x="276"
+       y="848.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-3-5-5-5"
+       width="64"
+       height="64"
+       x="344"
+       y="848.36218" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_placard_right.png"
+       xlink:href="Parts/cc_placard_right.png"
+       width="12"
+       height="14"
+       id="image3185-8-7"
+       x="382"
+       y="949.36218" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_placard_right.png"
+       xlink:href="Parts/cc_placard_right.png"
+       width="12"
+       height="14"
+       id="image3185-8-1"
+       x="178"
+       y="949.36218" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_placard_left.png"
+       xlink:href="Parts/cc_placard_left.png"
+       width="12"
+       height="14"
+       id="image3196-4-2"
+       x="154"
+       y="1017.3622" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_placard_left.png"
+       xlink:href="Parts/cc_placard_left.png"
+       width="12"
+       height="14"
+       id="image3196-4-22"
+       x="222"
+       y="949.36218" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_placard_left.png"
+       xlink:href="Parts/cc_placard_left.png"
+       width="12"
+       height="14"
+       id="image3196-8"
+       x="316"
+       y="1029.3622" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_placard_left.png"
+       xlink:href="Parts/cc_placard_left.png"
+       width="12"
+       height="14"
+       id="image3196-8-7"
+       x="384"
+       y="1029.3622" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_placard_right.png"
+       xlink:href="Parts/cc_placard_right.png"
+       width="12"
+       height="14"
+       id="image3185-1"
+       x="220"
+       y="1029.3622" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_placard_right.png"
+       xlink:href="Parts/cc_placard_right.png"
+       width="12"
+       height="14"
+       id="image3185-9"
+       x="288"
+       y="961.36218" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_sign_left.png"
+       xlink:href="Parts/cc_sign_left.png"
+       width="6"
+       height="14"
+       id="image3648"
+       x="174"
+       y="896.36218" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_sign_right.png"
+       xlink:href="Parts/cc_sign_right.png"
+       width="6"
+       height="14"
+       id="image3659"
+       x="212"
+       y="886.36218" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_placard_left.png"
+       xlink:href="Parts/cc_placard_left.png"
+       width="12"
+       height="14"
+       id="image3196-4-22-5"
+       x="182"
+       y="893.36218" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_placard_right.png"
+       xlink:href="Parts/cc_placard_right.png"
+       width="12"
+       height="14"
+       id="image3185-8-1-4"
+       x="220"
+       y="894.36218" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_sign_left.png"
+       xlink:href="Parts/cc_sign_left.png"
+       width="6"
+       height="14"
+       id="image3648-3"
+       x="298"
+       y="871.36218" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_placard_left.png"
+       xlink:href="Parts/cc_placard_left.png"
+       width="12"
+       height="14"
+       id="image3196-4-22-5-1"
+       x="284"
+       y="879.36218" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_sign_right.png"
+       xlink:href="Parts/cc_sign_right.png"
+       width="6"
+       height="14"
+       id="image3659-2"
+       x="398"
+       y="880.36218" />
+    <image
+       sodipodi:absref="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_placard_right.png"
+       xlink:href="Parts/cc_placard_right.png"
+       width="12"
+       height="14"
+       id="image3185-8-1-4-3"
+       x="383"
+       y="877.36218" />
+    <image
+       y="941.36218"
+       x="58"
+       id="image3053"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/arial_tall.png"
+       height="28"
+       width="3" />
+    <image
+       y="965.36218"
+       x="38"
+       id="image3064-1"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/pillar_solid.png"
+       height="13"
+       width="6" />
+    <image
+       y="962.36218"
+       x="35"
+       id="image3075-7"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/top_vent.png"
+       height="8"
+       width="12" />
+    <image
+       y="1012.3622"
+       x="30"
+       id="image3064-1-4"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/pillar_solid.png"
+       height="13"
+       width="6" />
+    <image
+       y="1009.3622"
+       x="27"
+       id="image3075-7-0"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/top_vent.png"
+       height="8"
+       width="12" />
+    <image
+       y="1005.3622"
+       x="13"
+       id="image3053-9"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/arial_tall.png"
+       height="28"
+       width="3" />
+    <image
+       y="956.36218"
+       x="78"
+       id="image3064-1-48"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/pillar_solid.png"
+       height="13"
+       width="6" />
+    <image
+       y="953.36218"
+       x="75"
+       id="image3075-7-8"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/top_vent.png"
+       height="8"
+       width="12" />
+    <image
+       y="949.36218"
+       x="97"
+       id="image3053-9-2"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/arial_tall.png"
+       height="28"
+       width="3" />
+    <image
+       y="1021.3622"
+       x="122"
+       id="image3064-1-48-4"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/pillar_solid.png"
+       height="13"
+       width="6" />
+    <image
+       y="1018.3622"
+       x="119"
+       id="image3075-7-8-5"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/top_vent.png"
+       height="8"
+       width="12" />
+    <image
+       y="996.36218"
+       x="105"
+       id="image3053-9-2-5"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/arial_tall.png"
+       height="28"
+       width="3" />
+    <image
+       y="953.36218"
+       x="190"
+       id="image3064-1-48-4-1"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/pillar_solid.png"
+       height="13"
+       width="6" />
+    <image
+       y="950.36218"
+       x="187"
+       id="image3075-7-8-5-5"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/top_vent.png"
+       height="8"
+       width="12" />
+    <image
+       y="928.36218"
+       x="173"
+       id="image3053-9-2-5-2"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/arial_tall.png"
+       height="28"
+       width="3" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-1-7"
+       width="64"
+       height="64"
+       x="140"
+       y="984.36218" />
+    <image
+       width="12"
+       height="14"
+       id="image3196-4-6"
+       x="154"
+       y="1017.3622"
+       xlink:href="M:\OpenTTDCoop\OpenGFX Mars\graphics\Buildings\Parts/cc_placard_left.png" />
+    <image
+       y="944.36218"
+       x="234"
+       id="image3064-1-4-6"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/pillar_solid.png"
+       height="13"
+       width="6" />
+    <image
+       y="941.36218"
+       x="231"
+       id="image3075-7-0-8"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/top_vent.png"
+       height="8"
+       width="12" />
+    <image
+       y="937.36218"
+       x="217"
+       id="image3053-9-5"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/arial_tall.png"
+       height="28"
+       width="3" />
+    <image
+       y="956.36218"
+       x="282"
+       id="image3064-1-48-9"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/pillar_solid.png"
+       height="13"
+       width="6" />
+    <image
+       y="953.36218"
+       x="279"
+       id="image3075-7-8-54"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/top_vent.png"
+       height="8"
+       width="12" />
+    <image
+       y="949.36218"
+       x="301"
+       id="image3053-9-2-3"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/arial_tall.png"
+       height="28"
+       width="3" />
+    <image
+       y="1009.3622"
+       x="398"
+       id="image3053-3"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/arial_tall.png"
+       height="28"
+       width="3" />
+    <image
+       y="1033.3622"
+       x="378"
+       id="image3064-1-41"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/pillar_solid.png"
+       height="13"
+       width="6" />
+    <image
+       y="1030.3622"
+       x="375"
+       id="image3075-7-1"
+       xlink:href="file:///M:/OpenTTDCoop/OpenGFX%20Mars/graphics/Buildings/Parts/top_vent.png"
+       height="8"
+       width="12" />
+  </g>
+</svg>

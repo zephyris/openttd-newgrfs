@@ -1,0 +1,16 @@
+##grflangid 0x07
+##plural 6
+##gender m f n p
+##case abl acc dat f gen m n nom p pre
+
+STR_GRF_NAME :OpenGFX Дома Марса
+STR_GRF_DESC :{ORANGE}Марсианские жилища{}{BLACK}Графика: {SILVER}Zephyris{}{BLACK}Кодирование: {SILVER}Elyon
+STR_GRF_URL :http://dev.openttdcoop.org/projects/opengfx-mars-houses
+
+STR_NAME_HABITAT :Жилище
+STR_NAME_LARGE_HABITAT :Большое жилище
+STR_NAME_TALL_HABITAT :Высокое жилище
+STR_NAME_TOWER_HABITAT :Башня
+STR_NAME_LUXURY_TOWER_HABITAT :VIP-Башня
+STR_NAME_PARK :Парк
+STR_NAME_TALL_PARK :Высокий парк

@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="512"
+   height="512"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="Industry_AirMine_32bpp.svg"
+   inkscape:export-filename="TownBuildings_Habitats_32bpp.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="136.8061"
+     inkscape:cy="364.62306"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:snap-bbox="true"
+     inkscape:window-width="1680"
+     inkscape:window-height="988"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2985"
+       empspacing="2"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-540.36218)">
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-1-2-1"
+       width="64"
+       height="128"
+       x="4"
+       y="806.36218" />
+    <image
+       y="860.36218"
+       x="-16"
+       id="image4214-4-7"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/BlockShapes/BuildingBlockv2_16x32.png"
+       height="64"
+       width="64" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-7-4"
+       width="64"
+       height="64"
+       x="140"
+       y="544.36218" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#rect2987"
+       id="use3986"
+       transform="translate(0,204)"
+       width="512"
+       height="512" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#image3845"
+       id="use3994"
+       transform="translate(64,144)"
+       width="512"
+       height="512" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#rect2987"
+       id="use3972"
+       transform="translate(0,136)"
+       width="512"
+       height="512" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#image3856"
+       id="use3984"
+       transform="translate(64,138)"
+       width="512"
+       height="512" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#rect2987"
+       id="use3968"
+       transform="translate(0,67.999997)"
+       width="512"
+       height="512" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#image3823"
+       id="use3982"
+       transform="translate(64,101)"
+       width="512"
+       height="512" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987"
+       width="64"
+       height="64"
+       x="-80"
+       y="532.36218" />
+    <path
+       id="path3775-7-4"
+       style="fill:#000000;fill-opacity:0.21052629;stroke:none"
+       d="m -46,596.36218 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,0 0,-1 0,0 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -4,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,0 0,1 0,0 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 z"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" />
+    <image
+       sodipodi:absref="C:\Users\Richard\SkyDrive\RandomDesigns\OpenTTD\OpenGFX Mars\Buildings\GeneralTiles/BaseGroundTile_32bpp.png"
+       xlink:href="GeneralTiles/BaseGroundTile_32bpp.png"
+       y="532.36218"
+       x="-144"
+       id="image3823"
+       height="31"
+       width="64" />
+    <image
+       sodipodi:absref="C:\Users\Richard\SkyDrive\RandomDesigns\OpenTTD\OpenGFX Mars\Buildings\GeneralTiles/ConcreteGroundTile_32bpp.png"
+       xlink:href="GeneralTiles/ConcreteGroundTile_32bpp.png"
+       y="594.36218"
+       x="-144"
+       id="image3834"
+       height="31"
+       width="64" />
+    <image
+       sodipodi:absref="C:\Users\Richard\SkyDrive\RandomDesigns\OpenTTD\OpenGFX Mars\Buildings\GeneralTiles/DesertGroundTile_32bpp.png"
+       xlink:href="GeneralTiles/DesertGroundTile_32bpp.png"
+       y="625.36218"
+       x="-144"
+       id="image3845"
+       height="31"
+       width="64" />
+    <image
+       sodipodi:absref="C:\Users\Richard\SkyDrive\RandomDesigns\OpenTTD\OpenGFX Mars\Buildings\GeneralTiles/SnowGroundTile_32bpp.png"
+       xlink:href="GeneralTiles/SnowGroundTile_32bpp.png"
+       y="563.36218"
+       x="-144"
+       id="image3856"
+       height="31"
+       width="64" />
+    <image
+       sodipodi:absref="C:\Users\Richard\SkyDrive\RandomDesigns\OpenTTD\OpenGFX Mars\Buildings\GeneralTiles/BaseGroundTile_32bpp.png"
+       xlink:href="GeneralTiles/BaseGroundTile_32bpp.png"
+       y="633.36218"
+       x="-80"
+       id="image3823-9"
+       height="31"
+       width="64" />
+    <path
+       id="path3775-7-4-4-8"
+       style="opacity:0.45;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       d="m -46,595.36218 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,0 0,-1 0,0 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -4,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,0 0,1 0,0 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 z m 0,1 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,-1 2,0 0,0 0,-1 0,0 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -2,0 0,-1 -4,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,1 -2,0 0,0 0,1 0,0 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 2,0 0,1 z"
+       inkscape:connector-curvature="0" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path3775-7-4-4-8"
+       id="use3976"
+       transform="translate(0,68)"
+       width="512"
+       height="512" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path3775-7-4-4-8"
+       id="use3980"
+       transform="translate(0,136)"
+       width="512"
+       height="512" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path3775-7-4-4-8"
+       id="use3990"
+       transform="translate(0,204)"
+       width="512"
+       height="512" />
+    <image
+       sodipodi:absref="C:\Users\Richard\SkyDrive\RandomDesigns\OpenTTD\OpenGFX Mars\Buildings\GeneralTiles/GrassGroundTile_32bpp.png"
+       xlink:href="GeneralTiles/GrassGroundTile_32bpp.png"
+       y="656.36218"
+       x="-144"
+       id="image4004"
+       height="31"
+       width="64" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-7"
+       width="64"
+       height="64"
+       x="72"
+       y="544.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-7-4-5"
+       width="64"
+       height="64"
+       x="208"
+       y="544.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-7-1"
+       width="64"
+       height="64"
+       x="72"
+       y="612.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-7-4-3"
+       width="64"
+       height="64"
+       x="140"
+       y="612.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-7-4-5-9"
+       width="64"
+       height="64"
+       x="208"
+       y="612.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-7-1-3"
+       width="64"
+       height="64"
+       x="72"
+       y="680.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-7-4-3-4"
+       width="64"
+       height="64"
+       x="140"
+       y="680.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-7-4-5-9-0"
+       width="64"
+       height="64"
+       x="208"
+       y="680.36218" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-1"
+       width="64"
+       height="128"
+       x="4"
+       y="544.36218" />
+    <image
+       y="638.36218"
+       x="46"
+       id="image3180-0-4"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Frame1_Support.png"
+       height="16"
+       width="4" />
+    <image
+       y="618.36218"
+       x="40"
+       id="image3125-8"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Pipe_Large_VertCorner3.png"
+       height="22"
+       width="10" />
+    <image
+       y="603.36218"
+       x="38"
+       id="image3243"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Pipe_Large_VertCorner6.png"
+       height="22"
+       width="12" />
+    <image
+       y="598.36218"
+       x="-16"
+       id="image4214"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/BlockShapes/BuildingBlockv2_16x32.png"
+       height="64"
+       width="64" />
+    <image
+       y="574.36218"
+       x="27"
+       id="image3103"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/FractionationColumn1.png"
+       height="86"
+       width="21" />
+    <image
+       y="652.36218"
+       x="42"
+       id="image3180"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Frame1_Support.png"
+       height="16"
+       width="4" />
+    <image
+       y="610.36218"
+       x="24"
+       id="image3114"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Pipe_Large_VertCorner2.png"
+       height="22"
+       width="10" />
+    <image
+       y="646.36218"
+       x="30"
+       id="image3180-0"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Frame1_Support.png"
+       height="16"
+       width="4" />
+    <image
+       y="626.36218"
+       x="24"
+       id="image3125"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Pipe_Large_VertCorner3.png"
+       height="22"
+       width="10" />
+    <image
+       y="644.36218"
+       x="58"
+       id="image3180-9"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Frame1_Support.png"
+       height="16"
+       width="4" />
+    <image
+       y="636.36218"
+       x="48"
+       id="image3158-8"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Pipe_Large_Diagonal.png"
+       height="12"
+       width="16" />
+    <image
+       y="644.36218"
+       x="32"
+       id="image3158"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Pipe_Large_Diagonal.png"
+       height="12"
+       width="16" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-1-2"
+       width="64"
+       height="128"
+       x="4"
+       y="676.36218" />
+    <image
+       y="770.36218"
+       x="46"
+       id="image3180-0-4-2"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Frame1_Support.png"
+       height="16"
+       width="4" />
+    <image
+       y="750.36218"
+       x="40"
+       id="image3125-8-4"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Pipe_Large_VertCorner3.png"
+       height="22"
+       width="10" />
+    <image
+       y="730.36218"
+       x="-16"
+       id="image4214-4"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/BlockShapes/BuildingBlockv2_16x32.png"
+       height="64"
+       width="64" />
+    <image
+       y="735.36218"
+       x="38"
+       id="image3243-5"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Pipe_Large_VertCorner6.png"
+       height="22"
+       width="12" />
+    <image
+       y="767.36218"
+       x="-8"
+       id="image4225-6"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/BlockShapes/AirLockTunnel2_0.png"
+       height="31"
+       width="64" />
+    <image
+       y="725.36218"
+       x="30"
+       id="image3305"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/LargeTank3A.png"
+       height="67"
+       width="12" />
+    <image
+       y="784.36218"
+       x="42"
+       id="image3180-1"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Frame1_Support.png"
+       height="16"
+       width="4" />
+    <image
+       y="778.36218"
+       x="30"
+       id="image3180-0-1"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Frame1_Support.png"
+       height="16"
+       width="4" />
+    <image
+       y="776.36218"
+       x="58"
+       id="image3180-9-5"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Frame1_Support.png"
+       height="16"
+       width="4" />
+    <image
+       y="768.36218"
+       x="48"
+       id="image3158-8-7"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Pipe_Large_Diagonal.png"
+       height="12"
+       width="16" />
+    <image
+       y="776.36218"
+       x="32"
+       id="image3158-6"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Pipe_Large_Diagonal.png"
+       height="12"
+       width="16" />
+    <image
+       y="914.36218"
+       x="42"
+       id="image3180-1-2"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Frame1_Support.png"
+       height="16"
+       width="4" />
+    <image
+       y="908.36218"
+       x="30"
+       id="image3180-0-1-2"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Frame1_Support.png"
+       height="16"
+       width="4" />
+    <image
+       y="906.36218"
+       x="58"
+       id="image3180-9-5-1"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Frame1_Support.png"
+       height="16"
+       width="4" />
+    <image
+       y="900.36218"
+       x="46"
+       id="image3180-0-4-2-6"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Frame1_Support.png"
+       height="16"
+       width="4" />
+    <image
+       y="906.36218"
+       x="32"
+       id="image3158-6-5"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Pipe_Large_Diagonal.png"
+       height="12"
+       width="16" />
+    <image
+       y="554.36218"
+       x="84"
+       id="image3379"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/RoundTank_Large1.png"
+       height="41"
+       width="33" />
+    <image
+       y="576.36218"
+       x="119"
+       id="image3401"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/RoundTank_Small1.png"
+       height="19"
+       width="15" />
+    <image
+       y="582.36218"
+       x="108"
+       id="image3412-6"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/RoundTank_Small2.png"
+       height="19"
+       width="15" />
+    <image
+       y="588.36218"
+       x="95"
+       id="image3412"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/RoundTank_Small2.png"
+       height="19"
+       width="15" />
+    <image
+       y="580.36218"
+       x="76"
+       id="image3441"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Tank1_RoundTop.png"
+       height="14"
+       width="9" />
+    <image
+       y="584.36218"
+       x="84"
+       id="image3441-1"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Tank1_RoundTop.png"
+       height="14"
+       width="9" />
+    <image
+       y="622.36218"
+       x="84"
+       id="image3379-7"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/RoundTank_Large1.png"
+       height="41"
+       width="33" />
+    <image
+       y="644.36218"
+       x="119"
+       id="image3401-9"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/RoundTank_Small1.png"
+       height="19"
+       width="15" />
+    <image
+       y="650.36218"
+       x="108"
+       id="image3412-6-5"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/RoundTank_Small2.png"
+       height="19"
+       width="15" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-7-7"
+       width="64"
+       height="64"
+       x="72"
+       y="680.36218" />
+    <image
+       y="712.36218"
+       x="119"
+       id="image3401-7"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/RoundTank_Small1.png"
+       height="19"
+       width="15" />
+    <image
+       y="718.36218"
+       x="108"
+       id="image3412-6-7"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/RoundTank_Small2.png"
+       height="19"
+       width="15" />
+    <image
+       y="566.36218"
+       x="161"
+       id="image3659-2-8"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/RoundTank_Small1.png"
+       height="19"
+       width="15" />
+    <image
+       y="572.36218"
+       x="173"
+       id="image3659-2"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/RoundTank_Small1.png"
+       height="19"
+       width="15" />
+    <image
+       y="560.36218"
+       x="141"
+       id="image3598"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/RoundTank_Large2.png"
+       height="41"
+       width="33" />
+    <image
+       y="586.36218"
+       x="169"
+       id="image3609-6"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Tank1_RoundTop.png"
+       height="14"
+       width="9" />
+    <image
+       y="590.36218"
+       x="161"
+       id="image3609"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Tank1_RoundTop.png"
+       height="14"
+       width="9" />
+    <image
+       y="589.36218"
+       x="176"
+       id="image3609-8-5"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Tank1_RoundTop.png"
+       height="14"
+       width="9" />
+    <image
+       y="593.36218"
+       x="168"
+       id="image3609-8"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Tank1_RoundTop.png"
+       height="14"
+       width="9" />
+    <image
+       y="578.36218"
+       x="185"
+       id="image3659"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/RoundTank_Small1.png"
+       height="19"
+       width="15" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-7-4-6"
+       width="64"
+       height="64"
+       x="140"
+       y="612.36218" />
+    <image
+       y="634.36218"
+       x="161"
+       id="image3659-2-8-2"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/RoundTank_Small1.png"
+       height="19"
+       width="15" />
+    <image
+       y="640.36218"
+       x="173"
+       id="image3659-2-4"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/RoundTank_Small1.png"
+       height="19"
+       width="15" />
+    <image
+       y="654.36218"
+       x="169"
+       id="image3609-6-6"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Tank1_RoundTop.png"
+       height="14"
+       width="9" />
+    <image
+       y="657.36218"
+       x="176"
+       id="image3609-8-5-0"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Tank1_RoundTop.png"
+       height="14"
+       width="9" />
+    <image
+       y="646.36218"
+       x="185"
+       id="image3659-0"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/RoundTank_Small1.png"
+       height="19"
+       width="15" />
+    <rect
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       id="rect2987-1-7-4-6-0"
+       width="64"
+       height="64"
+       x="140"
+       y="680.36218" />
+    <image
+       y="708.36218"
+       x="173"
+       id="image3659-2-4-3"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/RoundTank_Small1.png"
+       height="19"
+       width="15" />
+    <image
+       y="725.36218"
+       x="176"
+       id="image3609-8-5-0-4"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Tank1_RoundTop.png"
+       height="14"
+       width="9" />
+    <image
+       y="553.36218"
+       x="226"
+       id="image3907-5"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Frame1_Diagonal.png"
+       height="32"
+       width="16" />
+    <image
+       y="559.36218"
+       x="214"
+       id="image3907"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Frame1_Diagonal.png"
+       height="32"
+       width="16" />
+    <image
+       y="563.36218"
+       x="234"
+       id="image3158-8-8-9-9"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Pipe_Large_Diagonal.png"
+       height="12"
+       width="16" />
+    <image
+       y="571.36218"
+       x="218"
+       id="image3158-82-1-8"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Pipe_Large_Diagonal.png"
+       height="12"
+       width="16" />
+    <image
+       y="564.36218"
+       x="239"
+       id="image3975-4-0"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/AirMiner.png"
+       height="28"
+       width="23" />
+    <image
+       y="573.36218"
+       x="220"
+       id="image3975-7"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/AirMiner.png"
+       height="28"
+       width="23" />
+    <image
+       y="582.36218"
+       x="238"
+       id="image4057"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Pipe2_VertCorner2.png"
+       height="21"
+       width="5" />
+    <image
+       y="573.36218"
+       x="257"
+       id="image4057-1"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Pipe2_VertCorner2.png"
+       height="21"
+       width="5" />
+    <image
+       y="621.36218"
+       x="226"
+       id="image3907-5-2"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Frame1_Diagonal.png"
+       height="32"
+       width="16" />
+    <image
+       y="627.36218"
+       x="214"
+       id="image3907-0"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Frame1_Diagonal.png"
+       height="32"
+       width="16" />
+    <image
+       y="631.36218"
+       x="234"
+       id="image3158-8-8-9-9-9"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Pipe_Large_Diagonal.png"
+       height="12"
+       width="16" />
+    <image
+       y="632.36218"
+       x="239"
+       id="image3975-4-0-3"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/AirMiner.png"
+       height="28"
+       width="23" />
+    <image
+       y="689.36218"
+       x="226"
+       id="image3907-5-6"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Frame1_Diagonal.png"
+       height="32"
+       width="16" />
+    <image
+       y="695.36218"
+       x="214"
+       id="image3907-57"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/IndustryShapes/Frame1_Diagonal.png"
+       height="32"
+       width="16" />
+    <image
+       y="635.36218"
+       x="-8"
+       id="image4225"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/BlockShapes/AirLockTunnel2_0.png"
+       height="31"
+       width="64" />
+    <image
+       y="618.36218"
+       x="8"
+       id="image4236"
+       xlink:href="file:///C:/Users/Richard/SkyDrive/RandomDesigns/OpenTTD/OpenGFX%20Mars/Buildings/Parts/arial_tall.png"
+       height="28"
+       width="3" />
+  </g>
+</svg>

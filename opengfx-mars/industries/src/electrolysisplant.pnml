@@ -1,0 +1,177 @@
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+spriteset(electrolysis_power_sprites, "../graphics/Buildings/Industry_HydrolysisPlant_8bpp.png") {
+    [  4,   4, 64, 64, -32, -33]
+}
+spritelayout electrolysis_power_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset:  0; yoffset:  0; zoffset:  0;
+        xextent: 16; yextent: 16; zextent: 26;
+        sprite: electrolysis_power_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, electrolysis_power_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[WATR, 8]];
+    }
+    graphics { electrolysis_power_sprite_layout; }
+}
+
+spriteset(electrolysis_storage_sprites, "../graphics/Buildings/Industry_HydrolysisPlant_8bpp.png") {
+    [ 72, 140, 64, 64, -32, -33]
+    [ 72,  72, 64, 64, -32, -33]
+    [ 72,   4, 64, 64, -32, -33]
+}
+spritelayout electrolysis_storage_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset:  0; yoffset:  0; zoffset:  0;
+        xextent: 16; yextent: 16; zextent: 32;
+        sprite: electrolysis_storage_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, electrolysis_storage_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[WATR, 8]];
+    }
+    graphics { electrolysis_storage_sprite_layout; }
+}
+
+spriteset(electrolysis_plant_sprites, "../graphics/Buildings/Industry_HydrolysisPlant_8bpp.png") {
+    [138, 140, 64, 64, -32, -33]
+    [138,  72, 64, 64, -32, -33]
+    [138,   4, 64, 64, -32, -33]
+}
+spritelayout electrolysis_plant_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset:  0; yoffset:  0; zoffset:  0;
+        xextent: 16; yextent: 16; zextent: 41;
+        sprite: electrolysis_plant_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, electrolysis_plant_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[WATR, 8]];
+    }
+    graphics { electrolysis_plant_sprite_layout; }
+}
+
+spriteset(electrolysis_building_sprites, "../graphics/Buildings/Industry_HydrolysisPlant_8bpp.png") {
+    [206, 140, 64, 64, -32, -33]
+    [206,  72, 64, 64, -32, -33]
+    [206,   4, 64, 64, -32, -33]
+}
+spritelayout electrolysis_building_sprite_layout {
+    ground { sprite: GROUNDSPRITE_NORMAL; }
+    building {
+        xoffset:  0; yoffset:  6; zoffset:  0;
+        xextent: 16; yextent: 10; zextent: 12;
+        sprite: electrolysis_building_sprites;
+    }
+}
+item(FEAT_INDUSTRYTILES, electrolysis_building_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[WATR, 8]];
+    }
+    graphics { electrolysis_building_sprite_layout; }
+}
+
+tilelayout electrolysis_layout {
+    0, 2: electrolysis_plant_tile;
+    1, 2: electrolysis_plant_tile;
+    2, 2: electrolysis_plant_tile;
+    2, 0: electrolysis_building_tile;
+    1, 1: electrolysis_storage_tile;
+    2, 1: electrolysis_power_tile;
+    1, 3: electrolysis_storage_tile;
+}
+
+tilelayout electrolysis_layout_1 {
+    0, 1: electrolysis_plant_tile;
+    1, 1: electrolysis_plant_tile;
+    2, 1: electrolysis_plant_tile;
+    1, 0: electrolysis_building_tile;
+    1, 2: electrolysis_storage_tile;
+    1, 2: electrolysis_power_tile;
+    2, 2: electrolysis_storage_tile;
+}
+
+tilelayout electrolysis_layout_2 {
+    1, 1: electrolysis_plant_tile;
+    1, 2: electrolysis_plant_tile;
+    1, 3: electrolysis_plant_tile;
+    0, 1: electrolysis_building_tile;
+    0, 2: electrolysis_storage_tile;
+    1, 0: electrolysis_power_tile;
+    0, 3: electrolysis_storage_tile;
+}
+
+tilelayout electrolysis_layout_3 {
+    2, 0: electrolysis_plant_tile;
+    2, 1: electrolysis_plant_tile;
+    2, 2: electrolysis_plant_tile;
+    1, 0: electrolysis_building_tile;
+    1, 1: electrolysis_storage_tile;
+    1, 3: electrolysis_power_tile;
+    1, 2: electrolysis_storage_tile;
+}
+
+tilelayout electrolysis_layout_4 {
+    0, 0: electrolysis_plant_tile;
+    1, 0: electrolysis_plant_tile;
+    0, 1: electrolysis_plant_tile;
+    1, 1: electrolysis_plant_tile;
+    0, 2: electrolysis_building_tile;
+    2, 1: electrolysis_storage_tile;
+    3, 1: electrolysis_power_tile;
+    2, 2: electrolysis_storage_tile;
+}
+
+item(FEAT_INDUSTRIES, electrolysis_industry, ELECTROLYSIS_ID) {
+    property {
+        substitute: ELECTROLYSIS_ID;
+        name: string(STR_ELECTROLYSIS_PLANT_NAME);
+        layouts: [electrolysis_layout, electrolysis_layout_1, electrolysis_layout_2, electrolysis_layout_3, electrolysis_layout_4];
+        life_type: IND_LIFE_TYPE_PROCESSING;
+        accept_cargo_types: [cargotype("WATR")];
+        prod_cargo_types: [cargotype("O2__"), cargotype("H2__")];
+        prod_multiplier: [0, 0];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: 0;
+        input_multiplier_1: [1,2];
+        input_multiplier_2: [0,0];
+        input_multiplier_3: [0,0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_ELECTROLYSIS_PLANT_STATION_NAME));
+    }
+}
+
+// vim: sw=4 et sts=4 nospell

@@ -1,0 +1,56 @@
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#include "src/header.pnml"
+
+#include "src/cargos.pnml"
+
+#define AIRMINE_ID              0
+#define AQUIFER_PUMP_ID         1
+#define FARM_ID                 2
+#define ELECTROLYSIS_ID         3
+#define CHEMICAL_FACTORY_ID     4
+#define GOODS_FACTORY_ID        5
+#define FUSION_PLANT_ID         6
+#define ICE_MINE_ID             7
+#define METAL_WORKS_ID          8
+#define ORE_MINE_ID             9
+#define REGOLITH_MINE_ID       10
+#define REGOLITH_PROCESSING_ID 11
+#define TERRAFORMING_PLANT_ID  12
+#define LIFE_SUPPORT_ID        13
+
+disable_item(FEAT_INDUSTRIES, 0,36);
+
+#include "src/stockpiles.pnml"
+#include "src/airmine.pnml"
+#include "src/aquiferpump.pnml"
+#include "src/chemicalfactory.pnml"
+#include "src/electrolysisplant.pnml"
+#include "src/farm.pnml"
+#include "src/fusionpowerplant.pnml"
+#include "src/goodsfactory.pnml"
+#include "src/icemine.pnml"
+#include "src/metalworks.pnml"
+#include "src/oremine.pnml"
+#include "src/regolithmine.pnml"
+#include "src/regolithprocessing.pnml"
+#include "src/terraformingplant.pnml"
+#include "src/lifesupport.pnml"
+
+// vim: sw=4 et sts=4 nospell

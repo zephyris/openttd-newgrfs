@@ -1,0 +1,136 @@
+// 	OpenGFX Mars Landscape and Trees
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#include "industry_templates.pnml"
+
+// Back
+spriteset(goods_factory_back_sprites, "../graphics/Buildings/Industry_GoodsFactory_8bpp.png") {
+    SPRITE3(4, 140, 72, 4, 64, 64, -31, -34)
+}
+SPRITE_LAYOUT(goods_factory_back_sprite_layout, goods_factory_back_sprites, 23)
+item(FEAT_INDUSTRYTILES, goods_factory_back_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[PLAS, 8], [BDMT, 8]];
+    }
+    graphics { goods_factory_back_sprite_layout; }
+}
+
+// Low middle
+spriteset(goods_factory_low_middle_sprites, "../graphics/Buildings/Industry_GoodsFactory_8bpp.png") {
+    SPRITE3(72, 140, 72, 4, 64, 64, -31, -34)
+}
+SPRITE_LAYOUT(goods_factory_low_middle_sprite_layout, goods_factory_low_middle_sprites, 36)
+item(FEAT_INDUSTRYTILES, goods_factory_low_middle_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[PLAS, 8], [BDMT, 8]];
+    }
+    graphics { goods_factory_low_middle_sprite_layout; }
+}
+
+// Middle
+spriteset(goods_factory_middle_sprites, "../graphics/Buildings/Industry_GoodsFactory_8bpp.png") {
+    SPRITE3(140, 140, 72, 4, 64, 64, -31, -34)
+}
+SPRITE_LAYOUT(goods_factory_middle_sprite_layout, goods_factory_middle_sprites, 36)
+item(FEAT_INDUSTRYTILES, goods_factory_middle_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[PLAS, 8], [BDMT, 8]];
+    }
+    graphics { goods_factory_middle_sprite_layout; }
+}
+
+
+// Front
+spriteset(goods_factory_front_sprites, "../graphics/Buildings/Industry_GoodsFactory_8bpp.png") {
+    SPRITE3(208, 140, 72, 4, 64, 64, -31, -34)
+}
+SPRITE_LAYOUT(goods_factory_front_sprite_layout, goods_factory_front_sprites, 23)
+item(FEAT_INDUSTRYTILES, goods_factory_front_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[PLAS, 8], [BDMT, 8]];
+    }
+    graphics { goods_factory_front_sprite_layout; }
+}
+
+tilelayout goods_factory_layout {
+    0, 0: goods_factory_back_tile;
+    0, 1: goods_factory_middle_tile;
+    0, 2: goods_factory_front_tile;
+}
+
+tilelayout goods_factory_layout_1 {
+    0, 0: goods_factory_back_tile;
+    0, 1: goods_factory_middle_tile;
+    0, 2: goods_factory_front_tile;
+    1, 1: goods_factory_back_tile;
+    1, 2: goods_factory_front_tile;
+}
+
+tilelayout goods_factory_layout_2 {
+    0, 0: goods_factory_back_tile;
+    0, 1: goods_factory_front_tile;
+    2, 0: goods_factory_back_tile;
+    2, 1: goods_factory_front_tile;
+}
+
+tilelayout goods_factory_layout_3 {
+    0, 0: goods_factory_back_tile;
+    0, 1: goods_factory_front_tile;
+    1, 1: goods_factory_back_tile;
+    1, 2: goods_factory_low_middle_tile;
+    1, 3: goods_factory_front_tile;
+}
+
+tilelayout goods_factory_layout_4 {
+    1, 0: goods_factory_back_tile;
+    1, 1: goods_factory_low_middle_tile;
+    1, 2: goods_factory_front_tile;
+    0, 2: goods_factory_back_tile;
+    0, 3: goods_factory_front_tile;
+}
+
+item(FEAT_INDUSTRIES, goods_factory_industry, GOODS_FACTORY_ID) {
+    property {
+        substitute: GOODS_FACTORY_ID;
+        name: string(STR_GOODS_FACTORY_NAME);
+        layouts: [goods_factory_layout, goods_factory_layout_1, goods_factory_layout_2, goods_factory_layout_3, goods_factory_layout_4];
+        life_type: IND_LIFE_TYPE_PROCESSING;
+        accept_cargo_types: [cargotype("PLAS"), cargotype("BDMT")];
+        prod_cargo_types: [cargotype("GOOD"), cargotype("ENSP")];
+        prod_multiplier: [0, 0];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: 0;
+        input_multiplier_1: [2,1];
+        input_multiplier_2: [1,2];
+        input_multiplier_3: [0,0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_GOODS_FACTORY_STATION_NAME));
+    }
+}
+
+// vim: sw=4 et sts=4 nospell

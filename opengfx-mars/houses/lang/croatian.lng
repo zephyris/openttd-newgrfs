@@ -1,0 +1,16 @@
+##grflangid 0x38
+##plural 6
+##gender male female middle
+##case aku dat gen ins lok nom vok
+
+STR_GRF_NAME :OpenGFX marsovski habitati {VERSION}
+STR_GRF_DESC :{ORANGE}Marsovski habitati{}Habitati za marsovski okoliš{}{BLACK}Grafika: {SILVER}Zephyris{}{BLACK}Programiranje: {SILVER}Elyon
+STR_GRF_URL :http://dev.openttdcoop.org/projects/opengfx-mars-houses
+
+STR_NAME_HABITAT :Habitat
+STR_NAME_LARGE_HABITAT :Veliki habitat
+STR_NAME_TALL_HABITAT :Visoki habitat
+STR_NAME_TOWER_HABITAT :Habitat-toranj
+STR_NAME_LUXURY_TOWER_HABITAT :Luksuzni habitat-toranj
+STR_NAME_PARK :Park
+STR_NAME_TALL_PARK :Visoki park

@@ -1,0 +1,15 @@
+##grflangid 0x03
+##plural 2
+##gender m m2 f
+
+STR_GRF_NAME :OpenGFX Mars Habitats {VERSION}
+STR_GRF_DESC :{ORANGE}Habitat Martien{}Habitat pour un environnement martien{}{BLACK}Graphismes{NBSP}: {SILVER}Zephyris{}{BLACK}Programmation{NBSP}: {SILVER}Elyon
+STR_GRF_URL :http://dev.openttdcoop.org/projects/opengfx-mars-houses
+
+STR_NAME_HABITAT :Habitat
+STR_NAME_LARGE_HABITAT :Grand habitat
+STR_NAME_TALL_HABITAT :Habitat à étages
+STR_NAME_TOWER_HABITAT :Habitat vertical
+STR_NAME_LUXURY_TOWER_HABITAT :Habitat vertical de luxe
+STR_NAME_PARK :Parc
+STR_NAME_TALL_PARK :Grand parc

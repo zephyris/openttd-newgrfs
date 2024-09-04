@@ -1,0 +1,40 @@
+##grflangid 0x01
+STR_GRF_NAME							:OpenGFX Mars Rovers and Roads {VERSION}
+STR_GRF_DESCRIPTION						:{ORANGE}Martian Rovers and Roads{}Rovers and roads for a Martian environment{}{BLACK}Graphics: {SILVER}Zephyris{}{BLACK}Programming: {SILVER}Zephyris
+STR_GRF_URL							:http://dev.openttdcoop.org/projects/opengfx-mars-roversandroads
+
+STR_NAME_Passenger_1			:HellasWorks Passenger Rover
+STR_NAME_Passenger_2			:Turnkey Passenger Rover
+STR_NAME_Passenger_3			:Aclid. Eng. Passenger Rover
+STR_NAME_Passenger_4			:HellasWorks Passenger Rover
+STR_NAME_Passenger_5			:Argyre Coop Passenger Rover
+STR_NAME_PressurisedCargo_1			:Turnkey Cargo Rover (pressurised)
+STR_NAME_PressurisedCargo_2			:Grundingworth Cargo Rover (pressurised)
+STR_NAME_PressurisedCargo_3			:Aclid. Eng. Cargo Rover (pressurised)
+STR_NAME_PressurisedCargo_4			:HellasWorks Cargo Rover (pressurised)
+STR_NAME_PressurisedCargo_5			:Grundingworth Cargo Rover (pressurised)
+STR_NAME_Cargo_1			:Argyre Coop Cargo Rover
+STR_NAME_Cargo_2			:Aclid. Eng. Cargo Rover
+STR_NAME_Cargo_3			:Turnkey Cargo Rover
+STR_NAME_Cargo_4			:TKD Cargo Rover
+STR_NAME_Cargo_5			:Aclid. Eng. Cargo Rover
+STR_NAME_Chemicals_1			:Grundingworth Chemicals Tanker
+STR_NAME_Chemicals_2			:HellasWorks Chemicals Tanker
+STR_NAME_Chemicals_3			:Turnkey Chemicals Tanker
+STR_NAME_Chemicals_4			:Argyre Coop Chemicals Tanker
+STR_NAME_Chemicals_5			:TKD Chemicals Tanker
+STR_NAME_Water_1			:HellasWorks Water Tanker
+STR_NAME_Water_2			:Aclid. Eng. Water Tanker
+STR_NAME_Water_3			:Grundingworth Water Tanker
+STR_NAME_Water_4			:Argyre Coop Water Tanker
+STR_NAME_Water_5			:Turnkey Water Tanker
+STR_NAME_CompressedGas_1			:HellasWorks Compressed Gas Tanker
+STR_NAME_CompressedGas_2			:Aclid. Eng. Compressed Gas Tanker
+STR_NAME_CompressedGas_3			:Argyre Coop Compressed Gas Tanker
+STR_NAME_CompressedGas_4			:HellasWorks Compressed Gas Tanker
+STR_NAME_CompressedGas_5			:TKD Compressed Gas Tanker
+STR_NAME_Bulk_1			:Grundingworth Bulk Rover
+STR_NAME_Bulk_2			:TKD Bulk Rover
+STR_NAME_Bulk_3			:HellasWorks Bulk Rover
+STR_NAME_Bulk_4			:Argyre Coop Bulk Rover
+STR_NAME_Bulk_5			:Turnkey Bulk Rover

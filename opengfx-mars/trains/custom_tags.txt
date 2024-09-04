@@ -1,0 +1,6 @@
+VERSION        :v5426 (d04eb4b270c3)
+VERSION_STRING :v5426 (d04eb4b270c3)
+TITLE          :OpenGFX Mars Trains  v5426 (d04eb4b270c3)
+FILENAME       :ogfx-mars-trains.grf
+REPO_HASH      :d04eb4b270c3
+NEWGRF_VERSION :5426

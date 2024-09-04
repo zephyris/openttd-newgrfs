@@ -1,0 +1,131 @@
+// 	OpenGFX Mars Industries
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#include "industry_templates.pnml"
+
+
+
+// Green house.
+spriteset(terraforming_plant_green_house_sprites, "../graphics/Buildings/Industry_TerraformingPlant_8bpp.png") {
+    SPRITE3(140, 140, 72, 4, 64, 64, -33, -32)
+}
+SPRITE_LAYOUT(terraforming_plant_green_house_sprite_layout, terraforming_plant_green_house_sprites, 16)
+item(FEAT_INDUSTRYTILES, terraforming_plant_green_house_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ORGN, 8], [CHEM, 8]];
+    }
+    graphics { terraforming_plant_green_house_sprite_layout; }
+}
+
+
+// Buildings.
+spriteset(terraforming_plant_buildings_sprites, "../graphics/Buildings/Industry_TerraformingPlant_8bpp.png") {
+    SPRITE3(4, 140, 72, 4, 64, 64, -33, -32)
+}
+SPRITE_LAYOUT(terraforming_plant_buildings_sprite_layout, terraforming_plant_buildings_sprites, 20)
+item(FEAT_INDUSTRYTILES, terraforming_plant_buildings_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ORGN, 8], [CHEM, 8]];
+    }
+    graphics { terraforming_plant_buildings_sprite_layout; }
+}
+
+
+// Fans.
+spriteset(terraforming_plant_fans_sprites, "../graphics/Buildings/Industry_TerraformingPlant_8bpp.png") {
+    SPRITE3(72, 140, 72, 4, 64, 64, -33, -32)
+}
+SPRITE_LAYOUT(terraforming_plant_fans_sprite_layout, terraforming_plant_fans_sprites, 32)
+item(FEAT_INDUSTRYTILES, terraforming_plant_fans_tile) {
+    property {
+        substitute: 0;
+        land_shape_flags: bitmask(LSF_ONLY_ON_FLAT_LAND);
+        accepted_cargos: [[ORGN, 8], [CHEM, 8]];
+    }
+    graphics { terraforming_plant_fans_sprite_layout; }
+}
+
+tilelayout terraforming_layout_1 {
+    0, 0: terraforming_plant_fans_tile;
+    1, 0: terraforming_plant_buildings_tile;
+    1, 1: terraforming_plant_green_house_tile;
+    2, 0: terraforming_plant_green_house_tile;
+    2, 1: terraforming_plant_green_house_tile;
+}
+
+tilelayout terraforming_layout_2 {
+    0, 0: terraforming_plant_green_house_tile;
+    0, 1: terraforming_plant_green_house_tile;
+    1, 0: terraforming_plant_buildings_tile;
+    1, 1: terraforming_plant_green_house_tile;
+    2, 1: terraforming_plant_fans_tile;
+}
+
+tilelayout terraforming_layout_3 {
+    0, 1: terraforming_plant_fans_tile;
+    1, 2: terraforming_plant_buildings_tile;
+    1, 0: terraforming_plant_green_house_tile;
+    1, 1: terraforming_plant_green_house_tile;
+    2, 0: terraforming_plant_green_house_tile;
+    2, 1: terraforming_plant_green_house_tile;
+}
+
+tilelayout terraforming_layout_4 {
+    2, 2: terraforming_plant_fans_tile;
+    2, 1: terraforming_plant_buildings_tile;
+    0, 0: terraforming_plant_green_house_tile;
+    0, 1: terraforming_plant_green_house_tile;
+    1, 0: terraforming_plant_green_house_tile;
+    1, 1: terraforming_plant_green_house_tile;
+}
+
+tilelayout terraforming_layout_5 {
+    1, 2: terraforming_plant_fans_tile;
+    0, 0: terraforming_plant_green_house_tile;
+    0, 1: terraforming_plant_green_house_tile;
+    1, 0: terraforming_plant_green_house_tile;
+    1, 1: terraforming_plant_buildings_tile;
+}
+
+
+item(FEAT_INDUSTRIES, terraforming_industry, TERRAFORMING_PLANT_ID) {
+    property {
+        substitute: TERRAFORMING_PLANT_ID;
+        name: string(STR_TERRAFORMING_PLANT_NAME);
+        layouts: [terraforming_layout_1, terraforming_layout_2, terraforming_layout_3, terraforming_layout_4, terraforming_layout_5];
+        life_type: IND_LIFE_TYPE_BLACK_HOLE;
+        accept_cargo_types: [cargotype("ORGN"), cargotype("CHEM")];
+        prod_cargo_types: [];
+        prod_multiplier: [0, 0];
+        min_cargo_distr: 1;
+        prob_random: 10;
+        prob_in_game: 10;
+        spec_flags: 0;
+        input_multiplier_1: [0,0];
+        input_multiplier_2: [0,0];
+        input_multiplier_3: [0,0];
+//        prospect_chance: 10;
+        nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_TERRAFORMING_PLANT_STATION_NAME));
+    }
+}
+
+// vim: syn=cpp sw=4 et sts=4 nospell

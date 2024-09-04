@@ -1,0 +1,15 @@
+##grflangid 0x22
+##plural 0
+##gender Masculin Femenin
+
+STR_GRF_NAME :OpenGFX Habitatges de Mart {VERSION}
+STR_GRF_DESC :{ORANGE}Habitatges Marcians{}Habitatges per a un entorn marcià{BLACK}Gràfics: {SILVER}Zephyris{}{BLACK}Programació: {SILVER}Elyon
+STR_GRF_URL :http://dev.openttdcoop.org/projects/opengfx-mars-houses
+
+STR_NAME_HABITAT :Habitatge
+STR_NAME_LARGE_HABITAT :Habitatge gran
+STR_NAME_TALL_HABITAT :Habitatge alt
+STR_NAME_TOWER_HABITAT :Torre
+STR_NAME_LUXURY_TOWER_HABITAT :Torre luxosa
+STR_NAME_PARK :Parc
+STR_NAME_TALL_PARK :Parc alt

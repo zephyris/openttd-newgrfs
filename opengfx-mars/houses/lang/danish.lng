@@ -1,0 +1,12 @@
+##grflangid 0x2d
+##plural 0
+
+STR_GRF_NAME :OpenGFX Mars-huse
+STR_GRF_DESC :{ORANGE}Martian-levesteder{}{BLACK}Grafik: {SILVER}Zephyris{}{BLACK}Programmering: {SILVER}Elyon
+STR_GRF_URL :http://dev.openttdcoop.org/projects/opengfx-mars-houses
+
+STR_NAME_HABITAT :Levested
+STR_NAME_LARGE_HABITAT :Stort levested
+STR_NAME_TALL_HABITAT :Højt levested
+STR_NAME_PARK :Park
+STR_NAME_TALL_PARK :Høj park

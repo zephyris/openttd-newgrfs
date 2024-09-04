@@ -1,0 +1,82 @@
+// 	OpenGFX Mars Industries
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+//Define the cargo sprites
+spriteset (spriteset_cargo_oxygen, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+	[1, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_nitrogen, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+	[12, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_hydrogen, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+	[23, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_water, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+	[34, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_mixedores, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+	[45, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_regolith, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+	[56, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_organics, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+	[67, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_goods, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+	[78, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_fertiliser, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+	[89, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_chemicals, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+	[100, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_passengers, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+	[111, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_food, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+	[122, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_fertilizer, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+	[133, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_plastic, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+	[144, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_machinery, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+	[155, 1, 10, 10, 0, 0]
+}
+
+spriteset (spriteset_cargo_components, "../graphics/Cargos/Cargo_Icons_8bpp.png") {
+	[166, 1, 10, 10, 0, 0]
+}

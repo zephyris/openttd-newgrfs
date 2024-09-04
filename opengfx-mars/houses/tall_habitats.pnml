@@ -1,0 +1,573 @@
+//  OpenGFX Mars Houses
+//
+//  This program is free software; you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation; either version 2 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License along
+//  with this program; if not, write to the Free Software Foundation, Inc.,
+//  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#include "templates.pnml"
+#include "passageways.pnml"
+#include "concrete.pnml"
+
+
+
+/* Tall habitat spritesets. */
+spriteset(spriteset_tall_habitat_0, "../graphics/Buildings/TownBuildings_TallBuildings_8bpp.png") {
+  template_tall_building(0)
+}
+
+spriteset(spriteset_tall_habitat_1, "../graphics/Buildings/TownBuildings_TallBuildings_8bpp.png") {
+  template_tall_building(1)
+}
+
+spriteset(spriteset_tall_habitat_2, "../graphics/Buildings/TownBuildings_TallBuildings_8bpp.png") {
+  template_tall_building(2)
+}
+
+spriteset(spriteset_tall_habitat_3, "../graphics/Buildings/TownBuildings_TallBuildings_8bpp.png") {
+  template_tall_building(3)
+}
+
+spriteset(spriteset_tall_habitat_4, "../graphics/Buildings/TownBuildings_TallBuildings_8bpp.png") {
+  template_tall_building(4)
+}
+
+spriteset(spriteset_tall_habitat_5, "../graphics/Buildings/TownBuildings_TallBuildings_8bpp.png") {
+  template_tall_building(5)
+}
+
+spriteset(spriteset_tall_habitat_6, "../graphics/Buildings/TownBuildings_TallBuildings_8bpp.png") {
+  template_tall_building(6)
+}
+
+spriteset(spriteset_tall_habitat_7, "../graphics/Buildings/TownBuildings_TallBuildings_8bpp.png") {
+  template_tall_building(7)
+}
+
+
+
+/* Tall habitat spritelayouts. */
+spritelayout spritelayout_tall_habitat_0 {
+  ground { sprite: spriteset_concrete; }
+  building {
+    sprite: spriteset_passageway_nw;
+    xoffset: 6;
+    yoffset: -8;
+    zoffset: 23;
+    xextent: 4;
+    yextent: 8;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(0,-1) > 256 ||
+      nearby_tile_house_class(0,-2) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_passageway_ne;
+    xoffset: -8;
+    yoffset: 6;
+    zoffset: 23;
+    xextent: 8;
+    yextent: 4;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(-1,0) > 256 ||
+      nearby_tile_house_class(-2,0) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_passageway_se;
+    xoffset: 6;
+    yoffset: 16;
+    zoffset: 23;
+    xextent: 4;
+    yextent: 8;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(0,1) > 256 ||
+      nearby_tile_house_class(0,2) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_passageway_sw;
+    xoffset: 16;
+    yoffset: 6;
+    zoffset: 23;
+    xextent: 8;
+    yextent: 4;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(1,0) > 256 ||
+      nearby_tile_house_class(2,0) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_tall_habitat_0;
+    zextent: 48;
+  }
+}
+
+spritelayout spritelayout_tall_habitat_1 {
+  ground { sprite: spriteset_concrete; }
+  building {
+    sprite: spriteset_passageway_nw;
+    xoffset: 6;
+    yoffset: -8;
+    zoffset: 23;
+    xextent: 4;
+    yextent: 8;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(0,-1) > 256 ||
+      nearby_tile_house_class(0,-2) < 257 ||
+      construction_state < 2;
+  }
+  building {
+    sprite: spriteset_passageway_ne;
+    xoffset: -8;
+    yoffset: 6;
+    zoffset: 23;
+    xextent: 8;
+    yextent: 4;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(-1,0) > 256 ||
+      nearby_tile_house_class(-2,0) < 257 ||
+      construction_state < 2;
+  }
+  building {
+    sprite: spriteset_passageway_se;
+    xoffset: 6;
+    yoffset: 16;
+    zoffset: 23;
+    xextent: 4;
+    yextent: 8;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(0,1) > 256 ||
+      nearby_tile_house_class(0,2) < 257 ||
+      construction_state < 2;
+  }
+  building {
+    sprite: spriteset_passageway_sw;
+    xoffset: 16;
+    yoffset: 6;
+    zoffset: 23;
+    xextent: 8;
+    yextent: 4;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(1,0) > 256 ||
+      nearby_tile_house_class(2,0) < 257 ||
+      construction_state < 2;
+  }
+  building {
+    sprite: spriteset_tall_habitat_1;
+    zextent: 60;
+  }
+}
+
+spritelayout spritelayout_tall_habitat_2 {
+  ground { sprite: spriteset_concrete; }
+  building {
+    sprite: spriteset_passageway_nw;
+    xoffset: 6;
+    yoffset: -8;
+    zoffset: 23;
+    xextent: 4;
+    yextent: 8;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(0,-1) > 256 ||
+      nearby_tile_house_class(0,-2) < 257 ||
+      construction_state < 2;
+  }
+  building {
+    sprite: spriteset_passageway_ne;
+    xoffset: -8;
+    yoffset: 6;
+    zoffset: 23;
+    xextent: 8;
+    yextent: 4;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(-1,0) > 256 ||
+      nearby_tile_house_class(-2,0) < 257 ||
+      construction_state < 2;
+  }
+  building {
+    sprite: spriteset_passageway_se;
+    xoffset: 6;
+    yoffset: 16;
+    zoffset: 23;
+    xextent: 4;
+    yextent: 8;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(0,1) > 256 ||
+      nearby_tile_house_class(0,2) < 257 ||
+      construction_state < 2;
+  }
+  building {
+    sprite: spriteset_passageway_sw;
+    xoffset: 16;
+    yoffset: 6;
+    zoffset: 23;
+    xextent: 8;
+    yextent: 4;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(1,0) > 256 ||
+      nearby_tile_house_class(2,0) < 257 ||
+      construction_state < 2;
+  }
+  building {
+    sprite: spriteset_tall_habitat_2;
+    zextent: 48;
+  }
+}
+
+spritelayout spritelayout_tall_habitat_3 {
+  ground { sprite: spriteset_concrete; }
+  building {
+    sprite: spriteset_passageway_nw;
+    xoffset: 6;
+    yoffset: -8;
+    zoffset: 23;
+    xextent: 4;
+    yextent: 8;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(0,-1) > 256 ||
+      nearby_tile_house_class(0,-2) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_passageway_ne;
+    xoffset: -8;
+    yoffset: 6;
+    zoffset: 23;
+    xextent: 8;
+    yextent: 4;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(-1,0) > 256 ||
+      nearby_tile_house_class(-2,0) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_passageway_se;
+    xoffset: 6;
+    yoffset: 16;
+    zoffset: 23;
+    xextent: 4;
+    yextent: 8;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(0,1) > 256 ||
+      nearby_tile_house_class(0,2) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_passageway_sw;
+    xoffset: 16;
+    yoffset: 6;
+    zoffset: 23;
+    xextent: 8;
+    yextent: 4;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(1,0) > 256 ||
+      nearby_tile_house_class(2,0) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_tall_habitat_3;
+    zextent: 36;
+  }
+}
+
+spritelayout spritelayout_tall_habitat_4 {
+  ground { sprite: spriteset_concrete; }
+  building {
+    sprite: spriteset_passageway_nw;
+    xoffset: 6;
+    yoffset: -8;
+    zoffset: 23;
+    xextent: 4;
+    yextent: 8;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(0,-1) > 256 ||
+      nearby_tile_house_class(0,-2) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_passageway_ne;
+    xoffset: -8;
+    yoffset: 6;
+    zoffset: 23;
+    xextent: 8;
+    yextent: 4;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(-1,0) > 256 ||
+      nearby_tile_house_class(-2,0) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_passageway_se;
+    xoffset: 6;
+    yoffset: 16;
+    zoffset: 23;
+    xextent: 4;
+    yextent: 8;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(0,1) > 256 ||
+      nearby_tile_house_class(0,2) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_passageway_sw;
+    xoffset: 16;
+    yoffset: 6;
+    zoffset: 23;
+    xextent: 8;
+    yextent: 4;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(1,0) > 256 ||
+      nearby_tile_house_class(2,0) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_tall_habitat_4;
+    zextent: 60;
+  }
+}
+
+spritelayout spritelayout_tall_habitat_5 {
+  ground { sprite: spriteset_concrete; }
+  building {
+    sprite: spriteset_passageway_nw;
+    xoffset: 6;
+    yoffset: -8;
+    zoffset: 23;
+    xextent: 4;
+    yextent: 8;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(0,-1) > 256 ||
+      nearby_tile_house_class(0,-2) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_passageway_ne;
+    xoffset: -8;
+    yoffset: 6;
+    zoffset: 23;
+    xextent: 8;
+    yextent: 4;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(-1,0) > 256 ||
+      nearby_tile_house_class(-2,0) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_passageway_se;
+    xoffset: 6;
+    yoffset: 16;
+    zoffset: 23;
+    xextent: 4;
+    yextent: 8;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(0,1) > 256 ||
+      nearby_tile_house_class(0,2) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_passageway_sw;
+    xoffset: 16;
+    yoffset: 6;
+    zoffset: 23;
+    xextent: 8;
+    yextent: 4;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(1,0) > 256 ||
+      nearby_tile_house_class(2,0) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_tall_habitat_5;
+    zextent: 36;
+  }
+}
+
+spritelayout spritelayout_tall_habitat_6 {
+  ground { sprite: spriteset_concrete; }
+  building {
+    sprite: spriteset_passageway_nw;
+    xoffset: 6;
+    yoffset: -8;
+    zoffset: 23;
+    xextent: 4;
+    yextent: 8;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(0,-1) > 256 ||
+      nearby_tile_house_class(0,-2) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_passageway_ne;
+    xoffset: -8;
+    yoffset: 6;
+    zoffset: 23;
+    xextent: 8;
+    yextent: 4;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(-1,0) > 256 ||
+      nearby_tile_house_class(-2,0) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_passageway_se;
+    xoffset: 6;
+    yoffset: 16;
+    zoffset: 23;
+    xextent: 4;
+    yextent: 8;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(0,1) > 256 ||
+      nearby_tile_house_class(0,2) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_passageway_sw;
+    xoffset: 16;
+    yoffset: 6;
+    zoffset: 23;
+    xextent: 8;
+    yextent: 4;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(1,0) > 256 ||
+      nearby_tile_house_class(2,0) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_tall_habitat_6;
+    zextent: 48;
+  }
+}
+
+spritelayout spritelayout_tall_habitat_7 {
+  ground { sprite: spriteset_concrete; }
+  building {
+    sprite: spriteset_passageway_nw;
+    xoffset: 6;
+    yoffset: -8;
+    zoffset: 23;
+    xextent: 4;
+    yextent: 8;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(0,-1) > 256 ||
+      nearby_tile_house_class(0,-2) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_passageway_ne;
+    xoffset: -8;
+    yoffset: 6;
+    zoffset: 23;
+    xextent: 8;
+    yextent: 4;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(-1,0) > 256 ||
+      nearby_tile_house_class(-2,0) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_passageway_se;
+    xoffset: 6;
+    yoffset: 16;
+    zoffset: 23;
+    xextent: 4;
+    yextent: 8;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(0,1) > 256 ||
+      nearby_tile_house_class(0,2) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_passageway_sw;
+    xoffset: 16;
+    yoffset: 6;
+    zoffset: 23;
+    xextent: 8;
+    yextent: 4;
+    zextent: 8;
+    hide_sprite:
+      nearby_tile_house_class(1,0) > 256 ||
+      nearby_tile_house_class(2,0) < 257 ||
+      construction_state < 3;
+  }
+  building {
+    sprite: spriteset_tall_habitat_7;
+    zextent: 48;
+  }
+}
+
+
+
+/* Random tall habitat selection. */
+random_switch(FEAT_HOUSES, SELF, random_tall_habitat) {
+  1: spritelayout_tall_habitat_0;
+  1: spritelayout_tall_habitat_1;
+  1: spritelayout_tall_habitat_2;
+  1: spritelayout_tall_habitat_3;
+  1: spritelayout_tall_habitat_4;
+  1: spritelayout_tall_habitat_5;
+  1: spritelayout_tall_habitat_6;
+  1: spritelayout_tall_habitat_7;
+}
+
+
+
+/* Tall habitat item */
+item (FEAT_HOUSES, item_tall_habitat) {
+  property {
+    substitute: 0;
+    name: string(STR_NAME_TALL_HABITAT);
+    probability: 15;
+    years_available: [0, -1];
+    minimum_lifetime: 0;
+    population: 64;
+    mail_multiplier: 24;
+    availability_mask: [bitmask(TOWNZONE_INNER_SUBURB, TOWNZONE_CENTRE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+    building_class: 1; // Walkway levels.
+	accepted_cargos: [[PASS, 8], [FOOD, 6], [GOOD, 2]];
+	removal_cost_multiplier: 150;
+	local_authority_impact: 150;
+  }
+
+  graphics { default: random_tall_habitat; }
+}

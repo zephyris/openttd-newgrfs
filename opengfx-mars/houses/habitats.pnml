@@ -1,0 +1,154 @@
+//  OpenGFX Mars Houses
+//
+//  This program is free software; you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation; either version 2 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License along
+//  with this program; if not, write to the Free Software Foundation, Inc.,
+//  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#include "templates.pnml"
+
+
+
+/* Habitat spritesets. */
+spriteset(spriteset_habitat_0, "../graphics/Buildings/TownBuildings_Habitats_8bpp.png") {
+  template_building(0)
+}
+
+spriteset(spriteset_habitat_1, "../graphics/Buildings/TownBuildings_Habitats_8bpp.png") {
+  template_building(1)
+}
+
+spriteset(spriteset_habitat_2, "../graphics/Buildings/TownBuildings_Habitats_8bpp.png") {
+  template_building(2)
+}
+
+spriteset(spriteset_habitat_3, "../graphics/Buildings/TownBuildings_Habitats_8bpp.png") {
+  template_building(3)
+}
+
+spriteset(spriteset_habitat_4, "../graphics/Buildings/TownBuildings_Habitats_8bpp.png") {
+  template_building(4)
+}
+
+spriteset(spriteset_habitat_5, "../graphics/Buildings/TownBuildings_Habitats_8bpp.png") {
+  template_building(5)
+}
+
+spriteset(spriteset_habitat_6, "../graphics/Buildings/TownBuildings_Habitats_8bpp.png") {
+  template_building(6)
+}
+
+spriteset(spriteset_habitat_7, "../graphics/Buildings/TownBuildings_Habitats_8bpp.png") {
+  template_building(7)
+}
+
+
+
+/* Habitat spritelayouts. */
+spritelayout spritelayout_habitat_0 {
+  ground { sprite: terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : terrain_type == TILETYPE_SNOW ? GROUNDSPRITE_SNOW : GROUNDSPRITE_NORMAL; }
+  building {
+    sprite: spriteset_habitat_0;
+    zextent: 12;
+  }
+}
+
+spritelayout spritelayout_habitat_1 {
+  ground { sprite: terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : terrain_type == TILETYPE_SNOW ? GROUNDSPRITE_SNOW : GROUNDSPRITE_NORMAL; }
+  building {
+    sprite: spriteset_habitat_1;
+    zextent: 12;
+  }
+}
+
+spritelayout spritelayout_habitat_2 {
+  ground { sprite: terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : terrain_type == TILETYPE_SNOW ? GROUNDSPRITE_SNOW : GROUNDSPRITE_NORMAL; }
+  building {
+    sprite: spriteset_habitat_2;
+    zextent: 24;
+  }
+}
+
+spritelayout spritelayout_habitat_3 {
+  ground { sprite: terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : terrain_type == TILETYPE_SNOW ? GROUNDSPRITE_SNOW : GROUNDSPRITE_NORMAL; }
+  building {
+    sprite: spriteset_habitat_3;
+    zextent: 12;
+  }
+}
+
+spritelayout spritelayout_habitat_4 {
+  ground { sprite: terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : terrain_type == TILETYPE_SNOW ? GROUNDSPRITE_SNOW : GROUNDSPRITE_NORMAL; }
+  building {
+    sprite: spriteset_habitat_4;
+    zextent: 12;
+  }
+}
+
+spritelayout spritelayout_habitat_5 {
+  ground { sprite: terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : terrain_type == TILETYPE_SNOW ? GROUNDSPRITE_SNOW : GROUNDSPRITE_NORMAL; }
+  building {
+    sprite: spriteset_habitat_5;
+    zextent: 12;
+  }
+}
+
+spritelayout spritelayout_habitat_6 {
+  ground { sprite: terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : terrain_type == TILETYPE_SNOW ? GROUNDSPRITE_SNOW : GROUNDSPRITE_NORMAL; }
+  building {
+    sprite: spriteset_habitat_6;
+    zextent: 12;
+  }
+}
+
+spritelayout spritelayout_habitat_7 {
+  ground { sprite: terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT : terrain_type == TILETYPE_SNOW ? GROUNDSPRITE_SNOW : GROUNDSPRITE_NORMAL; }
+  building {
+    sprite: spriteset_habitat_7;
+    zextent: 24;
+  }
+}
+
+
+
+/* Random habitat selection. */
+random_switch(FEAT_HOUSES, SELF, random_habitat) {
+  1: spritelayout_habitat_0;
+  1: spritelayout_habitat_1;
+  1: spritelayout_habitat_2;
+  1: spritelayout_habitat_3;
+  1: spritelayout_habitat_4;
+  1: spritelayout_habitat_5;
+  1: spritelayout_habitat_6;
+  1: spritelayout_habitat_7;
+}
+
+
+
+/* Habitat item */
+item (FEAT_HOUSES, item_habitat) {
+  property {
+    substitute: 0;
+    name: string(STR_NAME_HABITAT);
+    probability: 15;
+    years_available: [0, -1];
+    minimum_lifetime: 0;
+    population: 16;
+    mail_multiplier: 6;
+    availability_mask: [bitmask(TOWNZONE_EDGE, TOWNZONE_OUTSKIRT), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+	accepted_cargos: [[PASS, 4], [FOOD, 2]];
+	removal_cost_multiplier: 100;
+	local_authority_impact: 100;
+  }
+
+  graphics { default: random_habitat; }
+}

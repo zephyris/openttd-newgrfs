@@ -1,0 +1,5 @@
+Generated using ImageResizer.exe
+code.google.com/p/2dimagefilter/
+r129 XBR 2x <NoBlend>
+
+Then manually tweaked

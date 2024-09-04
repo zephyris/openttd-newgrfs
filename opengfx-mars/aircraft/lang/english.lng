@@ -1,0 +1,34 @@
+##grflangid 0x01
+
+STR_GRF_NAME :OpenGFX Mars Aircraft {VERSION}
+STR_GRF_DESC :{ORANGE}Martian Aircraft{}Aircraft for a Martian environment{}{BLACK}Graphics: {SILVER}Zephyris{}{BLACK}Programming: {SILVER}Zephyris
+STR_GRF_URL :http://dev.openttdcoop.org/projects/opengfx-mars-aircraft
+
+STR_NAME_DIRI_1							:Kelling K9
+STR_NAME_DIRI_2							:HellasWorks 'DX1'
+STR_NAME_DIRI_3							:Kelling K11
+STR_NAME_DIRI_4							:Aeolis Air 'He'
+STR_NAME_DIRI_5							:TharsisAero Swan
+STR_NAME_DIRI_6							:Kelling KA1
+STR_NAME_DIRI_7							:Aeolis Air 'H2'
+STR_NAME_DIRI_8							:HellasWorks 'D3x'
+STR_NAME_DIRI_9							:Aeolis Air 'H2X'
+STR_NAME_AERO_1							:TharsisAero Petrel
+STR_NAME_AERO_2							:HellasWorks 'D3xi'
+STR_NAME_AERO_3							:Argyre Coop HydroA
+STR_NAME_AERO_4							:TharsisAero Albatros
+STR_NAME_RPLA_1							:FFP Orbitus
+STR_NAME_RPLA_2							:HellasWorks 'RSi'
+STR_NAME_RPLA_3							:Aeolis Air 'N2H4'
+STR_NAME_RPLA_4							:HellasWorks 'RSii'
+STR_NAME_RPLA_5							:FFP Supra
+STR_NAME_RPLA_6							:TharsisAero Falcon
+STR_NAME_VTBA_1							:TharsisAero Hummingbird
+STR_NAME_VTBA_2							:HellasWorks 'H1'
+STR_NAME_VTBA_3							:HellasWorks 'Hx1'
+STR_NAME_VTBA_4							:TharsisAero Tern
+STR_NAME_VTBA_5							:Aeolis Air VTOL 'He'
+STR_NAME_QUAD_6							:HellasWorks 'QXa'
+STR_NAME_QUAD_7							:TharsisAero Nightjar
+STR_NAME_QUAD_8							:Aeolis Air VTOL 'H2'
+STR_NAME_QUAD_9							:TharsisAero Kestrel

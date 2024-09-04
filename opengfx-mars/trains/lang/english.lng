@@ -1,0 +1,81 @@
+##grflangid 0x01
+STR_GRF_NAME							:OpenGFX Mars Tracks and Trains {VERSION}
+STR_GRF_DESCRIPTION						:{ORANGE}Martian Tracks and Trains{}Tracks and trains for a Martian environment{}{BLACK}Graphics: {SILVER}Zephyris{}{BLACK}Programming: {SILVER}Zephyris
+STR_GRF_URL							:http://dev.openttdcoop.org/projects/opengfx-mars-tracksandtrains
+
+STR_NAME_RAIL_GG						:Ground train guides
+STR_NAME_RAIL_GG_TOOLBAR					:Ground train guide construction
+STR_NAME_RAIL_GG_MENU						:Ground train guide construction
+STR_NAME_RAIL_GG_AUTOREPLACE					:Ground train vehicles
+STR_NAME_RAIL_GG_NEW_ENGINE					:Ground train
+
+STR_NAME_RAIL_MONO						:Monorail
+STR_NAME_RAIL_MONO_TOOLBAR					:Monorail construction
+STR_NAME_RAIL_MONO_MENU						:Monorail construction
+STR_NAME_RAIL_MONO_AUTOREPLACE					:Monorail vehicles
+STR_NAME_RAIL_MONO_NEW_ENGINE					:Monorail
+
+STR_NAME_RAIL_MGLV						:Maglev
+STR_NAME_RAIL_MGLV_TOOLBAR					:Maglev construction
+STR_NAME_RAIL_MGLV_MENU						:Maglev construction
+STR_NAME_RAIL_MGLV_AUTOREPLACE					:Maglev vehicles
+STR_NAME_RAIL_MGLV_NEW_ENGINE					:Maglev
+
+STR_NAME_GDGR_ENGINE_1						:Grundingworth 'T600' (Biofuel)
+STR_NAME_GDGR_ENGINE_2						:Argyre Coop Hauler (Biofuel)
+STR_NAME_GDGR_ENGINE_3						:HellasWorks 'TM1' (Biofuel)
+STR_NAME_GDGR_ENGINE_4						:Turnkey Stag (Biofuel)
+STR_NAME_GDGR_ENGINE_5						:Grundingworth 'T1700i' (Biofuel)
+STR_NAME_GDGR_ENGINE_6						:HellasWorks 'B3x' (Fuel Cell)
+STR_NAME_GDGR_ENGINE_7						:Aclid. Eng. Grunt (Fuel Cell)
+STR_NAME_GDGR_ENGINE_8						:HellasWorks 'B4x' (Biofuel)
+STR_NAME_GDGR_ENGINE_9						:Argyre Coop 'GGT1' (Fuel Cell)
+STR_NAME_GDGR_ENGINE_10						:Turnkey Groundhog (Fuel Cell)
+
+STR_NAME_GGTRAIN_CARRIAGE_PAX					:Colonist carriage (pressurised)
+STR_NAME_GGTRAIN_CARRIAGE_PCONT					:Container carriage (pressurised)
+STR_NAME_GGTRAIN_CARRIAGE_CONT					:Container carriage
+STR_NAME_GGTRAIN_CARRIAGE_CHEM					:Chemical tanker
+STR_NAME_GGTRAIN_CARRIAGE_WATER					:Water tanker
+STR_NAME_GGTRAIN_CARRIAGE_GAS					:Compressed gas tanker
+STR_NAME_GGTRAIN_CARRIAGE_BULK1					:Bulk waggon
+STR_NAME_GGTRAIN_CARRIAGE_BULK2					:Bulk waggon (high capacity)
+
+STR_NAME_MONO_ENGINE_1						:Turnkey 'A1' (Biofuel)
+STR_NAME_MONO_ENGINE_2						:MKS Mod0 (Electric)
+STR_NAME_MONO_ENGINE_3						:HellasWorks GripX (Electric)
+STR_NAME_MONO_ENGINE_4						:Aclid. Eng. 'A9' (Electric)
+STR_NAME_MONO_ENGINE_5						:Turnkey 156 (Electric)
+STR_NAME_MONO_ENGINE_6						:MKS pKX (Biofuel)
+STR_NAME_MONO_ENGINE_7						:Argyre Coop 'R2' (Fuel Cell)
+STR_NAME_MONO_ENGINE_8						:HellasWorks NRx2 (Biofuel)
+STR_NAME_MONO_ENGINE_9						:HellasWorks 8000 (Fuel Cell)
+STR_NAME_MONO_ENGINE_10						:Argyre Coop HST (Fuel Cell)
+
+STR_NAME_MONORAIL_CARRIAGE_PAX					:Colonist carriage (pressurised)
+STR_NAME_MONORAIL_CARRIAGE_PCONT				:Container carriage (pressurised)
+STR_NAME_MONORAIL_CARRIAGE_CONT					:Container carriage
+STR_NAME_MONORAIL_CARRIAGE_CHEM					:Chemical tanker
+STR_NAME_MONORAIL_CARRIAGE_WATER				:Water tanker
+STR_NAME_MONORAIL_CARRIAGE_GAS					:Compressed gas tanker
+STR_NAME_MONORAIL_CARRIAGE_BULK1				:Bulk waggon
+
+STR_NAME_MGLV_ENGINE_1						:HellasWorks 'A1' (Electric)
+STR_NAME_MGLV_ENGINE_2						:Acild. Eng. 'Lev' (Electric)
+STR_NAME_MGLV_ENGINE_3						:MKS '2A' (Biofuel)
+STR_NAME_MGLV_ENGINE_4						:HellasWorks 300 (Electric)
+STR_NAME_MGLV_ENGINE_5						:Acild. Eng. '24' (Biofuel)
+STR_NAME_MGLV_ENGINE_6						:Argyre Coop MkIX (Biofuel)
+STR_NAME_MGLV_ENGINE_7						:MKS Mod1 (Electric)
+STR_NAME_MGLV_ENGINE_8						:HellasWorks Px2 (Biofuel)
+STR_NAME_MGLV_ENGINE_9						:MKS Millenial (Fuel Cell)
+STR_NAME_MGLV_ENGINE_10						:Argyre Coop Express (Electric)
+STR_NAME_MGLV_ENGINE_11						:HellasWorks Andromeda (Fuel Cell)
+
+STR_NAME_MAGLEV_CARRIAGE_PAX					:Colonist carriage (pressurised)
+STR_NAME_MAGLEV_CARRIAGE_PCONT					:Container carriage (pressurised)
+STR_NAME_MAGLEV_CARRIAGE_CONT					:Container carriage
+STR_NAME_MAGLEV_CARRIAGE_CHEM					:Chemical tanker
+STR_NAME_MAGLEV_CARRIAGE_WATER					:Water tanker
+STR_NAME_MAGLEV_CARRIAGE_GAS					:Compressed gas tanker
+STR_NAME_MAGLEV_CARRIAGE_BULK1					:Bulk waggon

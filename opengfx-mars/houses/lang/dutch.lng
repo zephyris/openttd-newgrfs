@@ -1,0 +1,14 @@
+##grflangid 0x1f
+##plural 0
+
+STR_GRF_NAME :OpenGFX Mars leefomgevingen {VERSION}
+STR_GRF_DESC :{ORANGE}Mars leefomgevingen{}Leefomgevingen voor wonen op de planeet Mars{}{BLACK}Grafisch: {SILVER}Zephyris{}{BLACK}Programma: {SILVER}Elyon
+STR_GRF_URL :http://dev.openttdcoop.org/projects/opengfx-mars-houses
+
+STR_NAME_HABITAT :Leefomgeving
+STR_NAME_LARGE_HABITAT :Grote leefomgeving
+STR_NAME_TALL_HABITAT :Kleine leefomgeving
+STR_NAME_TOWER_HABITAT :Toren leefomgeving
+STR_NAME_LUXURY_TOWER_HABITAT :Luxe toren leefomgeving
+STR_NAME_PARK :Park
+STR_NAME_TALL_PARK :Klein park

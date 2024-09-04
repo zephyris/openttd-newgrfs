@@ -1,0 +1,572 @@
+﻿// 	OpenGFX Mars Tracks and Trains
+// 	Copyright (C) 2014 Zephyris, and others
+// 	Contact: planetmaker@openttd.org
+//
+// 	This program is free software; you can redistribute it and/or modify
+// 	it under the terms of the GNU General Public License as published by
+// 	the Free Software Foundation; either version 2 of the License, or
+// 	(at your option) any later version.
+//
+// 	This program is distributed in the hope that it will be useful,
+// 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 	GNU General Public License for more details.
+//
+// 	You should have received a copy of the GNU General Public License along
+// 	with this program; if not, write to the Free Software Foundation, Inc.,
+// 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+// Define the NewGRF
+grf {
+	grfid: "OGM\6";
+	name: string(STR_GRF_NAME);
+	desc: string(STR_GRF_DESCRIPTION);
+	url:  string(STR_GRF_URL);
+	version: 1;
+	min_compatible_version: 1;
+}
+
+//ToDo: Break up quadrangles into global regions and bias by climate
+town_names(town_names_prefix_quadrangle) {
+	{
+		text("Boreum ", 1),
+		text("Diacria ", 1),
+		text("Arcadia ", 1),
+		text("Acidalium ", 1),
+		text("Ismenius ", 1),
+		text("Casius ", 1),
+		text("Cebrenia ", 1),
+		text("Amazonis ", 1),
+		text("Tharsis ", 1),
+		text("Lunae ", 1),
+		text("Oxia ", 1),
+		text("Arabia ", 1),
+		text("Syrtis ", 1),
+		text("Amenthes ", 1),
+		text("Elysium ", 1),
+		text("Memnonia ", 1),
+		text("Phoenicis ", 1),
+		text("Coprates ", 1),
+		text("Margaritifer ", 1),
+		text("Sabaeus ", 1),
+		text("Iapygia ", 1),
+		text("Tyrrhenum ", 1),
+		text("Aeolis ", 1),
+		text("Phaethontis ", 1),
+		text("Thaumasia ", 1),
+		text("Argyre ", 1),
+		text("Noachis ", 1),
+		text("Hellas ", 1),
+		text("Eridania ", 1),
+		text("Australe ", 1)
+	}
+}
+
+town_names(town_names_suffix_general) {
+	{
+		text(" Major", 1),
+		text(" Minor", 1)
+	}
+}
+
+town_names(town_names_suffix_mountains) {
+	{
+		text(" Montes", 3),
+		text(" Mons", 1),
+		text(" Tholus", 2),
+		text(" Tholi", 1)
+	}
+}
+
+town_names(town_names_main_mountains) {
+	{
+		text("Aeolis", 1),
+		text("Alba", 1),
+		text("Albor", 1),
+		text("Anseris", 1),
+		text("Apollinaris", 1),
+		text("Arsia", 1),
+		text("Ascraeus", 1),
+		text("Ausonia", 1),
+		text("Biblis", 1),
+		text("Centauri", 1),
+		text("Ceraunius", 1),
+		text("Charitum", 1),
+		text("Echus", 1),
+		text("Elysium", 1),
+		text("Erebus", 1),
+		text("Galaxius", 1),
+		text("Hadriacus", 1),
+		text("Hecates", 1),
+		text("Jovis", 1),
+		text("Libya", 1),
+		text("Nereidum", 1),
+		text("Olympus", 1),
+		text("Orcus", 1),
+		text("Pavonis", 1),
+		text("Peneus", 1),
+		text("Phlegra", 1),
+		text("Pityusa", 1),
+		text("Syrtis", 1),
+		text("Tartarus", 1),
+		text("Tharsis", 1),
+		text("Tholus", 1),
+		text("Tyrrhenus", 1),
+		text("Ulysses", 1),
+		text("Uranius", 1)
+	}
+}
+
+town_names(town_names_suffix_plains) {
+	{
+		text(" Planita", 4),
+		text(" Planitae", 1),
+		text(" Mare", 3),
+		text(" Patera", 2),
+		text(" Lacus", 1),
+		text(" Palus", 1)
+	}
+}
+
+town_names(town_names_main_plains) {
+	{
+		text("Acidalia", 1),
+		text("Aeolis", 1),
+		text("Amazonis", 1),
+		text("Arcadia", 1),
+		text("Argyre", 1),
+		text("Chryse", 1),
+		text("Daedalia", 1),
+		text("Elysium", 1),
+		text("Hellas", 1),
+		text("Hesperia", 1),
+		text("Icaria", 1),
+		text("Isidis", 1),
+		text("Lunae", 1),
+		text("Meridiani", 1),
+		text("Syria", 1),
+		text("Syrtis", 1),
+		text("Utopia", 1)
+	}
+}
+
+town_names(town_names_suffix_valleys) {
+	{
+		text(" Vallis", 3),
+		text(" Valles", 1),
+		text(" Chasma", 2),
+		text(" Chasmata", 1),
+		text(" Chaos", 3),
+		text(" Sinus", 1)
+	}
+}
+
+town_names(town_names_main_valleys) {
+	{
+		text("Aram", 1),
+		text("Arsiata", 1),
+		text("Atlantis", 1),
+		text("Aureum", 1),
+		text("Candor", 1),
+		text("Coprates", 1),
+		text("Echus", 1),
+		text("Eos", 1),
+		text("Galaxias", 1),
+		text("Ganges", 1),
+		text("Gorgonum", 1),
+		text("Hebes", 1),
+		text("Hydaspis", 1),
+		text("Hydraotes", 1),
+		text("Iani", 1),
+		text("Ister", 1),
+		text("Ius", 1),
+		text("Juventae", 1),
+		text("Melas", 1),
+		text("Ophir", 1),
+		text("Tithonium", 1),
+		text("Apsus", 1),
+		text("Ares", 1),
+		text("Arnus", 1),
+		text("Asopus", 1),
+		text("Athabasca", 1),
+		text("Auqakuh", 1),
+		text("Bahram", 1),
+		text("Buvinda", 1),
+		text("Dao", 1),
+		text("Enipeus", 1),
+		text("Frento", 1),
+		text("Harmakhis", 1),
+		text("Hebrus", 1),
+		text("Huo Hsing", 1),
+		text("Hypanis", 1),
+		text("Iberus", 1),
+		text("Indus", 1),
+		text("Ituxi", 1),
+		text("Kasei", 1),
+		text("Labou", 1),
+		text("Ladon", 1),
+		text("Lethe", 1),
+		text("Licus", 1),
+		text("Ma'adam", 1),
+		text("Mad", 1),
+		text("Maja", 1),
+		text("Mamers", 1),
+		text("Mangala", 1),
+		text("Marineris", 1),
+		text("Marte", 1),
+		text("Mawrth", 1),
+		text("Minio", 1),
+		text("Naktong", 1),
+		text("Nanedi", 1),
+		text("Niger", 1),
+		text("Nirgal", 1),
+		text("Padus", 1),
+		text("Parana", 1),
+		text("Patapsco", 1),
+		text("Peace", 1),
+		text("Rahway", 1),
+		text("Ravi", 1),
+		text("Reull", 1),
+		text("Sabis", 1),
+		text("Samara", 1),
+		text("Scamander", 1),
+		text("Shalbatana", 1),
+		text("Simud", 1),
+		text("Stura", 1),
+		text("Tader", 1),
+		text("Tinia", 1),
+		text("Tiu", 1),
+		text("Tyras", 1),
+		text("Uzboi", 1),
+		text("Verde", 1),
+		text("Warrego", 1)
+	}
+}
+
+town_names(town_names_suffix_fossae) {
+	{
+		text(" Fossa", 2),
+		text(" Fossae", 1),
+		text(" Mensa", 2),
+		text(" Mensae", 1),
+		text(" Labyrinthus", 2),
+		text(" Labyrinthi", 1)
+	}
+}
+
+town_names(town_names_main_fossae) {
+	{
+		text("Amenthes", 1),
+		text("Ceraunius", 1),
+		text("Cerberus", 1),
+		text("Coloe", 1),
+		text("Cyane", 1),
+		text("Elysium", 1),
+		text("Galaxias", 1),
+		text("Hephaestus", 1),
+		text("Icaria", 1),
+		text("Labeatis", 1),
+		text("Mareotis", 1),
+		text("Medusae", 1),
+		text("Memnonia", 1),
+		text("Olympica", 1),
+		text("Oti", 1),
+		text("Sirenum", 1),
+		text("Tantalus", 1),
+		text("Tithonium", 1),
+		text("Tractus", 1),
+		text("Aeolise", 1),
+		text("Capri", 1),
+		text("Cydoniae", 1),
+		text("Deuteroniluse", 1),
+		text("Ganges", 1),
+		text("Nilosyrtise", 1),
+		text("Protoniluse", 1),
+		text("Angustus", 1),
+		text("Cydonia", 1),
+		text("Noctis", 1)
+	}
+}
+
+town_names(town_names_suffix_crater) {
+	{
+		text(" Catena", 3),
+		text(" Catenae", 1),
+		text(" Crater", 5),
+		text(" Cratera", 2)
+	}
+}
+
+town_names(town_names_main_crater) {
+	{
+		text("Artynia", 1),
+		text("Tithonium", 1),
+		text("Tractus", 1),
+		text("Airy", 1),
+		text("Airy-0", 1),
+		text("Aniak", 1),
+		text("Antoniadi", 1),
+		text("Arandas", 1),
+		text("Argo", 1),
+		text("Arkhangelsky", 1),
+		text("Asimov", 1),
+		text("Bacolor", 1),
+		text("Baltisk", 1),
+		text("Barnard", 1),
+		text("Beagle", 1),
+		text("Becquerel", 1),
+		text("Beer", 1),
+		text("Bernard", 1),
+		text("Boeddicker", 1),
+		text("Bok", 1),
+		text("Bond", 1),
+		text("Bonestell", 1),
+		text("Bonneville", 1),
+		text("Burroughs", 1),
+		text("Canso", 1),
+		text("Cassini", 1),
+		text("Caxias", 1),
+		text("Cerulli", 1),
+		text("Chafe", 1),
+		text("Chapais", 1),
+		text("Columbus", 1),
+		text("Corby", 1),
+		text("Crewe", 1),
+		text("Crivitz", 1),
+		text("Curie", 1),
+		text("Davies", 1),
+		text("Dawes", 1),
+		text("Dejnev", 1),
+		text("Denning", 1),
+		text("Dilly", 1),
+		text("Dinorwic", 1),
+		text("Dromore", 1),
+		text("Eagle", 1),
+		text("Eberswalde", 1),
+		text("Eddie", 1),
+		text("Emma Dean", 1),
+		text("Endeavour", 1),
+		text("Endurance", 1),
+		text("Erebus", 1),
+		text("Escalante", 1),
+		text("Fenagh", 1),
+		text("Fesenkov", 1),
+		text("Flaugergues", 1),
+		text("Fram", 1),
+		text("Galdakao", 1),
+		text("Gale", 1),
+		text("Galle", 1),
+		text("Gilbert", 1),
+		text("Gold", 1),
+		text("Green", 1),
+		text("Grindavik", 1),
+		text("Gusev", 1),
+		text("Hale", 1),
+		text("Hartwig", 1),
+		text("Heimdall", 1),
+		text("Heinlein", 1),
+		text("Henry", 1),
+		text("Herschel", 1),
+		text("Holden", 1),
+		text("Hutton", 1),
+		text("Huygens", 1),
+		text("Iazu", 1),
+		text("Ibragimov", 1),
+		text("Inuvik", 1),
+		text("Jezero", 1),
+		text("Jezža", 1),
+		text("Kaiser", 1),
+		text("Kepler", 1),
+		text("Kinkora", 1),
+		text("Kipini", 1),
+		text("Koga", 1),
+		text("Korolev", 1),
+		text("Kufra", 1),
+		text("Kunowsky", 1),
+		text("Lipik", 1),
+		text("Llanesco", 1),
+		text("Lockyer", 1),
+		text("Lod", 1),
+		text("Lohse", 1),
+		text("Lomonosov", 1),
+		text("Lowell", 1),
+		text("Lyot", 1),
+		text("Mädler", 1),
+		text("Mandora", 1),
+		text("Mariner", 1),
+		text("Masursky", 1),
+		text("Maunder", 1),
+		text("McLaughlin", 1),
+		text("McMurdo", 1),
+		text("Mellish", 1),
+		text("Mendel", 1),
+		text("Milankovic", 1),
+		text("Miyamoto", 1),
+		text("Mohawk", 1),
+		text("Mojave", 1),
+		text("Molesworth", 1),
+		text("Montevallo", 1),
+		text("Moreux", 1),
+		text("Nereus", 1),
+		text("Newton", 1),
+		text("Nhill", 1),
+		text("Nicholson", 1),
+		text("Nipigon", 1),
+		text("Onon", 1),
+		text("Orson Welles", 1),
+		text("Oudemans", 1),
+		text("Pangboche", 1),
+		text("Pasteur", 1),
+		text("Penticton", 1),
+		text("Persbo", 1),
+		text("Pettit", 1),
+		text("Pickering", 1),
+		text("Pollack", 1),
+		text("Porter", 1),
+		text("Porth", 1),
+		text("Proctor", 1),
+		text("Ptolemaeus", 1),
+		text("Púnsk", 1),
+		text("Rabe", 1),
+		text("Radau", 1),
+		text("Rahe", 1),
+		text("Reuyl", 1),
+		text("Ritchey", 1),
+		text("Robert Sharp", 1),
+		text("Russell", 1),
+		text("Sagan", 1),
+		text("Saheki", 1),
+		text("Santa Maria", 1),
+		text("Schaeberle", 1),
+		text("Schiaparelli", 1),
+		text("Secchi", 1),
+		text("Semeykin", 1),
+		text("Sharonov", 1),
+		text("Sibu", 1),
+		text("Sitka", 1),
+		text("Spallanzani", 1),
+		text("Sripur", 1),
+		text("Stokes", 1),
+		text("Taytay", 1),
+		text("Terby", 1),
+		text("Thila", 1),
+		text("Thira", 1),
+		text("Tikhonravov", 1),
+		text("Timbuktu", 1),
+		text("Tooting", 1),
+		text("Trouvelot", 1),
+		text("Tugaske", 1),
+		text("Tycho Brahe", 1),
+		text("Victoria", 1),
+		text("Virrat", 1),
+		text("Vishniac", 1),
+		text("Wirtz", 1),
+		text("Wislicenus", 1),
+		text("Yuty", 1),
+		text("Zumba", 1),
+		text("Zunil", 1)
+	}
+}
+
+town_names(town_names_mountains) {
+	{
+		town_names(town_names_prefix_quadrangle, 1),
+		text("", 3)
+	}
+	{
+		town_names(town_names_main_mountains, 1)
+	}
+	{
+		town_names(town_names_suffix_mountains, 3),
+		text("", 1)
+	}
+	{
+		town_names(town_names_suffix_general, 2),
+		text("", 4)
+	}
+}
+
+town_names(town_names_plains) {
+	{
+		town_names(town_names_prefix_quadrangle, 1),
+		text("", 4)
+	}
+	{
+		town_names(town_names_main_plains, 1)
+	}
+	{
+		town_names(town_names_suffix_plains, 3),
+		text("", 1)
+	}
+	{
+		town_names(town_names_suffix_general, 2),
+		text("", 4)
+	}
+}
+
+town_names(town_names_valleys) {
+	{
+		town_names(town_names_prefix_quadrangle, 1),
+		text("", 4)
+	}
+	{
+		town_names(town_names_main_valleys, 1)
+	}
+	{
+		town_names(town_names_suffix_valleys, 3),
+		text("", 1)
+	}
+	{
+		town_names(town_names_suffix_general, 2),
+		text("", 4)
+	}
+}
+
+town_names(town_names_fossae) {
+	{
+		town_names(town_names_prefix_quadrangle, 1),
+		text("", 4)
+	}
+	{
+		town_names(town_names_main_fossae, 1)
+	}
+	{
+		town_names(town_names_suffix_fossae, 3),
+		text("", 1)
+	}
+	{
+		town_names(town_names_suffix_general, 2),
+		text("", 4)
+	}
+}
+
+town_names(town_names_crater) {
+	{
+		town_names(town_names_prefix_quadrangle, 2),
+		text("", 4)
+	}
+	{
+		town_names(town_names_main_crater, 1)
+	}
+	{
+		town_names(town_names_suffix_crater, 3),
+		text("", 1)
+	}
+	{
+		town_names(town_names_suffix_general, 2),
+		text("", 4)
+	}
+}
+
+//NB. Final name choice is weighted by the approximate number of _main_ names in each class /2
+//ToDo: make alternate main town names biasing towards climate (e.g. more mountains in arctic)
+town_names(town_names_main) {
+	styles:	string(STR_TOWN_NAMES_MARS);
+	{
+		town_names(town_names_mountains, 15),
+		town_names(town_names_plains, 7),
+		town_names(town_names_valleys, 40),
+		town_names(town_names_fossae, 15),
+		town_names(town_names_crater, 80)
+	}
+}
