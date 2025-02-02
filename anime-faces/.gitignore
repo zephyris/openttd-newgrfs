@@ -1,0 +1,12 @@
+# generated folders of .png files
+1/
+2/
+4/
+m/
+h/
+
+# nml cache
+.nmlcache/
+
+# python cache
+__pycache__/

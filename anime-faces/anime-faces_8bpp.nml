@@ -1,0 +1,240 @@
+grf {
+    grfid: "ZAM\1";
+    name: string(STR_GRF_NAME);
+    desc: string(STR_GRF_DESCRIPTION);
+    url:  string(STR_GRF_URL);
+    version: 1;
+    min_compatible_version: 1;
+}
+
+template template_manager_face(f, z) {
+    [0, 0, 92*z, 112*z, 0, 0, CROP, f]
+}
+template template_manager_face_mask(f, m, z) {
+    [0, 0, 92*z, 112*z, 0, 0, CROP, f, m]
+}
+template blank_8bpp() {
+    [0, 0, 1, 1, 0, 0, NOCROP, "blankblue_8bpp.png"]
+}
+
+replace faces(805) {
+    // Top of european head
+    template_manager_face("1/ottd_mgr_man_eur_base2_00001__head_8bpp.png", 1) // man
+    template_manager_face("1/ottd_mgr_wmn_eur_base1_00001__head_8bpp.png", 1) // Woman
+    // Bottom of european head, man and woman
+    template_manager_face("1/ottd_mgr_wmn_eur_base1_00001__chin_8bpp.png", 1) // Used for man and woman
+    template_manager_face("1/ottd_mgr_man_eur_base2_00001__chin_8bpp.png", 1) // man only
+    template_manager_face("1/ottd_mgr_man_eur_base3_00001__chin_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_base4_00001__chin_8bpp.png", 1)
+    // Eyes for european men
+    template_manager_face("1/ottd_mgr_man_eur_face1_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face2_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face3_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face4_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face5_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face6_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face7_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face8_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face9_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face10_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face11_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face12_00001__eyes_8bpp.png", 1)
+    // Eyes for european women
+    template_manager_face("1/ottd_mgr_wmn_eur_face1_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face2_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face3_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face4_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face5_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face6_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face7_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face8_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face9_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face10_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face11_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face12_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face13_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face14_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face15_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face16_00001__eyes_8bpp.png", 1)
+    // Glasses for european men and women
+    template_manager_face("1/ottd_mgr_man_eur_glasses1_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_glasses3_00001__8bpp.png", 1)
+    // Noses for european men
+    template_manager_face("1/ottd_mgr_man_eur_face1_00001__nose_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face2_00001__nose_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face3_00001__nose_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face4_00001__nose_8bpp.png", 1)
+    // Noses for european men and women
+    template_manager_face("1/ottd_mgr_wmn_eur_face1_00001__nose_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face2_00001__nose_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face3_00001__nose_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face4_00001__nose_8bpp.png", 1)
+    // Mouths for european women
+    template_manager_face("1/ottd_mgr_wmn_eur_face1_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face2_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face3_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face4_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face5_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face6_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face7_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face8_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face9_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_face10_00001__mouth_8bpp.png", 1)
+    // Mouths for european men
+    template_manager_face("1/ottd_mgr_man_eur_face1_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face2_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face3_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face4_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face5_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face6_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face7_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face8_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face9_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face10_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face11_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_face12_00001__mouth_8bpp.png", 1)
+    // Moustaches
+    template_manager_face("1/ottd_mgr_man_eur_facialhair1_00001__moustache_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_facialhair2_00001__moustache_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_facialhair3_00001__moustache_8bpp.png", 1)
+    // Background
+    template_manager_face("1/ottd_mgr_bg_00001__8bpp.png", 1)
+    // Mens jackets
+    template_manager_face("1/ottd_mgr_man_eur_jacket1_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_jacket2_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_jacket3_00001__8bpp.png", 1)
+    // Mens shirts
+    template_manager_face("1/ottd_mgr_man_eur_shirtman1_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_shirtman1_00001__h0_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_shirtman1_00001__h96_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_shirtman1_00001__h160_8bpp.png", 1)
+    // Mens ties
+    template_manager_face("1/ottd_mgr_man_eur_tie1_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_tie3_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_tie4_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_tie1_00001__h0_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_tie3_00001__h0_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_tie4_00001__h0_8bpp.png", 1)
+    // Womens jackets
+    template_manager_face("1/ottd_mgr_wmn_eur_jacket1_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_jacket2_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_jacket3_00001__8bpp.png", 1)
+    // Womens tops
+    template_manager_face("1/ottd_mgr_wmn_eur_top1_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_top2_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_top3_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_top4_00001__8bpp.png", 1)
+    // Womens earrings
+    template_manager_face("1/ottd_mgr_wmn_eur_glasses1_00001__earrings_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_glasses2_00001__earrings_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_glasses3_00001__earrings_8bpp.png", 1)
+    // Hair for european men
+    template_manager_face("1/ottd_mgr_man_eur_hair1_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_hair2_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_hair3_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_hair4_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_hair5_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_hair6_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_hair7_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_hair8_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_hair9_00001__8bpp.png", 1)
+    // Hair for european women
+    template_manager_face("1/ottd_mgr_wmn_eur_hair1_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_hair2_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_hair3_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_hair4_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_hair5_00001__8bpp.png", 1)
+    // Top of african man head
+    template_manager_face("1/ottd_mgr_man_afr_base3_00001__head_8bpp.png", 1)
+    // Bottom of african man head
+    template_manager_face("1/ottd_mgr_man_afr_base2_00001__chin_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_base3_00001__chin_8bpp.png", 1)
+    // Noses for african men
+    template_manager_face("1/ottd_mgr_man_afr_face1_00001__nose_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face2_00001__nose_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face3_00001__nose_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face4_00001__nose_8bpp.png", 1)
+    // Moustaches for african men
+    template_manager_face("1/ottd_mgr_man_afr_facialhair1_00001__moustache_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_facialhair2_00001__moustache_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_facialhair3_00001__moustache_8bpp.png", 1)
+    // Eyes for african men
+    template_manager_face("1/ottd_mgr_man_afr_face1_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face2_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face3_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face4_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face5_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face6_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face7_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face8_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face9_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face10_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face11_00001__eyes_8bpp.png", 1)
+    // Mouths for african men
+    template_manager_face("1/ottd_mgr_man_afr_face1_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face2_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face3_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face4_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face5_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face6_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face7_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face8_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_face9_00001__mouth_8bpp.png", 1)
+    // Glasses
+    template_manager_face("1/ottd_mgr_man_eur_glasses1_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_eur_glasses3_00001__8bpp.png", 1)
+    // Top of african woman head
+    template_manager_face("1/ottd_mgr_wmn_afr_base1_00001__head_8bpp.png", 1)
+    // Bottom of african woman head
+    template_manager_face("1/ottd_mgr_wmn_afr_base1_00001__chin_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_base2_00001__chin_8bpp.png", 1)
+    // Noses for african women
+    template_manager_face("1/ottd_mgr_wmn_afr_face1_00001__nose_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face2_00001__nose_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face3_00001__nose_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face4_00001__nose_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face5_00001__nose_8bpp.png", 1)
+    // Eyes for african women
+    template_manager_face("1/ottd_mgr_wmn_afr_face1_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face2_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face3_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face4_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face5_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face6_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face7_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face8_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face9_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face10_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face11_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face12_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face13_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face14_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face15_00001__eyes_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face16_00001__eyes_8bpp.png", 1)
+    // Mouths for african women
+    template_manager_face("1/ottd_mgr_wmn_afr_face1_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face2_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face3_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face4_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face5_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face6_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face7_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face8_00001__mouth_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_face9_00001__mouth_8bpp.png", 1)
+    // Earrings
+    template_manager_face("1/ottd_mgr_wmn_eur_glasses1_00001__earrings_8bpp.png", 1)   
+    template_manager_face("1/ottd_mgr_wmn_eur_glasses2_00001__earrings_8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_eur_glasses3_00001__earrings_8bpp.png", 1)
+    // Hair for african men
+    template_manager_face("1/ottd_mgr_man_afr_hair1_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_hair4_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_hair5_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_hair7_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_man_afr_hair10_00001__8bpp.png", 1)
+    // Hair for african women
+    template_manager_face("1/ottd_mgr_wmn_afr_hair1_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_hair2_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_hair3_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_hair4_00001__8bpp.png", 1)
+    template_manager_face("1/ottd_mgr_wmn_afr_hair5_00001__8bpp.png", 1)
+}
