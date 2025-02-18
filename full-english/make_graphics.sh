@@ -1,11 +1,12 @@
 cd graphics
 
 #Download scripts from OpenGFX2 repo
-wget -q -O custom_dither.py  https://raw.githubusercontent.com/zephyris/opengfx2/main/graphics/custom_dither.py
-wget -q -O building_baseshapeproc.py https://raw.githubusercontent.com/zephyris/opengfx2/main/graphics/building_baseshapeproc.py
-wget -q -O building_shapeproc.py https://raw.githubusercontent.com/zephyris/opengfx2/main/graphics/building_shapeproc.py
-wget -q -O mask_tiles.py https://raw.githubusercontent.com/zephyris/opengfx2/main/graphics/mask_tiles.py
-wget -q -O tools.py https://raw.githubusercontent.com/zephyris/opengfx2/main/graphics/tools.py
+#Commit 5e079a0 from Jan 2024
+wget -q -O custom_dither.py https://raw.githubusercontent.com/zephyris/opengfx2/e5b86a25c28ac36e6be08dc949b75f8724dbf1eb/graphics/custom_dither.py
+wget -q -O building_baseshapeproc.py https://raw.githubusercontent.com/zephyris/opengfx2/e5b86a25c28ac36e6be08dc949b75f8724dbf1eb/graphics/building_baseshapeproc.py
+wget -q -O building_shapeproc.py https://raw.githubusercontent.com/zephyris/opengfx2/e5b86a25c28ac36e6be08dc949b75f8724dbf1eb/graphics/building_shapeproc.py
+wget -q -O mask_tiles.py https://raw.githubusercontent.com/zephyris/opengfx2/e5b86a25c28ac36e6be08dc949b75f8724dbf1eb/graphics/mask_tiles.py
+wget -q -O tools.py https://raw.githubusercontent.com/zephyris/opengfx2/e5b86a25c28ac36e6be08dc949b75f8724dbf1eb/graphics/tools.py
 
 export PATH=$PATH:$(pwd)
 

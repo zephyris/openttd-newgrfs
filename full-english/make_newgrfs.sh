@@ -5,7 +5,9 @@
 
 cd newgrf
 
-wget -q -O nml_preprocessor.py https://raw.githubusercontent.com/zephyris/opengfx2/main/templates/nml_preprocessor.py
+#Download scripts from OpenGFX2 repo
+#Commit 5e079a0 from Jan 2024
+wget -q -O nml_preprocessor.py https://raw.githubusercontent.com/zephyris/opengfx2/e5b86a25c28ac36e6be08dc949b75f8724dbf1eb/templates/nml_preprocessor.py
 
 function buildnewgrf() {
 	python3 nml_preprocessor.py ${1} 32ez
