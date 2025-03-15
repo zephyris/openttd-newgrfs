@@ -3,7 +3,7 @@ grf {
 	grfid: "ZUK\21";
 	name: string(STR_GRF_NAME);
 	desc: string(STR_GRF_DESC);
-	version: 0;
+	version: 1;
 	min_compatible_version: 0;
 	param 1 {
 		param_disabledefaultbuildings {
