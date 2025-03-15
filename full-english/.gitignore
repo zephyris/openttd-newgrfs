@@ -15,9 +15,8 @@ pygen/
 # generated nml
 *.nml
 
-# nmlc intermediates and output
+# nmlc intermediates
 .nmlcache/
-*.grf
 *.grf.cache
 *.grf.cacheindex
 grf/
