@@ -364,55 +364,6 @@ switch (FEAT_HOUSES, SELF, switch_house_recolour_random_all, [
 	recolour_identity;
 }
 
-//Normal houses, brick, stone & neutral paint
-switch (FEAT_HOUSES, SELF, switch_house_recolour_random_house, [
-	(random_bits>>4)%9
-]) {
-	0: recolour_house_brick + 0;
-	1: recolour_house_brick + 1;
-	2: recolour_house_brick + 2;
-	3: recolour_house_stone + 0;
-	4: recolour_house_stone + 1;
-	5: recolour_house_stone + 2;
-	6: recolour_house_painted + 0;
-	7: recolour_house_painted + 1;
-	8: recolour_house_painted + 2;
-	recolour_identity;
-}
-
-//Normal houses, brick
-switch (FEAT_HOUSES, SELF, switch_house_recolour_random_brickhouse, [
-	(random_bits>>4)%6
-]) {
-	0: recolour_house_brick + 0;
-	1: recolour_house_brick + 1;
-	2: recolour_house_brick + 2;
-	3: recolour_house_painted + 0;
-	4: recolour_house_painted + 1;
-	5: recolour_house_painted + 2;
-	recolour_identity;
-}
-
-//Normal houses, stone
-switch (FEAT_HOUSES, SELF, switch_house_recolour_random_stonehouse, [
-	(random_bits>>4)%3
-]) {
-	0: recolour_house_stone + 0;
-	1: recolour_house_stone + 1;
-	2: recolour_house_stone + 2;
-	recolour_identity;
-}
-
-//Normal houses, neutral paint
-switch (FEAT_HOUSES, SELF, switch_house_recolour_random_paintedhouse, [
-	(random_bits>>4)%3
-]) {
-	0: recolour_house_painted + 0;
-	1: recolour_house_painted + 1;
-	2: recolour_house_painted + 2;
-	recolour_identity;
-}
-
 //Normal houses, colourful paint
 switch (FEAT_HOUSES, SELF, switch_house_recolour_random_colourfulpaintedhouse, [
 	(random_bits>>4)%9
@@ -427,6 +378,79 @@ switch (FEAT_HOUSES, SELF, switch_house_recolour_random_colourfulpaintedhouse, [
 	7: recolour_house_painted_colourful + 4;
 	8: recolour_house_painted_colourful + 5;
 	recolour_identity;
+}
+
+//Normal houses, brick, stone & neutral paint
+switch (FEAT_HOUSES, SELF, switch_house_recolour_random_house_normalclimate, [
+	(random_bits>>4)%9
+]) {
+	0: recolour_house_brick + 0;
+	1: recolour_house_brick + 1;
+	2: recolour_house_brick + 2;
+	3: recolour_house_stone + 0;
+	4: recolour_house_stone + 1;
+	5: recolour_house_stone + 2;
+	6: recolour_house_painted + 0;
+	7: recolour_house_painted + 1;
+	8: recolour_house_painted + 2;
+	recolour_identity;
+}
+switch (FEAT_HOUSES, SELF, switch_house_recolour_random_house, [
+	climate
+]) {
+	CLIMATE_TOYLAND: switch_house_recolour_random_colourfulpaintedhouse;
+	switch_house_recolour_random_house_normalclimate;
+}
+
+//Normal houses, brick
+switch (FEAT_HOUSES, SELF, switch_house_recolour_random_brickhouse_normalclimate, [
+	(random_bits>>4)%6
+]) {
+	0: recolour_house_brick + 0;
+	1: recolour_house_brick + 1;
+	2: recolour_house_brick + 2;
+	3: recolour_house_painted + 0;
+	4: recolour_house_painted + 1;
+	5: recolour_house_painted + 2;
+	recolour_identity;
+}
+switch (FEAT_HOUSES, SELF, switch_house_recolour_random_brickhouse, [
+	climate
+]) {
+	CLIMATE_TOYLAND: switch_house_recolour_random_colourfulpaintedhouse;
+	switch_house_recolour_random_brickhouse_normalclimate;
+}
+
+//Normal houses, stone
+switch (FEAT_HOUSES, SELF, switch_house_recolour_random_stonehouse_normalclimate, [
+	(random_bits>>4)%3
+]) {
+	0: recolour_house_stone + 0;
+	1: recolour_house_stone + 1;
+	2: recolour_house_stone + 2;
+	recolour_identity;
+}
+switch (FEAT_HOUSES, SELF, switch_house_recolour_random_stonehouse, [
+	climate
+]) {
+	CLIMATE_TOYLAND: switch_house_recolour_random_colourfulpaintedhouse;
+	switch_house_recolour_random_stonehouse_normalclimate;
+}
+
+//Normal houses, neutral paint
+switch (FEAT_HOUSES, SELF, switch_house_recolour_random_paintedhouse_normalclimate, [
+	(random_bits>>4)%3
+]) {
+	0: recolour_house_painted + 0;
+	1: recolour_house_painted + 1;
+	2: recolour_house_painted + 2;
+	recolour_identity;
+}
+switch (FEAT_HOUSES, SELF, switch_house_recolour_random_paintedhouse, [
+	climate
+]) {
+	CLIMATE_TOYLAND: switch_house_recolour_random_colourfulpaintedhouse;
+	switch_house_recolour_random_paintedhouse_normalclimate;
 }
 
 //Skyscrapers, colourful
@@ -483,8 +507,9 @@ switch (FEAT_HOUSES, PARENT, switch_house_recolour_percity_house, [
 
 //Thematic tower block/skyscraper
 switch (FEAT_HOUSES, PARENT, switch_house_recolour_perclimate_skyscraper, [
-
+	climate
 ]) {
+	CLIMATE_TOYLAND: switch_house_recolour_random_colourfulskyscraper;
 	switch_house_recolour_random_mutedskyscraper;
 }
 
