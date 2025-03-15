@@ -707,7 +707,7 @@ item(FEAT_HOUSES, item_house_terrace, 30) {
 		local_authority_impact: 80;
 		removal_cost_multiplier: 80;
 		probability: 6;
-		years_available: [1880, 65535];
+		years_available: [0, 65535];
 		minimum_lifetime: 10;
 		availability_mask: [bitmask(TOWNZONE_OUTER_SUBURB, TOWNZONE_INNER_SUBURB, TOWNZONE_CENTRE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
 		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
@@ -796,6 +796,32 @@ item(FEAT_HOUSES, item_house_terraceshops, 31) {
 		default: switch_house_terraceshops_constr;
 	}
 }
+
+// For early years support
+item(FEAT_HOUSES, item_house_oldterrace, 32) {
+	property {
+		substitute: 06;
+		name: string(STR_HOUSE_TERRACE_NAME);
+		population: 30;
+		mail_multiplier: 12;
+		accepted_cargos: [[PASS, 4], [MAIL, 1], [FOOD, 2]];
+		local_authority_impact: 80;
+		removal_cost_multiplier: 80;
+		probability: 6;
+		years_available: [0, 1910];
+		minimum_lifetime: 10;
+		availability_mask: [bitmask(TOWNZONE_OUTSKIRT, TOWNZONE_OUTER_SUBURB, TOWNZONE_INNER_SUBURB, TOWNZONE_CENTRE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
+		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
+		building_class: 30; //Small terraces class
+	}
+
+	graphics {
+		colour: switch_house_recolour_percity_house; //switch_house_recolour_random_brickhouse;
+		anim_control: switch_house_aminframe_8road;
+		default: switch_house_terrace_constr;
+	}
+}
+
 
 //Tall terrace
 spriteset (sprites_ground_tallterrace, "../graphics/detailed/64/pygen/ground_tallterrace_base_8bpp.png") { template_house_short(0, 0, 1) template_house_short(260, 0, 1) template_house_short(520, 0, 1) }
@@ -898,7 +924,7 @@ item(FEAT_HOUSES, item_house_tallterrace, 40) {
 		local_authority_impact: 100;
 		removal_cost_multiplier: 100;
 		probability: 3;
-		years_available: [1900, 65535];
+		years_available: [1800, 65535];
 		minimum_lifetime: 15;
 		availability_mask: [bitmask(TOWNZONE_CENTRE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
 		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
@@ -974,7 +1000,7 @@ item(FEAT_HOUSES, item_house_tallterraceshops, 41) {
 		local_authority_impact: 110;
 		removal_cost_multiplier: 110;
 		probability: 3;
-		years_available: [1900, 65535];
+		years_available: [1880, 65535];
 		minimum_lifetime: 15;
 		availability_mask: [bitmask(TOWNZONE_CENTRE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
 		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
@@ -1689,7 +1715,7 @@ item(FEAT_HOUSES, item_house_warehouse, 80) {
 		local_authority_impact: 100;
 		removal_cost_multiplier: 110;
 		probability: 15; //Highly likely, as clustering callback will reduce construction rate by ~16x
-		years_available: [0, 65535];
+		years_available: [1800, 65535];
 		minimum_lifetime: 10;
 		availability_mask: [bitmask(TOWNZONE_OUTSKIRT, TOWNZONE_OUTER_SUBURB, TOWNZONE_INNER_SUBURB), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
 		random_colours: [COLOUR_WHITE, COLOUR_GREY, COLOUR_BROWN, COLOUR_DARK_GREEN];
@@ -2162,7 +2188,7 @@ item(FEAT_HOUSES, item_house_park, 140) {
 		local_authority_impact: 75;
 		removal_cost_multiplier: 60;
 		probability: 6; //Highly likely, as clustering callback will reduce construction rate by ~16x
-		years_available: [0, 65535];
+		years_available: [1940, 65535];
 		minimum_lifetime: 30;
 		building_flags: bitmask(HOUSE_FLAG_NOT_SLOPED);
 		availability_mask: [ALL_TOWNZONES & ~bitmask(TOWNZONE_CENTRE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
@@ -2225,7 +2251,7 @@ item(FEAT_HOUSES, item_house_citypark, 150) {
 		local_authority_impact: 75;
 		removal_cost_multiplier: 60;
 		probability: 6; //Highly likely, as clustering callback will reduce construction rate by ~16x
-		years_available: [0, 65535];
+		years_available: [1880, 65535];
 		minimum_lifetime: 30;
 		building_flags: bitmask(HOUSE_FLAG_NOT_SLOPED);
 		availability_mask: [bitmask(TOWNZONE_CENTRE), ALL_CLIMATES | bitmask(ABOVE_SNOWLINE)];
