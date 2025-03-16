@@ -1,6 +1,6 @@
 ##grflangid 0x0c
 STR_GRF_NAME :飛翼船
-STR_GRF_DESC :{ORANGE}飛翼船{}{BLACK}基於現實生活中翼地效應機的高速船舶：地效飛行器主要在蘇聯設計及開發。經典的（１倍縮放，８位元像素藝術）兩所公司的色彩圖像。{}圖像由 {SILVER}Zephyris {BLACK}所繪製，程式編碼由 {SILVER}Zephyris {BLACK}所編寫。車輛統計的資料受 {SILVER}kamnet {BLACK}所啟發。
+STR_GRF_DESC :{ORANGE}飛翼船{}{BLACK}基於現實生活中翼地效應機的高速船舶：地效飛行器主要在蘇聯設計及開發。經典的（１倍縮放，８位元像素藝術）兩所公司的色彩圖像。{}圖像由 {SILVER}Zephyris {BLACK}所繪製，程式編碼由 {SILVER}Zephyris {BLACK}所編寫。車輛統計資料的靈感來自 {SILVER}kamnet 。
 STR_GRF_URL  :https://github.com/zephyris/openttd-newgrfs
 
 STR_EKR_0    :安托諾夫 ESKA-1 型
