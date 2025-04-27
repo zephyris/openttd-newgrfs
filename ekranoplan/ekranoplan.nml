@@ -48,7 +48,7 @@ item(FEAT_SHIPS, item_ekr_0, 11) {
 		introduction_date: date(1960, 01, 01);
 		model_life: 40;
 		vehicle_life: 20;
-		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		climates_available: ALL_CLIMATES;
 		retire_early: 0;
 		//reliability
 		reliability_decay: 20;
@@ -102,7 +102,7 @@ item(FEAT_SHIPS, item_ekr_1, 12) {
 		introduction_date: date(1970, 01, 01);
 		model_life: 40;
 		vehicle_life: 20;
-		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		climates_available: ALL_CLIMATES;
 		retire_early: 0;
 		//reliability
 		reliability_decay: 20;
@@ -156,7 +156,7 @@ item(FEAT_SHIPS, item_ekr_2, 13) {
 		introduction_date: date(1971, 01, 01);
 		model_life: 40;
 		vehicle_life: 12;
-		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		climates_available: ALL_CLIMATES;
 		retire_early: 0;
 		//reliability
 		reliability_decay: 70;
@@ -210,7 +210,7 @@ item(FEAT_SHIPS, item_ekr_3, 14) {
 		introduction_date: date(1974, 01, 01);
 		model_life: 40;
 		vehicle_life: 23;
-		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		climates_available: ALL_CLIMATES;
 		retire_early: 0;
 		//reliability
 		reliability_decay: 20;
@@ -264,7 +264,7 @@ item(FEAT_SHIPS, item_ekr_4, 15) {
 		introduction_date: date(1987, 01, 01);
 		model_life: 17;
 		vehicle_life: 16;
-		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		climates_available: ALL_CLIMATES;
 		retire_early: 0;
 		//reliability
 		reliability_decay: 30;
@@ -318,7 +318,7 @@ item(FEAT_SHIPS, item_ekr_5, 16) {
 		introduction_date: date(1992, 01, 01);
 		model_life: 40;
 		vehicle_life: 22;
-		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		climates_available: ALL_CLIMATES;
 		retire_early: 0;
 		//reliability
 		reliability_decay: 20;
@@ -372,7 +372,7 @@ item(FEAT_SHIPS, item_ekr_6, 17) {
 		introduction_date: date(1994, 01, 01);
 		model_life: 40;
 		vehicle_life: 25;
-		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		climates_available: ALL_CLIMATES;
 		retire_early: 0;
 		//reliability
 		reliability_decay: 20;
@@ -426,7 +426,7 @@ item(FEAT_SHIPS, item_ekr_7, 18) {
 		introduction_date: date(2002, 01, 01);
 		model_life: 40;
 		vehicle_life: 22;
-		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		climates_available: ALL_CLIMATES;
 		retire_early: 0;
 		//reliability
 		reliability_decay: 20;
@@ -480,7 +480,7 @@ item(FEAT_SHIPS, item_ekr_8, 19) {
 		introduction_date: date(2012, 01, 01);
 		model_life: 40;
 		vehicle_life: 25;
-		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		climates_available: ALL_CLIMATES;
 		retire_early: 0;
 		//reliability
 		reliability_decay: 20;
@@ -534,7 +534,7 @@ item(FEAT_SHIPS, item_ekr_9, 20) {
 		introduction_date: date(2019, 01, 01);
 		model_life: 40;
 		vehicle_life: 20;
-		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		climates_available: ALL_CLIMATES;
 		retire_early: 0;
 		//reliability
 		reliability_decay: 20;
@@ -588,7 +588,7 @@ item(FEAT_SHIPS, item_ekr_10, 21) {
 		introduction_date: date(2029, 01, 01);
 		model_life: 40;
 		vehicle_life: 30;
-		climates_available: ALL_CLIMATES & ~bitmask(CLIMATE_TOYLAND);
+		climates_available: ALL_CLIMATES;
 		retire_early: 0;
 		//reliability
 		reliability_decay: 20;
