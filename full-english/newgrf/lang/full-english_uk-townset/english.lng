@@ -1,6 +1,6 @@
 ##grflangid 0x01
 STR_GRF_NAME:Full English - UK Townset
-STR_GRF_DESC:{ORANGE}Full English - UK Townset{}{BLACK}UK-style houses, terraces, shops, warehouses, offices and skyscrapers in full (4x) zoom. Pixel art 8-bit graphics in the OpenGFX2 style.{}Graphics by {SILVER}Zephyris, {BLACK}coding by {SILVER}Zephyris.
+STR_GRF_DESC:{ORANGE}Full English - UK Townset{}{BLACK}UK-style houses, terraces, shops, warehouses, offices and skyscrapers with 1x and full (4x) zoom graphics. Pixel art 8-bit graphics in the OpenGFX2 style.{}Full English features custom town zone control for high-rise districts, smart road-sensitive building orientations, many recolour and fence variants, full grass and tree climate sensitivity matching your baseset, and much more.{}Graphics by {SILVER}Zephyris, {BLACK}coding by {SILVER}Zephyris.
 
 STR_PARAM_DISABLEDEFAULTBUILDINGS_NAME:Disable default buildings
 STR_PARAM_DISABLEDEFAULTBUILDINGS_DESC:Set to 'On' to disable the default OpenTTD buildings, set to 'Off' to have the default OpenTTD buildings mixed with the Full English UK townset buildings.

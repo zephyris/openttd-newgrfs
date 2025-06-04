@@ -18,8 +18,12 @@ Two parameters are available:
 1. Enable or disable default OpenTTD buildings (default disabled).
 2. Allow skyscrapers in only cities, all towns or disable skyscrapers (default cities only).
 
+There is no NewGRF parameter to enable/disable the 4x zoom graphics. If you'd like to disable the extra zoom graphics then you can use the OpenTTD advanced setting "Highest resolution sprites to use". If you set that to `1x`, then Full English will match nicely with 1x zoom basesets and NewGRFs.
+
 ## Interoperability
-The Full English townset is tested for standalone use with default industries, eg. the buildings accept passengers, mail, goods and food and produce passengers and mail. It _should_ behave nicely if loaded with other NewGRFs providing town buildings, but it is recommended to use it as your only town building NewGRF. 
+The Full English townset is tested for standalone use with default industries, eg. the buildings accept passengers, mail, goods and food and produce passengers and mail. It _should_ behave nicely if loaded with other NewGRFs providing town buildings, but it is recommended to use it as your only town building NewGRF.
+
+Full English is a 'spiritual successor' to the UK Town Set. But, it was developed and coded independently, so it is not a drop in replacement.
 
 ## Development
 if you find bugs or have feature requests then please post them as Github issues on my [OpenTTD NewGRF Github repo](https://github.com/zephyris/openttd-newgrf).
