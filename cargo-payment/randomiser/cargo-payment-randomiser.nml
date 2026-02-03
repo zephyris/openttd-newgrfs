@@ -1,0 +1,178 @@
+grf {
+    grfid: "ZIN\01";
+    name: string(STR_GRF_NAME);
+    desc: string(STR_GRF_DESC);
+    url: string(STR_GRF_URL);
+    version: 0;
+    min_compatible_version: 1;
+    param 1 {
+        param_min_price_factor {
+            type: int;
+            name: string(STR_PARAM_MIN_PRICE_FACTOR_NAME);
+            desc: string(STR_PARAM_MIN_PRICE_FACTOR_DESC);
+            def_value: 100;
+            min_value: 30;
+            max_value: 200;
+        }
+    }
+    param 2 {
+        param_min_price_factor_passengers {
+            type: int;
+            name: string(STR_PARAM_MIN_PRICE_FACTOR_PASSENGERS_NAME);
+            desc: string(STR_PARAM_MIN_PRICE_FACTOR_PASSENGERS_DESC);
+            def_value: 60;
+            min_value: 30;
+            max_value: 200;
+        }
+    }
+    param 3 {
+        param_min_price_factor_valuable {
+            type: int;
+            name: string(STR_PARAM_MIN_PRICE_FACTOR_VALUABLE_NAME);
+            desc: string(STR_PARAM_MIN_PRICE_FACTOR_VALUABLE_DESC);
+            def_value: 150;
+            min_value: 30;
+            max_value: 200;
+        }
+    }
+    param 4 {
+        param_price_factor_range {
+            type: int;
+            name: string(STR_PARAM_PRICE_FACTOR_RANGE_NAME);
+            desc: string(STR_PARAM_PRICE_FACTOR_RANGE_DESC);
+            def_value: 60;
+            min_value: 10;
+            max_value: 200;
+        }
+    }
+}
+
+min_price_factor = param_min_price_factor; // Default 100
+min_price_factor_passengers = param_min_price_factor_passengers; // Default 60;
+min_price_factor_valuable = param_min_price_factor_valuable; // Default 150;
+price_factor_range = param_price_factor_range; // Default 60;
+
+// Passengers in slot 1 in all climates, always lower rate
+seed_0 = ((map_seed >> 0) * 7 + 3) >> 8;
+price_factor_0 = (min_price_factor_passengers + (seed_0 & price_factor_range));
+item (FEAT_CARGOS, cargo_0) {
+    property {
+        number: 0;
+        price_factor: price_factor_0;
+    }
+}
+
+seed_1 = ((map_seed >> 1) * 11 + 5) >> 8;
+price_factor_1 = min_price_factor + (seed_1 & price_factor_range);
+item (FEAT_CARGOS, cargo_1) {
+    property {
+        number: 1;
+        price_factor: price_factor_1;
+    }
+}
+
+seed_2 = ((map_seed >> 2) * 13 + 7) >> 8;
+price_factor_2 = min_price_factor + (seed_2 & price_factor_range);
+item (FEAT_CARGOS, cargo_2) {
+    property {
+        number: 2;
+        price_factor: price_factor_2;
+    }
+}
+
+seed_3 = ((map_seed >> 3) * 17 + 9) >> 8;
+price_factor_3 = min_price_factor + (seed_3 & price_factor_range);
+item (FEAT_CARGOS, cargo_3) {
+    property {
+        number: 3;
+        price_factor: price_factor_3;
+    }
+}
+
+seed_4 = ((map_seed >> 4) * 19 + 11) >> 8;
+price_factor_4 = min_price_factor + (seed_4 & price_factor_range);
+item (FEAT_CARGOS, cargo_4) {
+    property {
+        number: 4;
+        price_factor: price_factor_4;
+    }
+}
+
+seed_5 = ((map_seed >> 5) * 23 + 13) >> 8;
+price_factor_5 = min_price_factor + (seed_5 & price_factor_range);
+item (FEAT_CARGOS, cargo_5) {
+    property {
+        number: 5;
+        price_factor: price_factor_5;
+    }
+}
+
+seed_6 = ((map_seed >> 6) * 29 + 15) >> 8;
+price_factor_6 = min_price_factor + (seed_6 & price_factor_range);
+item (FEAT_CARGOS, cargo_6) {
+    property {
+        number: 6;
+        price_factor: price_factor_6;
+    }
+}
+
+seed_7 = ((map_seed >> 7) * 31 + 17) >> 8;
+if (climate == CLIMATE_TROPIC) {
+    // Wood in slot 7 in tropic climate, always higher rate
+    price_factor_7 = (min_price_factor_valuable + (seed_7 & price_factor_range));
+} else {
+    price_factor_7 = min_price_factor + (seed_7 & price_factor_range);
+}
+item (FEAT_CARGOS, cargo_7) {
+    property {
+        number: 7;
+        price_factor: price_factor_7;
+    }
+}
+
+if (climate != CLIMATE_ARCTIC) {
+    // Vanilla industries in arctic climate don't use cargo 8
+    seed_8 = ((map_seed >> 8) * 37 + 19) >> 8;
+    price_factor_8 = min_price_factor + (seed_8 & price_factor_range);
+    item (FEAT_CARGOS, cargo_8) {
+        property {
+            number: 8;
+            price_factor: price_factor_8;
+        }
+    }
+}
+
+seed_9 = ((map_seed >> 9) * 41 + 21) >> 8;
+price_factor_9 = min_price_factor + (seed_9 & price_factor_range);
+item (FEAT_CARGOS, cargo_9) {
+    property {
+        number: 9;
+        price_factor: price_factor_9;
+    }
+}
+
+seed_10 = ((map_seed >> 10) * 43 + 23) >> 8;
+if (climate == CLIMATE_TEMPERATE) {
+    // Valuables in slot 10 in temperate climate, always higher rate
+    price_factor_10 = (min_price_factor_valuable + (seed_10 & price_factor_range));
+} else {
+    price_factor_10 = min_price_factor + (seed_10 & price_factor_range);
+}
+item (FEAT_CARGOS, cargo_10) {
+    property {
+        number: 10;
+        price_factor: price_factor_10;
+    }
+}
+
+if (climate != CLIMATE_TEMPERATE) {
+    // Vanilla industries in temperate climate don't use cargo 11
+    seed_11 = ((map_seed >> 11) * 47 + 25) >> 8;
+    price_factor_11 = min_price_factor + (seed_11 & price_factor_range);
+    item (FEAT_CARGOS, cargo_11) {
+        property {
+            number: 11;
+            price_factor: price_factor_11;
+        }
+    }
+}

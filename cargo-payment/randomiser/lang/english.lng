@@ -1,0 +1,13 @@
+##grflangid 0x01
+STR_GRF_NAME:Cargo Payment Rate Randomiser
+STR_GRF_DESC:Bored of always having the same payment rates for industries? Use the cargo payment rate randomiser! This NewGRF randomly alters cargo payment rates based on your game's map seed. New payment rates (the ammount paid for delivering 10 units of cargo 20 squares) are chosen by adding a random value to a minimum payment rate. {}{}The cargo payment rate randomiser is designed for use only with the default industries. Don't try to use in combination with any other NewGRF which defines cargos or industries.{}{}By Zephyris.
+STR_GRF_URL:https://github.com/zephyris/openttd-newgrfs
+
+STR_PARAM_MIN_PRICE_FACTOR_NAME:Minimum price factor (normal cargos)
+STR_PARAM_MIN_PRICE_FACTOR_DESC:Minimum payment for delivering 10 units of cargo across a distance of 20 squares (with no time penalty) when randomising payment rates for a normal cargo. Default 100.
+STR_PARAM_MIN_PRICE_FACTOR_PASSENGERS_NAME:Minimum price factor (passengers)
+STR_PARAM_MIN_PRICE_FACTOR_PASSENGERS_DESC:Minimum payment for delivering 10 units of cargo across a distance of 20 squares (with no time penalty) when randomising payment rates for passengers. Normally lower than normal cargos. Default 60.
+STR_PARAM_MIN_PRICE_FACTOR_VALUABLE_NAME:Minimum price factor (valuable cargos)
+STR_PARAM_MIN_PRICE_FACTOR_VALUABLE_DESC:Minimum payment for delivering 10 units of cargo across a distance of 20 squares (with no time penalty) when randomising payment rates for valuable cargos (valuables in temperate and wood in tropical climates). Normally higher than normal cargos. Default 150.
+STR_PARAM_PRICE_FACTOR_RANGE_NAME:Price factor range
+STR_PARAM_PRICE_FACTOR_RANGE_DESC:Range of possible random values which will be added to the minimum payment for delivering 10 units of cargo across a distance of 20 squares (with no time penalty). Default 60.
