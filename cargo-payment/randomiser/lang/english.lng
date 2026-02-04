@@ -1,6 +1,6 @@
 ##grflangid 0x01
 STR_GRF_NAME:Cargo Payment Rate Randomiser
-STR_GRF_DESC:Bored of always having the same payment rates for industries? Use the cargo payment rate randomiser! This NewGRF randomly alters cargo payment rates based on your game's map seed. New payment rates (the ammount paid for delivering 10 units of cargo 20 squares) are chosen by adding a random value to a minimum payment rate. {}{}The cargo payment rate randomiser is designed for use only with the default industries. Don't try to use in combination with any other NewGRF which defines cargos or industries.{}{}By Zephyris.
+STR_GRF_DESC:Bored of always having the same payment rates for industries? Use the cargo payment rate randomiser! This NewGRF randomly alters cargo payment rates based on your game's map seed. New payment rates (the amount paid for delivering 10 units of cargo 20 squares) are chosen by adding a random value to a minimum payment rate.{}{}The cargo payment rate randomiser is designed for use only with the default industries. Don't try to use in combination with any other NewGRF which defines cargos or industries.{}{}By Zephyris.
 STR_GRF_URL:https://github.com/zephyris/openttd-newgrfs
 
 STR_PARAM_MIN_PRICE_FACTOR_NAME:Minimum price factor (normal cargos)
